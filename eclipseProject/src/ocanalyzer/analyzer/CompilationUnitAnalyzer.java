@@ -1,7 +1,8 @@
 package ocanalyzer.analyzer;
 
 import ocanalyzer.analyzer.factory.ASTNodeFactory;
-import ocanalyzer.reporter.MyReporter;
+import ocanalyzer.reporter.MarkerReporter;
+import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -21,11 +22,11 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class CompilationUnitAnalyzer {
 
 	private ICompilationUnit unit;
-	private MyReporter reporter;
+	private RuleViolationReporter reporter;
 
 	public CompilationUnitAnalyzer(ICompilationUnit unit) {
 		this.unit = unit;
-		reporter = new MyReporter();
+		reporter = new MarkerReporter();
 	}
 
 	public void handle() {
