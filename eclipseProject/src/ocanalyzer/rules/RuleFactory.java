@@ -30,7 +30,7 @@ public class RuleFactory {
 
 	public ASTVisitor createIndentiationRule() {
 		IndentationRuleFactory indentationFactory = new IndentationRuleFactory(
-				unit, compilationUnit, reporter);
+				unit, compilationUnit);
 		return indentationFactory.create();
 	}
 

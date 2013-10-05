@@ -10,6 +10,11 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class IndentationRuleFactory extends RuleValidatorFactory {
 
 	public IndentationRuleFactory(ICompilationUnit unit,
+			CompilationUnit compilationUnit) {
+		super(unit, compilationUnit);
+	}
+
+	public IndentationRuleFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
