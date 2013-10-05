@@ -5,7 +5,8 @@ Bundle-SymbolicName: OCAnalyzer;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: ocanalyzer.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
