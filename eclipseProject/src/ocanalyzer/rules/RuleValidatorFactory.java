@@ -1,6 +1,7 @@
 package ocanalyzer.rules;
 
 import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.StandardReporter;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -11,6 +12,14 @@ public abstract class RuleValidatorFactory {
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
 	protected RuleViolationReporter reporter;
+
+	public RuleValidatorFactory(ICompilationUnit unit,
+			CompilationUnit compilationUnit) {
+		super();
+		this.unit = unit;
+		this.compilationUnit = compilationUnit;
+		reporter = new StandardReporter();
+	}
 
 	public RuleValidatorFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
