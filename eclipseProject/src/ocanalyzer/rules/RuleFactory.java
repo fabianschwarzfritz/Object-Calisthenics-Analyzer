@@ -11,6 +11,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class RuleFactory {
 
+	private ElseRuleFactory elseRuleFactory;
+	private IndentationRuleFactory indentationRuleFactory;
+
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
 	protected RuleViolationReporter reporter;
@@ -28,18 +31,17 @@ public class RuleFactory {
 		this.unit = unit;
 		this.compilationUnit = compilationUnit;
 		this.reporter = reporter;
+		elseRuleFactory = new ElseRuleFactory(unit, compilationUnit, reporter);
+		indentationRuleFactory = new IndentationRuleFactory(unit,
+				compilationUnit, reporter);
 	}
 
 	public ASTVisitor createElseRule() {
-		ElseRuleFactory elseRuleFactory = new ElseRuleFactory(unit,
-				compilationUnit, reporter);
 		return elseRuleFactory.create();
 	}
 
 	public ASTVisitor createIndentiationRule() {
-		IndentationRuleFactory indentationFactory = new IndentationRuleFactory(
-				unit, compilationUnit, reporter);
-		return indentationFactory.create();
+		return indentationRuleFactory.create();
 	}
 
 }
