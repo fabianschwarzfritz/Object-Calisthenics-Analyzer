@@ -1,8 +1,6 @@
 package ocanalyzer.analyzer;
 
 import ocanalyzer.analyzer.factory.ASTNodeFactory;
-import ocanalyzer.reporter.MarkerReporter;
-import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -22,24 +20,29 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class CompilationUnitAnalyzer {
 
 	private ICompilationUnit unit;
-	private RuleViolationReporter reporter;
 
 	public CompilationUnitAnalyzer(ICompilationUnit unit) {
 		this.unit = unit;
-		reporter = new MarkerReporter();
 	}
 
 	public void handle() {
 		CompilationUnit compilationUnit = (CompilationUnit) new ASTNodeFactory()
 				.parse(unit);
-		RuleFactory factory = new RuleFactory(unit, compilationUnit, reporter);
+		RuleFactory factory = new RuleFactory(unit, compilationUnit);
 
 		acceptElseRule(compilationUnit, factory);
+		acceptIndentiationRule(compilationUnit, factory);
 	}
 
 	private void acceptElseRule(CompilationUnit compilationUnit,
 			RuleFactory factory) {
 		ASTVisitor elseRule = factory.createElseRule();
 		compilationUnit.accept(elseRule);
+	}
+
+	private void acceptIndentiationRule(CompilationUnit compilationUnit,
+			RuleFactory factory) {
+		ASTVisitor indentiationRule = factory.createIndentiationRule();
+		compilationUnit.accept(indentiationRule);
 	}
 }

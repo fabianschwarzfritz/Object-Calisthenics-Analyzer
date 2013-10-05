@@ -1,6 +1,7 @@
 package ocanalyzer.rules;
 
 import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.StandardReporter;
 import ocanalyzer.rules.indentation.IndentationRuleFactory;
 import ocanalyzer.rules.noelse.ElseRuleFactory;
 
@@ -13,6 +14,13 @@ public class RuleFactory {
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
 	protected RuleViolationReporter reporter;
+
+	public RuleFactory(ICompilationUnit unit, CompilationUnit compilationUnit) {
+		super();
+		this.unit = unit;
+		this.compilationUnit = compilationUnit;
+		this.reporter = new StandardReporter();
+	}
 
 	public RuleFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
 			RuleViolationReporter reporter) {
@@ -30,7 +38,7 @@ public class RuleFactory {
 
 	public ASTVisitor createIndentiationRule() {
 		IndentationRuleFactory indentationFactory = new IndentationRuleFactory(
-				unit, compilationUnit);
+				unit, compilationUnit, reporter);
 		return indentationFactory.create();
 	}
 
