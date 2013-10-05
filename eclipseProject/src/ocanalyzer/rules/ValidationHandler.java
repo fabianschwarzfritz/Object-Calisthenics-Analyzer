@@ -4,9 +4,23 @@ import ocanalyzer.reporter.RuleViolationReporter;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Statement;
 
+/**
+ * This class abstract the behaviour what to do when a rule violation is found
+ * by a concrete {@link ASTVisitor}
+ * 
+ * Therefore a concrete handler overrides
+ * {@link ValidationHandler#printInfo(Statement)} and handles the violation
+ * information accordingly. Most implementations add rule specific information
+ * and then use either a {@link #reporter} manually or the provided
+ * {@link #reportError(String, Statement)} to report a rule violation.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public abstract class ValidationHandler {
 
 	protected ICompilationUnit unit;

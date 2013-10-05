@@ -7,6 +7,13 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
+/**
+ * This class abstracts a concrete factory object validating a rule of the
+ * Object Calisthenics.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public abstract class RuleValidatorFactory {
 
 	protected ICompilationUnit unit;
