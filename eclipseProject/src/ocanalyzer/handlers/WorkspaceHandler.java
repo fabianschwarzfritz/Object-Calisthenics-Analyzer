@@ -1,5 +1,7 @@
 package ocanalyzer.handlers;
 
+import ocanalyzer.analyzer.ProjectAnalyzer;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -31,7 +33,7 @@ public class WorkspaceHandler extends AbstractHandler {
 	}
 
 	public void addProject(IProject project) throws JavaModelException {
-		ProjectHandler handler = new ProjectHandler(project);
+		ProjectAnalyzer handler = new ProjectAnalyzer(project);
 		handler.analyze();
 	}
 

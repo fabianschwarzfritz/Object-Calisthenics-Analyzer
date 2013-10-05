@@ -1,4 +1,4 @@
-package ocanalyzer.handlers;
+package ocanalyzer.reporter;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;

@@ -1,15 +1,15 @@
-package ocanalyzer.handlers;
+package ocanalyzer.analyzer;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
 
-public class PackageHandler {
+public class PackageAnalyzer {
 	
 	private IPackageFragment packageFragement;
 
-	public PackageHandler(IPackageFragment mypackage) {
+	public PackageAnalyzer(IPackageFragment mypackage) {
 		this.packageFragement = mypackage;
 	}
 	
@@ -17,7 +17,7 @@ public class PackageHandler {
 		try {
 			if (packageFragement.getKind() == IPackageFragmentRoot.K_SOURCE) {
 				for (ICompilationUnit unit : packageFragement.getCompilationUnits()) {
-					CompilationUnitHandler handler = new CompilationUnitHandler(unit);
+					CompilationUnitAnalyzer handler = new CompilationUnitAnalyzer(unit);
 					handler.handle();
 				}
 			}

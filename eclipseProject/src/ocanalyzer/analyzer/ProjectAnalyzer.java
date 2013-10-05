@@ -1,4 +1,4 @@
-package ocanalyzer.handlers;
+package ocanalyzer.analyzer;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -6,13 +6,13 @@ import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 
-public class ProjectHandler {
+public class ProjectAnalyzer {
 
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
 	private IProject project;
 
-	public ProjectHandler(IProject project) {
+	public ProjectAnalyzer(IProject project) {
 		this.project = project;
 	}
 
@@ -23,7 +23,7 @@ public class ProjectHandler {
 			IPackageFragment[] packages = JavaCore.create(project)
 					.getPackageFragments();
 			for (IPackageFragment mypackage : packages) {
-				PackageHandler handler = new PackageHandler(mypackage);
+				PackageAnalyzer handler = new PackageAnalyzer(mypackage);
 				handler.handle();
 			}
 		}

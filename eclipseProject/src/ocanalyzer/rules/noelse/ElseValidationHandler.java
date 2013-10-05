@@ -1,6 +1,8 @@
-package ocanalyzer.handlers;
+package ocanalyzer.rules.noelse;
 
 import java.io.PrintStream;
+
+import ocanalyzer.reporter.MyReporter;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;

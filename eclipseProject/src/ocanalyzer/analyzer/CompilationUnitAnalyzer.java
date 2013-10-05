@@ -1,4 +1,9 @@
-package ocanalyzer.handlers;
+package ocanalyzer.analyzer;
+
+import ocanalyzer.analyzer.factory.ASTNodeFactory;
+import ocanalyzer.reporter.MyReporter;
+import ocanalyzer.rules.noelse.ElseValidationHandler;
+import ocanalyzer.rules.noelse.ElseVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -13,13 +18,13 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class CompilationUnitHandler {
+public class CompilationUnitAnalyzer {
 
 	private ICompilationUnit unit;
 	private CompilationUnit compilationUnit;
 	private MyReporter reporter;
 
-	public CompilationUnitHandler(ICompilationUnit unit) {
+	public CompilationUnitAnalyzer(ICompilationUnit unit) {
 		this.unit = unit;
 		reporter = new MyReporter();
 	}

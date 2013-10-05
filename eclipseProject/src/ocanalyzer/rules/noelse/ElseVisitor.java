@@ -1,4 +1,4 @@
-package ocanalyzer.handlers;
+package ocanalyzer.rules.noelse;
 
 import java.util.ArrayList;
 import java.util.List;

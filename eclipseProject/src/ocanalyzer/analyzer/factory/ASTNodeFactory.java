@@ -1,4 +1,4 @@
-package ocanalyzer.handlers;
+package ocanalyzer.analyzer.factory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.AST;
@@ -13,7 +13,7 @@ import org.eclipse.jdt.core.dom.ASTParser;
  * 
  */
 public class ASTNodeFactory {
-	ASTNode parse(ICompilationUnit unit) {
+	public ASTNode parse(ICompilationUnit unit) {
 		ASTParser parser = ASTParser.newParser(AST.JLS4);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		parser.setSource(unit);
