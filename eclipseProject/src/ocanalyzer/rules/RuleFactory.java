@@ -1,6 +1,7 @@
 package ocanalyzer.rules;
 
 import ocanalyzer.reporter.MyReporter;
+import ocanalyzer.rules.indentation.IndentationRuleFactory;
 import ocanalyzer.rules.noelse.ElseRuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -25,6 +26,12 @@ public class RuleFactory {
 		ElseRuleFactory elseRuleFactory = new ElseRuleFactory(unit,
 				compilationUnit, reporter);
 		return elseRuleFactory.create();
+	}
+
+	public ASTVisitor createIndentiationRule() {
+		IndentationRuleFactory indentationFactory = new IndentationRuleFactory(
+				unit, compilationUnit, reporter);
+		return indentationFactory.create();
 	}
 
 }

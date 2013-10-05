@@ -1,4 +1,4 @@
-package ocanalyzer.rules.noelse;
+package ocanalyzer.rules.indentation;
 
 import ocanalyzer.reporter.MyReporter;
 import ocanalyzer.rules.ValidationHandler;
@@ -7,25 +7,17 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Statement;
 
-/**
- * This class handles rule validation.
- * 
- * Therefore it creates corresponding messages for the users and reports them to
- * the given {@link #reporter}
- * 
- * @author Fabian Schwarz-Fritz
- * 
- */
-public class ElseValidationHandler extends ValidationHandler {
+public class IndentationValidationHandler extends ValidationHandler {
 
-	public ElseValidationHandler(ICompilationUnit unit,
+	public IndentationValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, MyReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public void printInfo(Statement statement) {
-		String msg = "The else keyword violates rule 2";
+		String msg = "The intention violates rule 1";
 		reportError(msg, statement);
 	}
+
 }

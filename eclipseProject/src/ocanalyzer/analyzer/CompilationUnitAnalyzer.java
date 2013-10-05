@@ -33,6 +33,11 @@ public class CompilationUnitAnalyzer {
 				.parse(unit);
 		RuleFactory factory = new RuleFactory(unit, compilationUnit, reporter);
 
+		acceptElseRule(compilationUnit, factory);
+	}
+
+	private void acceptElseRule(CompilationUnit compilationUnit,
+			RuleFactory factory) {
 		ASTVisitor elseRule = factory.createElseRule();
 		compilationUnit.accept(elseRule);
 	}

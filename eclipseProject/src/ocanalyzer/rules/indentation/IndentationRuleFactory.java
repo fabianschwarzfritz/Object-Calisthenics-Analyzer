@@ -1,25 +1,25 @@
-package ocanalyzer.rules.noelse;
+package ocanalyzer.rules.indentation;
 
 import ocanalyzer.reporter.MyReporter;
 import ocanalyzer.rules.RuleValidatorFactory;
-import ocanalyzer.rules.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class ElseRuleFactory extends RuleValidatorFactory {
+public class IndentationRuleFactory extends RuleValidatorFactory {
 
-	public ElseRuleFactory(ICompilationUnit unit,
+	public IndentationRuleFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, MyReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public ASTVisitor create() {
-		ValidationHandler elseValidationHandler = new ElseValidationHandler(
+		IndentationValidationHandler indentationValidationHandler = new IndentationValidationHandler(
 				unit, compilationUnit, reporter);
-		ElseVisitor visitor = new ElseVisitor(elseValidationHandler);
+		IndentationVisitor visitor = new IndentationVisitor(
+				indentationValidationHandler);
 		return visitor;
 	}
 
