@@ -18,11 +18,10 @@ public class MarkerReporter implements RuleViolationReporter {
 	public void reportError(IResource resource, int line, String msg) {
 		IMarker m;
 		try {
-			m = resource.createMarker(IMarker.TASK);
+			m = resource.createMarker(IMarker.PROBLEM);
 			m.setAttribute(IMarker.LINE_NUMBER, line);
 			m.setAttribute(IMarker.MESSAGE, msg);
-			m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_NORMAL);
-			m.setAttribute(IMarker.SEVERITY, IMarker.MARKER);
+			m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 		} catch (CoreException e) {
 			throw new RuntimeException(e);
 		}

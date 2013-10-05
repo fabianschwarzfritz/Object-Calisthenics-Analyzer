@@ -29,10 +29,7 @@ public class RuleFactory {
 	protected RuleViolationReporter reporter;
 
 	public RuleFactory(ICompilationUnit unit, CompilationUnit compilationUnit) {
-		super();
-		this.unit = unit;
-		this.compilationUnit = compilationUnit;
-		this.reporter = new StandardReporter();
+		this(unit, compilationUnit, new StandardReporter());
 	}
 
 	public RuleFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
