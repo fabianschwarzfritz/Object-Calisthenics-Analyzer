@@ -25,7 +25,7 @@ public class CompilationUnitHandler {
 	}
 
 	public void handle() {
-		compilationUnit = (CompilationUnit) new ASTNodeParser().parse(unit);
+		compilationUnit = (CompilationUnit) new ASTNodeFactory().parse(unit);
 		addCompilationUnitVisitors();
 	}
 

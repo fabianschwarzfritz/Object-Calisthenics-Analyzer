@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.dom.ASTParser;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class ASTNodeParser {
+public class ASTNodeFactory {
 	ASTNode parse(ICompilationUnit unit) {
 		ASTParser parser = ASTParser.newParser(AST.JLS4);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
