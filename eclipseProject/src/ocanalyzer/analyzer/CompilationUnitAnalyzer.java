@@ -2,10 +2,10 @@ package ocanalyzer.analyzer;
 
 import ocanalyzer.analyzer.factory.ASTNodeFactory;
 import ocanalyzer.reporter.MyReporter;
-import ocanalyzer.rules.noelse.ElseValidationHandler;
-import ocanalyzer.rules.noelse.ElseVisitor;
+import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
@@ -21,7 +21,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class CompilationUnitAnalyzer {
 
 	private ICompilationUnit unit;
-	private CompilationUnit compilationUnit;
 	private MyReporter reporter;
 
 	public CompilationUnitAnalyzer(ICompilationUnit unit) {
@@ -30,18 +29,11 @@ public class CompilationUnitAnalyzer {
 	}
 
 	public void handle() {
-		compilationUnit = (CompilationUnit) new ASTNodeFactory().parse(unit);
-		addCompilationUnitVisitors();
-	}
+		CompilationUnit compilationUnit = (CompilationUnit) new ASTNodeFactory()
+				.parse(unit);
+		RuleFactory factory = new RuleFactory(unit, compilationUnit, reporter);
 
-	private void addCompilationUnitVisitors() {
-		compilationUnit.accept(createElseVisitor());
-	}
-
-	private ElseVisitor createElseVisitor() {
-		ElseValidationHandler elseValidationHandler = new ElseValidationHandler(
-				unit, compilationUnit, reporter);
-		ElseVisitor visitor = new ElseVisitor(elseValidationHandler);
-		return visitor;
+		ASTVisitor elseRule = factory.createElseRule();
+		compilationUnit.accept(elseRule);
 	}
 }

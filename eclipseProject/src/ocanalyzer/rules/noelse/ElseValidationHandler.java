@@ -36,8 +36,8 @@ public class ElseValidationHandler {
 
 	public void printElseInfo(PrintStream stream, Statement elseStatements) {
 		IResource resource = unit.getResource();
-		int line = compilationUnit.getLineNumber(elseStatements
-				.getStartPosition());
+		int startPosition = elseStatements.getStartPosition();
+		int line = compilationUnit.getLineNumber(startPosition);
 		String msg = "The else keyword violates rule 2";
 
 		try {
