@@ -34,13 +34,21 @@ public class IndentationVisitor extends ASTVisitor {
 		return true;
 	}
 
+	private boolean isMethod(ASTNode node) {
+		return methodDeclarations.contains(node);
+	}
+
+	private boolean indentiationCheck(ASTNode node, int level) {
+		boolean method = isMethod(node);
+		if (level > 0 & !method) {
+			return indentiationCheck(node.getParent(), --level);
+		}
+		return method;
+	}
+
 	private boolean validateParent(Statement statement) {
-		ASTNode block = statement.getParent();
-		ASTNode methodDeclaration = block.getParent();
-
-		boolean parentIsMethod = methodDeclarations.contains(methodDeclaration);
-
-		if (!parentIsMethod) {
+		boolean correctIndentiation = indentiationCheck(statement, 2);
+		if (!correctIndentiation) {
 			validationHandler.printInfo(statement);
 			return false;
 		}
