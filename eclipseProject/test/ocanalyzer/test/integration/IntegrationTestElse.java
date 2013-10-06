@@ -13,7 +13,7 @@ import org.eclipse.core.resources.IResource;
 /**
  * Integration test testing correct validation of rule 2: no else.
  * 
- * Each test is coupled to a java class that is validate.
+ * Each test is coupled to a java class that is to validate.
  * 
  * @author Fabian Schwarz-Fritz
  * 
