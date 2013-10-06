@@ -19,28 +19,41 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  */
 public class CompilationUnitAnalyzer {
 
-	private ICompilationUnit unit;
+	private AnalyzerFactory factory;
+	protected ICompilationUnit unit;
 
-	public CompilationUnitAnalyzer(ICompilationUnit unit) {
+	public CompilationUnitAnalyzer(ICompilationUnit unit,
+			AnalyzerFactory factory) {
 		this.unit = unit;
+		this.factory = factory;
 	}
 
 	public void handle() {
 		CompilationUnit compilationUnit = (CompilationUnit) new ASTNodeFactory()
 				.parse(unit);
-		RuleFactory factory = new RuleFactory(unit, compilationUnit);
+		RuleFactory factory = createFactory(compilationUnit);
 
+		acceptRules(compilationUnit, factory);
+	}
+
+	protected RuleFactory createFactory(CompilationUnit compilationUnit) {
+		RuleFactory factory = new RuleFactory(unit, compilationUnit);
+		return factory;
+	}
+
+	protected void acceptRules(CompilationUnit compilationUnit,
+			RuleFactory factory) {
 		acceptElseRule(compilationUnit, factory);
 		acceptIndentiationRule(compilationUnit, factory);
 	}
 
-	private void acceptElseRule(CompilationUnit compilationUnit,
+	public void acceptElseRule(CompilationUnit compilationUnit,
 			RuleFactory factory) {
 		ASTVisitor elseRule = factory.createElseRule();
 		compilationUnit.accept(elseRule);
 	}
 
-	private void acceptIndentiationRule(CompilationUnit compilationUnit,
+	protected void acceptIndentiationRule(CompilationUnit compilationUnit,
 			RuleFactory factory) {
 		ASTVisitor indentiationRule = factory.createIndentiationRule();
 		compilationUnit.accept(indentiationRule);

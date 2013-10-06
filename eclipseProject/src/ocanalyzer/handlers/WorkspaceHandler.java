@@ -1,5 +1,7 @@
 package ocanalyzer.handlers;
 
+import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.AnalyzerFactoryImpl;
 import ocanalyzer.analyzer.ProjectAnalyzer;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -14,6 +16,16 @@ import org.eclipse.jdt.core.JavaModelException;
 public class WorkspaceHandler extends AbstractHandler {
 
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
+
+	protected AnalyzerFactory factory;
+
+	public WorkspaceHandler() {
+		// Prepare factory.
+		AnalyzerFactoryImpl factoryImpl = new AnalyzerFactoryImpl(null);
+		factoryImpl.setFactory(factoryImpl);
+
+		factory = factoryImpl;
+	}
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -33,7 +45,7 @@ public class WorkspaceHandler extends AbstractHandler {
 	}
 
 	public void addProject(IProject project) throws JavaModelException {
-		ProjectAnalyzer handler = new ProjectAnalyzer(project);
+		ProjectAnalyzer handler = factory.createProjectAnalyzer(project);
 		handler.analyze();
 	}
 
