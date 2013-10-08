@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.tycho.demo.crossplatform' version='1.0.0.201310081705'>
-    <update id='org.tycho.demo.crossplatform' range='[0.0.0,1.0.0.201310081705)' severity='0'/>
+  <unit id='org.tycho.demo.crossplatform' version='1.0.0.201310081721'>
+    <update id='org.tycho.demo.crossplatform' range='[0.0.0,1.0.0.201310081721)' severity='0'/>
     <properties size='4'>
       <property name='org.eclipse.equinox.p2.name' value='Bundle'/>
       <property name='maven-groupId' value='tycho.demo'/>
@@ -9,8 +9,8 @@
       <property name='maven-version' value='1.0.0-SNAPSHOT'/>
     </properties>
     <provides size='3'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.tycho.demo.crossplatform' version='1.0.0.201310081705'/>
-      <provided namespace='osgi.bundle' name='org.tycho.demo.crossplatform' version='1.0.0.201310081705'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.tycho.demo.crossplatform' version='1.0.0.201310081721'/>
+      <provided namespace='osgi.bundle' name='org.tycho.demo.crossplatform' version='1.0.0.201310081721'/>
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
     </provides>
     <requires size='3'>
@@ -19,13 +19,13 @@
       <required namespace='osgi.bundle' name='org.eclipse.osgi' range='0.0.0'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.tycho.demo.crossplatform' version='1.0.0.201310081705'/>
+      <artifact classifier='osgi.bundle' id='org.tycho.demo.crossplatform' version='1.0.0.201310081721'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.tycho.demo.crossplatform;singleton:=true&#xA;Bundle-Version: 1.0.0.201310081705&#xA;
+          Bundle-SymbolicName: org.tycho.demo.crossplatform;singleton:=true&#xA;Bundle-Version: 1.0.0.201310081721&#xA;
         </instruction>
       </instructions>
     </touchpointData>

@@ -8,7 +8,7 @@
  * Contributors:
  *    Sonatype Inc. - initial API and implementation
  *******************************************************************************/
-package tycho.demo.itp01.tests;
+package org.tycho.demo.crossplatform.tests;
 
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.tycho.demo.crossplatform' version='1.0.0.201310081705'>
+  <artifact classifier='osgi.bundle' id='org.tycho.demo.crossplatform' version='1.0.0.201310081721'>
     <properties size='5'>
       <property name='artifact.size' value='4912'/>
       <property name='download.size' value='4912'/>

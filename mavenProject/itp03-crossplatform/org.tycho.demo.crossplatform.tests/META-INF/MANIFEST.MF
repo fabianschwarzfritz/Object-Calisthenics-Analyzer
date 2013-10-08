@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tests Plug-in
-Bundle-SymbolicName: tycho.demo.itp01.tests
+Bundle-SymbolicName: org.tycho.demo.crossplatform.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.junit4,
