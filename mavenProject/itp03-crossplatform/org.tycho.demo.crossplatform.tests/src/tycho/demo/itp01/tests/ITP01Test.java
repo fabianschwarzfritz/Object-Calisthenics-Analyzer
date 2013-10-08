@@ -14,8 +14,6 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 
-import tycho.demo.itp01.actions.SampleAction;
-
 public class ITP01Test {
 
     @Test
