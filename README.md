@@ -20,3 +20,8 @@ Providing tool support for the Object Calisthenics could shorten the time of the
 Therefore the rules shall be analyzed and the patterns behind it shall be explained. Furthermore, it is the purpose of this report, to evaluate if it is possible to create tool support for automatic validation for every rule. Is it possible to validate the rule? Can the rules be categorized? Are there similarities in validating the rules? Can the rules be grouped in different categories? It is the goal of this report to examine these questions.
 
 The prototypical implementation of tool support is done as an Eclipse plugin validating three rules of the object calisthenics and displaying the validation result with simple indicators in the User Interface is also part of this report. Implementing validation support for more rules and providing a more sophisticated User Interface is optional.
+
+Project Documentation
+=====================
+The project documentation can be found under the follwing link:
+[documentation reporsitory](https://github.com/fabianschwarzfritz/Object-Calisthenics-Analyzer-Documentation/ "documentation reporsitory")
