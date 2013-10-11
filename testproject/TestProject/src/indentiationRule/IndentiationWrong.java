@@ -1,6 +1,6 @@
-package indentiationRule.wrong;
+package indentiationRule;
 
-public class Indentiation {
+public class IndentiationWrong {
 	public static void main(String[] args) {
 		if (true) {
 			StringBuilder thisIsStillAllowed = new StringBuilder();
