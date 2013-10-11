@@ -5,9 +5,9 @@ import java.util.List;
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.helper.Triple;
-import ocanalyzer.test.integration.mock.ObjectCalisthenicsHandlerMock;
 import ocanalyzer.test.integration.mock.TestReporter;
 import ocanalyzer.test.integration.mock.elseRule.ElseAnalyzerFactory;
+import ocanalyzer.test.integration.mock.elseRule.ElseObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IResource;
@@ -25,7 +25,7 @@ public class IntegrationTestElse extends TestCase {
 	public void testElseRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		AnalyzerFactory factory = new ElseAnalyzerFactory();
-		ObjectCalisthenicsHandlerMock ocMock = new ObjectCalisthenicsHandlerMock(
+		ElseObjectCalisthenicsHandlerMock ocMock = new ElseObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 
 		ocMock.execute(null);
