@@ -39,7 +39,7 @@ public class IntegrationTestElse extends TestCase {
 		Integer position = triple.getB();
 		String message = triple.getC();
 		assertEquals("Error when validating no-else rule. Wrong resource",
-				resource.getName(), "Else.java");
+				"Else.java", resource.getName());
 		assertEquals("Error when validating no-else rule. Wring position",
 				new Integer(6), new Integer(position));
 		assertEquals("Error when validating no-else rule. Wring message",

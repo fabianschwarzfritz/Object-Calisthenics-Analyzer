@@ -31,7 +31,7 @@ public class IntegrationTestIndentiation extends TestCase {
 		Integer position = triple.getB();
 		String message = triple.getC();
 		assertEquals("Error when validating intentiation rule. Wrong resource",
-				resource.getName(), "Intentiation.java");
+				"Intentiation.java", resource.getName());
 		assertEquals("Error when validating intentiation rule. Wring position",
 				new Integer(7), new Integer(position));
 		assertEquals("Error when validating intentiation rule. Wring message",
