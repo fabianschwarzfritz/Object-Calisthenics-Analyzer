@@ -4,9 +4,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import ocanalyzer.helper.Triple;
+import ocanalyzer.test.integration.mock.ObjectCalisthenicsHandlerMock;
 import ocanalyzer.test.integration.mock.TestReporter;
-import ocanalyzer.test.integration.mock.WorkspaceHandlerMock;
-import ocanalyzer.test.integration.mock.indentiationRule.TestAnalyzerIndentiationRuleMock;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IResource;
@@ -15,12 +14,10 @@ public class IntegrationTestIndentiation extends TestCase {
 
 	public void testIntendiation() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		TestAnalyzerIndentiationRuleMock analyzerMock = new TestAnalyzerIndentiationRuleMock(
+		ObjectCalisthenicsHandlerMock ocMock = new ObjectCalisthenicsHandlerMock(
 				testReporter);
-		WorkspaceHandlerMock mockWorkspaceHandler = new WorkspaceHandlerMock(
-				analyzerMock);
 
-		mockWorkspaceHandler.execute(null);
+		ocMock.execute(null);
 
 		List<Triple<IResource, Integer, String>> violations = testReporter
 				.getViolations();

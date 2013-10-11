@@ -29,19 +29,23 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
 	protected AnalyzerFactory factory;
-
-	private RuleViolationReporter reporter;
-	private WorkspaceAnalyzer workspaceAnalyzer;
+	protected RuleViolationReporter reporter;
+	protected WorkspaceAnalyzer workspaceAnalyzer;
 
 	public ObjectCalisthenicsHandler() {
 		factory = new AnalyzerFactoryImpl();
 		reporter = new StandardReporter();
 	}
 
+	public ObjectCalisthenicsHandler(RuleViolationReporter reporter) {
+		this();
+		this.reporter = reporter;
+	}
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		workspaceAnalyzer = new WorkspaceAnalyzer(workspace, factory);
+		workspaceAnalyzer = factory.createWorkspaceAnalyzer(workspace);
 
 		List<CompilationUnit> unitsToAnalyze = workspaceAnalyzer
 				.extractCompilationUnits();
@@ -57,9 +61,14 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 			// FIXME: This must be a ICompilationunit because nothing else was
 			// extracted...
 			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
-			RuleFactory ruleFactory = new AllRulesFactory(iCompilationUnit,
-					compilationUnit, reporter);
+			RuleFactory ruleFactory = getRuleFactory(iCompilationUnit,
+					compilationUnit);
 			ruleFactory.createRules().validate();
 		}
+	}
+
+	protected RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+			CompilationUnit compilationUnit) {
+		return new AllRulesFactory(iCompilationUnit, compilationUnit, reporter);
 	}
 }

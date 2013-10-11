@@ -24,7 +24,7 @@ public class Rules {
 		vistors = ruleValidators;
 	}
 
-	void addRule(ASTVisitor rule) {
+	public void addRule(ASTVisitor rule) {
 		vistors.add(rule);
 	}
 
