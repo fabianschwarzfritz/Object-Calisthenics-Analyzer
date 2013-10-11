@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import ocanalyzer.helper.Triple;
 import ocanalyzer.test.integration.mock.TestReporter;
 import ocanalyzer.test.integration.mock.WorkspaceHandlerMock;
+import ocanalyzer.test.integration.mock.elseRule.TestAnalyzerElseRuleMock;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IResource;
@@ -22,8 +23,10 @@ public class IntegrationTestElse extends TestCase {
 
 	public void testElseRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		WorkspaceHandlerMock mockWorkspaceHandler = new WorkspaceHandlerMock(
+		TestAnalyzerElseRuleMock analyzerMock = new TestAnalyzerElseRuleMock(
 				testReporter);
+		WorkspaceHandlerMock mockWorkspaceHandler = new WorkspaceHandlerMock(
+				analyzerMock);
 
 		mockWorkspaceHandler.execute(null);
 
@@ -43,5 +46,4 @@ public class IntegrationTestElse extends TestCase {
 				"The else keyword violates rule 2", message);
 
 	}
-
 }

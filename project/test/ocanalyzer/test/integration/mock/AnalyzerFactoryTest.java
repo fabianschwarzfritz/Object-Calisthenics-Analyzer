@@ -12,17 +12,17 @@ import org.eclipse.jdt.core.IPackageFragment;
 
 public class AnalyzerFactoryTest implements AnalyzerFactory {
 
-	private RuleViolationReporter testReporter;
+	private TestAnalyzerMock analyzerMock;
 
-	public AnalyzerFactoryTest(RuleViolationReporter testReporter) {
-		this.testReporter = testReporter;
+	public AnalyzerFactoryTest(TestAnalyzerMock analyzerMock) {
+		this.analyzerMock = analyzerMock;
 	}
 
 	@Override
 	public CompilationUnitAnalyzer createCompilationUnitAnalyzer(
 			ICompilationUnit compilationUni) {
-		return new CompilationUnitAnalyzerMock(compilationUni, testReporter,
-				this);
+		analyzerMock.setCompilationUnit(compilationUni);
+		return analyzerMock;
 	}
 
 	@Override
