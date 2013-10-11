@@ -16,7 +16,7 @@ public class IndentationValidationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(Statement statement) {
-		String msg = "The intention violates rule 1";
+		String msg = "The given indentation violates rule 1";
 		reportError(msg, statement);
 	}
 

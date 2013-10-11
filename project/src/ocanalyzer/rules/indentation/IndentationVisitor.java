@@ -38,17 +38,17 @@ public class IndentationVisitor extends ASTVisitor {
 		return methodDeclarations.contains(node);
 	}
 
-	private boolean indentiationCheck(ASTNode node, int level) {
+	private boolean indentationCheck(ASTNode node, int level) {
 		boolean method = isMethod(node);
 		if (level > 0 & !method) {
-			return indentiationCheck(node.getParent(), --level);
+			return indentationCheck(node.getParent(), --level);
 		}
 		return method;
 	}
 
 	private boolean validateParent(Statement statement) {
-		boolean correctIndentiation = indentiationCheck(statement, 2);
-		if (!correctIndentiation) {
+		boolean correctIndentation = indentationCheck(statement, 2);
+		if (!correctIndentation) {
 			validationHandler.printInfo(statement);
 			return false;
 		}

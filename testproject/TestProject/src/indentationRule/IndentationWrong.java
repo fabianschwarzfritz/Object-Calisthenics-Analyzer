@@ -1,4 +1,4 @@
-package indentiationRule;
+package indentationRule;
 
 public class IndentationWrong {
 	public static void main(String[] args) {

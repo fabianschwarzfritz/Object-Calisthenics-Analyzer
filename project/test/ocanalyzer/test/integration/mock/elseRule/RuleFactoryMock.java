@@ -1,29 +1,28 @@
-package ocanalyzer.test.integration.mock.indentiationRule;
+package ocanalyzer.test.integration.mock.elseRule;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.RuleFactory;
 import ocanalyzer.rules.Rules;
 import ocanalyzer.rules.general.RuleValidatorFactory;
-import ocanalyzer.rules.indentation.IndentationFactory;
+import ocanalyzer.rules.noelse.ElseFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class IndentiationRuleFactory extends RuleFactory {
+public class RuleFactoryMock extends RuleFactory {
 
-	private RuleValidatorFactory indentiationFactory;
+	private RuleValidatorFactory elseFactory;
 
-	public IndentiationRuleFactory(ICompilationUnit unit,
+	public RuleFactoryMock(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
-		indentiationFactory = new IndentationFactory(unit, compilationUnit,
-				reporter);
+		elseFactory = new ElseFactory(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public Rules createRules() {
 		Rules rules = new Rules(unit);
-		rules.addRule(indentiationFactory.create());
+		rules.addRule(elseFactory.create());
 		return rules;
 	}
 }

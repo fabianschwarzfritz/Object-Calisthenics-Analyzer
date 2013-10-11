@@ -1,4 +1,4 @@
-package ocanalyzer.test.integration.mock.elseRule;
+package ocanalyzer.test.integration.mock.indentationRule;
 
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
@@ -8,20 +8,19 @@ import ocanalyzer.rules.RuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class ElseObjectCalisthenicsHandlerMock extends
+public class IndentiationObjectCalisthenicsHandlerMock extends
 		ObjectCalisthenicsHandler {
-	
-	private RuleFactoryMock ruleFactory;
 
-	public ElseObjectCalisthenicsHandlerMock(AnalyzerFactory analyzerFactory,
-			RuleViolationReporter reporter, RuleFactory ruleFactory) {
-		super(analyzerFactory, reporter);
-		this.ruleFactory = ruleFactory
+	public IndentiationObjectCalisthenicsHandlerMock(AnalyzerFactory factory,
+			RuleViolationReporter reporter) {
+		super(factory, reporter);
 	}
 
 	@Override
 	protected RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
+		return new IndentiationRuleFactory(iCompilationUnit, compilationUnit,
+				reporter);
 	}
 
 }

@@ -1,4 +1,4 @@
-package ocanalyzer.test.integration.mock.indentiationRule;
+package ocanalyzer.test.integration.mock.indentationRule;
 
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.analyzer.CompilationUnitAnalyzer;
@@ -27,7 +27,7 @@ public class IndentationTestAnalyzerFactory implements AnalyzerFactory {
 
 	@Override
 	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
-		return new ProjectAnalyzerMock("indentiationRule", project, this);
+		return new ProjectAnalyzerMock("indentationRule", project, this);
 	}
 
 	@Override
