@@ -5,6 +5,7 @@ import ocanalyzer.analyzer.CompilationUnitAnalyzer;
 import ocanalyzer.analyzer.PackageAnalyzer;
 import ocanalyzer.analyzer.ProjectAnalyzer;
 import ocanalyzer.analyzer.WorkspaceAnalyzer;
+import ocanalyzer.test.integration.mock.ProjectAnalyzerMock;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
@@ -26,7 +27,7 @@ public class IndentationTestAnalyzerFactory implements AnalyzerFactory {
 
 	@Override
 	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
-		return new ProjectIndentiationAnalyzerMock(project, this);
+		return new ProjectAnalyzerMock("indentiationRule", project, this);
 	}
 
 	@Override
