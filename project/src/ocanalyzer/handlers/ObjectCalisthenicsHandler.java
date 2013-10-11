@@ -59,6 +59,7 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
 			RuleFactory ruleFactory = new AllRulesFactory(iCompilationUnit,
 					compilationUnit, reporter);
+			ruleFactory.createRules().validate();
 		}
 	}
 }
