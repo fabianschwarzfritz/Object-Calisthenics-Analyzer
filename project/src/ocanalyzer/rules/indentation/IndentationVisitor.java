@@ -3,7 +3,7 @@ package ocanalyzer.rules.indentation;
 import java.util.HashSet;
 import java.util.Set;
 
-import ocanalyzer.rules.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;

@@ -1,4 +1,4 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.general;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.reporter.StandardReporter;

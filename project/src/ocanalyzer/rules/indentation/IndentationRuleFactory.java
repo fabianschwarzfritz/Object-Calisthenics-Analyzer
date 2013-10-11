@@ -1,7 +1,7 @@
 package ocanalyzer.rules.indentation;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.RuleValidatorFactory;
+import ocanalyzer.rules.general.RuleValidatorFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;

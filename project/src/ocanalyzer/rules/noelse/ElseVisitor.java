@@ -3,7 +3,7 @@ package ocanalyzer.rules.noelse;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.rules.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.IfStatement;

@@ -1,10 +1,11 @@
 package ocanalyzer.analyzer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ocanalyzer.analyzer.factory.ASTNodeFactory;
-import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
@@ -17,43 +18,20 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class CompilationUnitAnalyzer {
+public class CompilationUnitAnalyzer implements CompilationUnitsExtractable {
 
 	protected ICompilationUnit unit;
 
-	public CompilationUnitAnalyzer(ICompilationUnit unit,
-			AnalyzerFactory factory) {
+	public CompilationUnitAnalyzer(ICompilationUnit unit) {
 		this.unit = unit;
 	}
 
-	public void handle() {
+	@Override
+	public List<CompilationUnit> extractCompilationUnits() {
+		List<CompilationUnit> resultUnits = new ArrayList<CompilationUnit>();
 		CompilationUnit compilationUnit = (CompilationUnit) new ASTNodeFactory()
 				.parse(unit);
-		RuleFactory factory = createFactory(compilationUnit);
-
-		acceptRules(compilationUnit, factory);
-	}
-
-	protected RuleFactory createFactory(CompilationUnit compilationUnit) {
-		RuleFactory factory = new RuleFactory(unit, compilationUnit);
-		return factory;
-	}
-
-	protected void acceptRules(CompilationUnit compilationUnit,
-			RuleFactory factory) {
-		acceptElseRule(compilationUnit, factory);
-		acceptIndentiationRule(compilationUnit, factory);
-	}
-
-	public void acceptElseRule(CompilationUnit compilationUnit,
-			RuleFactory factory) {
-		ASTVisitor elseRule = factory.createElseRule();
-		compilationUnit.accept(elseRule);
-	}
-
-	protected void acceptIndentiationRule(CompilationUnit compilationUnit,
-			RuleFactory factory) {
-		ASTVisitor indentiationRule = factory.createIndentiationRule();
-		compilationUnit.accept(indentiationRule);
+		resultUnits.add(compilationUnit);
+		return resultUnits;
 	}
 }

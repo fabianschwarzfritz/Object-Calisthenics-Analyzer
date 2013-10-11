@@ -1,38 +1,40 @@
 package ocanalyzer.analyzer;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
 public class AnalyzerFactoryImpl implements AnalyzerFactory {
 
-	private AnalyzerFactory factory;
+	private AnalyzerFactory delegateFactory;
 
-	public AnalyzerFactoryImpl(AnalyzerFactory factory) {
-		this.factory = factory;
+	public AnalyzerFactoryImpl() {
+		delegateFactory = this;
+	}
+
+	public AnalyzerFactoryImpl(AnalyzerFactory delegateFactory) {
+		this.delegateFactory = delegateFactory;
 	}
 
 	@Override
 	public CompilationUnitAnalyzer createCompilationUnitAnalyzer(
 			ICompilationUnit compilationUni) {
-		return new CompilationUnitAnalyzer(compilationUni, factory);
+		return new CompilationUnitAnalyzer(compilationUni);
 	}
 
 	@Override
 	public PackageAnalyzer createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageAnalyzer(fragment, factory);
+		return new PackageAnalyzer(fragment, delegateFactory);
 	}
 
 	@Override
 	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
-		return new ProjectAnalyzer(project, factory);
+		return new ProjectAnalyzer(project, delegateFactory);
 	}
 
-	public AnalyzerFactory getFactory() {
-		return factory;
-	}
-
-	public void setFactory(AnalyzerFactory factory) {
-		this.factory = factory;
+	@Override
+	public WorkspaceAnalyzer createWorkspaceAnalyzer(IWorkspace workspace) {
+		return new WorkspaceAnalyzer(workspace, delegateFactory);
 	}
 }
