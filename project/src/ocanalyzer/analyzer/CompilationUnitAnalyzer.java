@@ -19,13 +19,11 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  */
 public class CompilationUnitAnalyzer {
 
-	private AnalyzerFactory factory;
 	protected ICompilationUnit unit;
 
 	public CompilationUnitAnalyzer(ICompilationUnit unit,
 			AnalyzerFactory factory) {
 		this.unit = unit;
-		this.factory = factory;
 	}
 
 	public void handle() {
