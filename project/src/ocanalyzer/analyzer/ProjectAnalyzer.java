@@ -14,8 +14,8 @@ public class ProjectAnalyzer implements CompilationUnitsExtractable {
 
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
-	private AnalyzerFactory factory;
 	private IProject project;
+	protected AnalyzerFactory factory;
 
 	public ProjectAnalyzer(IProject project, AnalyzerFactory factory) {
 		this.project = project;
@@ -43,7 +43,7 @@ public class ProjectAnalyzer implements CompilationUnitsExtractable {
 		return resultUnits;
 	}
 
-	private List<PackageAnalyzer> createPackageAnalyzers(
+	protected List<PackageAnalyzer> createPackageAnalyzers(
 			IPackageFragment[] packages) {
 		List<PackageAnalyzer> analyzers = new ArrayList<PackageAnalyzer>();
 		for (IPackageFragment mypackage : packages) {

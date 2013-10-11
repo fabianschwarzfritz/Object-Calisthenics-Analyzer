@@ -37,8 +37,10 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 		reporter = new StandardReporter();
 	}
 
-	public ObjectCalisthenicsHandler(RuleViolationReporter reporter) {
+	public ObjectCalisthenicsHandler(AnalyzerFactory factory,
+			RuleViolationReporter reporter) {
 		this();
+		this.factory = factory;
 		this.reporter = reporter;
 	}
 
