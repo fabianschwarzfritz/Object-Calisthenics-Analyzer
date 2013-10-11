@@ -1,4 +1,4 @@
-package wrong;
+package elseRule.wrong;
 
 public class Else {
 	public static void main(String[] args) {
