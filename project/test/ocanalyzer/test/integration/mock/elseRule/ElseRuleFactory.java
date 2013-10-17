@@ -9,11 +9,11 @@ import ocanalyzer.rules.noelse.ElseFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class RuleFactoryMock extends RuleFactory {
+public class ElseRuleFactory extends RuleFactory {
 
 	private RuleValidatorFactory elseFactory;
 
-	public RuleFactoryMock(ICompilationUnit unit,
+	public ElseRuleFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 		elseFactory = new ElseFactory(unit, compilationUnit, reporter);

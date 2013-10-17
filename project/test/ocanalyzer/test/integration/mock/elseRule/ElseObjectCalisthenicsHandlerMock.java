@@ -10,18 +10,16 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ElseObjectCalisthenicsHandlerMock extends
 		ObjectCalisthenicsHandler {
-	
-	private RuleFactoryMock ruleFactory;
 
-	public ElseObjectCalisthenicsHandlerMock(AnalyzerFactory analyzerFactory,
-			RuleViolationReporter reporter, RuleFactory ruleFactory) {
-		super(analyzerFactory, reporter);
-		this.ruleFactory = ruleFactory
+	public ElseObjectCalisthenicsHandlerMock(AnalyzerFactory factory,
+			RuleViolationReporter reporter) {
+		super(factory, reporter);
 	}
 
 	@Override
 	protected RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
+		return new ElseRuleFactory(iCompilationUnit, compilationUnit, reporter);
 	}
 
 }
