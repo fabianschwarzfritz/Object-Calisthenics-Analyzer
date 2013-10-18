@@ -1,34 +1,27 @@
 package objectcalisthenicsvalidator.views;
 
-
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.part.*;
-import org.eclipse.jface.viewers.*;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.jface.action.*;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.*;
-import org.eclipse.swt.widgets.Menu;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-
-
-/**
- * This sample class demonstrates how to plug-in a new
- * workbench view. The view shows data obtained from the
- * model. The sample creates a dummy model on the fly,
- * but a real implementation would connect to the model
- * available either in this or another plug-in (e.g. the workspace).
- * The view is connected to the model using a content provider.
- * <p>
- * The view uses a label provider to define how model
- * objects should be presented in the view. Each
- * view can present the same model objects using
- * different labels and icons, if needed. Alternatively,
- * a single label provider can be shared between views
- * in order to ensure that objects of the same type are
- * presented in the same way everywhere.
- * <p>
- */
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.ViewPart;
 
 public class ObjectCalisthenicsView extends ViewPart {
 
@@ -37,68 +30,70 @@ public class ObjectCalisthenicsView extends ViewPart {
 	 */
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
-	private TableViewer viewer;
-	private Action action1;
-	private Action action2;
-	private Action doubleClickAction;
+	private TableViewer rulesViewer;
+	private Action actionValidate;
+	private Action actionSelectValidation;
 
-	/*
-	 * The content provider class is responsible for
-	 * providing objects to the view. It can wrap
-	 * existing objects in adapters or simply return
-	 * objects as-is. These objects may be sensitive
-	 * to the current input of the view, or ignore
-	 * it and always show the same content 
-	 * (like Task List, for example).
-	 */
-	 
-	class ViewContentProvider implements IStructuredContentProvider {
-		public void inputChanged(Viewer v, Object oldInput, Object newInput) {
-		}
-		public void dispose() {
-		}
-		public Object[] getElements(Object parent) {
-			return new String[] { "One", "Two", "Three" };
-		}
-	}
-	class ViewLabelProvider extends LabelProvider implements ITableLabelProvider {
-		public String getColumnText(Object obj, int index) {
-			return getText(obj);
-		}
-		public Image getColumnImage(Object obj, int index) {
-			return getImage(obj);
-		}
-		public Image getImage(Object obj) {
-			return PlatformUI.getWorkbench().
-					getSharedImages().getImage(ISharedImages.IMG_OBJ_ELEMENT);
-		}
-	}
-	class NameSorter extends ViewerSorter {
-	}
+	private TableColumn typeColumn;
+	private TableColumn nameColumn;
+	private TableColumn locationColumn;
 
-	/**
-	 * The constructor.
-	 */
-	public ObjectCalisthenicsView() {
-	}
-
-	/**
-	 * This is a callback that will allow us
-	 * to create the viewer and initialize it.
-	 */
 	public void createPartControl(Composite parent) {
-		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		viewer.setContentProvider(new ViewContentProvider());
-		viewer.setLabelProvider(new ViewLabelProvider());
-		viewer.setSorter(new NameSorter());
-		viewer.setInput(getViewSite());
+		rulesViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL
+				| SWT.MULTI | SWT.FULL_SELECTION);
+		final Table table = rulesViewer.getTable();
+
+		typeColumn = new TableColumn(table, SWT.LEFT);
+		typeColumn.setText("Nr");
+		typeColumn.setWidth(8);
+
+		nameColumn = new TableColumn(table, SWT.LEFT);
+		nameColumn.setText("Name");
+		nameColumn.setWidth(100);
+
+		locationColumn = new TableColumn(table, SWT.LEFT);
+		locationColumn.setText("Location");
+		locationColumn.setWidth(450);
+
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+
+		rulesViewer.setContentProvider(new ViewContentProvider());
+		rulesViewer.setLabelProvider(new ViewLabelProvider());
+		rulesViewer.setInput(getViewSite());
 
 		// Create the help context id for the viewer's control
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "ObjectCalisthenicsValidator.viewer");
+		PlatformUI
+				.getWorkbench()
+				.getHelpSystem()
+				.setHelp(rulesViewer.getControl(),
+						"ObjectCalisthenicsValidator.viewer");
 		makeActions();
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
+	}
+
+	private void makeActions() {
+		actionValidate = new Action() {
+			public void run() {
+				showMessage("Validate Rules");
+			}
+		};
+		actionValidate.setText("Validate");
+		actionValidate.setToolTipText("??");
+		actionValidate.setImageDescriptor(PlatformUI.getWorkbench()
+				.getSharedImages()
+				.getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
+
+		actionSelectValidation = new Action() {
+			public void run() {
+				ISelection selection = rulesViewer.getSelection();
+				Object obj = ((IStructuredSelection) selection)
+						.getFirstElement();
+				showMessage("Double click: " + obj.toString());
+			}
+		};
 	}
 
 	private void hookContextMenu() {
@@ -109,9 +104,17 @@ public class ObjectCalisthenicsView extends ViewPart {
 				ObjectCalisthenicsView.this.fillContextMenu(manager);
 			}
 		});
-		Menu menu = menuMgr.createContextMenu(viewer.getControl());
-		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, viewer);
+		Menu menu = menuMgr.createContextMenu(rulesViewer.getControl());
+		rulesViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuMgr, rulesViewer);
+	}
+
+	private void hookDoubleClickAction() {
+		rulesViewer.addDoubleClickListener(new IDoubleClickListener() {
+			public void doubleClick(DoubleClickEvent event) {
+				actionSelectValidation.run();
+			}
+		});
 	}
 
 	private void contributeToActionBars() {
@@ -121,70 +124,29 @@ public class ObjectCalisthenicsView extends ViewPart {
 	}
 
 	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(action1);
+		manager.add(actionValidate);
 		manager.add(new Separator());
-		manager.add(action2);
 	}
 
 	private void fillContextMenu(IMenuManager manager) {
-		manager.add(action1);
-		manager.add(action2);
+		manager.add(actionValidate);
 		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
-	
+
 	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(action1);
-		manager.add(action2);
+		manager.add(actionValidate);
 	}
 
-	private void makeActions() {
-		action1 = new Action() {
-			public void run() {
-				showMessage("Action 1 executed");
-			}
-		};
-		action1.setText("Action 1");
-		action1.setToolTipText("Action 1 tooltip");
-		action1.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-			getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		
-		action2 = new Action() {
-			public void run() {
-				showMessage("Action 2 executed");
-			}
-		};
-		action2.setText("Action 2");
-		action2.setToolTipText("Action 2 tooltip");
-		action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().
-				getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-		doubleClickAction = new Action() {
-			public void run() {
-				ISelection selection = viewer.getSelection();
-				Object obj = ((IStructuredSelection)selection).getFirstElement();
-				showMessage("Double-click detected on "+obj.toString());
-			}
-		};
-	}
-
-	private void hookDoubleClickAction() {
-		viewer.addDoubleClickListener(new IDoubleClickListener() {
-			public void doubleClick(DoubleClickEvent event) {
-				doubleClickAction.run();
-			}
-		});
-	}
 	private void showMessage(String message) {
-		MessageDialog.openInformation(
-			viewer.getControl().getShell(),
-			"ObjectCalisthenicsView",
-			message);
+		MessageDialog.openInformation(rulesViewer.getControl().getShell(),
+				"ObjectCalisthenicsView", message);
 	}
 
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
 	public void setFocus() {
-		viewer.getControl().setFocus();
+		rulesViewer.getControl().setFocus();
 	}
 }
