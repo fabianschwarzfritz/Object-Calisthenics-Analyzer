@@ -1,11 +1,14 @@
 package objectcalisthenicsvalidator.views;
 
+import ocanalyzer.Activator;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.ConsoleReporter;
 import ocanalyzer.reporter.DelegateReporter;
 import ocanalyzer.reporter.MarkerReporter;
+import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -24,9 +27,15 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ViewPart;
 
 public class ObjectCalisthenicsView extends ViewPart {
@@ -116,10 +125,29 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 		actionSelectValidation = new Action() {
 			public void run() {
+				// FIXME clean code!
 				ISelection selection = rulesViewer.getSelection();
-				Object obj = ((IStructuredSelection) selection)
+				Object element = ((IStructuredSelection) selection)
 						.getFirstElement();
-				showMessage("Double click: " + obj.toString());
+				Violation violation = (Violation) element;
+				IFile file = (IFile) violation.getResource();
+
+				IEditorInput editorInput = new FileEditorInput(file);
+				IWorkbenchWindow window = PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow();
+				IWorkbenchPage page = window.getActivePage();
+
+				IEditorDescriptor editorDescriptor = Activator.getDefault()
+						.getWorkbench().getEditorRegistry()
+						.getDefaultEditor(violation.getResource().getName());
+				try {
+					page.openEditor(editorInput, editorDescriptor.getId());
+				} catch (PartInitException coreException) {
+					coreException.printStackTrace();
+					showMessage("Error: " + coreException.toString());
+				}
+
+				showMessage("Double click: " + element.toString());
 			}
 		};
 	}
