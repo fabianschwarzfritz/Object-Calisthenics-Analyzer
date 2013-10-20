@@ -1,5 +1,8 @@
 package objectcalisthenicsvalidator.views;
 
+import ocanalyzer.handlers.ObjectCalisthenicsHandler;
+
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -30,6 +33,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 	 */
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
+	private ObjectCalisthenicsHandler ocHandler;
+
 	private TableViewer rulesViewer;
 	private Action actionValidate;
 	private Action actionSelectValidation;
@@ -37,6 +42,10 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private TableColumn typeColumn;
 	private TableColumn nameColumn;
 	private TableColumn locationColumn;
+
+	public ObjectCalisthenicsView() {
+		ocHandler = new ObjectCalisthenicsHandler();
+	}
 
 	public void createPartControl(Composite parent) {
 		rulesViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL
@@ -77,7 +86,13 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private void makeActions() {
 		actionValidate = new Action() {
 			public void run() {
-				showMessage("Validate Rules");
+				showMessage("Start to validate rules");
+				try {
+					ocHandler.execute(null);
+				} catch (ExecutionException e) {
+					e.printStackTrace();
+					showMessage("Error validating rule: " + e.toString());
+				}
 			}
 		};
 		actionValidate.setText("Validate");
