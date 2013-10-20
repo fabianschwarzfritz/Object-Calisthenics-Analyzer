@@ -35,7 +35,7 @@ public class ElseVisitor extends ASTVisitor {
 		if (isSingleElse(ifStatement)) {
 			Statement elseStatement = ifStatement.getElseStatement();
 			elseStatements.add(elseStatement);
-			validationHandler.printInfo(ifStatement);
+			validationHandler.printInfo(elseStatement);
 		}
 	}
 
