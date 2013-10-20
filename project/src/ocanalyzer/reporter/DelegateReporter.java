@@ -11,14 +11,16 @@ import org.eclipse.core.resources.IResource;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class StandardReporter implements RuleViolationReporter {
+public class DelegateReporter implements RuleViolationReporter {
 
 	private List<RuleViolationReporter> reporters;
 
-	public StandardReporter() {
+	public DelegateReporter() {
 		reporters = new ArrayList<RuleViolationReporter>();
-		reporters.add(new ConsoleReporter(System.out));
-		reporters.add(new MarkerReporter());
+	}
+
+	public void add(RuleViolationReporter reporter) {
+		reporters.add(reporter);
 	}
 
 	@Override

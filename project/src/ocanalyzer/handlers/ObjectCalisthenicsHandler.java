@@ -5,8 +5,10 @@ import java.util.List;
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.analyzer.AnalyzerFactoryImpl;
 import ocanalyzer.analyzer.WorkspaceAnalyzer;
+import ocanalyzer.reporter.ConsoleReporter;
+import ocanalyzer.reporter.DelegateReporter;
+import ocanalyzer.reporter.MarkerReporter;
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.reporter.StandardReporter;
 import ocanalyzer.rules.AllRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -34,7 +36,10 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 
 	public ObjectCalisthenicsHandler() {
 		factory = new AnalyzerFactoryImpl();
-		reporter = new StandardReporter();
+		DelegateReporter delegateReporter = new DelegateReporter();
+		delegateReporter.add(new ConsoleReporter(System.out));
+		delegateReporter.add(new MarkerReporter());
+		reporter = delegateReporter;
 	}
 
 	public ObjectCalisthenicsHandler(RuleViolationReporter reporter) {
