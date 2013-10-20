@@ -1,6 +1,9 @@
 package objectcalisthenicsvalidator.views;
 
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
+import ocanalyzer.reporter.ConsoleReporter;
+import ocanalyzer.reporter.DelegateReporter;
+import ocanalyzer.reporter.MarkerReporter;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.action.Action;
@@ -34,6 +37,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
 	private ObjectCalisthenicsHandler ocHandler;
+	private ViewContentProvider tableProvider;
 
 	private TableViewer rulesViewer;
 	private Action actionValidate;
@@ -44,7 +48,14 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private TableColumn locationColumn;
 
 	public ObjectCalisthenicsView() {
-		ocHandler = new ObjectCalisthenicsHandler();
+		tableProvider = new ViewContentProvider();
+
+		DelegateReporter reporter = new DelegateReporter();
+		reporter.add(new MarkerReporter());
+		reporter.add(new ConsoleReporter(System.out));
+		reporter.add(tableProvider);
+
+		ocHandler = new ObjectCalisthenicsHandler(tableProvider);
 	}
 
 	public void createPartControl(Composite parent) {
@@ -67,7 +78,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 
-		rulesViewer.setContentProvider(new ViewContentProvider());
+		rulesViewer.setContentProvider(tableProvider);
 		rulesViewer.setLabelProvider(new ViewLabelProvider());
 		rulesViewer.setInput(getViewSite());
 
@@ -88,7 +99,9 @@ public class ObjectCalisthenicsView extends ViewPart {
 			public void run() {
 				showMessage("Start to validate rules");
 				try {
+					tableProvider.clear();
 					ocHandler.execute(null);
+					rulesViewer.refresh();
 				} catch (ExecutionException e) {
 					e.printStackTrace();
 					showMessage("Error validating rule: " + e.toString());
