@@ -4,13 +4,12 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.AnalyzerFactory;
-import ocanalyzer.helper.Triple;
+import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.TestReporter;
 import ocanalyzer.test.integration.mock.elseRule.ElseAnalyzerFactory;
 import ocanalyzer.test.integration.mock.elseRule.ElseObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IResource;
 
 /**
  * Integration test testing correct validation of rule 2: no else.
@@ -30,20 +29,16 @@ public class IntegrationTestElse extends TestCase {
 
 		ocMock.execute(null);
 
-		List<Triple<IResource, Integer, String>> violations = testReporter
-				.getViolations();
+		List<Violation> violations = testReporter.getViolations();
 
 		assertSame(1, violations.size());
-		Triple<IResource, Integer, String> triple = violations.get(0);
-		IResource resource = triple.getA();
-		Integer position = triple.getB();
-		String message = triple.getC();
+		Violation violation = violations.get(0);
 		assertEquals("Error when validating no-else rule. Wrong resource",
-				"ElseWrong.java", resource.getName());
+				"ElseWrong.java", violation.getResource().getName());
 		assertEquals("Error when validating no-else rule. Wring position",
-				new Integer(6), new Integer(position));
+				new Integer(6), violation.getLine());
 		assertEquals("Error when validating no-else rule. Wring message",
-				"The else keyword violates rule 2", message);
+				"The else keyword violates rule 2", violation.getMessage());
 
 	}
 }
