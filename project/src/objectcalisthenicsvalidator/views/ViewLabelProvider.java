@@ -15,8 +15,11 @@ public class ViewLabelProvider extends LabelProvider implements
 		if (!(element instanceof Violation)) {
 			return new String();
 		}
-// FIXME Clean code!
 		Violation violation = (Violation) element;
+		return informationForIndex(index, violation);
+	}
+
+	private String informationForIndex(int index, Violation violation) {
 		if (index == 0) {
 			return violation.getLine().toString();
 		} else if (index == 1) {

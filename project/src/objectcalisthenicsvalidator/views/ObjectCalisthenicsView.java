@@ -1,25 +1,20 @@
 package objectcalisthenicsvalidator.views;
 
-import ocanalyzer.Activator;
+import objectcalisthenicsvalidator.views.actions.OpenViolation;
+import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.ConsoleReporter;
 import ocanalyzer.reporter.DelegateReporter;
 import ocanalyzer.reporter.MarkerReporter;
-import ocanalyzer.reporter.Violation;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -27,15 +22,8 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchActionConstants;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ViewPart;
 
 public class ObjectCalisthenicsView extends ViewPart {
@@ -97,59 +85,14 @@ public class ObjectCalisthenicsView extends ViewPart {
 				.getHelpSystem()
 				.setHelp(rulesViewer.getControl(),
 						"ObjectCalisthenicsValidator.viewer");
-		makeActions();
+
+		actionValidate = new StartRuleValidation(ocHandler, tableProvider,
+				rulesViewer);
+		actionSelectValidation = new OpenViolation(rulesViewer);
+
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
-	}
-
-	private void makeActions() {
-		actionValidate = new Action() {
-			public void run() {
-				showMessage("Start to validate rules");
-				try {
-					tableProvider.clear();
-					ocHandler.execute(null);
-					rulesViewer.refresh();
-				} catch (ExecutionException e) {
-					e.printStackTrace();
-					showMessage("Error validating rule: " + e.toString());
-				}
-			}
-		};
-		actionValidate.setText("Validate");
-		actionValidate.setToolTipText("??");
-		actionValidate.setImageDescriptor(PlatformUI.getWorkbench()
-				.getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
-
-		actionSelectValidation = new Action() {
-			public void run() {
-				// FIXME clean code!
-				ISelection selection = rulesViewer.getSelection();
-				Object element = ((IStructuredSelection) selection)
-						.getFirstElement();
-				Violation violation = (Violation) element;
-				IFile file = (IFile) violation.getResource();
-
-				IEditorInput editorInput = new FileEditorInput(file);
-				IWorkbenchWindow window = PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow();
-				IWorkbenchPage page = window.getActivePage();
-
-				IEditorDescriptor editorDescriptor = Activator.getDefault()
-						.getWorkbench().getEditorRegistry()
-						.getDefaultEditor(violation.getResource().getName());
-				try {
-					page.openEditor(editorInput, editorDescriptor.getId());
-				} catch (PartInitException coreException) {
-					coreException.printStackTrace();
-					showMessage("Error: " + coreException.toString());
-				}
-
-				showMessage("Double click: " + element.toString());
-			}
-		};
 	}
 
 	private void hookContextMenu() {
@@ -186,17 +129,11 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	private void fillContextMenu(IMenuManager manager) {
 		manager.add(actionValidate);
-		// Other plug-ins can contribute there actions here
 		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
 	}
 
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(actionValidate);
-	}
-
-	private void showMessage(String message) {
-		MessageDialog.openInformation(rulesViewer.getControl().getShell(),
-				"ObjectCalisthenicsView", message);
 	}
 
 	/**
