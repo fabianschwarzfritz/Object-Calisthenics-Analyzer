@@ -97,16 +97,16 @@ public class ObjectCalisthenicsView extends ViewPart {
 	}
 
 	private void hookContextMenu() {
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
-		menuMgr.setRemoveAllWhenShown(true);
-		menuMgr.addMenuListener(new IMenuListener() {
+		MenuManager menuManager = new MenuManager("#PopupMenu");
+		menuManager.setRemoveAllWhenShown(true);
+		menuManager.addMenuListener(new IMenuListener() {
 			public void menuAboutToShow(IMenuManager manager) {
 				ObjectCalisthenicsView.this.fillContextMenu(manager);
 			}
 		});
-		Menu menu = menuMgr.createContextMenu(rulesViewer.getControl());
+		Menu menu = menuManager.createContextMenu(rulesViewer.getControl());
 		rulesViewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuMgr, rulesViewer);
+		getSite().registerContextMenu(menuManager, rulesViewer);
 	}
 
 	private void hookDoubleClickAction() {
