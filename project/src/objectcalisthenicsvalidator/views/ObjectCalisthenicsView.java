@@ -46,13 +46,16 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViewContentProvider();
+		DelegateReporter reporter = createDelegationReporter();
+		ocHandler = new ObjectCalisthenicsHandler(reporter);
+	}
 
+	private DelegateReporter createDelegationReporter() {
 		DelegateReporter reporter = new DelegateReporter();
 		reporter.add(new MarkerReporter());
 		reporter.add(new ConsoleReporter(System.out));
 		reporter.add(tableProvider);
-
-		ocHandler = new ObjectCalisthenicsHandler(tableProvider);
+		return reporter;
 	}
 
 	public void createPartControl(Composite parent) {
