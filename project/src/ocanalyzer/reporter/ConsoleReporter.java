@@ -4,6 +4,14 @@ import java.io.PrintStream;
 
 import org.eclipse.core.resources.IResource;
 
+/**
+ * This class is used to display information about rule violation on a given
+ * {@link #stream}.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
+
 public class ConsoleReporter implements RuleViolationReporter {
 
 	private PrintStream stream;
