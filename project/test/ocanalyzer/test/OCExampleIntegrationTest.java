@@ -5,6 +5,16 @@ import junit.framework.TestSuite;
 import ocanalyzer.test.integration.IntegrationTestElse;
 import ocanalyzer.test.integration.IntegrationTestIndentation;
 
+/**
+ * This integration test is a bundle of all integration tests, testing the
+ * correct validation of the Object Calisthenics Rules.
+ * 
+ * It sets up a test suite running all available integration tests. These tests
+ * are in the package "ocanalyzer.test.integration".
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class OCExampleIntegrationTest {
 
 	public static Test suite() {
