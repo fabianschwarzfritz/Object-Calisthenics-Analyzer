@@ -5,13 +5,12 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 
 /**
- * This class is used to display information to the users about rule
- * validations.
+ * This class is used to display information about rule violation in the editor
+ * line.
  * 
  * @author Fabian Schwarz-Fritz
  * 
  */
-
 public class MarkerReporter implements RuleViolationReporter {
 
 	@Override
