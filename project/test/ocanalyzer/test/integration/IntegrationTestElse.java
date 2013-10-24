@@ -14,7 +14,7 @@ import org.eclipse.core.commands.ExecutionException;
 /**
  * Integration test testing correct validation of rule 2: no else.
  * 
- * Each test is coupled to a java class that is to validate.
+ * {@see OCExampleIntegrationTest}, the test suite startin gthe integraiton test
  * 
  * @author Fabian Schwarz-Fritz
  * 

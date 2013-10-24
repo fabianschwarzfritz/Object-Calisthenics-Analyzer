@@ -11,6 +11,15 @@ import ocanalyzer.test.integration.mock.indentationRule.IndentiationObjectCalist
 
 import org.eclipse.core.commands.ExecutionException;
 
+/**
+ * Integration test testing correct validation of rule 1: one indentation per
+ * method.
+ * 
+ * {@see OCExampleIntegrationTest}, the test suite startin gthe integraiton test
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class IntegrationTestIndentation extends TestCase {
 
 	public void testIntendiation() throws ExecutionException {
