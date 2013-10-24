@@ -12,6 +12,9 @@ import ocanalyzer.test.integration.IntegrationTestIndentation;
  * It sets up a test suite running all available integration tests. These tests
  * are in the package "ocanalyzer.test.integration".
  * 
+ * The classes that are used for the integration test are located in the
+ * corresponding rule package of the test project
+ * 
  * @author Fabian Schwarz-Fritz
  * 
  */
