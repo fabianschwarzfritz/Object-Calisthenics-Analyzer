@@ -6,7 +6,8 @@ import java.util.List;
 import org.eclipse.core.resources.IResource;
 
 /**
- * This class reports all errors to all given reporters in the package.
+ * This class is used to delegate a rule violation event to all given
+ * {@link RuleViolationReporter}s in {@link reporters}.
  * 
  * @author Fabian Schwarz-Fritz
  * 
