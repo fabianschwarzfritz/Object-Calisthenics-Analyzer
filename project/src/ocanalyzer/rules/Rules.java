@@ -9,6 +9,18 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
+/**
+ * This class is used to validate given Rules for a given
+ * {@link CompilationUnit}, e.g. different implementations of {@link ASTVisitor}
+ * 's.
+ * 
+ * A validation rule can be added by calling {@link Rules#addRule(ASTVisitor)}.
+ * After the rules to be validated are added, the validation of the rules can be
+ * started via {@link #validate()};
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class Rules {
 
 	private ICompilationUnit unit;
