@@ -5,8 +5,24 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
+/**
+ * This class is a concrete implementation of an {@link AnalyzerFacotory}. It
+ * creates: {@link CompilationUnitAnalyzer}, {@link PackageAnalyzer}s,
+ * {@link ProjectAnalyzer}s and {@link WorkspaceAnalyzer}s.
+ * 
+ * All of these analyzers also use a {@link AnalyzerFactory} to create sub
+ * analyzers (for example a {@link PackageAnalyzer} uses a
+ * {@link CompilationUnitAnalyzer}).
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class AnalyzerFactoryImpl implements AnalyzerFactory {
 
+	/**
+	 * This is the factory, the created analyzers are using to create sub
+	 * factories.
+	 */
 	private AnalyzerFactory delegateFactory;
 
 	public AnalyzerFactoryImpl() {
