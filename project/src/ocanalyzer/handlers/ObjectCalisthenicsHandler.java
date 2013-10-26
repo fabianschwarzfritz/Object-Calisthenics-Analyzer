@@ -23,7 +23,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
  * TODO: Improve documentation: Clarify: What is this class exactly, what's it's
- * one and only purpoer???
+ * one and only pupose???
  * 
  * This is the "top level" entry class for an Object Calisthenics Validation
  * plugin. It starts prepares all necessary steps to start the analyzation of
