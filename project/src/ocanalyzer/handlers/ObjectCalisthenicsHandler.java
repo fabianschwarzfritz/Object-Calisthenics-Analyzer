@@ -22,7 +22,21 @@ import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- * Our sample handler extends AbstractHandler, an IHandler base class.
+ * TODO: Improve documentation: Clarify: What is this class exactly, what's it's
+ * one and only purpoer???
+ * 
+ * This is the "top level" entry class for an Object Calisthenics Validation
+ * plugin. It starts prepares all necessary steps to start the analyzation of
+ * the rules.
+ * 
+ * Therefore it set up a {@link WorkspaceAnalyzer} in order to start the
+ * analysis of the rules on the plugin's workspace.
+ * 
+ * Furthermore it sets up a {@link ConsoleReporter} and a {@link MarkerReporter}
+ * , bundled in a {@link DelegationReporter}, which is then delegating to the
+ * given reporters.
+ * 
+ * It is an {@link AbstractHandler}
  * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
@@ -69,8 +83,8 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 	private void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
 		for (CompilationUnit compilationUnit : unitsToAnalyze) {
 			ITypeRoot typeRoot = compilationUnit.getTypeRoot();
-			// FIXME: This must be a ICompilationunit because nothing else was
-			// extracted...
+			// This must be a ICompilationunit because nothing else was
+			// extracted
 			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
 			RuleFactory ruleFactory = getRuleFactory(iCompilationUnit,
 					compilationUnit);
