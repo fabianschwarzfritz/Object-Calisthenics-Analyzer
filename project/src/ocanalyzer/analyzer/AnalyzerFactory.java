@@ -5,6 +5,14 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
+/**
+ * This is an abstract analyzer factory class creating analyzer's for:
+ * {@link IWorkspace}s, {@link IProject}s, {@link IPackageFragment}s and
+ * {@link ICompilationUnit}s.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public interface AnalyzerFactory {
 
 	public abstract CompilationUnitAnalyzer createCompilationUnitAnalyzer(
@@ -17,5 +25,4 @@ public interface AnalyzerFactory {
 
 	public abstract WorkspaceAnalyzer createWorkspaceAnalyzer(
 			IWorkspace workspace);
-
 }
