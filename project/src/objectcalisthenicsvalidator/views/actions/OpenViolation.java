@@ -17,6 +17,13 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
 
+/**
+ * This class represents an action called when opening an information screen for
+ * a {@link Validation}.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class OpenViolation extends Action {
 
 	private TableViewer rulesViewer;
