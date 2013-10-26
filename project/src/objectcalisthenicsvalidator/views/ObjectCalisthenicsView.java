@@ -26,6 +26,14 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+/**
+ * This class represents the main view displaying information about rule
+ * violations in the Object Calisthenics.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
+
 public class ObjectCalisthenicsView extends ViewPart {
 
 	/**
