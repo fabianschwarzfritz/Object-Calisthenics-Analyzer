@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.IPackageFragment;
 public interface AnalyzerFactory {
 
 	public abstract CompilationUnitAnalyzer createCompilationUnitAnalyzer(
-			ICompilationUnit compilationUni);
+			ICompilationUnit compilationUnit);
 
 	public abstract PackageAnalyzer createPackageAnalyzer(
 			IPackageFragment fragment);
