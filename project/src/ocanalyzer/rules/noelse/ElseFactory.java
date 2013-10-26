@@ -8,10 +8,17 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
+/**
+ * This class represents a factory creating an {@link ASTVisitor} validation
+ * rule 2: Do not use the else keyword.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class ElseFactory extends RuleValidatorFactory {
 
-	public ElseFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+	public ElseFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
+			RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
