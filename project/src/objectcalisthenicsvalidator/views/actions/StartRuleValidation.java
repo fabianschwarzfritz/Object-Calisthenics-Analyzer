@@ -9,6 +9,17 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
+/**
+ * This class represents an action that is triggering an object calisthenics
+ * validation.
+ * 
+ * Therefore it uses an {@link #ocHandler} to trigger it. This class does not
+ * configure or set up the handler, but assumes that the configuration (like for
+ * example setting up the correct rule violation reporters) is already done.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class StartRuleValidation extends Action {
 
 	private ObjectCalisthenicsHandler ocHandler;
