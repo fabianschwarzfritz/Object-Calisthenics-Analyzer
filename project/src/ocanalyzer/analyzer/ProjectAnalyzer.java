@@ -30,17 +30,22 @@ public class ProjectAnalyzer implements CompilationUnitsExtractable {
 						.getPackageFragments();
 
 				List<PackageAnalyzer> createPackageAnalyzers = createPackageAnalyzers(packages);
-				for (PackageAnalyzer packageAnalyzer : createPackageAnalyzers) {
-					List<CompilationUnit> packageUnits = packageAnalyzer
-							.extractCompilationUnits();
-					resultUnits.addAll(packageUnits);
-				}
+				extract(resultUnits, createPackageAnalyzers);
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 		return resultUnits;
+	}
+
+	private void extract(List<CompilationUnit> resultUnits,
+			List<PackageAnalyzer> createPackageAnalyzers) {
+		for (PackageAnalyzer packageAnalyzer : createPackageAnalyzers) {
+			List<CompilationUnit> packageUnits = packageAnalyzer
+					.extractCompilationUnits();
+			resultUnits.addAll(packageUnits);
+		}
 	}
 
 	protected List<PackageAnalyzer> createPackageAnalyzers(
