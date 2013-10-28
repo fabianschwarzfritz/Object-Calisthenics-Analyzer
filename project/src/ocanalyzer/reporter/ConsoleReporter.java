@@ -2,8 +2,6 @@ package ocanalyzer.reporter;
 
 import java.io.PrintStream;
 
-import org.eclipse.core.resources.IResource;
-
 /**
  * This class is used to display information about rule violation on a given
  * {@link #stream}.
@@ -21,10 +19,11 @@ public class ConsoleReporter implements RuleViolationReporter {
 	}
 
 	@Override
-	public void reportError(IResource resource, int line, String msg) {
-		stream.println("Reporting validation in resource: "
-				+ resource.getName() + " in line " + line + " with message: '"
-				+ msg + "'.");
+	public void reportError(Violation violation) {
+		String resourceName = violation.getResource().getName();
+		stream.println("Reporting validation in resource: " + resourceName
+				+ " in line " + violation.getLine() + " with message: '"
+				+ violation.getMessage() + "'.");
 	}
 
 }

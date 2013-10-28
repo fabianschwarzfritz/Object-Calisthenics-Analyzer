@@ -1,6 +1,7 @@
 package ocanalyzer.rules.general;
 
 import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -42,6 +43,6 @@ public abstract class ValidationHandler {
 		int startPosition = statement.getStartPosition();
 		int line = compilationUnit.getLineNumber(startPosition);
 
-		reporter.reportError(resource, line, message);
+		reporter.reportError(new Violation(resource, line, message));
 	}
 }

@@ -15,6 +15,6 @@ import org.eclipse.core.resources.IResource;
  */
 public interface RuleViolationReporter {
 
-	public abstract void reportError(IResource resource, int line, String msg);
+	public abstract void reportError(Violation violation);
 
 }

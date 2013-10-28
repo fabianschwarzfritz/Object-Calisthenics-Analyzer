@@ -14,12 +14,13 @@ import org.eclipse.core.runtime.CoreException;
 public class MarkerReporter implements RuleViolationReporter {
 
 	@Override
-	public void reportError(IResource resource, int line, String msg) {
+	public void reportError(Violation violation) {
 		IMarker m;
+		IResource violatedResource = violation.getResource();
 		try {
-			m = resource.createMarker(IMarker.PROBLEM);
-			m.setAttribute(IMarker.LINE_NUMBER, line);
-			m.setAttribute(IMarker.MESSAGE, msg);
+			m = violatedResource.createMarker(IMarker.PROBLEM);
+			m.setAttribute(IMarker.LINE_NUMBER, violation.getLine());
+			m.setAttribute(IMarker.MESSAGE, violation.getMessage());
 			m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 		} catch (CoreException e) {
 			throw new RuntimeException(e);
