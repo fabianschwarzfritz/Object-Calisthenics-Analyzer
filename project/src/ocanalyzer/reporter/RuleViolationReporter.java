@@ -15,6 +15,12 @@ import org.eclipse.core.resources.IResource;
  */
 public interface RuleViolationReporter {
 
+	/**
+	 * Reports a given {@link Violation}.
+	 * 
+	 * @param violation
+	 *            - The {@link Violation} to report.
+	 */
 	public abstract void reportError(Violation violation);
 
 }
