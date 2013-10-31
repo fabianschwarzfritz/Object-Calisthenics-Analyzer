@@ -4,6 +4,7 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.indentation.IndentationFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.WrapPrimitivesFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,6 +19,7 @@ public class AllRulesFactory extends RuleFactory {
 
 	private RuleValidatorFactory indentationFactory;
 	private RuleValidatorFactory elseFactory;
+	private RuleValidatorFactory wrapPrimitivesFactory;
 
 	public AllRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
@@ -25,6 +27,8 @@ public class AllRulesFactory extends RuleFactory {
 		elseFactory = new ElseFactory(unit, compilationUnit, reporter);
 		indentationFactory = new IndentationFactory(unit, compilationUnit,
 				reporter);
+		wrapPrimitivesFactory = new WrapPrimitivesFactory(unit,
+				compilationUnit, reporter);
 	}
 
 	@Override
@@ -32,6 +36,7 @@ public class AllRulesFactory extends RuleFactory {
 		Rules rules = new Rules(unit);
 		rules.addRule(indentationFactory.create());
 		rules.addRule(elseFactory.create());
+		rules.addRule(wrapPrimitivesFactory.create());
 		return rules;
 	}
 }
