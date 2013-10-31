@@ -42,14 +42,18 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 			SimpleType simpleType = (SimpleType) type;
 			Name name = simpleType.getName();
 			ITypeBinding resolveTypeBinding = name.resolveTypeBinding();
-			boolean primitive = resolveTypeBinding.isPrimitive();
-			// FIXME better solution?
-			boolean string = resolveTypeBinding.getName().equals("String");
-			if (primitive | string) {
-				wrapperUnits.add(visitingUnit);
-			}
+			addWrapper(resolveTypeBinding);
 		} catch (ClassCastException e) {
 			// TODO logging
+		}
+	}
+
+	private void addWrapper(ITypeBinding resolveTypeBinding) {
+		boolean primitive = resolveTypeBinding.isPrimitive();
+		// FIXME better solution?
+		boolean string = resolveTypeBinding.getName().equals("String");
+		if (primitive | string) {
+			wrapperUnits.add(visitingUnit);
 		}
 	}
 
