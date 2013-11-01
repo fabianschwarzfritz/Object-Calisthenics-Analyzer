@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -65,6 +66,21 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 		 * "only two instance variables": Implement with configurable amount of
 		 * instance variables
 		 */
+		if (isWrapper) {
+			ensureWrapper(node);
+		}
+	}
+
+	private void ensureWrapper(CompilationUnit node) {
+		InstanceVariableCounter counter = new InstanceVariableCounter(node);
+		int instanceVariableCount = counter.instanceVariableCount();
+		if (instanceVariableCount > 1) {
+			// TODO report error
+			System.out
+					.println("REPORT: "
+							+ node
+							+ " seems to be a wrapper class, but has many instance variables!");
+		}
 	}
 
 }

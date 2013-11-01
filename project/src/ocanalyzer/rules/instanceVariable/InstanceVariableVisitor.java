@@ -20,7 +20,9 @@ public class InstanceVariableVisitor extends ASTVisitor {
 		counter = new InstanceVariableCounter(node);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 2) {
-			// TODO report violation
+			System.out.println("REPORT: " + node
+					+ " seems to have more that 2 instance variables!");
+
 		}
 		return true;
 	}
