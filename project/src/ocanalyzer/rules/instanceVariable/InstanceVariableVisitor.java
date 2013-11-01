@@ -3,7 +3,6 @@ package ocanalyzer.rules.instanceVariable;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class InstanceVariableVisitor extends ASTVisitor {
@@ -17,24 +16,13 @@ public class InstanceVariableVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public boolean visit(CompilationUnit node) {
-		counter = new InstanceVariableCounter(node);
+	public boolean visit(TypeDeclaration type) {
+		counter = new InstanceVariableCounter(type);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 2) {
-			validationHandler.printInfo(node);
-			System.out.println("REPORT: " + node
-					+ " seems to have more that 2 instance variables!");
+			validationHandler.printInfo(type);
 		}
 		return true;
-	}
-
-	@Override
-	public void endVisit(TypeDeclaration node) {
-		TypeDeclaration[] types = node.getTypes();
-		for (TypeDeclaration typeDeclaration : types) {
-			
-		}
-		super.endVisit(node);
 	}
 
 }

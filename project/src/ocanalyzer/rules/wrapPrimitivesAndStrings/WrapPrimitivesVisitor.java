@@ -7,28 +7,28 @@ import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.SimpleType;
 import org.eclipse.jdt.core.dom.Type;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 public class WrapPrimitivesVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	private CompilationUnit visitingUnit;
-	private Set<CompilationUnit> wrapperUnits;
+	private TypeDeclaration visitingType;
+	private Set<TypeDeclaration> wrapperUnits;
 
 	public WrapPrimitivesVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
-		wrapperUnits = new HashSet<CompilationUnit>();
+		wrapperUnits = new HashSet<TypeDeclaration>();
 	}
 
 	@Override
-	public boolean visit(CompilationUnit node) {
-		visitingUnit = node;
+	public boolean visit(TypeDeclaration type) {
+		visitingType = type;
 		return true;
 	}
 
@@ -53,13 +53,13 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 		boolean primitive = resolveTypeBinding.isPrimitive();
 		boolean string = resolveTypeBinding.getName().equals("String");
 		if (primitive | string) {
-			wrapperUnits.add(visitingUnit);
+			wrapperUnits.add(visitingType);
 		}
 	}
 
 	@Override
-	public void endVisit(CompilationUnit node) {
-		boolean isWrapper = wrapperUnits.contains(node);
+	public void endVisit(TypeDeclaration type) {
+		boolean isWrapper = wrapperUnits.contains(type);
 		/*
 		 * TODO check for wrapper properties: - Has only one instance variable
 		 * This could to the visitor that implements
@@ -67,18 +67,19 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 		 * instance variables
 		 */
 		if (isWrapper) {
-			ensureWrapper(node);
+			ensureWrapper(type);
 		}
 	}
 
-	private void ensureWrapper(CompilationUnit node) {
-		InstanceVariableCounter counter = new InstanceVariableCounter(node);
+	private void ensureWrapper(TypeDeclaration type) {
+		InstanceVariableCounter counter = new InstanceVariableCounter(
+				visitingType);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 1) {
 			// TODO report error
 			System.out
 					.println("REPORT: "
-							+ node
+							+ type
 							+ " seems to be a wrapper class, but has many instance variables!");
 		}
 	}
