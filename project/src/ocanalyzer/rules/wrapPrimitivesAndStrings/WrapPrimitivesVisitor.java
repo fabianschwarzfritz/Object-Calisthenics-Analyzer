@@ -26,15 +26,17 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public void endVisit(CompilationUnit node) {
+	public boolean visit(CompilationUnit node) {
 		System.out.println("---Visiting compilation Unit: " + node);
 		visitingUnit = node;
+		return true;
 	}
 
 	@Override
-	public void endVisit(VariableDeclarationStatement node) {
+	public boolean visit(VariableDeclarationStatement node) {
 		Type type = node.getType();
 		add(type);
+		return true;
 	}
 
 	private void add(Type type) {
@@ -55,6 +57,17 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 		if (primitive | string) {
 			wrapperUnits.add(visitingUnit);
 		}
+	}
+
+	@Override
+	public void endVisit(CompilationUnit node) {
+		boolean isWrapper = wrapperUnits.contains(node);
+		/*
+		 * TODO check for wrapper properties: - Has only one instance variable
+		 * This could to the visitor that implements
+		 * "only two instance variables": Implement with configurable amount of
+		 * instance variables
+		 */
 	}
 
 }
