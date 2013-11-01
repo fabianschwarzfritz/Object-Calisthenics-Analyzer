@@ -23,7 +23,6 @@ public class InstanceVariableVisitor extends ASTVisitor {
 			validationHandler.printInfo(node);
 			System.out.println("REPORT: " + node
 					+ " seems to have more that 2 instance variables!");
-
 		}
 		return true;
 	}
