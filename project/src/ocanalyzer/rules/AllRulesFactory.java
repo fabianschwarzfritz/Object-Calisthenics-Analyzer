@@ -1,5 +1,8 @@
 package ocanalyzer.rules;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.indentation.IndentationFactory;
@@ -18,30 +21,27 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  */
 public class AllRulesFactory extends RuleFactory {
 
-	private RuleValidatorFactory indentationFactory;
-	private RuleValidatorFactory elseFactory;
-	private RuleValidatorFactory wrapPrimitivesFactory;
-	private RuleValidatorFactory instanceVariableFactory;
+	private List<RuleValidatorFactory> ruleFactories;
 
 	public AllRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
-		elseFactory = new ElseFactory(unit, compilationUnit, reporter);
-		indentationFactory = new IndentationFactory(unit, compilationUnit,
-				reporter);
-		wrapPrimitivesFactory = new WrapPrimitivesFactory(unit,
-				compilationUnit, reporter);
-		instanceVariableFactory = new InstanceVariableFactory(unit,
-				compilationUnit, reporter);
+		ruleFactories = new ArrayList<RuleValidatorFactory>();
+		ruleFactories.add(new ElseFactory(unit, compilationUnit, reporter));
+		ruleFactories.add(new IndentationFactory(unit, compilationUnit,
+				reporter));
+		ruleFactories.add(new WrapPrimitivesFactory(unit, compilationUnit,
+				reporter));
+		ruleFactories.add(new InstanceVariableFactory(unit, compilationUnit,
+				reporter));
 	}
 
 	@Override
 	public Rules createRules() {
 		Rules rules = new Rules(unit);
-		rules.addRule(indentationFactory.create());
-		rules.addRule(elseFactory.create());
-		rules.addRule(wrapPrimitivesFactory.create());
-		rules.addRule(instanceVariableFactory.create());
+		for (RuleValidatorFactory factory : ruleFactories) {
+			rules.addRule(factory.create());
+		}
 		return rules;
 	}
 }
