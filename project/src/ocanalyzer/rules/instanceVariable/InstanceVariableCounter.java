@@ -1,6 +1,5 @@
 package ocanalyzer.rules.instanceVariable;
 
-import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -9,10 +8,10 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 public class InstanceVariableCounter {
 
 	private int resultCount;
-	private CompilationUnit unit;
+	private TypeDeclaration type;
 
-	public InstanceVariableCounter(CompilationUnit unit) {
-		this.unit = unit;
+	public InstanceVariableCounter(TypeDeclaration type) {
+		this.type = type;
 		reset();
 	}
 
@@ -23,7 +22,6 @@ public class InstanceVariableCounter {
 	public int instanceVariableCount() {
 		reset();
 
-		TypeDeclaration type = (TypeDeclaration) unit.types().get(0);
 		FieldDeclaration[] fields = type.getFields();
 
 		for (int i = 0; i < fields.length; i++) {

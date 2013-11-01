@@ -4,6 +4,7 @@ import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class InstanceVariableVisitor extends ASTVisitor {
 
@@ -26,4 +27,14 @@ public class InstanceVariableVisitor extends ASTVisitor {
 		}
 		return true;
 	}
+
+	@Override
+	public void endVisit(TypeDeclaration node) {
+		TypeDeclaration[] types = node.getTypes();
+		for (TypeDeclaration typeDeclaration : types) {
+			
+		}
+		super.endVisit(node);
+	}
+
 }
