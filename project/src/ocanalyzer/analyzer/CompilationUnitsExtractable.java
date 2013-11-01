@@ -6,6 +6,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public interface CompilationUnitsExtractable {
 
-	public abstract  List<CompilationUnit> extractCompilationUnits();
+	public abstract List<CompilationUnit> extractCompilationUnits();
 
 }
