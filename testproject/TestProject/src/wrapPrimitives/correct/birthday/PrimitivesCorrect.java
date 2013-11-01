@@ -9,6 +9,8 @@ public class PrimitivesCorrect {
 	}
 
 	private Birthday create1() {
+		// FIXME forbidden, because primitves are used dirctly to non wrapper
+		// class!
 		return new Birthday(15, 10);
 	}
 

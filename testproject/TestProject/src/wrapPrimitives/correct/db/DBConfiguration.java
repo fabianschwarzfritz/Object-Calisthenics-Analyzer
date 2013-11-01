@@ -6,34 +6,34 @@ public class DBConfiguration {
 	public static final String HOSTNAME = "host";
 	public static final String DBNAME = "name";
 
-	private String hostName;
-	private int port;
-	private String databaseName;
+	private HostName hostName;
+	private Port port;
+	private DatabaseName databaseName;
 
 	public static DBConfiguration getDefaultConfiguration() {
-		String defaultHostName = System.getProperty(HOSTNAME, "localhost");
-		int defaultPort = Integer.valueOf(System.getProperty(PORT, "4711"));
-		String defaultDatabaseName = System.getProperty(DBNAME, "database1");
+		HostName defaultHost = HostName.getDefault();
+		DatabaseName defaultdb = DatabaseName.getDefault();
+		Port defaultport = Port.getDefault();
 
-		return new DBConfiguration(defaultHostName, defaultPort,
-				defaultDatabaseName);
+		return new DBConfiguration(defaultHost, defaultport, defaultdb);
 	}
 
-	public DBConfiguration(String hostName, int port, String databaseName) {
+	public DBConfiguration(HostName hostName, Port port,
+			DatabaseName databaseName) {
 		this.hostName = hostName;
 		this.port = port;
 		this.databaseName = databaseName;
 	}
 
-	public String getHostName() {
+	public HostName getHostName() {
 		return hostName;
 	}
 
-	public int getPort() {
+	public Port getPort() {
 		return port;
 	}
 
-	public String getDatabaseName() {
+	public DatabaseName getDatabaseName() {
 		return databaseName;
 	}
 }
