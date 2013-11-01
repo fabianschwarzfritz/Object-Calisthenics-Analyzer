@@ -3,6 +3,7 @@ package ocanalyzer.rules;
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.indentation.IndentationFactory;
+import ocanalyzer.rules.instanceVariable.InstanceVariableFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
 import ocanalyzer.rules.wrapPrimitivesAndStrings.WrapPrimitivesFactory;
 
@@ -20,6 +21,7 @@ public class AllRulesFactory extends RuleFactory {
 	private RuleValidatorFactory indentationFactory;
 	private RuleValidatorFactory elseFactory;
 	private RuleValidatorFactory wrapPrimitivesFactory;
+	private RuleValidatorFactory instanceVariableFactory;
 
 	public AllRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
@@ -29,6 +31,8 @@ public class AllRulesFactory extends RuleFactory {
 				reporter);
 		wrapPrimitivesFactory = new WrapPrimitivesFactory(unit,
 				compilationUnit, reporter);
+		instanceVariableFactory = new InstanceVariableFactory(unit,
+				compilationUnit, reporter);
 	}
 
 	@Override
@@ -37,6 +41,7 @@ public class AllRulesFactory extends RuleFactory {
 		rules.addRule(indentationFactory.create());
 		rules.addRule(elseFactory.create());
 		rules.addRule(wrapPrimitivesFactory.create());
+		rules.addRule(instanceVariableFactory.create());
 		return rules;
 	}
 }
