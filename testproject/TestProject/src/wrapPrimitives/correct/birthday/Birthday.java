@@ -1,4 +1,4 @@
-package wrapPrimitives.correct;
+package wrapPrimitives.correct.birthday;
 
 import java.io.PrintStream;
 
