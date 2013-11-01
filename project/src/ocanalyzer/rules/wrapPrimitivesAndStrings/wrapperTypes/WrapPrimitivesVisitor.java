@@ -1,9 +1,10 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings;
+package ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes;
 
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ITypeBinding;

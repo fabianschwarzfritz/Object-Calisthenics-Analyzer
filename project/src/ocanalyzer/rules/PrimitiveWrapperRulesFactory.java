@@ -3,7 +3,7 @@ package ocanalyzer.rules;
 import java.util.Set;
 
 import ocanalyzer.reporter.NoReporter;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.WrapPrimitivesFactory;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes.WrapPrimitivesFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
