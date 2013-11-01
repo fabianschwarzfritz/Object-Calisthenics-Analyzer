@@ -4,8 +4,8 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Statement;
 
 /**
  * This class handles rule validation.
@@ -24,8 +24,8 @@ public class ElseValidationHandler extends ValidationHandler {
 	}
 
 	@Override
-	public void printInfo(Statement statement) {
+	public void printInfo(ASTNode node) {
 		String msg = "The else keyword violates rule 2";
-		reportError(msg, statement);
+		reportError(msg, node);
 	}
 }

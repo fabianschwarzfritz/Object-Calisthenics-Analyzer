@@ -4,8 +4,8 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Statement;
 
 public class WrapPrimitivesValidationHandler extends ValidationHandler {
 
@@ -15,8 +15,8 @@ public class WrapPrimitivesValidationHandler extends ValidationHandler {
 	}
 
 	@Override
-	public void printInfo(Statement statement) {
+	public void printInfo(ASTNode node) {
 		String msg = "The use of primitives violates rule 3";
-		reportError(msg, statement);
+		reportError(msg, node);
 	}
 }

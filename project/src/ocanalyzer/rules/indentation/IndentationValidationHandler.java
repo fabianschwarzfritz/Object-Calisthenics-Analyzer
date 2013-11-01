@@ -4,8 +4,8 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Statement;
 
 public class IndentationValidationHandler extends ValidationHandler {
 
@@ -15,9 +15,9 @@ public class IndentationValidationHandler extends ValidationHandler {
 	}
 
 	@Override
-	public void printInfo(Statement statement) {
+	public void printInfo(ASTNode node) {
 		String msg = "The given indentation violates rule 1";
-		reportError(msg, statement);
+		reportError(msg, node);
 	}
 
 }

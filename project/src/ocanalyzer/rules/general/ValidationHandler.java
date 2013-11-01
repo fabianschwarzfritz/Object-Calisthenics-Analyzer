@@ -5,6 +5,7 @@ import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Statement;
@@ -36,11 +37,11 @@ public abstract class ValidationHandler {
 		this.reporter = reporter;
 	}
 
-	public abstract void printInfo(Statement statement);
+	public abstract void printInfo(ASTNode node);
 
-	protected void reportError(String message, Statement statement) {
+	protected void reportError(String message, ASTNode node) {
 		IResource resource = unit.getResource();
-		int startPosition = statement.getStartPosition();
+		int startPosition = node.getStartPosition();
 		int line = compilationUnit.getLineNumber(startPosition);
 
 		reporter.reportError(new Violation(resource, line, message));

@@ -4,8 +4,8 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Statement;
 
 public class InstanceVariableValidationHandler extends ValidationHandler {
 
@@ -15,8 +15,8 @@ public class InstanceVariableValidationHandler extends ValidationHandler {
 	}
 
 	@Override
-	public void printInfo(Statement statement) {
+	public void printInfo(ASTNode node) {
 		String msg = "The else keyword violates rule 7";
-		reportError(msg, statement);
+		reportError(msg, node);
 	}
 }
