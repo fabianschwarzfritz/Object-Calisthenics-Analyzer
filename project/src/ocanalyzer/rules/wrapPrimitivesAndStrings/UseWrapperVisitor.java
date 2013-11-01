@@ -10,14 +10,14 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class UseWrapper extends ASTVisitor {
+public class UseWrapperVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
-	public UseWrapper(ValidationHandler validatonHandler,
+	public UseWrapperVisitor(ValidationHandler validatonHandler,
 			Set<TypeDeclaration> wrapperUnits) {
 		this.validationHandler = validatonHandler;
 		this.wrapperUnits = wrapperUnits;
@@ -31,6 +31,7 @@ public class UseWrapper extends ASTVisitor {
 
 	@Override
 	public void endVisit(MethodInvocation node) {
+		// TODO clean code
 		IMethodBinding resolveMethodBinding = node.resolveMethodBinding();
 		ITypeBinding[] parameterTypes = resolveMethodBinding
 				.getParameterTypes();

@@ -8,32 +8,21 @@ import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.indentation.IndentationFactory;
 import ocanalyzer.rules.instanceVariable.InstanceVariableFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.UseWrapperVisitor;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.WrapPrimitivesFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-/**
- * This class is a {@link RuleFactory} creating all existing rules.
- * 
- * @author Fabian Schwarz-Fritz
- * 
- */
-public class AllRulesFactory extends RuleFactory {
+public class PreRulesFactory extends RuleFactory {
 
 	private List<RuleValidatorFactory> ruleFactories;
 
-	public AllRulesFactory(ICompilationUnit unit,
+	public PreRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 		ruleFactories = new ArrayList<RuleValidatorFactory>();
 		ruleFactories.add(new ElseFactory(unit, compilationUnit, reporter));
 		ruleFactories.add(new IndentationFactory(unit, compilationUnit,
 				reporter));
-		// TODO remove this class and use tasks
-		//ruleFactories.add(new WrapPrimitivesFactory(unit, compilationUnit,
-		//		reporter));
 		ruleFactories.add(new InstanceVariableFactory(unit, compilationUnit,
 				reporter));
 	}

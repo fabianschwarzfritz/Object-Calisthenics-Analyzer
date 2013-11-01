@@ -11,6 +11,7 @@ import ocanalyzer.reporter.MarkerReporter;
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.AllRulesFactory;
 import ocanalyzer.rules.RuleFactory;
+import ocanalyzer.rules.task.AllRulesTask;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -81,19 +82,7 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 	}
 
 	private void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
-		for (CompilationUnit compilationUnit : unitsToAnalyze) {
-			ITypeRoot typeRoot = compilationUnit.getTypeRoot();
-			// This must be a ICompilationunit because nothing else was
-			// extracted
-			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
-			RuleFactory ruleFactory = getRuleFactory(iCompilationUnit,
-					compilationUnit);
-			ruleFactory.createRules().validate();
-		}
-	}
-
-	protected RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
-			CompilationUnit compilationUnit) {
-		return new AllRulesFactory(iCompilationUnit, compilationUnit, reporter);
+		AllRulesTask task = new AllRulesTask(unitsToAnalyze, reporter);
+		task.execute();
 	}
 }
