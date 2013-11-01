@@ -60,12 +60,6 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 	@Override
 	public void endVisit(TypeDeclaration type) {
 		boolean isWrapper = wrapperUnits.contains(type);
-		/*
-		 * TODO check for wrapper properties: - Has only one instance variable
-		 * This could to the visitor that implements
-		 * "only two instance variables": Implement with configurable amount of
-		 * instance variables
-		 */
 		if (isWrapper) {
 			ensureWrapper(type);
 		}
@@ -76,11 +70,7 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 				visitingType);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 1) {
-			// TODO report error
-			System.out
-					.println("REPORT: "
-							+ type
-							+ " seems to be a wrapper class, but has many instance variables!");
+			validationHandler.printInfo(type);
 		}
 	}
 

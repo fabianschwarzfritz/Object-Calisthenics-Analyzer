@@ -1,4 +1,4 @@
-package wrapPrimitivesRule;
+package instanceVariableCount;
 
 public class WrapPrimitivesWrong {
 	private Object string;

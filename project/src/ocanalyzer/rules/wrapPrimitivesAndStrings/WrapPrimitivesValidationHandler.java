@@ -16,7 +16,7 @@ public class WrapPrimitivesValidationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "The use of primitives violates rule 3";
+		String msg = "The use of primitives in non-wrapper classes violates rule 3";
 		reportError(msg, node);
 	}
 }
