@@ -16,7 +16,7 @@ public class InstanceVariableValidationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "Two instance variables. That violates rule 7!";
+		String msg = "More than two instance variables. That violates rule 7!";
 		reportError(msg, node);
 	}
 }
