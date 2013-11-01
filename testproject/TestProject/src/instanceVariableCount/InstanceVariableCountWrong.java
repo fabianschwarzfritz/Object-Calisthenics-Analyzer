@@ -1,6 +1,6 @@
 package instanceVariableCount;
 
-public class WrapPrimitivesWrong {
+public class InstanceVariableCountWrong {
 	private Object string;
 	private Object secondString;
 	private Object toomuchInstanceVariables;
