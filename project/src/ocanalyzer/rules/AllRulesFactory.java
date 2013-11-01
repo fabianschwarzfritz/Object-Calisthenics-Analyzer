@@ -40,7 +40,7 @@ public class AllRulesFactory extends RuleFactory {
 	public Rules createRules() {
 		Rules rules = new Rules(unit);
 		for (RuleValidatorFactory factory : ruleFactories) {
-			rules.addRule(factory.create());
+			rules.add(factory.create());
 		}
 		return rules;
 	}

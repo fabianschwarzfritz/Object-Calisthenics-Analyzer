@@ -23,7 +23,7 @@ public class IndentiationRuleFactory extends RuleFactory {
 	@Override
 	public Rules createRules() {
 		Rules rules = new Rules(unit);
-		rules.addRule(indentiationFactory.create());
+		rules.add(indentiationFactory.create());
 		return rules;
 	}
 }

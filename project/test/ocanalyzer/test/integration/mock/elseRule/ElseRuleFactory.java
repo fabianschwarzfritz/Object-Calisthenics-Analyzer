@@ -22,7 +22,7 @@ public class ElseRuleFactory extends RuleFactory {
 	@Override
 	public Rules createRules() {
 		Rules rules = new Rules(unit);
-		rules.addRule(elseFactory.create());
+		rules.add(elseFactory.create());
 		return rules;
 	}
 }

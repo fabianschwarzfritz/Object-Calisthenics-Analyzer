@@ -14,7 +14,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * {@link CompilationUnit}, e.g. different implementations of {@link ASTVisitor}
  * 's.
  * 
- * A validation rule can be added by calling {@link Rules#addRule(ASTVisitor)}.
+ * A validation rule can be added by calling {@link Rules#add(ASTVisitor)}.
  * After the rules to be validated are added, the validation of the rules can be
  * started via {@link #validate()};
  * 
@@ -36,7 +36,7 @@ public class Rules {
 		vistors = ruleValidators;
 	}
 
-	public void addRule(ASTVisitor rule) {
+	public void add(ASTVisitor rule) {
 		vistors.add(rule);
 	}
 
