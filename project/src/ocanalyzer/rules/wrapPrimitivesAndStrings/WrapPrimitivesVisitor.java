@@ -27,7 +27,6 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(CompilationUnit node) {
-		System.out.println("---Visiting compilation Unit: " + node);
 		visitingUnit = node;
 		return true;
 	}
@@ -46,13 +45,11 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 			ITypeBinding resolveTypeBinding = name.resolveTypeBinding();
 			addWrapper(resolveTypeBinding);
 		} catch (ClassCastException e) {
-			// TODO logging
 		}
 	}
 
 	private void addWrapper(ITypeBinding resolveTypeBinding) {
 		boolean primitive = resolveTypeBinding.isPrimitive();
-		// FIXME better solution?
 		boolean string = resolveTypeBinding.getName().equals("String");
 		if (primitive | string) {
 			wrapperUnits.add(visitingUnit);
