@@ -14,14 +14,14 @@ import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
-public class WrapPrimitivesVisitor extends ASTVisitor {
+public class PrimitiveWrapper extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
-	public WrapPrimitivesVisitor(ValidationHandler validatonHandler) {
+	public PrimitiveWrapper(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
 		wrapperUnits = new HashSet<TypeDeclaration>();
 	}
@@ -50,9 +50,8 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 	}
 
 	private void addWrapper(ITypeBinding resolveTypeBinding) {
-		boolean primitive = resolveTypeBinding.isPrimitive();
-		boolean string = resolveTypeBinding.getName().equals("String");
-		if (primitive | string) {
+		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
+		if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
 			wrapperUnits.add(visitingType);
 		}
 	}
@@ -72,6 +71,10 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 		if (instanceVariableCount > 1) {
 			validationHandler.printInfo(type);
 		}
+	}
+
+	public Set<TypeDeclaration> getWrapperUnits() {
+		return wrapperUnits;
 	}
 
 }

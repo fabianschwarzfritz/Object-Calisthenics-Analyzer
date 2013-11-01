@@ -19,7 +19,7 @@ public class WrapPrimitivesFactory extends RuleValidatorFactory {
 	public ASTVisitor create() {
 		ValidationHandler primitivesValidationHandler = new WrapPrimitivesValidationHandler(
 				unit, compilationUnit, reporter);
-		WrapPrimitivesVisitor visitor = new WrapPrimitivesVisitor(
+		WrapPrimitiveVisitor visitor = new WrapPrimitiveVisitor(
 				primitivesValidationHandler);
 		return visitor;
 	}
