@@ -8,7 +8,6 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.PrimitiveWrapperRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 import ocanalyzer.rules.Rules;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.WrapPrimitivesVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.ITypeRoot;

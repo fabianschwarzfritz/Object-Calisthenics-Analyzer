@@ -1,7 +1,7 @@
 package ocanalyzer.rules.general;
 
-import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.reporter.DelegateReporter;
+import ocanalyzer.reporter.RuleViolationReporter;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;

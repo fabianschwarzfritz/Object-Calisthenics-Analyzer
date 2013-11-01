@@ -1,6 +1,5 @@
 package ocanalyzer.rules.wrapPrimitivesAndStrings;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;

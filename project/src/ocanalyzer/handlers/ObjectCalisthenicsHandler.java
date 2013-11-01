@@ -9,8 +9,6 @@ import ocanalyzer.reporter.ConsoleReporter;
 import ocanalyzer.reporter.DelegateReporter;
 import ocanalyzer.reporter.MarkerReporter;
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.AllRulesFactory;
-import ocanalyzer.rules.RuleFactory;
 import ocanalyzer.rules.task.AllRulesTask;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -18,8 +16,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
