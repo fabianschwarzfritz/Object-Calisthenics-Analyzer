@@ -8,7 +8,7 @@ public class PrimitiveDeterminator {
 	public boolean isPrimitive(ITypeBinding resolveTypeBinding) {
 		boolean primitive = resolveTypeBinding.isPrimitive();
 		boolean string = resolveTypeBinding.getName().equals("String");
-		boolean literal = resolveTypeBinding instanceof StringLiteral;
-		return primitive || string || literal;
+		// boolean literal = resolveTypeBinding instanceof StringLiteral;
+		return primitive || string;// || literal;
 	}
 }
