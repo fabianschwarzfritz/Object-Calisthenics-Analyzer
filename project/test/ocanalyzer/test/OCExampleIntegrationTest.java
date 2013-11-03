@@ -4,6 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import ocanalyzer.test.integration.IntegrationTestElse;
 import ocanalyzer.test.integration.IntegrationTestIndentation;
+import ocanalyzer.test.integration.IntegrationTestWrapPrimitivesAndStrings;
 
 /**
  * This integration test is a bundle of all integration tests, testing the
@@ -24,6 +25,7 @@ public class OCExampleIntegrationTest {
 		TestSuite suite = new TestSuite("org.ocanalyzer.integration");
 		suite.addTestSuite(IntegrationTestElse.class);
 		suite.addTestSuite(IntegrationTestIndentation.class);
+		suite.addTestSuite(IntegrationTestWrapPrimitivesAndStrings.class);
 		return suite;
 	}
 }
