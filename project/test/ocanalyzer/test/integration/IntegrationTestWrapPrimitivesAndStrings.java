@@ -13,7 +13,7 @@ import org.eclipse.core.commands.ExecutionException;
 
 public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
-	public void testIntendiation() throws ExecutionException {
+	public void testWrapperClassesDatabase() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		AnalyzerFactory factory = new MockAnalyzerFactory(
 				"wrapPrimitives_wrong_db");
