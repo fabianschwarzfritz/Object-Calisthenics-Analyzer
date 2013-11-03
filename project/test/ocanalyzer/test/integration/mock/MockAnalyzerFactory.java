@@ -1,18 +1,23 @@
-package ocanalyzer.test.integration.mock.elseRule;
+package ocanalyzer.test.integration.mock;
 
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.analyzer.CompilationUnitAnalyzer;
 import ocanalyzer.analyzer.PackageAnalyzer;
 import ocanalyzer.analyzer.ProjectAnalyzer;
 import ocanalyzer.analyzer.WorkspaceAnalyzer;
-import ocanalyzer.test.integration.mock.ProjectAnalyzerMock;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
-public class ElseAnalyzerFactory implements AnalyzerFactory {
+public class MockAnalyzerFactory implements AnalyzerFactory {
+
+	private String packageName;
+
+	public MockAnalyzerFactory(String packageName) {
+		this.packageName = packageName;
+	}
 
 	@Override
 	public CompilationUnitAnalyzer createCompilationUnitAnalyzer(
@@ -27,7 +32,7 @@ public class ElseAnalyzerFactory implements AnalyzerFactory {
 
 	@Override
 	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
-		return new ProjectAnalyzerMock("elseRule", project, this);
+		return new ProjectAnalyzerMock(packageName, project, this);
 	}
 
 	@Override

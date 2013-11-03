@@ -9,8 +9,7 @@ import ocanalyzer.rules.task.ElseRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class ElseObjectCalisthenicsHandlerMock extends
-		ObjectCalisthenicsHandler {
+public class ElseObjectCalisthenicsHandlerMock extends ObjectCalisthenicsHandler {
 
 	public ElseObjectCalisthenicsHandlerMock(AnalyzerFactory factory,
 			RuleViolationReporter reporter) {

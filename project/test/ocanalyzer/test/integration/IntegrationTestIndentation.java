@@ -5,8 +5,8 @@ import java.util.List;
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.reporter.Violation;
+import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
 import ocanalyzer.test.integration.mock.TestReporter;
-import ocanalyzer.test.integration.mock.indentationRule.IndentationTestAnalyzerFactory;
 import ocanalyzer.test.integration.mock.indentationRule.IndentiationObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -24,7 +24,7 @@ public class IntegrationTestIndentation extends TestCase {
 
 	public void testIntendiation() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new IndentationTestAnalyzerFactory();
+		AnalyzerFactory factory = new MockAnalyzerFactory("indentationRule");
 		IndentiationObjectCalisthenicsHandlerMock ocMock = new IndentiationObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 
