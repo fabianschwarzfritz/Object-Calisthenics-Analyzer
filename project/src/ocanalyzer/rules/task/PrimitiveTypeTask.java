@@ -7,10 +7,8 @@ import java.util.Set;
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.PrimitiveWrapperRulesFactory;
 import ocanalyzer.rules.RuleFactory;
-import ocanalyzer.rules.Rules;
 
 import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
@@ -28,19 +26,10 @@ public class PrimitiveTypeTask extends ValidationTask {
 	public void execute() {
 		wrappers = new HashSet<TypeDeclaration>();
 
-		for (CompilationUnit compilationUnit : unitsToAnalyze) {
-			ITypeRoot typeRoot = compilationUnit.getTypeRoot();
-			// This must be a ICompilationunit because nothing else was
-			// extracted
-			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
-			RuleFactory ruleFactory = getRuleFactory(iCompilationUnit,
-					compilationUnit);
-			Rules rules = ruleFactory.createRules();
-			rules.validate();
-		}
+		validate(unitsToAnalyze);
 	}
 
-	protected RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new PrimitiveWrapperRulesFactory(iCompilationUnit,
 				compilationUnit, wrappers);
