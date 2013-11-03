@@ -16,19 +16,19 @@ public class PrimitiveDeterminator extends TypeDeterminator {
 		WRAPPER_NAMES = new HashSet<String>();
 
 		WRAPPER_NAMES.add("java.lang.Number");
-		WRAPPER_NAMES.add("java.lang.Integer");
-		WRAPPER_NAMES.add("java.lang.Double");
-		WRAPPER_NAMES.add("java.lang.Float");
-		WRAPPER_NAMES.add("java.lang.Long");
-		WRAPPER_NAMES.add("java.lang.Short");
+		// WRAPPER_NAMES.add("java.lang.Integer");
+		// WRAPPER_NAMES.add("java.lang.Double");
+		// WRAPPER_NAMES.add("java.lang.Float");
+		// WRAPPER_NAMES.add("java.lang.Long");
+		// WRAPPER_NAMES.add("java.lang.Short");
 
-		WRAPPER_NAMES.add("java.math.BigInteger");
-		WRAPPER_NAMES.add("java.math.BigDecimal");
+		// WRAPPER_NAMES.add("java.math.BigInteger");
+		// WRAPPER_NAMES.add("java.math.BigDecimal");
 
-		WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicInteger");
-		WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicLong");
+		// WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicInteger");
+		// WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicLong");
 
-		WRAPPER_NAMES.add("java.lang.Byte");
+		// WRAPPER_NAMES.add("java.lang.Byte");
 
 		WRAPPER_NAMES.add("java.lang.Character");
 

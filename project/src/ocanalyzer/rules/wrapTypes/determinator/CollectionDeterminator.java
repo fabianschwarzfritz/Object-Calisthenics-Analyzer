@@ -13,9 +13,9 @@ public class CollectionDeterminator extends TypeDeterminator {
 		WRAPPER_NAMES = new HashSet<String>();
 
 		WRAPPER_NAMES.add("java.util.Collection");
-		WRAPPER_NAMES.add("java.util.List");
-		WRAPPER_NAMES.add("java.util.Set");
-		WRAPPER_NAMES.add("java.util.Map");
+		// WRAPPER_NAMES.add("java.util.List");
+		// WRAPPER_NAMES.add("java.util.Set");
+		// WRAPPER_NAMES.add("java.util.Map");
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {
