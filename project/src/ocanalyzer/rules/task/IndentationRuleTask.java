@@ -3,8 +3,8 @@ package ocanalyzer.rules.task;
 import java.util.List;
 
 import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.rules.IndentiationRuleFactory;
 import ocanalyzer.rules.RuleFactory;
-import ocanalyzer.test.integration.mock.indentationRule.IndentiationRuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

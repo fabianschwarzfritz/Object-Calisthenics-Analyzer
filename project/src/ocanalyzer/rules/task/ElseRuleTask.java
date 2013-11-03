@@ -3,8 +3,8 @@ package ocanalyzer.rules.task;
 import java.util.List;
 
 import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.rules.ElseRuleFactory;
 import ocanalyzer.rules.RuleFactory;
-import ocanalyzer.test.integration.mock.elseRule.ElseRuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
