@@ -1,4 +1,4 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings;
+package ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
@@ -7,9 +7,9 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class WrapPrimitivesValidationHandler extends ValidationHandler {
+public class UsePrimitivesValidationHandler extends ValidationHandler {
 
-	public WrapPrimitivesValidationHandler(ICompilationUnit unit,
+	public UsePrimitivesValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
