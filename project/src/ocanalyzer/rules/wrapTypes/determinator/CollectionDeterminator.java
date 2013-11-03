@@ -26,6 +26,6 @@ public class CollectionDeterminator extends TypeDeterminator {
 		boolean isCollection = isPermittedType(resolveTypeBinding,
 				WRAPPER_NAMES);
 
-		return array || isCollection;// || literal;
+		return array || isCollection;
 	}
 }

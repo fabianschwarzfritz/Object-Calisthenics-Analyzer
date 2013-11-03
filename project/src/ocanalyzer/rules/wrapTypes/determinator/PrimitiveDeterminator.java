@@ -47,7 +47,7 @@ public class PrimitiveDeterminator extends TypeDeterminator {
 		boolean isWrapperPrimitive = isPermittedType(resolveTypeBinding,
 				WRAPPER_NAMES);
 
-		return primitive || string || isWrapperPrimitive;// || literal;
+		return primitive || string || isWrapperPrimitive;
 	}
 
 }
