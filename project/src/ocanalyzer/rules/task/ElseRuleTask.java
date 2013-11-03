@@ -9,7 +9,7 @@ import ocanalyzer.test.integration.mock.elseRule.ElseRuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class ElseRuleTask extends ValidationTask {
+public class ElseRuleTask extends ValidationTask implements RuleFactoryProvider {
 
 	public ElseRuleTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
@@ -18,10 +18,10 @@ public class ElseRuleTask extends ValidationTask {
 
 	@Override
 	public void execute() {
-		validate(unitsToAnalyze);
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
-	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new ElseRuleFactory(iCompilationUnit, compilationUnit, reporter);
 	}

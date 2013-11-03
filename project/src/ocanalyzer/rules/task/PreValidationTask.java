@@ -9,7 +9,8 @@ import ocanalyzer.rules.RuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class PreValidationTask extends ValidationTask {
+public class PreValidationTask extends ValidationTask implements
+		RuleFactoryProvider {
 
 	public PreValidationTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
@@ -18,10 +19,10 @@ public class PreValidationTask extends ValidationTask {
 
 	@Override
 	public void execute() {
-		validate(unitsToAnalyze);
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
-	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new PreRulesFactory(iCompilationUnit, compilationUnit, reporter);
 	}

@@ -23,19 +23,4 @@ public abstract class ValidationTask {
 
 	public abstract void execute();
 
-	public abstract RuleFactory getRuleFactory(
-			ICompilationUnit iCompilationUnit, CompilationUnit compilationUnit);
-
-	protected void validate(List<CompilationUnit> unitsToAnalyze) {
-		for (CompilationUnit compilationUnit : unitsToAnalyze) {
-			ITypeRoot typeRoot = compilationUnit.getTypeRoot();
-			// This must be a ICompilationunit because nothing else was
-			// extracted
-			ICompilationUnit iCompilationUnit = (ICompilationUnit) typeRoot;
-			RuleFactory ruleFactory = getRuleFactory(iCompilationUnit,
-					compilationUnit);
-			ruleFactory.createRules().validate();
-		}
-	}
-
 }

@@ -12,7 +12,8 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveTypeTask extends ValidationTask {
+public class PrimitiveTypeTask extends ValidationTask implements
+		RuleFactoryProvider {
 
 	private Set<TypeDeclaration> wrappers;
 
@@ -26,10 +27,10 @@ public class PrimitiveTypeTask extends ValidationTask {
 	public void execute() {
 		wrappers = new HashSet<TypeDeclaration>();
 
-		validate(unitsToAnalyze);
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
-	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new PrimitiveWrapperRulesFactory(iCompilationUnit,
 				compilationUnit, wrappers);

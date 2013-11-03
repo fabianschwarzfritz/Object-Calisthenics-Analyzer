@@ -9,7 +9,8 @@ import ocanalyzer.test.integration.mock.indentationRule.IndentiationRuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class IndentationRuleTask extends ValidationTask {
+public class IndentationRuleTask extends ValidationTask implements
+		RuleFactoryProvider {
 
 	public IndentationRuleTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
@@ -18,10 +19,10 @@ public class IndentationRuleTask extends ValidationTask {
 
 	@Override
 	public void execute() {
-		validate(unitsToAnalyze);
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
-	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new IndentiationRuleFactory(iCompilationUnit, compilationUnit,
 				reporter);

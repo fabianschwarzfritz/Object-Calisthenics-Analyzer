@@ -11,7 +11,8 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveUsageTask extends ValidationTask {
+public class PrimitiveUsageTask extends ValidationTask implements
+		RuleFactoryProvider {
 
 	private Set<TypeDeclaration> wrappers;
 
@@ -23,10 +24,10 @@ public class PrimitiveUsageTask extends ValidationTask {
 
 	@Override
 	public void execute() {
-		validate(unitsToAnalyze);
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
-	public RuleFactory getRuleFactory(ICompilationUnit iCompilationUnit,
+	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new PrimitiveUsageRulesFactory(iCompilationUnit,
 				compilationUnit, reporter, wrappers);
