@@ -19,6 +19,7 @@ public class UseWrapperVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
+	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
 	public UseWrapperVisitor(ValidationHandler validatonHandler,
@@ -29,7 +30,8 @@ public class UseWrapperVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(TypeDeclaration type) {
-		return !isWrapper(type);
+		visitingType = type;
+		return !isWrapper();
 	}
 
 	@Override
@@ -46,25 +48,34 @@ public class UseWrapperVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(FieldDeclaration node) {
-		return visitType(node.getType());
+		visitType(node.getType());
+		return true;
 	}
 
 	@Override
 	public boolean visit(VariableDeclarationStatement node) {
-		return visitType(node.getType());
-	}
-
-	private boolean visitType(Type node) {
-		ITypeBinding resolveTypeBinding = node.resolveBinding();
-		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
-		if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
-			validationHandler.printInfo(node);
-		}
+		visitType(node.getType());
 		return true;
 	}
 
-	private boolean isWrapper(TypeDeclaration type) {
-		return wrapperUnits.contains(type);
+	private void visitType(Type node) {
+		if (!isWrapper()) {
+			ITypeBinding resolveTypeBinding = node.resolveBinding();
+			PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
+			if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
+				validationHandler.printInfo(node);
+			}
+		}
+	}
+
+	private boolean isWrapper() {
+		for (TypeDeclaration wrapper : wrapperUnits) {
+			if (wrapper.getName().toString()
+					.equals(visitingType.getName().toString())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
