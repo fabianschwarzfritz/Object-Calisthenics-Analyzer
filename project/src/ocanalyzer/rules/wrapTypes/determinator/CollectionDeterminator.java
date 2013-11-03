@@ -12,12 +12,16 @@ public class CollectionDeterminator extends TypeDeterminator {
 	static {
 		WRAPPER_NAMES = new HashSet<String>();
 
-		WRAPPER_NAMES.add("List");
-		WRAPPER_NAMES.add("Set");
-		WRAPPER_NAMES.add("Map");
+		WRAPPER_NAMES.add("java.util.Collection");
+		WRAPPER_NAMES.add("java.util.List");
+		WRAPPER_NAMES.add("java.util.Set");
+		WRAPPER_NAMES.add("java.util.Map");
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {
+		System.out.println();
+		System.out.println(resolveTypeBinding.getBinaryName());
+
 		boolean array = resolveTypeBinding.isArray();
 		boolean isCollection = isPermittedType(resolveTypeBinding,
 				WRAPPER_NAMES);

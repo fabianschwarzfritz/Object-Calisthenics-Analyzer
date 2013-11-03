@@ -7,35 +7,38 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 
 public class PrimitiveDeterminator extends TypeDeterminator {
 
-	private static final String VOID_NAME = "void";
-	private static final String STRING_NAME = "String";
+	private static final String VOID_NAME = "V";
+	private static final String STRING_NAME = "java.lang.String";
 
 	private static final Set<String> WRAPPER_NAMES;
 
 	static {
 		WRAPPER_NAMES = new HashSet<String>();
 
-		WRAPPER_NAMES.add("Number");
-		WRAPPER_NAMES.add("Integer");
-		WRAPPER_NAMES.add("Double");
-		WRAPPER_NAMES.add("Float");
-		WRAPPER_NAMES.add("Long");
-		WRAPPER_NAMES.add("Short");
+		WRAPPER_NAMES.add("java.lang.Number");
+		WRAPPER_NAMES.add("java.lang.Integer");
+		WRAPPER_NAMES.add("java.lang.Double");
+		WRAPPER_NAMES.add("java.lang.Float");
+		WRAPPER_NAMES.add("java.lang.Long");
+		WRAPPER_NAMES.add("java.lang.Short");
 
-		WRAPPER_NAMES.add("BigInteger");
-		WRAPPER_NAMES.add("BigDecimal");
+		WRAPPER_NAMES.add("java.math.BigInteger");
+		WRAPPER_NAMES.add("java.math.BigDecimal");
 
-		WRAPPER_NAMES.add("AtomicInteger");
-		WRAPPER_NAMES.add("AtomicLong");
+		WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicInteger");
+		WRAPPER_NAMES.add("java.util.concurrent.atomic.AtomicLong");
 
-		WRAPPER_NAMES.add("Byte");
+		WRAPPER_NAMES.add("java.lang.Byte");
 
-		WRAPPER_NAMES.add("Character");
+		WRAPPER_NAMES.add("java.lang.Character");
 
-		WRAPPER_NAMES.add("Boolean");
+		WRAPPER_NAMES.add("java.lang.Boolean");
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {
+		System.out.println();
+		System.out.println(resolveTypeBinding.getBinaryName());
+
 		boolean primitive = resolveTypeBinding.isPrimitive()
 				& !isType(resolveTypeBinding, VOID_NAME);
 

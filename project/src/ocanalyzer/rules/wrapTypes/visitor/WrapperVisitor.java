@@ -33,6 +33,7 @@ public class WrapperVisitor extends ASTVisitor {
 	@Override
 	public boolean visit(TypeDeclaration type) {
 		visitingType = type;
+		System.out.println(type.getName().toString());
 		return true;
 	}
 
@@ -61,7 +62,6 @@ public class WrapperVisitor extends ASTVisitor {
 	private void visitType(Type node) {
 		if (node != null) {
 			ITypeBinding resolveTypeBinding = node.resolveBinding();
-
 			visitType(resolveTypeBinding);
 		}
 	}
