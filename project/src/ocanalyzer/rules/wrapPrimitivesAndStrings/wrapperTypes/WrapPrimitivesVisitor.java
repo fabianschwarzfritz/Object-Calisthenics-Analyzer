@@ -1,5 +1,6 @@
 package ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes;
 
+import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
@@ -9,6 +10,8 @@ import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ITypeBinding;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
@@ -30,6 +33,18 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 	public boolean visit(TypeDeclaration type) {
 		visitingType = type;
 		return true;
+	}
+
+	@Override
+	public boolean visit(MethodDeclaration node) {
+		@SuppressWarnings("unchecked")
+		List<SingleVariableDeclaration> parameters = node.parameters();
+		for (SingleVariableDeclaration declaration : parameters) {
+			Type type = declaration.getType();
+			visitType(type);
+		}
+		return true;
+
 	}
 
 	@Override

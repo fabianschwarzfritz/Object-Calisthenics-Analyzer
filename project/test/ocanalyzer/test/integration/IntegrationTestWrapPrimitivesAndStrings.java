@@ -1,5 +1,7 @@
 package ocanalyzer.test.integration;
 
+import static ocanalyzer.test.helper.AssertionHelper.assertTypes;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,10 +44,24 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 		Set<String> assertTypes = new HashSet<String>();
 		assertTypes.add("Month");
 		assertTypes.add("Day");
+		String packageName = "wrapPrimitives_correct_birthday";
 
+		testWrappers(assertTypes, packageName);
+	}
+
+	public void testMinimalistic() throws ExecutionException {
+		Set<String> assertTypes = new HashSet<String>();
+		assertTypes.add("MinimalisticMethodSignature");
+		assertTypes.add("MinimalisticConstructor");
+		String packageName = "wrapPrimitives_correct_birthday";
+
+		testWrappers(assertTypes, packageName);
+	}
+
+	private void testWrappers(Set<String> assertTypes, String packageName)
+			throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new MockAnalyzerFactory(
-				"wrapPrimitives_correct_birthday");
+		AnalyzerFactory factory = new MockAnalyzerFactory(packageName);
 		WrapPrimitivesObjectCalisthenicsHandlerMock ocMock = new WrapPrimitivesObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 
@@ -56,13 +72,4 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 		assertTypes(assertTypes, wrappers);
 	}
 
-	private void assertTypes(Set<String> names, Set<TypeDeclaration> wrappers) {
-		assertSame(names.size(), wrappers.size());
-		for (TypeDeclaration typeDeclaration : wrappers) {
-			String typeName = typeDeclaration.getName().getFullyQualifiedName();
-			if (!(names.contains(typeName))) {
-				fail("This type is not wrapper type: " + typeDeclaration);
-			}
-		}
-	}
 }

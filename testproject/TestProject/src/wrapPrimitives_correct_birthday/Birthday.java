@@ -12,11 +12,6 @@ public class Birthday {
 		this.month = month;
 	}
 
-	public Birthday(int day, int month) {
-		this.day = new Day(day);
-		this.month = new Month(month);
-	}
-
 	public void print(PrintStream stream) {
 		day.print(stream);
 		stream.append("ter ");
