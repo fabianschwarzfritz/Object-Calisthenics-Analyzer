@@ -7,6 +7,7 @@ import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
 import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.SimpleType;
@@ -34,18 +35,26 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 	}
 
 	@Override
+	public boolean visit(FieldDeclaration node) {
+		return visitType(node.getType());
+	}
+
+	@Override
 	public boolean visit(VariableDeclarationStatement node) {
-		Type type = node.getType();
-		add(type);
+		return visitType(node.getType());
+	}
+
+	private boolean visitType(Type node) {
+		add(node);
 		return true;
 	}
 
 	private void add(Type type) {
 		try {
-			SimpleType simpleType = (SimpleType) type;
-			Name name = simpleType.getName();
-			ITypeBinding resolveTypeBinding = name.resolveTypeBinding();
-			addWrapper(resolveTypeBinding);
+			// SimpleType simpleType = (SimpleType) type;
+			// Name name = simpleType.getName();
+			// ITypeBinding resolveTypeBinding = name.resolveTypeBinding();
+			addWrapper(type.resolveBinding());
 		} catch (ClassCastException e) {
 		}
 	}

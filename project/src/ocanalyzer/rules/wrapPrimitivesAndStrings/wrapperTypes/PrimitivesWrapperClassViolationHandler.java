@@ -16,7 +16,7 @@ public class PrimitivesWrapperClassViolationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "No rule violation. The given node seems to be a wrapper arount primitive or a String";
+		String msg = "The use of more than one instance variable in wrapper classes violates rule 3";
 		reportError(msg, node);
 	}
 }
