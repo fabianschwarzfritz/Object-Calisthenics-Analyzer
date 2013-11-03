@@ -1,11 +1,11 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings;
+package ocanalyzer.rules.wrapTypes.determinator;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.jdt.core.dom.ITypeBinding;
 
-public class PrimitiveDeterminator {
+public class PrimitiveDeterminator extends TypeDeterminator {
 
 	private static final String VOID_NAME = "void";
 	private static final String STRING_NAME = "String";
@@ -35,24 +35,16 @@ public class PrimitiveDeterminator {
 		WRAPPER_NAMES.add("Boolean");
 	}
 
-	public boolean isPrimitive(ITypeBinding resolveTypeBinding) {
+	public boolean determineType(ITypeBinding resolveTypeBinding) {
 		boolean primitive = resolveTypeBinding.isPrimitive()
-				& !isPrimitive(resolveTypeBinding, VOID_NAME);
+				& !isType(resolveTypeBinding, VOID_NAME);
 
 		boolean string = resolveTypeBinding.getName().equals(STRING_NAME);
 
-		boolean isWrapperPrimitive = false;
-		for (String typeName : WRAPPER_NAMES) {
-			if (isPrimitive(resolveTypeBinding, typeName)) {
-				isWrapperPrimitive = true;
-				break;
-			}
-		}
+		boolean isWrapperPrimitive = isPermittedType(resolveTypeBinding,
+				WRAPPER_NAMES);
 
 		return primitive || string || isWrapperPrimitive;// || literal;
 	}
 
-	private boolean isPrimitive(ITypeBinding resolveTypeBinding, String typeName) {
-		return resolveTypeBinding.getName().equals(typeName);
-	}
 }

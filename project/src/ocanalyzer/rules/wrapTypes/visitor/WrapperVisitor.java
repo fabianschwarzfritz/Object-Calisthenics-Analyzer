@@ -1,11 +1,11 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes;
+package ocanalyzer.rules.wrapTypes.visitor;
 
 import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
+import ocanalyzer.rules.wrapTypes.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ITypeBinding;
@@ -14,17 +14,20 @@ import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class WrapPrimitivesVisitor extends ASTVisitor {
+public class WrapperVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
-	public WrapPrimitivesVisitor(ValidationHandler validatonHandler,
-			Set<TypeDeclaration> wrapperUnits) {
+	private TypeDeterminator determinator;
+
+	public WrapperVisitor(ValidationHandler validatonHandler,
+			Set<TypeDeclaration> wrapperUnits, TypeDeterminator determinator) {
 		this.validationHandler = validatonHandler;
 		this.wrapperUnits = wrapperUnits;
+		this.determinator = determinator;
 	}
 
 	@Override
@@ -65,13 +68,12 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 
 	private void visitType(ITypeBinding resolveTypeBinding) {
 		if (resolveTypeBinding != null) {
-			addIfPrimitive(resolveTypeBinding);
+			addIfSerachedType(resolveTypeBinding);
 		}
 	}
 
-	private void addIfPrimitive(ITypeBinding resolveTypeBinding) {
-		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
-		if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
+	private void addIfSerachedType(ITypeBinding resolveTypeBinding) {
+		if (determinator.determineType(resolveTypeBinding)) {
 			wrapperUnits.add(visitingType);
 		}
 	}

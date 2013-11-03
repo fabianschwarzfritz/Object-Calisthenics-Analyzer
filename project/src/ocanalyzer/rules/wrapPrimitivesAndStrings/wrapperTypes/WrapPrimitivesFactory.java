@@ -5,6 +5,8 @@ import java.util.Set;
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
+import ocanalyzer.rules.wrapTypes.visitor.WrapperVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -26,8 +28,8 @@ public class WrapPrimitivesFactory extends RuleValidatorFactory {
 	public ASTVisitor create() {
 		ValidationHandler primitivesValidationHandler = new PrimitivesWrapperClassViolationHandler(
 				unit, compilationUnit, reporter);
-		WrapPrimitivesVisitor visitor = new WrapPrimitivesVisitor(
-				primitivesValidationHandler, types);
+		WrapperVisitor visitor = new WrapperVisitor(
+				primitivesValidationHandler, types, new PrimitiveDeterminator());
 		return visitor;
 	}
 
