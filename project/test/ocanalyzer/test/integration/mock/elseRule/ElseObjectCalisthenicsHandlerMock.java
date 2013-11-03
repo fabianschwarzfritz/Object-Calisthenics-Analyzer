@@ -18,7 +18,7 @@ public class ElseObjectCalisthenicsHandlerMock extends
 	}
 
 	@Override
-	protected void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
+	protected void applyTask(List<CompilationUnit> unitsToAnalyze) {
 		ElseRuleTask task = new ElseRuleTask(unitsToAnalyze, reporter);
 		task.execute();
 	}

@@ -72,12 +72,12 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 		List<CompilationUnit> unitsToAnalyze = workspaceAnalyzer
 				.extractCompilationUnits();
 
-		applyOnUnits(unitsToAnalyze);
+		applyTask(unitsToAnalyze);
 
 		return null;
 	}
 
-	protected void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
+	protected void applyTask(List<CompilationUnit> unitsToAnalyze) {
 		AllRulesTask task = new AllRulesTask(unitsToAnalyze, reporter);
 		task.execute();
 	}

@@ -18,7 +18,7 @@ public class IndentiationObjectCalisthenicsHandlerMock extends
 	}
 
 	@Override
-	protected void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
+	protected void applyTask(List<CompilationUnit> unitsToAnalyze) {
 		IndentationRuleTask task = new IndentationRuleTask(unitsToAnalyze,
 				reporter);
 		task.execute();
