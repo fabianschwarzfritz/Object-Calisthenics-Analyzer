@@ -1,11 +1,11 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes;
+package ocanalyzer.rules.wrap.wrapperTypes;
 
 import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
+import ocanalyzer.rules.wrapTypes.determinator.TypeDeterminator;
 import ocanalyzer.rules.wrapTypes.visitor.WrapperVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -13,23 +13,26 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class WrapPrimitivesFactory extends RuleValidatorFactory {
+public class WrapTypeFactory extends RuleValidatorFactory {
 
+	private ValidationHandler validationHandler;
+	private TypeDeterminator determinator;
 	private Set<TypeDeclaration> types;
 
-	public WrapPrimitivesFactory(ICompilationUnit unit,
+	public WrapTypeFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter,
-			Set<TypeDeclaration> types) {
+			Set<TypeDeclaration> types, ValidationHandler validationHandler,
+			TypeDeterminator determinator) {
 		super(unit, compilationUnit, reporter);
 		this.types = types;
+		this.validationHandler = validationHandler;
+		this.determinator = determinator;
 	}
 
 	@Override
 	public ASTVisitor create() {
-		ValidationHandler primitivesValidationHandler = new PrimitivesWrapperClassViolationHandler(
-				unit, compilationUnit, reporter);
-		WrapperVisitor visitor = new WrapperVisitor(
-				primitivesValidationHandler, types, new PrimitiveDeterminator());
+		WrapperVisitor visitor = new WrapperVisitor(validationHandler, types,
+				determinator);
 		return visitor;
 	}
 

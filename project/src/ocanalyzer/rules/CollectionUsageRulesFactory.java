@@ -4,8 +4,11 @@ import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrap.wrapperTypes.WrapTypeFactory;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes.PrimitivesWrapperClassViolationHandler;
+import ocanalyzer.rules.wrap.useWrappers.UseWrapperFactory;
+import ocanalyzer.rules.wrapCollections.useWrappers.UseCollectionViolationHandler;
+import ocanalyzer.rules.wrapCollections.wrapperTypes.CollectionWrapperClassViolationHandler;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers.UsePrimitivesViolationHandler;
+import ocanalyzer.rules.wrapTypes.determinator.CollectionDeterminator;
 import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -18,18 +21,18 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class PrimitiveWrapperRulesFactory extends RuleFactory {
+public class CollectionUsageRulesFactory extends RuleFactory {
 
-	private WrapTypeFactory ruleFactory;
+	private UseWrapperFactory ruleFactory;
 
-	public PrimitiveWrapperRulesFactory(ICompilationUnit unit,
+	public CollectionUsageRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
-		ValidationHandler validationHandler = new PrimitivesWrapperClassViolationHandler(
+		ValidationHandler validationHandler = new UseCollectionViolationHandler(
 				unit, compilationUnit, reporter);
-		ruleFactory = new WrapTypeFactory(unit, compilationUnit, reporter,
-				types, validationHandler, new PrimitiveDeterminator());
+		ruleFactory = new UseWrapperFactory(unit, compilationUnit, reporter,
+				types, validationHandler, new CollectionDeterminator());
 	}
 
 	@Override

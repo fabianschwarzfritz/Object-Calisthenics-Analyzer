@@ -1,30 +1,31 @@
 package ocanalyzer.rules.task;
 
 import java.util.List;
+import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.PreRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PreValidationTask extends ValidationTask implements
+public abstract class WrapperUsageTask extends ValidationTask implements
 		RuleFactoryProvider {
 
-	public PreValidationTask(List<CompilationUnit> unitsToAnalyze,
+	protected Set<TypeDeclaration> wrappers;
+
+	public WrapperUsageTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 
+	public abstract RuleFactory createRuleFactory(
+			ICompilationUnit iCompilationUnit, CompilationUnit compilationUnit);
+
 	@Override
 	public void execute() {
 		new UnitsValidator().validate(unitsToAnalyze, this);
-	}
-
-	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
-			CompilationUnit compilationUnit) {
-		return new PreRulesFactory(iCompilationUnit, compilationUnit, reporter);
 	}
 
 }

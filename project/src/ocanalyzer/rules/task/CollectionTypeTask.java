@@ -1,29 +1,28 @@
 package ocanalyzer.rules.task;
 
+import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.PrimitiveUsageRulesFactory;
+import ocanalyzer.rules.CollectionWrapperRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveUsageTask extends WrapperUsageTask {
+public class CollectionTypeTask extends WrapperTypeTask {
 
-	private Set<TypeDeclaration> wrappers;
-
-	public PrimitiveUsageTask(List<CompilationUnit> unitsToAnalyze,
-			RuleViolationReporter reporter, Set<TypeDeclaration> wrappers) {
+	public CollectionTypeTask(List<CompilationUnit> unitsToAnalyze,
+			RuleViolationReporter reporter) {
 		super(unitsToAnalyze, reporter);
-		this.wrappers = wrappers;
+		wrappers = new HashSet<TypeDeclaration>();
 	}
 
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
-		return new PrimitiveUsageRulesFactory(iCompilationUnit,
+		return new CollectionWrapperRulesFactory(iCompilationUnit,
 				compilationUnit, reporter, wrappers);
 	}
+
 }

@@ -3,7 +3,10 @@ package ocanalyzer.rules;
 import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers.UseWrapperFactory;
+import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.wrap.useWrappers.UseWrapperFactory;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers.UsePrimitivesViolationHandler;
+import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -23,8 +26,10 @@ public class PrimitiveUsageRulesFactory extends RuleFactory {
 			CompilationUnit compilationUnit, RuleViolationReporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
+		ValidationHandler validationHandler = new UsePrimitivesViolationHandler(
+				unit, compilationUnit, reporter);
 		ruleFactory = new UseWrapperFactory(unit, compilationUnit, reporter,
-				types);
+				types, validationHandler, new PrimitiveDeterminator());
 	}
 
 	@Override

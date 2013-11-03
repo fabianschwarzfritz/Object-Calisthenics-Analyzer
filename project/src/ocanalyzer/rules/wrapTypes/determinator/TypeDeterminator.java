@@ -21,7 +21,7 @@ public abstract class TypeDeterminator {
 		}
 
 		ITypeBinding superclass = resolveTypeBinding.getSuperclass();
-		if (isType(superclass, "Object")) {
+		if (superclass == null || isType(superclass, "Object")) {
 			return false;
 		}
 		return isPermittedType(superclass, wrapperNames);

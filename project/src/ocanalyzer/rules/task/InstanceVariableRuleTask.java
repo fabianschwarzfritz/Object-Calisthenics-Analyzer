@@ -1,28 +1,31 @@
 package ocanalyzer.rules.task;
 
-import java.util.HashSet;
 import java.util.List;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.PrimitiveWrapperRulesFactory;
+import ocanalyzer.rules.InstanceVariableRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveTypeTask extends WrapperTypeTask {
+public class InstanceVariableRuleTask extends ValidationTask implements
+		RuleFactoryProvider {
 
-	public PrimitiveTypeTask(List<CompilationUnit> unitsToAnalyze,
+	public InstanceVariableRuleTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
 		super(unitsToAnalyze, reporter);
-		wrappers = new HashSet<TypeDeclaration>();
+	}
+
+	@Override
+	public void execute() {
+		new UnitsValidator().validate(unitsToAnalyze, this);
 	}
 
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
-		return new PrimitiveWrapperRulesFactory(iCompilationUnit,
-				compilationUnit, reporter, wrappers);
+		return new InstanceVariableRuleFactory(iCompilationUnit,
+				compilationUnit, reporter);
 	}
 
 }

@@ -10,26 +10,49 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class AllRulesTask extends ValidationTask {
 
-	private PreValidationTask preTask;
-
-	private PrimitiveTypeTask primitiveTask;
-	private PrimitiveUsageTask primitiveUsageTask;
-
 	public AllRulesTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 
 	public void execute() {
-		preTask = new PreValidationTask(unitsToAnalyze, reporter);
-		preTask.execute();
+		this.executePretask();
+		this.executePrimitives();
+		this.executeCollections();
+	}
 
-		primitiveTask = new PrimitiveTypeTask(unitsToAnalyze, reporter);
+	private void executePretask() {
+		ElseRuleTask elseT = new ElseRuleTask(unitsToAnalyze, reporter);
+		elseT.execute();
+
+		IndentationRuleTask indent = new IndentationRuleTask(unitsToAnalyze,
+				reporter);
+		indent.execute();
+
+		InstanceVariableRuleTask instance = new InstanceVariableRuleTask(
+				unitsToAnalyze, reporter);
+		instance.execute();
+	}
+
+	private void executePrimitives() {
+		PrimitiveTypeTask primitiveTask = new PrimitiveTypeTask(unitsToAnalyze,
+				reporter);
 		primitiveTask.execute();
 		Set<TypeDeclaration> wrappers = primitiveTask.getWrappers();
 
-		primitiveUsageTask = new PrimitiveUsageTask(unitsToAnalyze, reporter,
-				wrappers);
+		PrimitiveUsageTask primitiveUsageTask = new PrimitiveUsageTask(
+				unitsToAnalyze, reporter, wrappers);
+		primitiveUsageTask.execute();
+	}
+
+	private void executeCollections() {
+		CollectionTypeTask primitiveTask = new CollectionTypeTask(
+				unitsToAnalyze, reporter);
+		primitiveTask.execute();
+		Set<TypeDeclaration> wrappers = primitiveTask.getWrappers();
+
+		CollectionUsageTask primitiveUsageTask = new CollectionUsageTask(
+				unitsToAnalyze, reporter, wrappers);
 		primitiveUsageTask.execute();
 	}
 
