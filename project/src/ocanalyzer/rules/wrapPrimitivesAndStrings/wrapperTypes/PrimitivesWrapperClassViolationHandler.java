@@ -7,9 +7,9 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class PrimitivesWrapperClassValidationHandler extends ValidationHandler {
+public class PrimitivesWrapperClassViolationHandler extends ValidationHandler {
 
-	public PrimitivesWrapperClassValidationHandler(ICompilationUnit unit,
+	public PrimitivesWrapperClassViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}

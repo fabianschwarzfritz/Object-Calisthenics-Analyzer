@@ -24,7 +24,7 @@ public class UseWrapperFactory extends RuleValidatorFactory {
 
 	@Override
 	public ASTVisitor create() {
-		ValidationHandler primitivesValidationHandler = new UsePrimitivesValidationHandler(
+		ValidationHandler primitivesValidationHandler = new UsePrimitivesViolationHandler(
 				unit, compilationUnit, reporter);
 		UseWrapperVisitor visitor = new UseWrapperVisitor(
 				primitivesValidationHandler, types);
