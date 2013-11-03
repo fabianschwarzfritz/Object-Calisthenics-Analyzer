@@ -36,9 +36,6 @@ public class PrimitiveDeterminator extends TypeDeterminator {
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {
-		System.out.println();
-		System.out.println(resolveTypeBinding.getBinaryName());
-
 		boolean primitive = resolveTypeBinding.isPrimitive()
 				& !isType(resolveTypeBinding, VOID_NAME);
 

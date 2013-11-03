@@ -13,9 +13,13 @@ public class CollectionDeterminator extends TypeDeterminator {
 		WRAPPER_NAMES = new HashSet<String>();
 
 		WRAPPER_NAMES.add("java.util.Collection");
-		// WRAPPER_NAMES.add("java.util.List");
-		// WRAPPER_NAMES.add("java.util.Set");
-		// WRAPPER_NAMES.add("java.util.Map");
+		// FIXME super determination does not work yet when using generics!!
+		WRAPPER_NAMES.add("java.util.List");
+		WRAPPER_NAMES.add("java.util.ArrayList");
+		WRAPPER_NAMES.add("java.util.Set");
+		WRAPPER_NAMES.add("java.util.HashSet");
+		WRAPPER_NAMES.add("java.util.Map");
+		WRAPPER_NAMES.add("java.util.HashMap");
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.CollectionWrapperRulesFactory;
+import ocanalyzer.rules.CollectionUsageRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -21,7 +21,7 @@ public class CollectionUsageTask extends WrapperUsageTask {
 
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
-		return new CollectionWrapperRulesFactory(iCompilationUnit,
+		return new CollectionUsageRulesFactory(iCompilationUnit,
 				compilationUnit, reporter, wrappers);
 	}
 }
