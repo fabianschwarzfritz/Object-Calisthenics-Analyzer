@@ -8,13 +8,11 @@ import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
 import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 public class WrapPrimitivesVisitor extends ASTVisitor {
 
@@ -37,32 +35,41 @@ public class WrapPrimitivesVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(MethodDeclaration node) {
+		checkParameters(node);
+		checkReturn(node);
+		return true;
+
+	}
+
+	private void checkParameters(MethodDeclaration node) {
 		@SuppressWarnings("unchecked")
 		List<SingleVariableDeclaration> parameters = node.parameters();
 		for (SingleVariableDeclaration declaration : parameters) {
 			Type type = declaration.getType();
 			visitType(type);
 		}
-		return true;
-
 	}
 
-	@Override
-	public boolean visit(FieldDeclaration node) {
-		return visitType(node.getType());
+	private void checkReturn(MethodDeclaration node) {
+		Type returnType = node.getReturnType2();
+		visitType(returnType);
 	}
 
-	@Override
-	public boolean visit(VariableDeclarationStatement node) {
-		return visitType(node.getType());
+	private void visitType(Type node) {
+		if (node != null) {
+			ITypeBinding resolveTypeBinding = node.resolveBinding();
+
+			visitType(resolveTypeBinding);
+		}
 	}
 
-	private boolean visitType(Type node) {
-		addWrapper(node.resolveBinding());
-		return true;
+	private void visitType(ITypeBinding resolveTypeBinding) {
+		if (resolveTypeBinding != null) {
+			addIfPrimitive(resolveTypeBinding);
+		}
 	}
 
-	private void addWrapper(ITypeBinding resolveTypeBinding) {
+	private void addIfPrimitive(ITypeBinding resolveTypeBinding) {
 		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
 		if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
 			wrapperUnits.add(visitingType);

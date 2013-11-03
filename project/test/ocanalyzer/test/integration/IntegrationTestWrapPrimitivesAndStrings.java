@@ -63,7 +63,6 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 		assertTypes.add("DatabaseName");
 		assertTypes.add("HostName");
 		assertTypes.add("Port");
-		assertTypes.add("DBConfiguration");
 		String packageName = "wrapPrimitives_correct_db";
 
 		testWrappers(assertTypes, packageName);

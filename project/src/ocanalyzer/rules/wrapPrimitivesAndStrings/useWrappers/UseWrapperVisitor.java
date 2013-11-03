@@ -35,18 +35,6 @@ public class UseWrapperVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public boolean visit(MethodDeclaration node) {
-		@SuppressWarnings("unchecked")
-		List<SingleVariableDeclaration> parameters = node.parameters();
-		for (SingleVariableDeclaration declaration : parameters) {
-			Type type = declaration.getType();
-			visitType(type);
-		}
-		return true;
-
-	}
-
-	@Override
 	public boolean visit(FieldDeclaration node) {
 		visitType(node.getType());
 		return true;
