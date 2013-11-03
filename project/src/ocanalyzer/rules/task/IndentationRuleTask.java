@@ -9,9 +9,9 @@ import ocanalyzer.test.integration.mock.indentationRule.IndentiationRuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class IntentationRuleTask extends ValidationTask {
+public class IndentationRuleTask extends ValidationTask {
 
-	public IntentationRuleTask(List<CompilationUnit> unitsToAnalyze,
+	public IndentationRuleTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}

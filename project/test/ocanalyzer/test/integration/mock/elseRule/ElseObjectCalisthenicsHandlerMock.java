@@ -5,10 +5,8 @@ import java.util.List;
 import ocanalyzer.analyzer.AnalyzerFactory;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.RuleFactory;
-import ocanalyzer.rules.task.AllRulesTask;
+import ocanalyzer.rules.task.ElseRuleTask;
 
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ElseObjectCalisthenicsHandlerMock extends
@@ -21,7 +19,7 @@ public class ElseObjectCalisthenicsHandlerMock extends
 
 	@Override
 	protected void applyOnUnits(List<CompilationUnit> unitsToAnalyze) {
-		AllRulesTask task = new AllRulesTask(unitsToAnalyze, reporter);
+		ElseRuleTask task = new ElseRuleTask(unitsToAnalyze, reporter);
 		task.execute();
 	}
 }
