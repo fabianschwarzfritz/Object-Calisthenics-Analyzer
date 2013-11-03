@@ -4,10 +4,10 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.TestReporter;
 import ocanalyzer.test.integration.mock.elseRule.ElseAnalyzerFactory;
-import ocanalyzer.test.integration.mock.elseRule.ElseObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -24,10 +24,10 @@ public class IntegrationTestElse extends TestCase {
 	public void testElseRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		AnalyzerFactory factory = new ElseAnalyzerFactory();
-		ElseObjectCalisthenicsHandlerMock ocMock = new ElseObjectCalisthenicsHandlerMock(
-				factory, testReporter);
+		ObjectCalisthenicsHandler oc = new ObjectCalisthenicsHandler(factory,
+				testReporter);
 
-		ocMock.execute(null);
+		oc.execute(null);
 
 		List<Violation> violations = testReporter.getViolations();
 

@@ -4,10 +4,10 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.TestReporter;
 import ocanalyzer.test.integration.mock.indentationRule.IndentationTestAnalyzerFactory;
-import ocanalyzer.test.integration.mock.indentationRule.IndentiationObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -25,10 +25,10 @@ public class IntegrationTestIndentation extends TestCase {
 	public void testIntendiation() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		AnalyzerFactory factory = new IndentationTestAnalyzerFactory();
-		IndentiationObjectCalisthenicsHandlerMock ocMock = new IndentiationObjectCalisthenicsHandlerMock(
-				factory, testReporter);
+		ObjectCalisthenicsHandler oc = new ObjectCalisthenicsHandler(factory,
+				testReporter);
 
-		ocMock.execute(null);
+		oc.execute(null);
 
 		List<Violation> violations = testReporter.getViolations();
 
