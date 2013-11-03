@@ -2,7 +2,7 @@ package ocanalyzer.rules;
 
 import java.util.Set;
 
-import ocanalyzer.reporter.NoReporter;
+import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes.WrapPrimitivesFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -20,9 +20,10 @@ public class PrimitiveWrapperRulesFactory extends RuleFactory {
 	private WrapPrimitivesFactory ruleFactory;
 
 	public PrimitiveWrapperRulesFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Set<TypeDeclaration> types) {
+			CompilationUnit compilationUnit, RuleViolationReporter reporter,
+			Set<TypeDeclaration> types) {
 		// The fact if the class is a wrapper class or not, is never reported
-		super(unit, compilationUnit, new NoReporter());
+		super(unit, compilationUnit, reporter);
 		ruleFactory = new WrapPrimitivesFactory(unit, compilationUnit,
 				reporter, types);
 	}

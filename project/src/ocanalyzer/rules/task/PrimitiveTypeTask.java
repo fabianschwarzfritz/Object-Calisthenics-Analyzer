@@ -33,7 +33,7 @@ public class PrimitiveTypeTask extends ValidationTask implements
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new PrimitiveWrapperRulesFactory(iCompilationUnit,
-				compilationUnit, wrappers);
+				compilationUnit, reporter, wrappers);
 	}
 
 	public Set<TypeDeclaration> getWrappers() {

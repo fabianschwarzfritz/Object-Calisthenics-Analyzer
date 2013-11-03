@@ -27,7 +27,7 @@ public class WrapPrimitivesAnalyzerFactory implements AnalyzerFactory {
 
 	@Override
 	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
-		return new ProjectAnalyzerMock("wrapPrimitives.wrong.db", project, this);
+		return new ProjectAnalyzerMock("wrapPrimitives_wrong_db", project, this);
 	}
 
 	@Override
