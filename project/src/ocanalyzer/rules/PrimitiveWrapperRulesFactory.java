@@ -22,7 +22,6 @@ public class PrimitiveWrapperRulesFactory extends RuleFactory {
 	public PrimitiveWrapperRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter,
 			Set<TypeDeclaration> types) {
-		// The fact if the class is a wrapper class or not, is never reported
 		super(unit, compilationUnit, reporter);
 		ruleFactory = new WrapPrimitivesFactory(unit, compilationUnit,
 				reporter, types);

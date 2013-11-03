@@ -23,17 +23,15 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
 		List<Violation> violations = testReporter.getViolations();
 
-		/*
-		 * assertSame(1, violations.size()); Violation violation =
-		 * violations.get(0);
-		 * assertEquals("Error when validating indentation rule. Wrong resource"
-		 * , "IndentationWrong.java", violation.getResource().getName());
-		 * assertEquals
-		 * ("Error when validating indentation rule. Wring position", new
-		 * Integer(7), violation.getLine());
-		 * assertEquals("Error when validating indentation rule. Wring message",
-		 * "The given indentation violates rule 1", violation.getMessage());
-		 */
+		assertSame(1, violations.size());
+		Violation violation = violations.get(0);
+		assertEquals(
+				"Error finding a primitive/string wrapper. Wrong resource",
+				"DBConfiguration.java", violation.getResource().getName());
+		assertEquals(
+				"Error finding a primitive/string wrapper. Wrong position",
+				new Integer(3), violation.getLine());
+
 	}
 
 }
