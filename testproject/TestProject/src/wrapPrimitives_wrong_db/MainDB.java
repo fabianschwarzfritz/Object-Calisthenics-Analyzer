@@ -1,4 +1,4 @@
-package wrapPrimitives.wrong.db;
+package wrapPrimitives_wrong_db;
 
 public class MainDB {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package wrapPrimitives.wrong.birthday;
+package wrapPrimitives_wrong_birthday;
 
 public class PrimitivesWrong {
 

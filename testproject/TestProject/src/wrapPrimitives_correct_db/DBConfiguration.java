@@ -1,4 +1,4 @@
-package wrapPrimitives.correct.db;
+package wrapPrimitives_correct_db;
 
 public class DBConfiguration {
 
