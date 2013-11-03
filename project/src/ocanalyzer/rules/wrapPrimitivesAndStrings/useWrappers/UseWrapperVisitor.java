@@ -1,21 +1,24 @@
 package ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers;
 
+import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.wrapPrimitivesAndStrings.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.IMethodBinding;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ITypeBinding;
-import org.eclipse.jdt.core.dom.MethodInvocation;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
+import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 public class UseWrapperVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
 	public UseWrapperVisitor(ValidationHandler validatonHandler,
@@ -26,25 +29,42 @@ public class UseWrapperVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(TypeDeclaration type) {
-		visitingType = type;
-		return !wrapperUnits.contains(type);
+		return !isWrapper(type);
 	}
 
 	@Override
-	public void endVisit(MethodInvocation node) {
-		// TODO clean code
-		IMethodBinding resolveMethodBinding = node.resolveMethodBinding();
-		ITypeBinding[] parameterTypes = resolveMethodBinding
-				.getParameterTypes();
-		boolean hasPrimitive = false;
-		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
-		for (ITypeBinding iTypeBinding : parameterTypes) {
-			hasPrimitive = primitiveDeterminator.isPrimitive(iTypeBinding);
+	public boolean visit(MethodDeclaration node) {
+		@SuppressWarnings("unchecked")
+		List<SingleVariableDeclaration> parameters = node.parameters();
+		for (SingleVariableDeclaration declaration : parameters) {
+			Type type = declaration.getType();
+			visitType(type);
 		}
-		// Primitive has to be part of a primitive unit
-		if (hasPrimitive & !wrapperUnits.contains(visitingType)) {
+		return true;
+
+	}
+
+	@Override
+	public boolean visit(FieldDeclaration node) {
+		return visitType(node.getType());
+	}
+
+	@Override
+	public boolean visit(VariableDeclarationStatement node) {
+		return visitType(node.getType());
+	}
+
+	private boolean visitType(Type node) {
+		ITypeBinding resolveTypeBinding = node.resolveBinding();
+		PrimitiveDeterminator primitiveDeterminator = new PrimitiveDeterminator();
+		if (primitiveDeterminator.isPrimitive(resolveTypeBinding)) {
 			validationHandler.printInfo(node);
 		}
+		return true;
+	}
+
+	private boolean isWrapper(TypeDeclaration type) {
+		return wrapperUnits.contains(type);
 	}
 
 }

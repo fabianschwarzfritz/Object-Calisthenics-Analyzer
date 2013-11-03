@@ -3,7 +3,6 @@ package ocanalyzer.rules.task;
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.NoReporter;
 import ocanalyzer.reporter.RuleViolationReporter;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -25,11 +24,7 @@ public class AllRulesTask extends ValidationTask {
 		preTask = new PreValidationTask(unitsToAnalyze, reporter);
 		preTask.execute();
 
-		// This Task uses a no reporter.
-		// Getting an information that the type is a wrapper class does _not_
-		// indicate that this is a rule violation. Therefore informing the user
-		// with a reporter is not necessary.
-		primitiveTask = new PrimitiveTypeTask(unitsToAnalyze, new NoReporter());
+		primitiveTask = new PrimitiveTypeTask(unitsToAnalyze, reporter);
 		primitiveTask.execute();
 		Set<TypeDeclaration> wrappers = primitiveTask.getWrappers();
 

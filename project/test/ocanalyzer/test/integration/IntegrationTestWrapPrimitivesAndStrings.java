@@ -53,7 +53,18 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 		Set<String> assertTypes = new HashSet<String>();
 		assertTypes.add("MinimalisticMethodSignature");
 		assertTypes.add("MinimalisticConstructor");
-		String packageName = "wrapPrimitives_correct_birthday";
+		String packageName = "wrapPrimitives_correct_mimimalistic";
+
+		testWrappers(assertTypes, packageName);
+	}
+
+	public void testClassesDatabase2() throws ExecutionException {
+		Set<String> assertTypes = new HashSet<String>();
+		assertTypes.add("DatabaseName");
+		assertTypes.add("HostName");
+		assertTypes.add("Port");
+		assertTypes.add("DBConfiguration");
+		String packageName = "wrapPrimitives_correct_db";
 
 		testWrappers(assertTypes, packageName);
 	}
