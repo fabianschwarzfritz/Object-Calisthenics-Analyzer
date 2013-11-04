@@ -44,9 +44,11 @@ public class AllRulesTask extends ValidationTask {
 				unitsToAnalyze, reporter, wrappers);
 		primitiveUsageTask.execute();
 
-		PrimitiveReturnWrapperTask wrapperTask = new PrimitiveReturnWrapperTask(
-				unitsToAnalyze, reporter, wrappers);
-		wrapperTask.execute();
+		/*
+		 * PrimitiveReturnWrapperTask wrapperTask = new
+		 * PrimitiveReturnWrapperTask( unitsToAnalyze, reporter, wrappers);
+		 * wrapperTask.execute();
+		 */
 	}
 
 	private void executeCollections() {
@@ -59,9 +61,11 @@ public class AllRulesTask extends ValidationTask {
 				unitsToAnalyze, reporter, wrappers);
 		primitiveUsageTask.execute();
 
-		CollectionReturnWrapperTask wrapperTask = new CollectionReturnWrapperTask(
-				unitsToAnalyze, reporter, wrappers);
-		wrapperTask.execute();
+		/*
+		 * CollectionReturnWrapperTask wrapperTask = new
+		 * CollectionReturnWrapperTask( unitsToAnalyze, reporter, wrappers);
+		 * wrapperTask.execute();
+		 */
 	}
 
 }
