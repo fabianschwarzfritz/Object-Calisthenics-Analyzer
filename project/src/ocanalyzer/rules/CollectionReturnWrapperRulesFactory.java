@@ -4,9 +4,11 @@ import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrap.wrapperTypes.WrapTypeFactory;
+import ocanalyzer.rules.wrap.returnWrappers.ReturnWrapperFactory;
 import ocanalyzer.rules.wrapCollections.wrapperTypes.CollectionReturnViolationHandler;
+import ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes.PrimitivesWrapperClassViolationHandler;
 import ocanalyzer.rules.wrapTypes.determinator.CollectionDeterminator;
+import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,17 +20,17 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class CollectionWrapperRulesFactory extends RuleFactory {
+public class CollectionReturnWrapperRulesFactory extends RuleFactory {
 
-	private WrapTypeFactory ruleFactory;
+	private ReturnWrapperFactory ruleFactory;
 
-	public CollectionWrapperRulesFactory(ICompilationUnit unit,
+	public CollectionReturnWrapperRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
 		ValidationHandler validationHandler = new CollectionReturnViolationHandler(
 				unit, compilationUnit, reporter);
-		ruleFactory = new WrapTypeFactory(unit, compilationUnit, reporter,
+		ruleFactory = new ReturnWrapperFactory(unit, compilationUnit, reporter,
 				types, validationHandler, new CollectionDeterminator());
 	}
 
