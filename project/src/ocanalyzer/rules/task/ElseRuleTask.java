@@ -16,11 +16,6 @@ public class ElseRuleTask extends ValidationTask implements RuleFactoryProvider 
 		super(unitsToAnalyze, reporter);
 	}
 
-	@Override
-	public void execute() {
-		new UnitsValidator().validate(unitsToAnalyze, this);
-	}
-
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
 		return new ElseRuleFactory(iCompilationUnit, compilationUnit, reporter);

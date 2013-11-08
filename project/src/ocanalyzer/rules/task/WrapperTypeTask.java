@@ -27,8 +27,7 @@ public abstract class WrapperTypeTask extends ValidationTask implements
 	@Override
 	public void execute() {
 		wrappers = new HashSet<TypeDeclaration>();
-
-		new UnitsValidator().validate(unitsToAnalyze, this);
+		super.execute();
 	}
 
 	public Set<TypeDeclaration> getWrappers() {

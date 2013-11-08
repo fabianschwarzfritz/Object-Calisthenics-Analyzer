@@ -23,9 +23,4 @@ public abstract class WrapperReturnTask extends ValidationTask implements
 	public abstract RuleFactory createRuleFactory(
 			ICompilationUnit iCompilationUnit, CompilationUnit compilationUnit);
 
-	@Override
-	public void execute() {
-		new UnitsValidator().validate(unitsToAnalyze, this);
-	}
-
 }

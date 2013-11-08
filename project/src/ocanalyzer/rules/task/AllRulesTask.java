@@ -8,11 +8,15 @@ import ocanalyzer.reporter.RuleViolationReporter;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class AllRulesTask extends ValidationTask {
+public class AllRulesTask implements Executable {
+
+	protected List<CompilationUnit> unitsToAnalyze;
+	protected RuleViolationReporter reporter;
 
 	public AllRulesTask(List<CompilationUnit> unitsToAnalyze,
 			RuleViolationReporter reporter) {
-		super(unitsToAnalyze, reporter);
+		this.unitsToAnalyze = unitsToAnalyze;
+		this.reporter = reporter;
 	}
 
 	public void execute() {
