@@ -26,19 +26,10 @@ public class AllRulesTask implements Executable {
 	}
 
 	private void executePretask() {
-		ElseRuleTask elseT = new ElseRuleTask(unitsToAnalyze, reporter);
-		elseT.execute();
-
-		IndentationRuleTask indent = new IndentationRuleTask(unitsToAnalyze,
-				reporter);
-		indent.execute();
-
-		DotRuleTask dot = new DotRuleTask(unitsToAnalyze, reporter);
-		dot.execute();
-
-		InstanceVariableRuleTask instance = new InstanceVariableRuleTask(
-				unitsToAnalyze, reporter);
-		instance.execute();
+		new ElseRuleTask(unitsToAnalyze, reporter).execute();
+		new IndentationRuleTask(unitsToAnalyze, reporter).execute();
+		new DotRuleTask(unitsToAnalyze, reporter).execute();
+		new InstanceVariableRuleTask(unitsToAnalyze, reporter).execute();
 	}
 
 	private void executePrimitives() {
