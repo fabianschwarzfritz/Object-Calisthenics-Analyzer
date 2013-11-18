@@ -3,6 +3,7 @@ package ocanalyzer.rules;
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
+import ocanalyzer.rules.onedot.DotFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -14,7 +15,7 @@ public class DotRuleFactory extends RuleFactory {
 	public DotRuleFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
 		super(unit, compilationUnit, reporter);
-		dotFactory = new ElseFactory(unit, compilationUnit, reporter);
+		dotFactory = new DotFactory(unit, compilationUnit, reporter);
 	}
 
 	@Override

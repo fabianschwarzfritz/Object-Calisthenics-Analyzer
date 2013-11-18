@@ -2,6 +2,7 @@ package ocanalyzer.test;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import ocanalyzer.test.integration.IntegrationTestDot;
 import ocanalyzer.test.integration.IntegrationTestElse;
 import ocanalyzer.test.integration.IntegrationTestIndentation;
 import ocanalyzer.test.integration.IntegrationTestWrapPrimitivesAndStrings;
@@ -23,6 +24,7 @@ public class OCExampleIntegrationTest {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite("org.ocanalyzer.integration");
+		suite.addTestSuite(IntegrationTestDot.class);
 		suite.addTestSuite(IntegrationTestElse.class);
 		suite.addTestSuite(IntegrationTestIndentation.class);
 		suite.addTestSuite(IntegrationTestWrapPrimitivesAndStrings.class);
