@@ -3,7 +3,7 @@ package ocanalyzer.rules.task;
 import java.util.List;
 
 import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.ElseRuleFactory;
+import ocanalyzer.rules.DotRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -18,7 +18,7 @@ public class DotRuleTask extends ValidationTask implements RuleFactoryProvider {
 
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,
 			CompilationUnit compilationUnit) {
-		return new ElseRuleFactory(iCompilationUnit, compilationUnit, reporter);
+		return new DotRuleFactory(iCompilationUnit, compilationUnit, reporter);
 	}
 
 }

@@ -23,9 +23,6 @@ public class CollectionDeterminator extends TypeDeterminator {
 	}
 
 	public boolean determineType(ITypeBinding resolveTypeBinding) {
-		System.out.println();
-		System.out.println(resolveTypeBinding.getBinaryName());
-
 		boolean array = resolveTypeBinding.isArray();
 		boolean isCollection = isPermittedType(resolveTypeBinding,
 				WRAPPER_NAMES);

@@ -1,14 +1,12 @@
 package ocanalyzer.rules.onedot;
 
-import java.util.Set;
-
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.Expression;
+import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Statement;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
  * 
@@ -25,33 +23,40 @@ public class DotVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	private TypeDeclaration visitingType;
-	private Set<Expression> dots;
+	private ExpressionStatement current;
+	private int methodInvocationCount;
 
 	public DotVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
+		methodInvocationCount = 0;
 	}
 
-	public boolean visit(TypeDeclaration type) {
-		visitingType = type;
+	@Override
+	public boolean visit(ExpressionStatement node) {
+		current = node;
 		return true;
 	}
 
 	@Override
-	public void endVisit(MethodInvocation node) {
-		boolean containsExpression = containsExpression(node);
-		if (containsExpression) {
-			validationHandler.printInfo(node);
+	public void endVisit(ExpressionStatement expressionStatement) {
+		if (methodInvocationCount > 1) {
+			validationHandler.printInfo(expressionStatement);
 		}
 	}
 
-	private boolean containsExpression(MethodInvocation node) {
-		Expression expression = node.getExpression();
-		if (dots.contains(expression)) {
-			return false;
-		}
-		dots.add(expression);
-		return true;
+	// @Override
+	// public boolean visit(MethodInvocation node) {
+	// }
+
+	@Override
+	public void endVisit(MethodInvocation methodInvocation) {
+		methodInvocationCount++;
 	}
 
+	@Override
+	public void endVisit(FieldAccess node) {
+		methodInvocationCount++;
+	}
+	
+	
 }
