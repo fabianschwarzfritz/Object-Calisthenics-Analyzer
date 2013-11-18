@@ -1,12 +1,21 @@
 package ocanalyzer.rules.onedot;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import ocanalyzer.rules.general.ValidationHandler;
 
+import org.eclipse.jdt.core.dom.ASTMatcher;
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Statement;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
  * 
@@ -23,40 +32,62 @@ public class DotVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	private ExpressionStatement current;
-	private int methodInvocationCount;
+	private Map<Expression, Integer> expressions;
 
 	public DotVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
-		methodInvocationCount = 0;
+		expressions = new HashMap<Expression, Integer>();
 	}
 
-	@Override
-	public boolean visit(ExpressionStatement node) {
-		current = node;
+	public boolean visit(TypeDeclaration type) {
+		System.out.println("TypeDeclaration: " + type.getName());
 		return true;
 	}
 
 	@Override
-	public void endVisit(ExpressionStatement expressionStatement) {
-		if (methodInvocationCount > 1) {
-			validationHandler.printInfo(expressionStatement);
+	public boolean visit(ExpressionStatement node) {
+		Expression expression = node.getExpression();
+		addExpression(expression, 0);
+		return true;
+	}
+
+	private void addExpression(Expression pExpression, Integer pCount) {
+		Integer newCount = pCount++;
+		expressions.put(pExpression, newCount);
+		if (pExpression instanceof MethodInvocation) {
+			MethodInvocation methodInvocation = (MethodInvocation) pExpression;
+
+			Expression methodExpression = methodInvocation.getExpression();
+			addExpression(methodExpression, newCount);
+			@SuppressWarnings("unchecked")
+			List<Expression> argementExpressions = methodInvocation.arguments();
+			for (Expression expr : argementExpressions) {
+				addExpression(expr, newCount);
+			}
+
+		} else if (pExpression instanceof FieldAccess) {
+			FieldAccess fieldAccess = (FieldAccess) pExpression;
+			Expression expression2 = fieldAccess.getExpression();
+			addExpression(expression2, newCount);
 		}
 	}
 
-	// @Override
-	// public boolean visit(MethodInvocation node) {
-	// }
+	// TODO wrap colleciton and use subtree match
 
 	@Override
-	public void endVisit(MethodInvocation methodInvocation) {
-		methodInvocationCount++;
-	}
+	public void endVisit(ExpressionStatement node) {
+		Expression expression = node.getExpression();
 
-	@Override
-	public void endVisit(FieldAccess node) {
-		methodInvocationCount++;
+		for (Expression expr : expressions.keySet()) {
+			boolean subtreeMatch = expression.subtreeMatch(new ASTMatcher(),
+					expr);
+			if (subtreeMatch) {
+				Integer integer = expressions.get(expr);
+				System.err.println("DotVisitor.endVisit(): " + integer);
+				if (integer != null && integer.intValue() > 1) {
+					validationHandler.printInfo(node);
+				}
+			}
+		}
 	}
-	
-	
 }

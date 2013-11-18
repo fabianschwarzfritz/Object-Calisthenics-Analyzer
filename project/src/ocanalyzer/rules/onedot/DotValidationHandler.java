@@ -25,7 +25,7 @@ public class DotValidationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "??? Use only one dot per line!";
+		String msg = "Using more that one dot per line violates rule 4!";
 		reportError(msg, node);
 	}
 }

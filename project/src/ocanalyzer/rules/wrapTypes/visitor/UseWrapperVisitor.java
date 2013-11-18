@@ -30,7 +30,6 @@ public class UseWrapperVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(TypeDeclaration type) {
-		System.out.println("=--" + type.getName());
 		visitingType = type;
 		return !isWrapper();
 	}
