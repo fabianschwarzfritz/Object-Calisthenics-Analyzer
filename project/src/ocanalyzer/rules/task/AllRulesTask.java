@@ -33,6 +33,9 @@ public class AllRulesTask implements Executable {
 				reporter);
 		indent.execute();
 
+		DotRuleTask dot = new DotRuleTask(unitsToAnalyze, reporter);
+		dot.execute();
+
 		InstanceVariableRuleTask instance = new InstanceVariableRuleTask(
 				unitsToAnalyze, reporter);
 		instance.execute();
