@@ -3,6 +3,7 @@ package ocanalyzer.rules.onedot;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.Statement;
 
 /**
@@ -23,4 +24,10 @@ public class DotVisitor extends ASTVisitor {
 	public DotVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
 	}
+
+	@Override
+	public void endVisit(MethodInvocation node) {
+		validationHandler.printInfo(node);
+	}
+
 }
