@@ -1,4 +1,4 @@
-package ocanalyzer.analyzer.factory;
+package ocanalyzer.analyzer.factory.impl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.AST;

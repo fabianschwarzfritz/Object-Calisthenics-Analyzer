@@ -1,6 +1,9 @@
-package ocanalyzer.reporter;
+package ocanalyzer.reporter.impl;
 
 import java.io.PrintStream;
+
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.Violation;
 
 /**
  * This class is used to display information about rule violation on a given
@@ -10,7 +13,7 @@ import java.io.PrintStream;
  * 
  */
 
-public class ConsoleReporter implements RuleViolationReporter {
+public class ConsoleReporter implements Reporter {
 
 	private PrintStream stream;
 

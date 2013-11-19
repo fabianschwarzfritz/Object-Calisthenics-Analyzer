@@ -1,9 +1,9 @@
-package ocanalyzer.rules.task;
+package ocanalyzer.tasks;
 
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -11,10 +11,10 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class AllRulesTask implements Executable {
 
 	protected List<CompilationUnit> unitsToAnalyze;
-	protected RuleViolationReporter reporter;
+	protected Reporter reporter;
 
 	public AllRulesTask(List<CompilationUnit> unitsToAnalyze,
-			RuleViolationReporter reporter) {
+			Reporter reporter) {
 		this.unitsToAnalyze = unitsToAnalyze;
 		this.reporter = reporter;
 	}

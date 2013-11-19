@@ -1,8 +1,8 @@
-package ocanalyzer.rules.task;
+package ocanalyzer.tasks;
 
 import java.util.List;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.DotRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class DotRuleTask extends ValidationTask implements RuleFactoryProvider {
 
 	public DotRuleTask(List<CompilationUnit> unitsToAnalyze,
-			RuleViolationReporter reporter) {
+			Reporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

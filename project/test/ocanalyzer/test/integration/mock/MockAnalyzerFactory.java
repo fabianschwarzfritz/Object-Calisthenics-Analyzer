@@ -1,17 +1,17 @@
 package ocanalyzer.test.integration.mock;
 
-import ocanalyzer.analyzer.AnalyzerFactory;
-import ocanalyzer.analyzer.CompilationUnitAnalyzer;
-import ocanalyzer.analyzer.PackageAnalyzer;
-import ocanalyzer.analyzer.ProjectAnalyzer;
-import ocanalyzer.analyzer.WorkspaceAnalyzer;
+import ocanalyzer.analyzer.extractor.CompilationUnitExtractor;
+import ocanalyzer.analyzer.extractor.PackageExtractor;
+import ocanalyzer.analyzer.extractor.ProjectExtractor;
+import ocanalyzer.analyzer.extractor.WorkspaceExtractor;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
-public class MockAnalyzerFactory implements AnalyzerFactory {
+public class MockAnalyzerFactory implements ExtractorFactory {
 
 	private String packageName;
 
@@ -20,23 +20,23 @@ public class MockAnalyzerFactory implements AnalyzerFactory {
 	}
 
 	@Override
-	public CompilationUnitAnalyzer createCompilationUnitAnalyzer(
+	public CompilationUnitExtractor createCompilationUnitAnalyzer(
 			ICompilationUnit compilationUni) {
-		return new CompilationUnitAnalyzer(compilationUni);
+		return new CompilationUnitExtractor(compilationUni);
 	}
 
 	@Override
-	public PackageAnalyzer createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageAnalyzer(fragment, this);
+	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
+		return new PackageExtractor(fragment, this);
 	}
 
 	@Override
-	public ProjectAnalyzer createProjectAnalyzer(IProject project) {
+	public ProjectExtractor createProjectAnalyzer(IProject project) {
 		return new ProjectAnalyzerMock(packageName, project, this);
 	}
 
 	@Override
-	public WorkspaceAnalyzer createWorkspaceAnalyzer(IWorkspace workspace) {
-		return new WorkspaceAnalyzer(workspace, this);
+	public WorkspaceExtractor createWorkspaceAnalyzer(IWorkspace workspace) {
+		return new WorkspaceExtractor(workspace, this);
 	}
 }

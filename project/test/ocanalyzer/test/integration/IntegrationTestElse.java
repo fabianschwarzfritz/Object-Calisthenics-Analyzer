@@ -3,7 +3,7 @@ package ocanalyzer.test.integration;
 import java.util.List;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
 import ocanalyzer.test.integration.mock.TestReporter;
@@ -23,7 +23,7 @@ public class IntegrationTestElse extends TestCase {
 
 	public void testElseRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new MockAnalyzerFactory("elseRule");
+		ExtractorFactory factory = new MockAnalyzerFactory("elseRule");
 		ElseObjectCalisthenicsHandlerMock ocMock = new ElseObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 

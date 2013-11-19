@@ -2,17 +2,17 @@ package ocanalyzer.test.integration.mock.elseRule;
 
 import java.util.List;
 
-import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
-import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.task.ElseRuleTask;
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.tasks.ElseRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ElseObjectCalisthenicsHandlerMock extends ObjectCalisthenicsHandler {
 
-	public ElseObjectCalisthenicsHandlerMock(AnalyzerFactory factory,
-			RuleViolationReporter reporter) {
+	public ElseObjectCalisthenicsHandlerMock(ExtractorFactory factory,
+			Reporter reporter) {
 		super(factory, reporter);
 	}
 

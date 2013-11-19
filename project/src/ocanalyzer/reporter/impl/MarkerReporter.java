@@ -1,4 +1,7 @@
-package ocanalyzer.reporter;
+package ocanalyzer.reporter.impl;
+
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -11,7 +14,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class MarkerReporter implements RuleViolationReporter {
+public class MarkerReporter implements Reporter {
 
 	@Override
 	public void reportError(Violation violation) {

@@ -1,9 +1,9 @@
-package ocanalyzer.rules.task;
+package ocanalyzer.tasks;
 
 import java.util.HashSet;
 import java.util.List;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.PrimitiveWrapperRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -14,7 +14,7 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class PrimitiveTypeTask extends WrapperTypeTask {
 
 	public PrimitiveTypeTask(List<CompilationUnit> unitsToAnalyze,
-			RuleViolationReporter reporter) {
+			Reporter reporter) {
 		super(unitsToAnalyze, reporter);
 		wrappers = new HashSet<TypeDeclaration>();
 	}

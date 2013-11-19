@@ -3,14 +3,14 @@ package objectcalisthenicsvalidator.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
 public class ViewContentProvider implements IStructuredContentProvider,
-		RuleViolationReporter {
+		Reporter {
 
 	private List<Violation> violations;
 

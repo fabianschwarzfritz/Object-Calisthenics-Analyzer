@@ -1,6 +1,6 @@
 package ocanalyzer.rules.wrap.primitives;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class PrimitivesWrapperClassViolationHandler extends ValidationHandler {
 
 	public PrimitivesWrapperClassViolationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

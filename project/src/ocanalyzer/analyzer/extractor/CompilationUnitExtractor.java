@@ -1,9 +1,10 @@
-package ocanalyzer.analyzer;
+package ocanalyzer.analyzer.extractor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.analyzer.factory.ASTNodeFactory;
+import ocanalyzer.analyzer.CompilationUnitsExtractable;
+import ocanalyzer.analyzer.factory.impl.ASTNodeFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,11 +19,11 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class CompilationUnitAnalyzer implements CompilationUnitsExtractable {
+public class CompilationUnitExtractor implements CompilationUnitsExtractable {
 
 	protected ICompilationUnit unit;
 
-	public CompilationUnitAnalyzer(ICompilationUnit unit) {
+	public CompilationUnitExtractor(ICompilationUnit unit) {
 		this.unit = unit;
 	}
 

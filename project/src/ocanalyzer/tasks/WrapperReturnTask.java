@@ -1,22 +1,22 @@
-package ocanalyzer.rules.task;
+package ocanalyzer.tasks;
 
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public abstract class WrapperUsageTask extends ValidationTask implements
+public abstract class WrapperReturnTask extends ValidationTask implements
 		RuleFactoryProvider {
 
 	protected Set<TypeDeclaration> wrappers;
 
-	public WrapperUsageTask(List<CompilationUnit> unitsToAnalyze,
-			RuleViolationReporter reporter) {
+	public WrapperReturnTask(List<CompilationUnit> unitsToAnalyze,
+			Reporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

@@ -3,7 +3,7 @@ package ocanalyzer.test.integration;
 import java.util.List;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
 import ocanalyzer.test.integration.mock.TestReporter;
@@ -15,7 +15,7 @@ public class IntegrationTestDot extends TestCase {
 
 	public void testDotRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new MockAnalyzerFactory("dotRule");
+		ExtractorFactory factory = new MockAnalyzerFactory("dotRule");
 		DotObjectCalisthenicsHandlerMock ocMock = new DotObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 

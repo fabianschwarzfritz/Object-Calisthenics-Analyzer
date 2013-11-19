@@ -2,14 +2,14 @@ package ocanalyzer.handlers;
 
 import java.util.List;
 
-import ocanalyzer.analyzer.AnalyzerFactory;
-import ocanalyzer.analyzer.AnalyzerFactoryImpl;
-import ocanalyzer.analyzer.WorkspaceAnalyzer;
-import ocanalyzer.reporter.ConsoleReporter;
-import ocanalyzer.reporter.DelegateReporter;
-import ocanalyzer.reporter.MarkerReporter;
-import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.task.AllRulesTask;
+import ocanalyzer.analyzer.extractor.WorkspaceExtractor;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.analyzer.factory.impl.AnalyzerFactoryImpl;
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.impl.ConsoleReporter;
+import ocanalyzer.reporter.impl.DelegateReporter;
+import ocanalyzer.reporter.impl.MarkerReporter;
+import ocanalyzer.tasks.AllRulesTask;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -26,7 +26,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * plugin. It starts prepares all necessary steps to start the analyzation of
  * the rules.
  * 
- * Therefore it set up a {@link WorkspaceAnalyzer} in order to start the
+ * Therefore it set up a {@link WorkspaceExtractor} in order to start the
  * analysis of the rules on the plugin's workspace.
  * 
  * Furthermore it sets up a {@link ConsoleReporter} and a {@link MarkerReporter}
@@ -41,9 +41,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ObjectCalisthenicsHandler extends AbstractHandler {
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
-	protected AnalyzerFactory factory;
-	protected RuleViolationReporter reporter;
-	protected WorkspaceAnalyzer workspaceAnalyzer;
+	protected ExtractorFactory factory;
+	protected Reporter reporter;
+	protected WorkspaceExtractor workspaceAnalyzer;
 
 	public ObjectCalisthenicsHandler() {
 		factory = new AnalyzerFactoryImpl();
@@ -53,13 +53,13 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 		reporter = delegateReporter;
 	}
 
-	public ObjectCalisthenicsHandler(RuleViolationReporter reporter) {
+	public ObjectCalisthenicsHandler(Reporter reporter) {
 		this.reporter = reporter;
 		factory = new AnalyzerFactoryImpl();
 	}
 
-	public ObjectCalisthenicsHandler(AnalyzerFactory factory,
-			RuleViolationReporter reporter) {
+	public ObjectCalisthenicsHandler(ExtractorFactory factory,
+			Reporter reporter) {
 		this.factory = factory;
 		this.reporter = reporter;
 	}

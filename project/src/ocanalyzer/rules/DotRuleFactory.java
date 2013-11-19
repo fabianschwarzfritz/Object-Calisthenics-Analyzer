@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
 import ocanalyzer.rules.onedot.DotFactory;
@@ -13,7 +13,7 @@ public class DotRuleFactory extends RuleFactory {
 	private RuleValidatorFactory dotFactory;
 
 	public DotRuleFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 		dotFactory = new DotFactory(unit, compilationUnit, reporter);
 	}

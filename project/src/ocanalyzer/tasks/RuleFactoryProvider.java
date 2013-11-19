@@ -1,4 +1,4 @@
-package ocanalyzer.rules.task;
+package ocanalyzer.tasks;
 
 import ocanalyzer.rules.RuleFactory;
 

@@ -2,17 +2,17 @@ package ocanalyzer.test.integration.mock.dotRule;
 
 import java.util.List;
 
-import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
-import ocanalyzer.reporter.RuleViolationReporter;
-import ocanalyzer.rules.task.DotRuleTask;
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.tasks.DotRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class DotObjectCalisthenicsHandlerMock extends ObjectCalisthenicsHandler {
 
-	public DotObjectCalisthenicsHandlerMock(AnalyzerFactory factory,
-			RuleViolationReporter reporter) {
+	public DotObjectCalisthenicsHandlerMock(ExtractorFactory factory,
+			Reporter reporter) {
 		super(factory, reporter);
 	}
 

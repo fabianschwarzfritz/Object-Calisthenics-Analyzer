@@ -3,7 +3,7 @@ package ocanalyzer.rules;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.indentation.IndentationFactory;
 import ocanalyzer.rules.instanceVariable.InstanceVariableFactory;
@@ -17,7 +17,7 @@ public class PreRulesFactory extends RuleFactory {
 	private List<RuleValidatorFactory> ruleFactories;
 
 	public PreRulesFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 		ruleFactories = new ArrayList<RuleValidatorFactory>();
 		ruleFactories.add(new ElseFactory(unit, compilationUnit, reporter));

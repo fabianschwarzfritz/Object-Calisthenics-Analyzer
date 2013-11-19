@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.AnalyzerFactory;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.reporter.Violation;
 import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
 import ocanalyzer.test.integration.mock.TestReporter;
@@ -20,7 +20,7 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
 	public void testWrapperClassesDatabase() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new MockAnalyzerFactory(
+		ExtractorFactory factory = new MockAnalyzerFactory(
 				"wrapPrimitives_wrong_db");
 		WrapPrimitivesObjectCalisthenicsHandlerMock ocMock = new WrapPrimitivesObjectCalisthenicsHandlerMock(
 				factory, testReporter);
@@ -71,7 +71,7 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 	private void testWrappers(Set<String> assertTypes, String packageName)
 			throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
-		AnalyzerFactory factory = new MockAnalyzerFactory(packageName);
+		ExtractorFactory factory = new MockAnalyzerFactory(packageName);
 		WrapPrimitivesObjectCalisthenicsHandlerMock ocMock = new WrapPrimitivesObjectCalisthenicsHandlerMock(
 				factory, testReporter);
 

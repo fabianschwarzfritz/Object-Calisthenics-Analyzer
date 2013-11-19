@@ -1,6 +1,6 @@
 package ocanalyzer.rules.wrap.collections;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class CollectionReturnViolationHandler extends ValidationHandler {
 
 	public CollectionReturnViolationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

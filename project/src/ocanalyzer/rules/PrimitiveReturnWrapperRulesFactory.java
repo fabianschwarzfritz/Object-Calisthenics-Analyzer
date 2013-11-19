@@ -2,7 +2,7 @@ package ocanalyzer.rules;
 
 import java.util.Set;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.wrap.determinator.PrimitiveDeterminator;
 import ocanalyzer.rules.wrap.general.ReturnWrapperFactory;
@@ -23,7 +23,7 @@ public class PrimitiveReturnWrapperRulesFactory extends RuleFactory {
 	private ReturnWrapperFactory ruleFactory;
 
 	public PrimitiveReturnWrapperRulesFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter,
+			CompilationUnit compilationUnit, Reporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
 		ValidationHandler validationHandler = new PrimitivesReturnViolationHandler(

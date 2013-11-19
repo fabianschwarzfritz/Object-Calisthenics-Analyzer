@@ -3,9 +3,9 @@ package objectcalisthenicsvalidator.views;
 import objectcalisthenicsvalidator.views.actions.OpenViolation;
 import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
-import ocanalyzer.reporter.ConsoleReporter;
-import ocanalyzer.reporter.DelegateReporter;
-import ocanalyzer.reporter.MarkerReporter;
+import ocanalyzer.reporter.impl.ConsoleReporter;
+import ocanalyzer.reporter.impl.DelegateReporter;
+import ocanalyzer.reporter.impl.MarkerReporter;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;

@@ -1,7 +1,10 @@
-package ocanalyzer.analyzer;
+package ocanalyzer.analyzer.extractor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ocanalyzer.analyzer.CompilationUnitsExtractable;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -10,14 +13,14 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class ProjectAnalyzer implements CompilationUnitsExtractable {
+public class ProjectExtractor implements CompilationUnitsExtractable {
 
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
 	private IProject project;
-	protected AnalyzerFactory factory;
+	protected ExtractorFactory factory;
 
-	public ProjectAnalyzer(IProject project, AnalyzerFactory factory) {
+	public ProjectExtractor(IProject project, ExtractorFactory factory) {
 		this.project = project;
 		this.factory = factory;
 	}
@@ -29,7 +32,7 @@ public class ProjectAnalyzer implements CompilationUnitsExtractable {
 				IPackageFragment[] packages = JavaCore.create(project)
 						.getPackageFragments();
 
-				List<PackageAnalyzer> createPackageAnalyzers = createPackageAnalyzers(packages);
+				List<PackageExtractor> createPackageAnalyzers = createPackageAnalyzers(packages);
 				extract(resultUnits, createPackageAnalyzers);
 			}
 		} catch (JavaModelException e) {
@@ -40,19 +43,19 @@ public class ProjectAnalyzer implements CompilationUnitsExtractable {
 	}
 
 	private void extract(List<CompilationUnit> resultUnits,
-			List<PackageAnalyzer> createPackageAnalyzers) {
-		for (PackageAnalyzer packageAnalyzer : createPackageAnalyzers) {
+			List<PackageExtractor> createPackageAnalyzers) {
+		for (PackageExtractor packageAnalyzer : createPackageAnalyzers) {
 			List<CompilationUnit> packageUnits = packageAnalyzer
 					.extractCompilationUnits();
 			resultUnits.addAll(packageUnits);
 		}
 	}
 
-	protected List<PackageAnalyzer> createPackageAnalyzers(
+	protected List<PackageExtractor> createPackageAnalyzers(
 			IPackageFragment[] packages) {
-		List<PackageAnalyzer> analyzers = new ArrayList<PackageAnalyzer>();
+		List<PackageExtractor> analyzers = new ArrayList<PackageExtractor>();
 		for (IPackageFragment mypackage : packages) {
-			PackageAnalyzer packageAnalyzer = factory
+			PackageExtractor packageAnalyzer = factory
 					.createPackageAnalyzer(mypackage);
 			analyzers.add(packageAnalyzer);
 		}

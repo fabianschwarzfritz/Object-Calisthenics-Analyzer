@@ -1,7 +1,10 @@
-package ocanalyzer.analyzer;
+package ocanalyzer.analyzer.extractor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ocanalyzer.analyzer.CompilationUnitsExtractable;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -9,12 +12,12 @@ import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class PackageAnalyzer implements CompilationUnitsExtractable {
+public class PackageExtractor implements CompilationUnitsExtractable {
 
-	private AnalyzerFactory factory;
+	private ExtractorFactory factory;
 	private IPackageFragment packageFragement;
 
-	public PackageAnalyzer(IPackageFragment mypackage, AnalyzerFactory factory) {
+	public PackageExtractor(IPackageFragment mypackage, ExtractorFactory factory) {
 		this.packageFragement = mypackage;
 		this.factory = factory;
 	}
@@ -35,7 +38,7 @@ public class PackageAnalyzer implements CompilationUnitsExtractable {
 	private List<CompilationUnit> extractUnits() throws JavaModelException {
 		List<CompilationUnit> result = new ArrayList<CompilationUnit>();
 		for (ICompilationUnit unit : packageFragement.getCompilationUnits()) {
-			CompilationUnitAnalyzer handler = factory
+			CompilationUnitExtractor handler = factory
 					.createCompilationUnitAnalyzer(unit);
 			result.addAll(handler.extractCompilationUnits());
 		}

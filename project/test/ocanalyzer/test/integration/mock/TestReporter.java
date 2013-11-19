@@ -3,10 +3,10 @@ package ocanalyzer.test.integration.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.Violation;
 
-public class TestReporter implements RuleViolationReporter {
+public class TestReporter implements Reporter {
 
 	private List<Violation> violations;
 

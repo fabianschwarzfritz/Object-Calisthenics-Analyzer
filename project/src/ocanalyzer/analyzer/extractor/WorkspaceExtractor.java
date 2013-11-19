@@ -1,7 +1,10 @@
-package ocanalyzer.analyzer;
+package ocanalyzer.analyzer.extractor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ocanalyzer.analyzer.CompilationUnitsExtractable;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
@@ -9,12 +12,12 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class WorkspaceAnalyzer implements CompilationUnitsExtractable {
+public class WorkspaceExtractor implements CompilationUnitsExtractable {
 
-	private AnalyzerFactory factory;
+	private ExtractorFactory factory;
 	private IWorkspace workspace;
 
-	public WorkspaceAnalyzer(IWorkspace workspace, AnalyzerFactory factory) {
+	public WorkspaceExtractor(IWorkspace workspace, ExtractorFactory factory) {
 		this.workspace = workspace;
 		this.factory = factory;
 	}
@@ -36,7 +39,7 @@ public class WorkspaceAnalyzer implements CompilationUnitsExtractable {
 
 	public List<CompilationUnit> getUnitsFrom(IProject project)
 			throws JavaModelException {
-		ProjectAnalyzer projectAnalyzer = factory
+		ProjectExtractor projectAnalyzer = factory
 				.createProjectAnalyzer(project);
 		List<CompilationUnit> units = projectAnalyzer.extractCompilationUnits();
 		return units;

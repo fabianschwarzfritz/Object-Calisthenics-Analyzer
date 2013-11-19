@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.RuleViolationReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.noelse.ElseFactory;
 
@@ -12,7 +12,7 @@ public class InstanceVariableRuleFactory extends RuleFactory {
 	private RuleValidatorFactory instanceFactory;
 
 	public InstanceVariableRuleFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, RuleViolationReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 		instanceFactory = new ElseFactory(unit, compilationUnit, reporter);
 	}

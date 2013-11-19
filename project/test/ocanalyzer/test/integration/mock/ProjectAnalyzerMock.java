@@ -3,31 +3,31 @@ package ocanalyzer.test.integration.mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.analyzer.AnalyzerFactory;
-import ocanalyzer.analyzer.PackageAnalyzer;
-import ocanalyzer.analyzer.ProjectAnalyzer;
+import ocanalyzer.analyzer.extractor.PackageExtractor;
+import ocanalyzer.analyzer.extractor.ProjectExtractor;
+import ocanalyzer.analyzer.factory.ExtractorFactory;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.IPackageFragment;
 
-public class ProjectAnalyzerMock extends ProjectAnalyzer {
+public class ProjectAnalyzerMock extends ProjectExtractor {
 
 	private String searchedPackageName;
 
 	public ProjectAnalyzerMock(String packageName, IProject project,
-			AnalyzerFactory factory) {
+			ExtractorFactory factory) {
 		super(project, factory);
 		this.searchedPackageName = packageName;
 	}
 
-	protected List<PackageAnalyzer> createPackageAnalyzers(
+	protected List<PackageExtractor> createPackageAnalyzers(
 			IPackageFragment[] packages) {
-		List<PackageAnalyzer> analyzers = new ArrayList<PackageAnalyzer>();
+		List<PackageExtractor> analyzers = new ArrayList<PackageExtractor>();
 		for (IPackageFragment mypackage : packages) {
 			IResource resource = mypackage.getResource();
 			if (isValidPackage(resource)) {
-				PackageAnalyzer packageAnalyzer = factory
+				PackageExtractor packageAnalyzer = factory
 						.createPackageAnalyzer(mypackage);
 				analyzers.add(packageAnalyzer);
 			}

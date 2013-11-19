@@ -13,7 +13,7 @@ import org.eclipse.core.resources.IResource;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public interface RuleViolationReporter {
+public interface Reporter {
 
 	/**
 	 * Reports a given {@link Violation}.
