@@ -1,12 +1,12 @@
-package ocanalyzer.rules.wrap.useWrappers;
+package ocanalyzer.rules.wrap.general;
 
 import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrapTypes.determinator.TypeDeterminator;
-import ocanalyzer.rules.wrapTypes.visitor.UseWrapperVisitor;
+import ocanalyzer.rules.wrap.UseWrapperVisitor;
+import ocanalyzer.rules.wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;

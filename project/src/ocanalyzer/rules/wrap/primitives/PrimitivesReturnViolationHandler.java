@@ -1,4 +1,4 @@
-package ocanalyzer.rules.wrapPrimitivesAndStrings.wrapperTypes;
+package ocanalyzer.rules.wrap.primitives;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;

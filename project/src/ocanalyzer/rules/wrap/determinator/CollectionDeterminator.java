@@ -1,4 +1,4 @@
-package ocanalyzer.rules.wrapTypes.determinator;
+package ocanalyzer.rules.wrap.determinator;
 
 import java.util.HashSet;
 import java.util.Set;

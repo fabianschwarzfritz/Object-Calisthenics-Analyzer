@@ -1,11 +1,11 @@
-package ocanalyzer.rules.wrapTypes.visitor;
+package ocanalyzer.rules.wrap;
 
 import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
-import ocanalyzer.rules.wrapTypes.determinator.TypeDeterminator;
+import ocanalyzer.rules.wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ITypeBinding;

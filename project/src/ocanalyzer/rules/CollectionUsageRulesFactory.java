@@ -4,12 +4,12 @@ import java.util.Set;
 
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrap.useWrappers.UseWrapperFactory;
-import ocanalyzer.rules.wrapCollections.useWrappers.UseCollectionViolationHandler;
-import ocanalyzer.rules.wrapCollections.wrapperTypes.CollectionWrapperClassViolationHandler;
-import ocanalyzer.rules.wrapPrimitivesAndStrings.useWrappers.UsePrimitivesViolationHandler;
-import ocanalyzer.rules.wrapTypes.determinator.CollectionDeterminator;
-import ocanalyzer.rules.wrapTypes.determinator.PrimitiveDeterminator;
+import ocanalyzer.rules.wrap.collections.CollectionWrapperClassViolationHandler;
+import ocanalyzer.rules.wrap.collections.UseCollectionViolationHandler;
+import ocanalyzer.rules.wrap.determinator.CollectionDeterminator;
+import ocanalyzer.rules.wrap.determinator.PrimitiveDeterminator;
+import ocanalyzer.rules.wrap.general.UseWrapperFactory;
+import ocanalyzer.rules.wrap.primitives.UsePrimitivesViolationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
