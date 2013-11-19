@@ -23,7 +23,7 @@ public class ViewLabelProvider extends LabelProvider implements
 		if (index == 0) {
 			return violation.getLine().toString();
 		} else if (index == 1) {
-			return violation.getResource().toString();
+			return violation.getResource().getName().toString();
 		} else if (index == 2) {
 			return violation.getMessage().toString();
 		}
