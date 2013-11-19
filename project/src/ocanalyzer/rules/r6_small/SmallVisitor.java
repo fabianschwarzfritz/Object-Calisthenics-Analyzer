@@ -33,24 +33,24 @@ public class SmallVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public void endVisit(ExpressionStatement node) {
-		Integer value = expressionStatements.get(node);
-		System.err.println("expressionastaksljdf");
-		expressionStatements.put(current, ++value);
-	}
-
-	@Override
 	public boolean visit(TypeDeclaration node) {
 		current = node;
-		expressionStatements.put(node, 0);
+		expressionStatements.put(current, 0);
 		return true;
 	}
 
 	@Override
 	public void endVisit(TypeDeclaration node) {
-		if (expressionStatements.get(node) < 50) {
+		if (expressionStatements.get(node) > 50) {
 			validationHandler.printInfo(node);
 		}
+	}
+
+	@Override
+	public void endVisit(ExpressionStatement node) {
+		Integer value = expressionStatements.get(current);
+		System.err.println("expressionastaksljdf");
+		expressionStatements.put(current, ++value);
 	}
 
 }
