@@ -13,8 +13,7 @@ public class AllRulesTask implements Executable {
 	private List<CompilationUnit> unitsToAnalyze;
 	private Reporter reporter;
 
-	public AllRulesTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+	public AllRulesTask(List<CompilationUnit> unitsToAnalyze, Reporter reporter) {
 		this.unitsToAnalyze = unitsToAnalyze;
 		this.reporter = reporter;
 	}
@@ -30,6 +29,7 @@ public class AllRulesTask implements Executable {
 		new IndentationRuleTask(unitsToAnalyze, reporter).execute();
 		new DotRuleTask(unitsToAnalyze, reporter).execute();
 		new InstanceVariableRuleTask(unitsToAnalyze, reporter).execute();
+		new SmallRuleTask(unitsToAnalyze, reporter).execute();
 	}
 
 	private void executePrimitives() {

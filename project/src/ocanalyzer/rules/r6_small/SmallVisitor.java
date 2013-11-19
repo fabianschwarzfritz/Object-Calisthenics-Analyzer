@@ -35,6 +35,7 @@ public class SmallVisitor extends ASTVisitor {
 	@Override
 	public void endVisit(ExpressionStatement node) {
 		Integer value = expressionStatements.get(node);
+		System.err.println("expressionastaksljdf");
 		expressionStatements.put(current, ++value);
 	}
 

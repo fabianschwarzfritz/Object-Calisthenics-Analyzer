@@ -8,6 +8,7 @@ import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.instanceVariable.InstanceVariableFactory;
 import ocanalyzer.rules.r1_indentation.IndentationFactory;
 import ocanalyzer.rules.r2_noelse.ElseFactory;
+import ocanalyzer.rules.r6_small.SmallFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
