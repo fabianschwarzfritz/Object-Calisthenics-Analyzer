@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public abstract class WrapperTypeTask extends ValidationTask implements
+abstract class WrapperTypeTask extends ValidationTask implements
 		RuleFactoryProvider {
 
 	protected Set<TypeDeclaration> wrappers;

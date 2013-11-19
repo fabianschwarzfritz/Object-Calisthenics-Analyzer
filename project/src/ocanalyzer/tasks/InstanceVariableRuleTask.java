@@ -9,7 +9,7 @@ import ocanalyzer.rules.RuleFactory;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class InstanceVariableRuleTask extends ValidationTask implements
+class InstanceVariableRuleTask extends ValidationTask implements
 		RuleFactoryProvider {
 
 	public InstanceVariableRuleTask(List<CompilationUnit> unitsToAnalyze,

@@ -11,12 +11,12 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class CollectionReturnWrapperTask extends WrapperReturnTask {
+class CollectionReturnWrapperTask extends WrapperReturnTask {
 
 	public CollectionReturnWrapperTask(List<CompilationUnit> unitsToAnalyze,
 			Reporter reporter, Set<TypeDeclaration> wrappers) {
 		super(unitsToAnalyze, reporter);
-		this.wrappers = wrappers;
+		super.wrappers = wrappers;
 	}
 
 	public RuleFactory createRuleFactory(ICompilationUnit iCompilationUnit,

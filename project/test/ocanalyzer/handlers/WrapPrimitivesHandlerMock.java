@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.analyzer.factory.ExtractorFactory;
-import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.tasks.PrimitiveTypeTask;
 
@@ -12,7 +11,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class WrapPrimitivesHandlerMock extends
-		ObjectCalisthenicsHandler {
+		ObjectCalisthenics {
 
 	private Set<TypeDeclaration> wrappers;
 

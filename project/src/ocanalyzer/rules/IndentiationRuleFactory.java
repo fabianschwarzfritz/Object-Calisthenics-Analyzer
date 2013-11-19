@@ -2,7 +2,7 @@ package ocanalyzer.rules;
 
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
-import ocanalyzer.rules.indentation.IndentationFactory;
+import ocanalyzer.rules.r1_indentation.IndentationFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

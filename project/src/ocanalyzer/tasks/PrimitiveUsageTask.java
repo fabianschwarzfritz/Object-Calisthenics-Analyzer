@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveUsageTask extends WrapperUsageTask {
+class PrimitiveUsageTask extends WrapperUsageTask {
 
 	private Set<TypeDeclaration> wrappers;
 

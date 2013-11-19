@@ -5,9 +5,9 @@ import java.util.List;
 
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
-import ocanalyzer.rules.indentation.IndentationFactory;
 import ocanalyzer.rules.instanceVariable.InstanceVariableFactory;
-import ocanalyzer.rules.noelse.ElseFactory;
+import ocanalyzer.rules.r1_indentation.IndentationFactory;
+import ocanalyzer.rules.r2_noelse.ElseFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

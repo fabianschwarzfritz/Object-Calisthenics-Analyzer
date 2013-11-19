@@ -10,10 +10,10 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public abstract class WrapperUsageTask extends ValidationTask implements
+abstract class WrapperUsageTask extends ValidationTask implements
 		RuleFactoryProvider {
 
-	protected Set<TypeDeclaration> wrappers;
+	Set<TypeDeclaration> wrappers;
 
 	public WrapperUsageTask(List<CompilationUnit> unitsToAnalyze,
 			Reporter reporter) {

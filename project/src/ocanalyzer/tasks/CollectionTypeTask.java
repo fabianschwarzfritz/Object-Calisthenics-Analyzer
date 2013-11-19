@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class CollectionTypeTask extends WrapperTypeTask {
+class CollectionTypeTask extends WrapperTypeTask {
 
 	public CollectionTypeTask(List<CompilationUnit> unitsToAnalyze,
 			Reporter reporter) {

@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class PrimitiveReturnWrapperTask extends WrapperReturnTask {
+class PrimitiveReturnWrapperTask extends WrapperReturnTask {
 
 	public PrimitiveReturnWrapperTask(List<CompilationUnit> unitsToAnalyze,
 			Reporter reporter, Set<TypeDeclaration> wrappers) {

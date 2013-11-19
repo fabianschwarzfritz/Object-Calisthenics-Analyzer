@@ -4,9 +4,9 @@ import java.util.Set;
 
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.wrap.determinator.PrimitiveDeterminator;
-import ocanalyzer.rules.wrap.general.ReturnWrapperFactory;
-import ocanalyzer.rules.wrap.primitives.PrimitivesReturnViolationHandler;
+import ocanalyzer.rules.r3_8_wrap.determinator.PrimitiveDeterminator;
+import ocanalyzer.rules.r3_8_wrap.general.ReturnWrapperFactory;
+import ocanalyzer.rules.r3_8_wrap.primitives.PrimitivesReturnViolationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

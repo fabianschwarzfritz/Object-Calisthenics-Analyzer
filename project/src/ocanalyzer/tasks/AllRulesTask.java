@@ -10,8 +10,8 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class AllRulesTask implements Executable {
 
-	protected List<CompilationUnit> unitsToAnalyze;
-	protected Reporter reporter;
+	private List<CompilationUnit> unitsToAnalyze;
+	private Reporter reporter;
 
 	public AllRulesTask(List<CompilationUnit> unitsToAnalyze,
 			Reporter reporter) {

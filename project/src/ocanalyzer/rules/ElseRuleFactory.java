@@ -2,7 +2,7 @@ package ocanalyzer.rules;
 
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
-import ocanalyzer.rules.noelse.ElseFactory;
+import ocanalyzer.rules.r2_noelse.ElseFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

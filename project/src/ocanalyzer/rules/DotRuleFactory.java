@@ -2,8 +2,7 @@ package ocanalyzer.rules;
 
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
-import ocanalyzer.rules.noelse.ElseFactory;
-import ocanalyzer.rules.onedot.DotFactory;
+import ocanalyzer.rules.r4_onedot.DotFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

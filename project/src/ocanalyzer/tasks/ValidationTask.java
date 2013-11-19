@@ -9,9 +9,9 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.ITypeRoot;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public abstract class ValidationTask implements Executable {
+abstract class ValidationTask implements Executable {
 
-	protected List<CompilationUnit> unitsToAnalyze;
+	private List<CompilationUnit> unitsToAnalyze;
 	protected Reporter reporter;
 
 	public ValidationTask(List<CompilationUnit> unitsToAnalyze,
@@ -20,7 +20,7 @@ public abstract class ValidationTask implements Executable {
 		this.unitsToAnalyze = unitsToAnalyze;
 		this.reporter = reporter;
 	}
-	
+
 	@Override
 	public void execute() {
 		validate(unitsToAnalyze);

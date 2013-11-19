@@ -3,7 +3,7 @@ package ocanalyzer.rules;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.analyzer.factory.impl.ASTNodeFactory;
+import ocanalyzer.analyzer.factory.ASTNodeFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
