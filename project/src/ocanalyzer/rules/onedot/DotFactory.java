@@ -1,7 +1,5 @@
 package ocanalyzer.rules.onedot;
 
-import java.util.Set;
-
 import ocanalyzer.reporter.RuleViolationReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
@@ -9,7 +7,6 @@ import ocanalyzer.rules.general.ValidationHandler;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
  * This class represents a factory creating an {@link ASTVisitor} validation
