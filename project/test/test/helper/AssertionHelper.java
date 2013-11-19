@@ -1,4 +1,4 @@
-package ocanalyzer.test.helper;
+package test.helper;
 
 import java.util.Set;
 

@@ -1,6 +1,6 @@
-package ocanalyzer.test.integration;
+package test.integration;
 
-import static ocanalyzer.test.helper.AssertionHelper.assertTypes;
+import static test.helper.AssertionHelper.assertTypes;
 
 import java.util.HashSet;
 import java.util.List;
@@ -8,10 +8,10 @@ import java.util.Set;
 
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
+import ocanalyzer.analyzer.reporter.TestReporter;
+import ocanalyzer.handlers.WrapPrimitivesHandlerMock;
 import ocanalyzer.reporter.Violation;
-import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
-import ocanalyzer.test.integration.mock.TestReporter;
-import ocanalyzer.test.integration.wrapPrimitivesAndStrings.WrapPrimitivesObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -22,7 +22,7 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 		TestReporter testReporter = new TestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory(
 				"wrapPrimitives_wrong_db");
-		WrapPrimitivesObjectCalisthenicsHandlerMock ocMock = new WrapPrimitivesObjectCalisthenicsHandlerMock(
+		WrapPrimitivesHandlerMock ocMock = new WrapPrimitivesHandlerMock(
 				factory, testReporter);
 
 		ocMock.execute(null);
@@ -72,7 +72,7 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 			throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory(packageName);
-		WrapPrimitivesObjectCalisthenicsHandlerMock ocMock = new WrapPrimitivesObjectCalisthenicsHandlerMock(
+		WrapPrimitivesHandlerMock ocMock = new WrapPrimitivesHandlerMock(
 				factory, testReporter);
 
 		ocMock.execute(null);

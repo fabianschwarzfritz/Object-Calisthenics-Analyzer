@@ -1,27 +1,24 @@
-package ocanalyzer.test.integration.mock.indentationRule;
+package ocanalyzer.handlers;
 
 import java.util.List;
 
 import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.handlers.ObjectCalisthenicsHandler;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.tasks.IndentationRuleTask;
+import ocanalyzer.tasks.ElseRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class IndentiationObjectCalisthenicsHandlerMock extends
-		ObjectCalisthenicsHandler {
+public class ElseHandlerMock extends ObjectCalisthenicsHandler {
 
-	public IndentiationObjectCalisthenicsHandlerMock(ExtractorFactory factory,
+	public ElseHandlerMock(ExtractorFactory factory,
 			Reporter reporter) {
 		super(factory, reporter);
 	}
 
 	@Override
 	protected void applyTask(List<CompilationUnit> unitsToAnalyze) {
-		IndentationRuleTask task = new IndentationRuleTask(unitsToAnalyze,
-				reporter);
+		ElseRuleTask task = new ElseRuleTask(unitsToAnalyze, reporter);
 		task.execute();
 	}
-
 }

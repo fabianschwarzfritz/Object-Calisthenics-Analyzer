@@ -1,13 +1,13 @@
-package ocanalyzer.test.integration;
+package test.integration;
 
 import java.util.List;
 
 import junit.framework.TestCase;
 import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
+import ocanalyzer.analyzer.reporter.TestReporter;
+import ocanalyzer.handlers.DotHandlerMock;
 import ocanalyzer.reporter.Violation;
-import ocanalyzer.test.integration.mock.MockAnalyzerFactory;
-import ocanalyzer.test.integration.mock.TestReporter;
-import ocanalyzer.test.integration.mock.dotRule.DotObjectCalisthenicsHandlerMock;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -16,7 +16,7 @@ public class IntegrationTestDot extends TestCase {
 	public void testDotRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory("dotRule");
-		DotObjectCalisthenicsHandlerMock ocMock = new DotObjectCalisthenicsHandlerMock(
+		DotHandlerMock ocMock = new DotHandlerMock(
 				factory, testReporter);
 
 		ocMock.execute(null);

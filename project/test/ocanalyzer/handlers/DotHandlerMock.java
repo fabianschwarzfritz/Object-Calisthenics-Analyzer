@@ -1,4 +1,4 @@
-package ocanalyzer.test.integration.mock.dotRule;
+package ocanalyzer.handlers;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import ocanalyzer.tasks.DotRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class DotObjectCalisthenicsHandlerMock extends ObjectCalisthenicsHandler {
+public class DotHandlerMock extends ObjectCalisthenicsHandler {
 
-	public DotObjectCalisthenicsHandlerMock(ExtractorFactory factory,
+	public DotHandlerMock(ExtractorFactory factory,
 			Reporter reporter) {
 		super(factory, reporter);
 	}

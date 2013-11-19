@@ -1,11 +1,11 @@
-package ocanalyzer.test;
+package ocanalyzer;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-import ocanalyzer.test.integration.IntegrationTestDot;
-import ocanalyzer.test.integration.IntegrationTestElse;
-import ocanalyzer.test.integration.IntegrationTestIndentation;
-import ocanalyzer.test.integration.IntegrationTestWrapPrimitivesAndStrings;
+import test.integration.IntegrationTestDot;
+import test.integration.IntegrationTestElse;
+import test.integration.IntegrationTestIndentation;
+import test.integration.IntegrationTestWrapPrimitivesAndStrings;
 
 /**
  * This integration test is a bundle of all integration tests, testing the

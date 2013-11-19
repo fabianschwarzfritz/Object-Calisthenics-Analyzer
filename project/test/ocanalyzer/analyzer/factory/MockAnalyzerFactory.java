@@ -1,7 +1,8 @@
-package ocanalyzer.test.integration.mock;
+package ocanalyzer.analyzer.factory;
 
 import ocanalyzer.analyzer.extractor.CompilationUnitExtractor;
 import ocanalyzer.analyzer.extractor.PackageExtractor;
+import ocanalyzer.analyzer.extractor.ProjectAnalyzerMock;
 import ocanalyzer.analyzer.extractor.ProjectExtractor;
 import ocanalyzer.analyzer.extractor.WorkspaceExtractor;
 import ocanalyzer.analyzer.factory.ExtractorFactory;

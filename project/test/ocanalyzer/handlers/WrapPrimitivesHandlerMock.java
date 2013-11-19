@@ -1,4 +1,4 @@
-package ocanalyzer.test.integration.wrapPrimitivesAndStrings;
+package ocanalyzer.handlers;
 
 import java.util.List;
 import java.util.Set;
@@ -11,12 +11,12 @@ import ocanalyzer.tasks.PrimitiveTypeTask;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class WrapPrimitivesObjectCalisthenicsHandlerMock extends
+public class WrapPrimitivesHandlerMock extends
 		ObjectCalisthenicsHandler {
 
 	private Set<TypeDeclaration> wrappers;
 
-	public WrapPrimitivesObjectCalisthenicsHandlerMock(ExtractorFactory factory,
+	public WrapPrimitivesHandlerMock(ExtractorFactory factory,
 			Reporter reporter) {
 		super(factory, reporter);
 	}

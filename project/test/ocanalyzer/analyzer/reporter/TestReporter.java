@@ -1,4 +1,4 @@
-package ocanalyzer.test.integration.mock;
+package ocanalyzer.analyzer.reporter;
 
 import java.util.ArrayList;
 import java.util.List;
