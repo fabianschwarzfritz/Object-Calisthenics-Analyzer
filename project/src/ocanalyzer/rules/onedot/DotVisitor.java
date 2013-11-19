@@ -39,7 +39,6 @@ public class DotVisitor extends ASTVisitor {
 				new CounterReporter() {
 					@Override
 					public void count(int count) {
-						System.err.println(count);
 						if (count > 1) {
 							validationHandler.printInfo(node);
 						}
