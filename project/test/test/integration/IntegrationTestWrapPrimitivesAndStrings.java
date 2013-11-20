@@ -11,7 +11,7 @@ import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
 import ocanalyzer.handlers.WrapPrimitivesHandlerMock;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -27,10 +27,10 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
 		ocMock.execute(null);
 
-		List<Violation> violations = testReporter.getViolations();
+		List<ClassViolation> violations = testReporter.getViolations();
 
 		assertSame(1, violations.size());
-		Violation violation = violations.get(0);
+		ClassViolation violation = violations.get(0);
 		assertEquals(
 				"Error finding a primitive/string wrapper. Wrong resource",
 				"DBConfiguration.java", violation.getResource().getName());

@@ -7,7 +7,7 @@ import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
 import ocanalyzer.handlers.DotHandlerMock;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -21,11 +21,11 @@ public class IntegrationTestDot extends TestCase {
 
 		ocMock.execute(null);
 
-		List<Violation> violations = testReporter.getViolations();
+		List<ClassViolation> violations = testReporter.getViolations();
 
 		assertSame(2, violations.size());
 
-		Violation violation1 = violations.get(0);
+		ClassViolation violation1 = violations.get(0);
 		assertEquals("Error when validating dot rule. Wrong resource",
 				"DotWrong.java", violation1.getResource().getName());
 		assertEquals("Error when validating dot rule. Wrong position",
@@ -33,7 +33,7 @@ public class IntegrationTestDot extends TestCase {
 		assertEquals("Error when validating dot rule. Wrong message",
 				"??? Use only one dot per line!", violation1.getMessage());
 
-		Violation violation2 = violations.get(1);
+		ClassViolation violation2 = violations.get(1);
 		assertEquals("Error when validating dot rule. Wrong resource",
 				"DotWrong.java", violation2.getResource().getName());
 		assertEquals("Error when validating dot rule. Wrong position",

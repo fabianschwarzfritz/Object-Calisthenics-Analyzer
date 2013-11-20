@@ -2,7 +2,7 @@ package ocanalyzer.reporter;
 
 import org.eclipse.jdt.core.IPackageFragment;
 
-public class PackageViolation {
+public class PackageViolation implements Violation {
 
 	private IPackageFragment fragment;
 	private String message;

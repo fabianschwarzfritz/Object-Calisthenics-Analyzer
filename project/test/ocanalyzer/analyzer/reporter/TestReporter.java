@@ -6,23 +6,23 @@ import java.util.List;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 public class TestReporter implements Reporter {
 
 	private List<PackageViolation> packageviolations;
-	private List<Violation> violations;
+	private List<ClassViolation> violations;
 
 	public TestReporter() {
-		violations = new ArrayList<Violation>();
+		violations = new ArrayList<ClassViolation>();
 	}
 
 	@Override
-	public void reportError(Violation violation) {
+	public void reportError(ClassViolation violation) {
 		violations.add(violation);
 	}
 
-	public List<Violation> getViolations() {
+	public List<ClassViolation> getViolations() {
 		return violations;
 	}
 
