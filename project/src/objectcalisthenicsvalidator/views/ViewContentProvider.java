@@ -5,7 +5,7 @@ import java.util.List;
 
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -14,15 +14,15 @@ public class ViewContentProvider implements IStructuredContentProvider,
 		Reporter {
 
 	private List<PackageViolation> packageViolations;
-	private List<Violation> violations;
+	private List<ClassViolation> violations;
 
 	public ViewContentProvider() {
-		violations = new ArrayList<Violation>();
+		violations = new ArrayList<ClassViolation>();
 		packageViolations = new ArrayList<PackageViolation>();
 	}
 
 	@Override
-	public void reportError(Violation violation) {
+	public void reportError(ClassViolation violation) {
 		violations.add(violation);
 	}
 
@@ -45,7 +45,7 @@ public class ViewContentProvider implements IStructuredContentProvider,
 	}
 
 	public void clear() {
-		violations = new ArrayList<Violation>();
+		violations = new ArrayList<ClassViolation>();
 		packageViolations = new ArrayList<PackageViolation>();
 	}
 

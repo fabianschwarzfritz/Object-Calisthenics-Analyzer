@@ -7,7 +7,7 @@ import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
 import ocanalyzer.handlers.IndentiationHandlerMock;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
 
@@ -30,10 +30,10 @@ public class IntegrationTestIndentation extends TestCase {
 
 		ocMock.execute(null);
 
-		List<Violation> violations = testReporter.getViolations();
+		List<ClassViolation> violations = testReporter.getViolations();
 
 		assertSame(1, violations.size());
-		Violation violation = violations.get(0);
+		ClassViolation violation = violations.get(0);
 		assertEquals("Error when validating indentation rule. Wrong resource",
 				"IndentationWrong.java", violation.getResource().getName());
 		assertEquals("Error when validating indentation rule. Wring position",

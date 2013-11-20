@@ -16,11 +16,11 @@ import org.eclipse.core.resources.IResource;
 public interface ClassReporter {
 
 	/**
-	 * Reports a given {@link Violation}.
+	 * Reports a given {@link ClassViolation}.
 	 * 
 	 * @param violation
-	 *            - The {@link Violation} to report.
+	 *            - The {@link ClassViolation} to report.
 	 */
-	public abstract void reportError(Violation violation);
+	public abstract void reportError(ClassViolation violation);
 	
 }

@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.PackageViolation;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.reporter.ClassViolation;
 
 /**
  * This class is used to display information about rule violation on a given
@@ -24,7 +24,7 @@ public class ConsoleReporter implements ClassReporter, PackageReporter {
 	}
 
 	@Override
-	public void reportError(Violation violation) {
+	public void reportError(ClassViolation violation) {
 		String resourceName = violation.getResource().getName();
 		stream.println("Reporting validation in resource: " + resourceName
 				+ " in line " + violation.getLine() + " with message: '"

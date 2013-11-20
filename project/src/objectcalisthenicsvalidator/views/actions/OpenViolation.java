@@ -1,6 +1,8 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import ocanalyzer.Activator;
+import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IFile;
@@ -34,13 +36,29 @@ public class OpenViolation extends Action {
 	}
 
 	public void run() {
-		Violation violation = selectedViolation();
-		IFile file = (IFile) violation.getResource();
-
-		openViolationInEditor(violation, file);
+		openViolation();
 	}
 
-	private void openViolationInEditor(Violation violation, IFile file) {
+	private void openViolation() {
+		Violation violation = selectedViolation();
+
+		if (violation instanceof ClassViolation) {
+			ClassViolation classViolation = (ClassViolation) violation;
+			IFile file = (IFile) classViolation.getResource();
+			openClassViolation(classViolation, file);
+		} else if (violation instanceof PackageViolation) {
+			PackageViolation packageViolation = (PackageViolation) violation;
+			openPackageViolation(packageViolation);
+		}
+	}
+
+	private void openPackageViolation(PackageViolation packageViolation) {
+		showMessage("Package: "
+				+ packageViolation.getFragment().getResource().getName()
+						.toString() + packageViolation.getMessage());
+	}
+
+	private void openClassViolation(ClassViolation violation, IFile file) {
 		IEditorInput editorInput = new FileEditorInput(file);
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
