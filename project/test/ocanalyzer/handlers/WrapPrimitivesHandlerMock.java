@@ -4,19 +4,18 @@ import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.tasks.PrimitiveTypeTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class WrapPrimitivesHandlerMock extends
-		ObjectCalisthenics {
+public class WrapPrimitivesHandlerMock extends ObjectCalisthenics {
 
 	private Set<TypeDeclaration> wrappers;
 
-	public WrapPrimitivesHandlerMock(ExtractorFactory factory,
-			Reporter reporter) {
+	public WrapPrimitivesHandlerMock(ExtractorFactory factory, Reporter reporter) {
 		super(factory, reporter);
 	}
 

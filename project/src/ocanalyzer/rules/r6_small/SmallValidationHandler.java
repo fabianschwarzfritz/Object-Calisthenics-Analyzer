@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r6_small;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class SmallValidationHandler extends ValidationHandler {
 
 	public SmallValidationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

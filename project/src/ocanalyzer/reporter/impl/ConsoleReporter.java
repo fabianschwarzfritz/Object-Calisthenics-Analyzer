@@ -2,7 +2,9 @@ package ocanalyzer.reporter.impl;
 
 import java.io.PrintStream;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.PackageReporter;
+import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Violation;
 
 /**
@@ -13,7 +15,7 @@ import ocanalyzer.reporter.Violation;
  * 
  */
 
-public class ConsoleReporter implements Reporter {
+public class ConsoleReporter implements ClassReporter, PackageReporter {
 
 	private PrintStream stream;
 
@@ -29,4 +31,10 @@ public class ConsoleReporter implements Reporter {
 				+ violation.getMessage() + "'.");
 	}
 
+	@Override
+	public void reportError(PackageViolation violation) {
+		String resourceName = violation.getFragment().toString();
+		stream.println("Reporting validation in resource: " + resourceName
+				+ " with message: '" + violation.getMessage() + "'.");
+	}
 }

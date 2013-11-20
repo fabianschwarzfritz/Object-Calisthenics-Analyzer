@@ -2,7 +2,7 @@ package ocanalyzer.tasks;
 
 import java.util.List;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.IndentiationRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -13,7 +13,7 @@ public class IndentationRuleTask extends ValidationTask implements
 		RuleFactoryProvider {
 
 	public IndentationRuleTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

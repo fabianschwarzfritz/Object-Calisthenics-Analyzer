@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.r6_small.SmallFactory;
 
@@ -12,7 +12,7 @@ public class SmallRulesFactory extends RuleFactory {
 	private RuleValidatorFactory smallFactory;
 
 	public SmallRulesFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 		smallFactory = new SmallFactory(unit, compilationUnit, reporter);
 	}

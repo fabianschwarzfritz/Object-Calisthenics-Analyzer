@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -15,10 +15,10 @@ public abstract class RuleFactory {
 
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
-	protected Reporter reporter;
+	protected ClassReporter reporter;
 
 	public RuleFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super();
 		this.unit = unit;
 		this.compilationUnit = compilationUnit;

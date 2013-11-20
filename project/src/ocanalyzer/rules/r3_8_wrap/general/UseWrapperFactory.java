@@ -2,7 +2,7 @@ package ocanalyzer.rules.r3_8_wrap.general;
 
 import java.util.Set;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.r3_8_wrap.UseWrapperVisitor;
@@ -20,7 +20,7 @@ public class UseWrapperFactory extends RuleValidatorFactory {
 	private Set<TypeDeclaration> types;
 
 	public UseWrapperFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter,
+			CompilationUnit compilationUnit, ClassReporter reporter,
 			Set<TypeDeclaration> types, ValidationHandler validationHandler,
 			TypeDeterminator determinator) {
 		super(unit, compilationUnit, reporter);

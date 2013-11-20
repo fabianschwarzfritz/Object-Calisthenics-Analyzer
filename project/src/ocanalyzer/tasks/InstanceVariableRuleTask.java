@@ -2,7 +2,7 @@ package ocanalyzer.tasks;
 
 import java.util.List;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.InstanceVariableRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -13,7 +13,7 @@ class InstanceVariableRuleTask extends ValidationTask implements
 		RuleFactoryProvider {
 
 	public InstanceVariableRuleTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

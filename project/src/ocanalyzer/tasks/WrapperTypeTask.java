@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -17,7 +17,7 @@ abstract class WrapperTypeTask extends ValidationTask implements
 	protected Set<TypeDeclaration> wrappers;
 
 	public WrapperTypeTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

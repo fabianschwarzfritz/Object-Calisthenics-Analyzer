@@ -2,7 +2,7 @@ package ocanalyzer.tasks;
 
 import java.util.List;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.ElseRuleFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ElseRuleTask extends ValidationTask implements RuleFactoryProvider {
 
 	public ElseRuleTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unitsToAnalyze, reporter);
 	}
 

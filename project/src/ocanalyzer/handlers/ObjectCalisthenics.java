@@ -5,6 +5,8 @@ import java.util.List;
 import ocanalyzer.analyzer.factory.AnalyzerFactoryImpl;
 import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
+import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.impl.ConsoleReporter;
 import ocanalyzer.reporter.impl.DelegateReporter;
@@ -41,25 +43,36 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ObjectCalisthenics extends AbstractHandler {
 	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
 
+	private PackageReporter packageReporter;
+
 	protected ExtractorFactory factory;
 	protected Reporter reporter;
 	protected WorkspaceExtractor workspaceAnalyzer;
 
 	public ObjectCalisthenics() {
-		factory = new AnalyzerFactoryImpl();
+		initDefaultReporter();
+		initFactory();
+	}
+
+	private void initDefaultReporter() {
 		DelegateReporter delegateReporter = new DelegateReporter();
-		delegateReporter.add(new ConsoleReporter(System.out));
-		delegateReporter.add(new MarkerReporter());
+		ConsoleReporter consoleReporter = new ConsoleReporter(System.out);
+		delegateReporter.addClassReporter(consoleReporter);
+		delegateReporter.addClassReporter(new MarkerReporter());
+		delegateReporter.addPackageReporter(delegateReporter);
 		reporter = delegateReporter;
 	}
 
 	public ObjectCalisthenics(Reporter reporter) {
 		this.reporter = reporter;
-		factory = new AnalyzerFactoryImpl();
+		initFactory();
 	}
 
-	public ObjectCalisthenics(ExtractorFactory factory,
-			Reporter reporter) {
+	private void initFactory() {
+		factory = new AnalyzerFactoryImpl(reporter);
+	}
+
+	public ObjectCalisthenics(ExtractorFactory factory, Reporter reporter) {
 		this.factory = factory;
 		this.reporter = reporter;
 	}
@@ -81,4 +94,5 @@ public class ObjectCalisthenics extends AbstractHandler {
 		AllRulesTask task = new AllRulesTask(unitsToAnalyze, reporter);
 		task.execute();
 	}
+
 }

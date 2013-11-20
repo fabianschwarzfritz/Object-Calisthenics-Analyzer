@@ -1,6 +1,6 @@
 package ocanalyzer.reporter.impl;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IMarker;
@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class MarkerReporter implements Reporter {
+public class MarkerReporter implements ClassReporter {
 
 	@Override
 	public void reportError(Violation violation) {

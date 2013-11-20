@@ -3,7 +3,7 @@ package ocanalyzer.tasks;
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
@@ -11,9 +11,9 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class AllRulesTask implements Executable {
 
 	private List<CompilationUnit> unitsToAnalyze;
-	private Reporter reporter;
+	private ClassReporter reporter;
 
-	public AllRulesTask(List<CompilationUnit> unitsToAnalyze, Reporter reporter) {
+	public AllRulesTask(List<CompilationUnit> unitsToAnalyze, ClassReporter reporter) {
 		this.unitsToAnalyze = unitsToAnalyze;
 		this.reporter = reporter;
 	}

@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.r1_indentation.IndentationFactory;
 
@@ -12,7 +12,7 @@ public class IndentiationRuleFactory extends RuleFactory {
 	private RuleValidatorFactory indentiationFactory;
 
 	public IndentiationRuleFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 		indentiationFactory = new IndentationFactory(unit, compilationUnit,
 				reporter);

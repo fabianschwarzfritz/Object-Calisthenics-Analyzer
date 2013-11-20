@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r6_small;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 
@@ -18,7 +18,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class SmallFactory extends RuleValidatorFactory {
 
 	public SmallFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

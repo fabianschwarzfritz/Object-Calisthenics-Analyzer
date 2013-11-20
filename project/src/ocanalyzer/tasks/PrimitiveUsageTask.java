@@ -3,7 +3,7 @@ package ocanalyzer.tasks;
 import java.util.List;
 import java.util.Set;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.PrimitiveUsageRulesFactory;
 import ocanalyzer.rules.RuleFactory;
 
@@ -16,7 +16,7 @@ class PrimitiveUsageTask extends WrapperUsageTask {
 	private Set<TypeDeclaration> wrappers;
 
 	public PrimitiveUsageTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter, Set<TypeDeclaration> wrappers) {
+			ClassReporter reporter, Set<TypeDeclaration> wrappers) {
 		super(unitsToAnalyze, reporter);
 		this.wrappers = wrappers;
 	}

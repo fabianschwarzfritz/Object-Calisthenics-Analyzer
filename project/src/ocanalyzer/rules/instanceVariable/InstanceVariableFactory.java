@@ -1,6 +1,6 @@
 package ocanalyzer.rules.instanceVariable;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 
@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class InstanceVariableFactory extends RuleValidatorFactory {
 
 	public InstanceVariableFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

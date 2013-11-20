@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r2_noelse;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 
@@ -18,7 +18,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class ElseFactory extends RuleValidatorFactory {
 
 	public ElseFactory(ICompilationUnit unit, CompilationUnit compilationUnit,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

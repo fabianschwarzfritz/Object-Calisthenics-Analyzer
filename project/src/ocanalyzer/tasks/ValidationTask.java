@@ -2,7 +2,7 @@ package ocanalyzer.tasks;
 
 import java.util.List;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -12,10 +12,10 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 abstract class ValidationTask implements Executable {
 
 	private List<CompilationUnit> unitsToAnalyze;
-	protected Reporter reporter;
+	protected ClassReporter reporter;
 
 	public ValidationTask(List<CompilationUnit> unitsToAnalyze,
-			Reporter reporter) {
+			ClassReporter reporter) {
 		super();
 		this.unitsToAnalyze = unitsToAnalyze;
 		this.reporter = reporter;

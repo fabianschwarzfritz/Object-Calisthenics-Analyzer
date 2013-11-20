@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r1_indentation;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -17,7 +17,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 public class IndentationFactory extends RuleValidatorFactory {
 
 	public IndentationFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

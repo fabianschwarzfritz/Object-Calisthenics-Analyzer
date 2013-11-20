@@ -60,9 +60,9 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	private DelegateReporter createDelegationReporter() {
 		DelegateReporter reporter = new DelegateReporter();
-		reporter.add(new MarkerReporter());
-		reporter.add(new ConsoleReporter(System.out));
-		reporter.add(tableProvider);
+		reporter.addClassReporter(new MarkerReporter());
+		reporter.addClassReporter(new ConsoleReporter(System.out));
+		reporter.addClassReporter(tableProvider);
 		return reporter;
 	}
 

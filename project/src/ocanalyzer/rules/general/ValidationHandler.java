@@ -1,6 +1,6 @@
 package ocanalyzer.rules.general;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IResource;
@@ -27,10 +27,10 @@ public abstract class ValidationHandler {
 
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
-	protected Reporter reporter;
+	protected ClassReporter reporter;
 
 	public ValidationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super();
 		this.unit = unit;
 		this.compilationUnit = compilationUnit;

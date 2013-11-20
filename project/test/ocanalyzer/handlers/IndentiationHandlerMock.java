@@ -3,6 +3,7 @@ package ocanalyzer.handlers;
 import java.util.List;
 
 import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.tasks.IndentationRuleTask;
 

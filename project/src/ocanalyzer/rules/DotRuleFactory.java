@@ -1,6 +1,6 @@
 package ocanalyzer.rules;
 
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.r4_onedot.DotFactory;
 
@@ -12,7 +12,7 @@ public class DotRuleFactory extends RuleFactory {
 	private RuleValidatorFactory dotFactory;
 
 	public DotRuleFactory(ICompilationUnit unit,
-			CompilationUnit compilationUnit, Reporter reporter) {
+			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 		dotFactory = new DotFactory(unit, compilationUnit, reporter);
 	}

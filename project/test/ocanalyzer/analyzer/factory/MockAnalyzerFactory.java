@@ -5,6 +5,7 @@ import ocanalyzer.analyzer.factory.extractor.CompilationUnitExtractor;
 import ocanalyzer.analyzer.factory.extractor.PackageExtractor;
 import ocanalyzer.analyzer.factory.extractor.ProjectExtractor;
 import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
+import ocanalyzer.reporter.impl.NoReporter;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
@@ -27,7 +28,7 @@ public class MockAnalyzerFactory implements ExtractorFactory {
 
 	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageExtractor(fragment, this);
+		return new PackageExtractor(fragment, this, new NoReporter());
 	}
 
 	@Override
