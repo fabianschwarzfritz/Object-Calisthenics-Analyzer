@@ -85,7 +85,7 @@ public class ObjectCalisthenics extends AbstractHandler {
 		return null;
 	}
 
-	protected void applyTask(List<CompilationUnit> unitsToAnalyze) {
+	public void applyTask(List<CompilationUnit> unitsToAnalyze) {
 		AllRulesTask task = new AllRulesTask(unitsToAnalyze, reporter);
 		task.execute();
 	}

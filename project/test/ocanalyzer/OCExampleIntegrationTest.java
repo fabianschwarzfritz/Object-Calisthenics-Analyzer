@@ -1,5 +1,8 @@
 package ocanalyzer;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import test.integration.IntegrationTestDot;
@@ -20,14 +23,8 @@ import test.integration.IntegrationTestWrapPrimitivesAndStrings;
  * @author Fabian Schwarz-Fritz
  * 
  */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({ IntegrationTestDot.class })
 public class OCExampleIntegrationTest {
 
-	public static Test suite() {
-		TestSuite suite = new TestSuite("org.ocanalyzer.integration");
-		suite.addTestSuite(IntegrationTestDot.class);
-		suite.addTestSuite(IntegrationTestElse.class);
-		suite.addTestSuite(IntegrationTestIndentation.class);
-		suite.addTestSuite(IntegrationTestWrapPrimitivesAndStrings.class);
-		return suite;
-	}
 }
