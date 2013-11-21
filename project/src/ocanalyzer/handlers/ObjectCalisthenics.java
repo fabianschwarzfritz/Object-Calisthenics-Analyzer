@@ -40,10 +40,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class ObjectCalisthenics extends AbstractHandler {
-	private static final String JDT_NATURE = "org.eclipse.jdt.core.javanature";
-
-	private PackageReporter packageReporter;
-
 	protected ExtractorFactory factory;
 	protected Reporter reporter;
 	protected WorkspaceExtractor workspaceAnalyzer;
