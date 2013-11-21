@@ -8,7 +8,7 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 public class PrimitiveDeterminator extends TypeDeterminator {
 
 	private static final String VOID_NAME = "V";
-	private static final String STRING_NAME = "java.lang.String";
+	private static final String STRING_NAME = "String";
 
 	private static final Set<String> WRAPPER_NAMES;
 
@@ -39,7 +39,8 @@ public class PrimitiveDeterminator extends TypeDeterminator {
 		boolean primitive = resolveTypeBinding.isPrimitive()
 				& !isType(resolveTypeBinding, VOID_NAME);
 
-		boolean string = resolveTypeBinding.getName().equals(STRING_NAME);
+		String typeName = resolveTypeBinding.getName();
+		boolean string = typeName.equals(STRING_NAME);
 
 		boolean isWrapperPrimitive = isPermittedType(resolveTypeBinding,
 				WRAPPER_NAMES);
