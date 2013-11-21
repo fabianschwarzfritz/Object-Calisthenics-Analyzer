@@ -16,8 +16,7 @@ public class IntegrationTestDot extends TestCase {
 	public void testDotRule() throws ExecutionException {
 		TestReporter testReporter = new TestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory("dotRule");
-		DotHandlerMock ocMock = new DotHandlerMock(
-				factory, testReporter);
+		DotHandlerMock ocMock = new DotHandlerMock(factory, testReporter);
 
 		ocMock.execute(null);
 
@@ -31,7 +30,8 @@ public class IntegrationTestDot extends TestCase {
 		assertEquals("Error when validating dot rule. Wrong position",
 				new Integer(9), violation1.getLine());
 		assertEquals("Error when validating dot rule. Wrong message",
-				"??? Use only one dot per line!", violation1.getMessage());
+				"Using more that one dot per line violates rule 4!",
+				violation1.getMessage());
 
 		ClassViolation violation2 = violations.get(1);
 		assertEquals("Error when validating dot rule. Wrong resource",
@@ -39,7 +39,7 @@ public class IntegrationTestDot extends TestCase {
 		assertEquals("Error when validating dot rule. Wrong position",
 				new Integer(10), violation2.getLine());
 		assertEquals("Error when validating dot rule. Wrong message",
-				"??? Use only one dot per line!", violation2.getMessage());
+				"Using more that one dot per line violates rule 4!", violation2.getMessage());
 
 	}
 }
