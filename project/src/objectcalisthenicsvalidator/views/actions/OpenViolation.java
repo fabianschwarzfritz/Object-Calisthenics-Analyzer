@@ -54,8 +54,8 @@ public class OpenViolation extends Action {
 
 	private void openPackageViolation(PackageViolation packageViolation) {
 		showMessage("Package: "
-				+ packageViolation.getFragment().getResource().getName()
-						.toString() + packageViolation.getMessage());
+				+ packageViolation.getResource().getName().toString()
+				+ packageViolation.getMessage());
 	}
 
 	private void openClassViolation(ClassViolation violation, IFile file) {

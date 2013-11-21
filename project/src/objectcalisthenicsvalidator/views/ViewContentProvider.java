@@ -3,9 +3,9 @@ package objectcalisthenicsvalidator.views;
 import java.util.ArrayList;
 import java.util.List;
 
+import ocanalyzer.reporter.ClassViolation;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;

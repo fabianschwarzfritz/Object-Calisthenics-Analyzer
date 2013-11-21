@@ -1,5 +1,6 @@
 package ocanalyzer.reporter;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.IPackageFragment;
 
 public class PackageViolation implements Violation {
@@ -13,20 +14,12 @@ public class PackageViolation implements Violation {
 		this.message = message;
 	}
 
-	public IPackageFragment getFragment() {
-		return fragment;
-	}
-
-	public void setFragment(IPackageFragment fragment) {
-		this.fragment = fragment;
+	public IResource getResource() {
+		return fragment.getResource();
 	}
 
 	public String getMessage() {
 		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 
 }

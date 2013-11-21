@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.ClassViolation;
 import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.reporter.ClassViolation;
 
 /**
  * This class is used to delegate a rule violation event to all given

@@ -5,7 +5,6 @@ import java.util.List;
 import ocanalyzer.analyzer.factory.AnalyzerFactoryImpl;
 import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
-import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.impl.ConsoleReporter;

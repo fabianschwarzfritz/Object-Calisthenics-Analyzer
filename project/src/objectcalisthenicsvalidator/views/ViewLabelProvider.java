@@ -28,7 +28,7 @@ public class ViewLabelProvider extends LabelProvider implements
 		if (index == 0) {
 			return new String();
 		} else if (index == 1) {
-			return packageViolation.getFragment().getResource().getName()
+			return packageViolation.getResource().getName()
 					.toString();
 		} else if (index == 2) {
 			return packageViolation.getMessage().toString();
