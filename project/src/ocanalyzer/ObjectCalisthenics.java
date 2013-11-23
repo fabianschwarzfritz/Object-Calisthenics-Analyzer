@@ -5,6 +5,7 @@ import java.util.Collection;
 import ocanalyzer.extractor.Extractor;
 import ocanalyzer.rules.impl.ObjectCalisthenicsRulesImpl;
 
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ObjectCalisthenics {
@@ -20,7 +21,7 @@ public class ObjectCalisthenics {
 
 	public void validate() {
 		// Extract
-		Collection<CompilationUnit> units = extractor.extract();
+		Collection<ICompilationUnit> units = extractor.extract();
 		// Run
 		rules.apply(units);
 	}

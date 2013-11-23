@@ -6,7 +6,7 @@ import ocanalyzer.extractor.Extractor;
 
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.ICompilationUnit;
 
 public class ExtractorImpl implements Extractor {
 
@@ -17,7 +17,7 @@ public class ExtractorImpl implements Extractor {
 	}
 
 	@Override
-	public Collection<CompilationUnit> extract() {
+	public Collection<ICompilationUnit> extract() {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		WorkspaceExtractor analyzer = factory
 				.createWorkspaceAnalyzer(workspace);

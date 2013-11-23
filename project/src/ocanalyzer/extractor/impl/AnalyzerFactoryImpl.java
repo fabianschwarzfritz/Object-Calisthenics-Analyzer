@@ -34,12 +34,6 @@ public class AnalyzerFactoryImpl implements ExtractorFactory {
 	}
 
 	@Override
-	public CompilationUnitExtractor createCompilationUnitAnalyzer(
-			ICompilationUnit compilationUni) {
-		return new CompilationUnitExtractor(compilationUni);
-	}
-
-	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
 		return new PackageExtractor(fragment, delegateFactory);
 	}

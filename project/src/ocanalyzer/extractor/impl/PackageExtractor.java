@@ -1,13 +1,13 @@
 package ocanalyzer.extractor.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class PackageExtractor implements CompilationUnitsExtractable {
 
@@ -20,10 +20,10 @@ public class PackageExtractor implements CompilationUnitsExtractable {
 	}
 
 	@Override
-	public List<CompilationUnit> extractCompilationUnits() {
+	public Collection<ICompilationUnit> extractCompilationUnits() {
 		try {
 			if (packageFragement.getKind() == IPackageFragmentRoot.K_SOURCE) {
-				List<CompilationUnit> extractUnits = extractUnits();
+				List<ICompilationUnit> extractUnits = extractUnits();
 				// FIXME remove counting of classes
 				// ClassesPerPackage classes = new ClassesPerPackage(
 				// packageFragement, writer);
@@ -34,15 +34,13 @@ public class PackageExtractor implements CompilationUnitsExtractable {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		return new ArrayList<CompilationUnit>();
+		return new ArrayList<ICompilationUnit>();
 	}
 
-	private List<CompilationUnit> extractUnits() throws JavaModelException {
-		List<CompilationUnit> result = new ArrayList<CompilationUnit>();
+	private List<ICompilationUnit> extractUnits() throws JavaModelException {
+		List<ICompilationUnit> result = new ArrayList<ICompilationUnit>();
 		for (ICompilationUnit unit : packageFragement.getCompilationUnits()) {
-			CompilationUnitExtractor handler = factory
-					.createCompilationUnitAnalyzer(unit);
-			result.addAll(handler.extractCompilationUnits());
+			result.add(unit);
 		}
 		return result;
 	}

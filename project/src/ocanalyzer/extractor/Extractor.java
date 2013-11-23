@@ -2,10 +2,10 @@ package ocanalyzer.extractor;
 
 import java.util.Collection;
 
-import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.ICompilationUnit;
 
 public interface Extractor {
 
-	Collection<CompilationUnit> extract();
+	Collection<ICompilationUnit> extract();
 
 }

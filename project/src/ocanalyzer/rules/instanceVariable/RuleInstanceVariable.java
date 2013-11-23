@@ -1,15 +1,13 @@
 package ocanalyzer.rules.instanceVariable;
 
-import java.util.Collection;
-
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.Rule;
+import ocanalyzer.rules.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class RuleInstanceVariable extends Rule {
+public class RuleInstanceVariable extends ClassOCRuleImpl {
 
 	private ClassReporter reporter;
 
@@ -18,14 +16,7 @@ public class RuleInstanceVariable extends Rule {
 	}
 
 	@Override
-	public void validate(Collection<ICompilationUnit> units) {
-		for (ICompilationUnit iUnit : units) {
-			CompilationUnit unit = createUnit(iUnit);
-			applyIntentiationRule(iUnit, unit);
-		}
-	}
-
-	private void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ValidationHandler instanceValidationHandler = new InstanceVariableValidationHandler(
 				iUnit, unit, reporter);
@@ -33,4 +24,5 @@ public class RuleInstanceVariable extends Rule {
 				instanceValidationHandler);
 		unit.accept(visitor);
 	}
+
 }

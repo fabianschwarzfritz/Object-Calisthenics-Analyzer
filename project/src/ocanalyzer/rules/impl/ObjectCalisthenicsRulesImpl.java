@@ -2,15 +2,15 @@ package ocanalyzer.rules.impl;
 
 import java.util.Collection;
 
-import org.eclipse.jdt.core.dom.CompilationUnit;
-
 import ocanalyzer.rules.ObjectCalisthenicsRule;
+
+import org.eclipse.jdt.core.ICompilationUnit;
 
 public class ObjectCalisthenicsRulesImpl {
 
 	public Collection<ObjectCalisthenicsRule> rules;
 
-	public void apply(Collection<CompilationUnit> compilationUnits) {
+	public void apply(Collection<ICompilationUnit> compilationUnits) {
 		for (ObjectCalisthenicsRule rule : rules) {
 			rule.apply(compilationUnits);
 		}
