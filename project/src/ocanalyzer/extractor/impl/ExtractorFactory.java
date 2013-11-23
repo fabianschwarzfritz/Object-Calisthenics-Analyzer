@@ -1,9 +1,4 @@
-package ocanalyzer.analyzer.factory;
-
-import ocanalyzer.analyzer.factory.extractor.CompilationUnitExtractor;
-import ocanalyzer.analyzer.factory.extractor.PackageExtractor;
-import ocanalyzer.analyzer.factory.extractor.ProjectExtractor;
-import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
+package ocanalyzer.extractor.impl;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;

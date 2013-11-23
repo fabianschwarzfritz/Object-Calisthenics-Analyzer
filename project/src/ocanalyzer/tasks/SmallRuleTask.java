@@ -3,8 +3,8 @@ package ocanalyzer.tasks;
 import java.util.List;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.RuleFactory;
-import ocanalyzer.rules.SmallRulesFactory;
+import ocanalyzer.rules.impl.RuleFactory;
+import ocanalyzer.rules.impl.SmallRulesFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

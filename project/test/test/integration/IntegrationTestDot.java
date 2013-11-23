@@ -3,9 +3,9 @@ package test.integration;
 import java.util.List;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
+import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.DotHandlerMock;
 import ocanalyzer.reporter.ClassViolation;
 

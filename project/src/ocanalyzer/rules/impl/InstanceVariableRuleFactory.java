@@ -1,4 +1,4 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.RuleValidatorFactory;
@@ -18,8 +18,8 @@ public class InstanceVariableRuleFactory extends RuleFactory {
 	}
 
 	@Override
-	public Rules createRules() {
-		Rules rules = new Rules(unit);
+	public RulesClass createRules() {
+		RulesClass rules = new RulesClass(unit);
 		rules.add(instanceFactory.create());
 		return rules;
 	}

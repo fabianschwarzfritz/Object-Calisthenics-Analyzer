@@ -1,4 +1,4 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +28,8 @@ public class PreRulesFactory extends RuleFactory {
 	}
 
 	@Override
-	public Rules createRules() {
-		Rules rules = new Rules(unit);
+	public RulesClass createRules() {
+		RulesClass rules = new RulesClass(unit);
 		for (RuleValidatorFactory factory : ruleFactories) {
 			rules.add(factory.create());
 		}

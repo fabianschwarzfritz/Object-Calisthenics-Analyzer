@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.PrimitiveReturnWrapperRulesFactory;
-import ocanalyzer.rules.RuleFactory;
+import ocanalyzer.rules.impl.PrimitiveReturnWrapperRulesFactory;
+import ocanalyzer.rules.impl.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

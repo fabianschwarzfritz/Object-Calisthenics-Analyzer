@@ -1,4 +1,4 @@
-package ocanalyzer.analyzer.factory.extractor;
+package ocanalyzer.extractor.impl;
 
 import java.util.List;
 

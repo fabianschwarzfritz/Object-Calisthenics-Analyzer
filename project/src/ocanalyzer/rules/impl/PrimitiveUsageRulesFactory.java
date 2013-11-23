@@ -1,4 +1,4 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import java.util.Set;
 
@@ -33,8 +33,8 @@ public class PrimitiveUsageRulesFactory extends RuleFactory {
 	}
 
 	@Override
-	public Rules createRules() {
-		Rules rules = new Rules(unit);
+	public RulesClass createRules() {
+		RulesClass rules = new RulesClass(unit);
 		rules.add(ruleFactory.create());
 		return rules;
 	}

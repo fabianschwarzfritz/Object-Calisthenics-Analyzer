@@ -1,9 +1,7 @@
-package ocanalyzer.analyzer.factory.extractor;
+package ocanalyzer.extractor.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import ocanalyzer.analyzer.factory.ASTNodeFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

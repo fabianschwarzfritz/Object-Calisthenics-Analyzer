@@ -1,10 +1,4 @@
-package ocanalyzer.analyzer.factory;
-
-import ocanalyzer.analyzer.factory.extractor.CompilationUnitExtractor;
-import ocanalyzer.analyzer.factory.extractor.PackageExtractor;
-import ocanalyzer.analyzer.factory.extractor.ProjectExtractor;
-import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
-import ocanalyzer.reporter.PackageReporter;
+package ocanalyzer.extractor.impl;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
@@ -30,10 +24,8 @@ public class AnalyzerFactoryImpl implements ExtractorFactory {
 	 * factories.
 	 */
 	private ExtractorFactory delegateFactory;
-	private PackageReporter writer;
 
-	public AnalyzerFactoryImpl(PackageReporter writer) {
-		this.writer = writer;
+	public AnalyzerFactoryImpl() {
 		delegateFactory = this;
 	}
 
@@ -49,7 +41,7 @@ public class AnalyzerFactoryImpl implements ExtractorFactory {
 
 	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageExtractor(fragment, delegateFactory, writer);
+		return new PackageExtractor(fragment, delegateFactory);
 	}
 
 	@Override

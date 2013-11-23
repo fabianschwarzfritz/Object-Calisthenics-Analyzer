@@ -1,6 +1,6 @@
 package ocanalyzer.tasks;
 
-import ocanalyzer.rules.RuleFactory;
+import ocanalyzer.rules.impl.RuleFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;

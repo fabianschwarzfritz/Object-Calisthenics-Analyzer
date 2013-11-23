@@ -3,9 +3,9 @@ package ocanalyzer.analyzer.extractor;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.analyzer.factory.ExtractorFactory;
-import ocanalyzer.analyzer.factory.extractor.PackageExtractor;
-import ocanalyzer.analyzer.factory.extractor.ProjectExtractor;
+import ocanalyzer.extractor.impl.ExtractorFactory;
+import ocanalyzer.extractor.impl.PackageExtractor;
+import ocanalyzer.extractor.impl.ProjectExtractor;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;

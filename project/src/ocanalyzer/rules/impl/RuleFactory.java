@@ -1,4 +1,4 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import ocanalyzer.reporter.ClassReporter;
 
@@ -6,7 +6,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- * This class is used to create {@link Rules}
+ * This class is used to create {@link RulesClass}
  * 
  * @author Fabian Schwarz-Fritz
  * 
@@ -25,6 +25,6 @@ public abstract class RuleFactory {
 		this.reporter = reporter;
 	}
 
-	public abstract Rules createRules();
+	public abstract RulesClass createRules();
 
 }

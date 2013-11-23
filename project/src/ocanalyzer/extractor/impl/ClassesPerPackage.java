@@ -1,4 +1,4 @@
-package ocanalyzer.analyzer.factory.extractor;
+package ocanalyzer.extractor.impl;
 
 import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.PackageViolation;

@@ -1,12 +1,12 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import java.util.Set;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.r3_8_wrap.WrapTypeFactory;
 import ocanalyzer.rules.r3_8_wrap.determinator.PrimitiveDeterminator;
-import ocanalyzer.rules.r3_8_wrap.general.ReturnWrapperFactory;
-import ocanalyzer.rules.r3_8_wrap.primitives.PrimitivesReturnViolationHandler;
+import ocanalyzer.rules.r3_8_wrap.primitives.PrimitivesWrapperClassViolationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,23 +18,23 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class PrimitiveReturnWrapperRulesFactory extends RuleFactory {
+public class PrimitiveWrapperRulesFactory extends RuleFactory {
 
-	private ReturnWrapperFactory ruleFactory;
+	private WrapTypeFactory ruleFactory;
 
-	public PrimitiveReturnWrapperRulesFactory(ICompilationUnit unit,
+	public PrimitiveWrapperRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
-		ValidationHandler validationHandler = new PrimitivesReturnViolationHandler(
+		ValidationHandler validationHandler = new PrimitivesWrapperClassViolationHandler(
 				unit, compilationUnit, reporter);
-		ruleFactory = new ReturnWrapperFactory(unit, compilationUnit, reporter,
+		ruleFactory = new WrapTypeFactory(unit, compilationUnit, reporter,
 				types, validationHandler, new PrimitiveDeterminator());
 	}
 
 	@Override
-	public Rules createRules() {
-		Rules rules = new Rules(unit);
+	public RulesClass createRules() {
+		RulesClass rules = new RulesClass(unit);
 		rules.add(ruleFactory.create());
 		return rules;
 	}

@@ -2,7 +2,8 @@ package ocanalyzer.handlers;
 
 import java.util.List;
 
-import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.ObjectCalisthenicsHandler;
+import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.tasks.IndentationRuleTask;
@@ -10,7 +11,7 @@ import ocanalyzer.tasks.IndentationRuleTask;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class IndentiationHandlerMock extends
-		ObjectCalisthenics {
+		ObjectCalisthenicsHandler {
 
 	public IndentiationHandlerMock(ExtractorFactory factory,
 			Reporter reporter) {

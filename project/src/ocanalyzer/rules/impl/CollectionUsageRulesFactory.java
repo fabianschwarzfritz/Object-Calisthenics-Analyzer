@@ -1,12 +1,12 @@
-package ocanalyzer.rules;
+package ocanalyzer.rules.impl;
 
 import java.util.Set;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.r3_8_wrap.WrapTypeFactory;
-import ocanalyzer.rules.r3_8_wrap.collections.CollectionReturnViolationHandler;
+import ocanalyzer.rules.r3_8_wrap.collections.UseCollectionViolationHandler;
 import ocanalyzer.rules.r3_8_wrap.determinator.CollectionDeterminator;
+import ocanalyzer.rules.r3_8_wrap.general.UseWrapperFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,23 +18,23 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class CollectionWrapperRulesFactory extends RuleFactory {
+public class CollectionUsageRulesFactory extends RuleFactory {
 
-	private WrapTypeFactory ruleFactory;
+	private UseWrapperFactory ruleFactory;
 
-	public CollectionWrapperRulesFactory(ICompilationUnit unit,
+	public CollectionUsageRulesFactory(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter,
 			Set<TypeDeclaration> types) {
 		super(unit, compilationUnit, reporter);
-		ValidationHandler validationHandler = new CollectionReturnViolationHandler(
+		ValidationHandler validationHandler = new UseCollectionViolationHandler(
 				unit, compilationUnit, reporter);
-		ruleFactory = new WrapTypeFactory(unit, compilationUnit, reporter,
+		ruleFactory = new UseWrapperFactory(unit, compilationUnit, reporter,
 				types, validationHandler, new CollectionDeterminator());
 	}
 
 	@Override
-	public Rules createRules() {
-		Rules rules = new Rules(unit);
+	public RulesClass createRules() {
+		RulesClass rules = new RulesClass(unit);
 		rules.add(ruleFactory.create());
 		return rules;
 	}
