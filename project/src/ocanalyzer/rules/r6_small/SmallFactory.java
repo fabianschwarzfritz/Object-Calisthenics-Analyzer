@@ -1,7 +1,7 @@
 package ocanalyzer.rules.r6_small;
 
+import muell.RuleValidatorFactory;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;

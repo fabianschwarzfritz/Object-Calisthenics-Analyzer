@@ -2,8 +2,8 @@ package ocanalyzer.rules.r3_8_wrap.general;
 
 import java.util.Set;
 
+import muell.RuleValidatorFactory;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.RuleValidatorFactory;
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.r3_8_wrap.ReturnVisitor;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;

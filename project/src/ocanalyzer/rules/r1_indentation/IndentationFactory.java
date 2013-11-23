@@ -1,7 +1,7 @@
 package ocanalyzer.rules.r1_indentation;
 
+import muell.RuleValidatorFactory;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.RuleValidatorFactory;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTVisitor;
