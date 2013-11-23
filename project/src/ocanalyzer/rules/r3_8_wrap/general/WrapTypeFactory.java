@@ -1,4 +1,4 @@
-package ocanalyzer.rules.r3_8_wrap;
+package ocanalyzer.rules.r3_8_wrap.general;
 
 import java.util.Set;
 

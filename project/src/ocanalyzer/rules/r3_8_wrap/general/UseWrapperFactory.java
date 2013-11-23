@@ -5,7 +5,6 @@ import java.util.Set;
 import muell.RuleValidatorFactory;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.r3_8_wrap.UseWrapperVisitor;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;

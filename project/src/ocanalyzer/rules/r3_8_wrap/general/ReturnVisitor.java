@@ -1,4 +1,4 @@
-package ocanalyzer.rules.r3_8_wrap;
+package ocanalyzer.rules.r3_8_wrap.general;
 
 import java.util.Set;
 
@@ -6,22 +6,21 @@ import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ITypeBinding;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
-public class UseWrapperVisitor extends ASTVisitor {
+public class ReturnVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
+
+	private TypeDeterminator determinator;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
-	private TypeDeterminator determinator;
-
-	public UseWrapperVisitor(ValidationHandler validatonHandler,
+	public ReturnVisitor(ValidationHandler validatonHandler,
 			Set<TypeDeclaration> wrapperUnits, TypeDeterminator determinator) {
 		this.validationHandler = validatonHandler;
 		this.wrapperUnits = wrapperUnits;
@@ -31,27 +30,36 @@ public class UseWrapperVisitor extends ASTVisitor {
 	@Override
 	public boolean visit(TypeDeclaration type) {
 		visitingType = type;
-		return !isWrapper();
+		return isWrapper();
 	}
 
 	@Override
-	public boolean visit(FieldDeclaration node) {
-		visitType(node.getType());
+	public boolean visit(MethodDeclaration node) {
+		checkReturn(node);
 		return true;
 	}
 
-	@Override
-	public boolean visit(VariableDeclarationStatement node) {
-		visitType(node.getType());
-		return true;
+	private void checkReturn(MethodDeclaration node) {
+		Type returnType = node.getReturnType2();
+		visitType(returnType);
 	}
 
 	private void visitType(Type node) {
-		if (!isWrapper()) {
+		if (isWrapper() & node != null) {
 			ITypeBinding resolveTypeBinding = node.resolveBinding();
-			if (determinator.determineType(resolveTypeBinding)) {
-				validationHandler.printInfo(node);
-			}
+			visitType(node, resolveTypeBinding);
+		}
+	}
+
+	private void visitType(Type returnType, ITypeBinding resolveTypeBinding) {
+		if (resolveTypeBinding != null) {
+			addIfSerachedType(returnType, resolveTypeBinding);
+		}
+	}
+
+	private void addIfSerachedType(Type type, ITypeBinding resolveTypeBinding) {
+		if (determinator.determineType(resolveTypeBinding)) {
+			validationHandler.printInfo(type);
 		}
 	}
 
@@ -64,5 +72,4 @@ public class UseWrapperVisitor extends ASTVisitor {
 		}
 		return false;
 	}
-
 }
