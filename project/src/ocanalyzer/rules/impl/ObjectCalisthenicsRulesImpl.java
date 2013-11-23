@@ -4,19 +4,19 @@ import java.util.Collection;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-import ocanalyzer.rules.Rule;
+import ocanalyzer.rules.ObjectCalisthenicsRule;
 
-public class RulesImpl {
+public class ObjectCalisthenicsRulesImpl {
 
-	public Collection<Rule> rules;
+	public Collection<ObjectCalisthenicsRule> rules;
 
 	public void apply(Collection<CompilationUnit> compilationUnits) {
-		for (Rule rule : rules) {
+		for (ObjectCalisthenicsRule rule : rules) {
 			rule.apply(compilationUnits);
 		}
 	}
 
-	public boolean add(Rule e) {
+	public boolean add(ObjectCalisthenicsRule e) {
 		return rules.add(e);
 	}
 
