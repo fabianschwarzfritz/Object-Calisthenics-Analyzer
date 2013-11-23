@@ -2,7 +2,7 @@ package objectcalisthenicsvalidator.views;
 
 import objectcalisthenicsvalidator.views.actions.OpenViolation;
 import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
-import ocanalyzer.ObjectCalisthenicsHandler;
+import ocanalyzer.ObjectCalisthenics;
 import ocanalyzer.reporter.impl.ConsoleReporter;
 import ocanalyzer.reporter.impl.DelegateReporter;
 import ocanalyzer.reporter.impl.MarkerReporter;
@@ -41,7 +41,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	 */
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
-	private ObjectCalisthenicsHandler ocHandler;
+	private ObjectCalisthenics ocHandler;
 	private ViewContentProvider tableProvider;
 
 	private TableViewer rulesViewer;
@@ -55,7 +55,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViewContentProvider();
 		DelegateReporter reporter = createDelegationReporter();
-		ocHandler = new ObjectCalisthenicsHandler();
+		ocHandler = ObjectCalisthenics.create(reporter);
 	}
 
 	private DelegateReporter createDelegationReporter() {
