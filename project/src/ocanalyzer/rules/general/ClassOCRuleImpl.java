@@ -3,12 +3,12 @@ package ocanalyzer.rules.general;
 import java.util.Collection;
 
 import ocanalyzer.extractor.impl.ASTNodeFactory;
-import ocanalyzer.rules.ObjectCalisthenicsRule;
+import ocanalyzer.rules.OCRule;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public abstract class ClassOCRuleImpl implements ObjectCalisthenicsRule {
+public abstract class ClassOCRuleImpl implements OCRule {
 
 	public abstract void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit);
