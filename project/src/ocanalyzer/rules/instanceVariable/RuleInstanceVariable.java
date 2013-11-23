@@ -1,7 +1,7 @@
 package ocanalyzer.rules.instanceVariable;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.ClassOCRuleImpl;
+import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;

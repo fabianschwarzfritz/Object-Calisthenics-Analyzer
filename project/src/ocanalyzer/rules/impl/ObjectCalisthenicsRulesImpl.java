@@ -3,10 +3,11 @@ package ocanalyzer.rules.impl;
 import java.util.Collection;
 
 import ocanalyzer.rules.ObjectCalisthenicsRule;
+import ocanalyzer.rules.ObjectCalisthenicsRules;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 
-public class ObjectCalisthenicsRulesImpl {
+public class ObjectCalisthenicsRulesImpl implements ObjectCalisthenicsRules {
 
 	public Collection<ObjectCalisthenicsRule> rules;
 
