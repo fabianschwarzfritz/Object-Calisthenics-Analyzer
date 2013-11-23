@@ -1,5 +1,5 @@
 package ocanalyzer.rules;
 
-public interface OCRule extends CompilationUnitApplyable {
+public interface OCRule extends ICompilationUnitApplyable {
 
 }
