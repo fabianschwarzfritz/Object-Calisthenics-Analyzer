@@ -1,9 +1,10 @@
 package ocanalyzer;
 
 import ocanalyzer.extractor.impl.WorkspaceExtractor;
+import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ReporterFactory;
 import ocanalyzer.reporter.impl.ConsoleReporter;
 import ocanalyzer.reporter.impl.MarkerReporter;
-import ocanalyzer.rules.impl.OCRulesImpl;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -34,8 +35,8 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 	private ObjectCalisthenics objectCalisthenics;
 
 	public ObjectCalisthenicsHandler() {
-		// FIXME add parameters
-		
+		Reporter reporter = ReporterFactory.createStandardReporter();
+		ObjectCalisthenics.create(reporter);
 	}
 
 	@Override
