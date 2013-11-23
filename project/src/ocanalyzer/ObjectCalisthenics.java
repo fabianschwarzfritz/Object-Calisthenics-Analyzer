@@ -3,16 +3,16 @@ package ocanalyzer;
 import java.util.Collection;
 
 import ocanalyzer.extractor.Extractor;
-import ocanalyzer.rules.Rules;
+import ocanalyzer.rules.impl.RulesImpl;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ObjectCalisthenics {
 
 	private Extractor extractor;
-	private Rules rules;
+	private RulesImpl rules;
 
-	public ObjectCalisthenics(Extractor extractor, Rules rules) {
+	public ObjectCalisthenics(Extractor extractor, RulesImpl rules) {
 		super();
 		this.extractor = extractor;
 		this.rules = rules;
@@ -20,7 +20,7 @@ public class ObjectCalisthenics {
 
 	public void validate() {
 		// Extract
-		Collection<CompilationUnit> units = extractor.extractUnits();
+		Collection<CompilationUnit> units = extractor.extract();
 		// Run
 		rules.apply(units);
 	}

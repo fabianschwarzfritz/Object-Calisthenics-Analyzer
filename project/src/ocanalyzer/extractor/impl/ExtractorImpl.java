@@ -17,7 +17,7 @@ public class ExtractorImpl implements Extractor {
 	}
 
 	@Override
-	public Collection<CompilationUnit> extractUnits() {
+	public Collection<CompilationUnit> extract() {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		WorkspaceExtractor analyzer = factory
 				.createWorkspaceAnalyzer(workspace);

@@ -6,6 +6,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public interface Extractor {
 
-	Collection<CompilationUnit> extractUnits();
+	Collection<CompilationUnit> extract();
 
 }
