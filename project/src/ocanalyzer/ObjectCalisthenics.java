@@ -3,26 +3,23 @@ package ocanalyzer;
 import java.util.Collection;
 
 import ocanalyzer.extractor.Extractor;
-import ocanalyzer.rules.impl.OCRulesImpl;
+import ocanalyzer.rules.OCRules;
 
 import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class ObjectCalisthenics {
 
 	private Extractor extractor;
-	private OCRulesImpl rules;
+	private OCRules rules;
 
-	public ObjectCalisthenics(Extractor extractor, OCRulesImpl rules) {
+	public ObjectCalisthenics(Extractor extractor, OCRules rules) {
 		super();
 		this.extractor = extractor;
 		this.rules = rules;
 	}
 
 	public void validate() {
-		// Extract
 		Collection<ICompilationUnit> units = extractor.extract();
-		// Run
 		rules.apply(units);
 	}
 
