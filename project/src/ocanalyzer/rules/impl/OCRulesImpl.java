@@ -1,6 +1,7 @@
 package ocanalyzer.rules.impl;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.OCRule;
@@ -20,6 +21,7 @@ public class OCRulesImpl implements OCRules {
 	public Collection<OCRule> rules;
 
 	private OCRulesImpl() {
+		rules = new HashSet<OCRule>();
 	}
 
 	public static OCRulesImpl create() {

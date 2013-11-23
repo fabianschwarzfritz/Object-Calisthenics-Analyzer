@@ -36,7 +36,7 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 
 	public ObjectCalisthenicsHandler() {
 		Reporter reporter = ReporterFactory.createConsoleReporter();
-		ObjectCalisthenics.create(reporter);
+		objectCalisthenics = ObjectCalisthenics.create(reporter);
 	}
 
 	@Override
