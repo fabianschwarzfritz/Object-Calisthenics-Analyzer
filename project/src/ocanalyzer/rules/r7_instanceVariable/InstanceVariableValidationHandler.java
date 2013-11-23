@@ -1,4 +1,4 @@
-package ocanalyzer.rules.instanceVariable;
+package ocanalyzer.rules.r7_instanceVariable;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;

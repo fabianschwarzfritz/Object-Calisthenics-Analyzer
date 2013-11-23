@@ -1,4 +1,4 @@
-package ocanalyzer.rules.instanceVariable;
+package ocanalyzer.rules.r7_instanceVariable;
 
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;

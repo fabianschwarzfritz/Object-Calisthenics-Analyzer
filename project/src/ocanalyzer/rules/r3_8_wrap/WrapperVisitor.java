@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.instanceVariable.InstanceVariableCounter;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
+import ocanalyzer.rules.r7_instanceVariable.InstanceVariableCounter;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ITypeBinding;
