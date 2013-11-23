@@ -1,9 +1,8 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import objectcalisthenicsvalidator.views.ViewContentProvider;
-import ocanalyzer.handlers.ObjectCalisthenics;
+import ocanalyzer.ObjectCalisthenics;
 
-import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.ui.ISharedImages;
@@ -13,22 +12,22 @@ import org.eclipse.ui.PlatformUI;
  * This class represents an action that is triggering an object calisthenics
  * validation.
  * 
- * Therefore it uses an {@link #ocHandler} to trigger it. This class does not
- * configure or set up the handler, but assumes that the configuration (like for
- * example setting up the correct rule violation reporters) is already done.
+ * Therefore it uses an {@link #oc} to trigger it. This class does not configure
+ * or set up the handler, but assumes that the configuration (like for example
+ * setting up the correct rule violation reporters) is already done.
  * 
  * @author Fabian Schwarz-Fritz
  * 
  */
 public class StartRuleValidation extends Action {
 
-	private ObjectCalisthenics ocHandler;
+	private ObjectCalisthenics oc;
 	private ViewContentProvider tableProvider;
 	private TableViewer rulesViewer;
 
-	public StartRuleValidation(ObjectCalisthenics ocHandler,
+	public StartRuleValidation(ObjectCalisthenics oc,
 			ViewContentProvider tableProvider, TableViewer rulesViewer) {
-		this.ocHandler = ocHandler;
+		this.oc = oc;
 		this.tableProvider = tableProvider;
 		this.rulesViewer = rulesViewer;
 
@@ -39,12 +38,8 @@ public class StartRuleValidation extends Action {
 	}
 
 	public void run() {
-		try {
-			tableProvider.clear();
-			ocHandler.execute(null);
-			rulesViewer.refresh();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
+		tableProvider.clear();
+		oc.validate();
+		rulesViewer.refresh();
 	}
 }

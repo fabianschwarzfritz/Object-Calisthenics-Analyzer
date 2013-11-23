@@ -1,10 +1,11 @@
 package ocanalyzer.analyzer.factory;
 
 import ocanalyzer.analyzer.extractor.ProjectAnalyzerMock;
-import ocanalyzer.analyzer.factory.extractor.CompilationUnitExtractor;
-import ocanalyzer.analyzer.factory.extractor.PackageExtractor;
-import ocanalyzer.analyzer.factory.extractor.ProjectExtractor;
-import ocanalyzer.analyzer.factory.extractor.WorkspaceExtractor;
+import ocanalyzer.extractor.impl.CompilationUnitExtractor;
+import ocanalyzer.extractor.impl.ExtractorFactory;
+import ocanalyzer.extractor.impl.PackageExtractor;
+import ocanalyzer.extractor.impl.ProjectExtractor;
+import ocanalyzer.extractor.impl.WorkspaceExtractor;
 import ocanalyzer.reporter.impl.NoReporter;
 
 import org.eclipse.core.resources.IProject;

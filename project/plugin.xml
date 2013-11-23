@@ -18,7 +18,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             commandId="ObjectCalisthenicsValidator.commands.sampleCommand"
-            class="ocanalyzer.handlers.ObjectCalisthenics">
+            class="ocanalyzer.ObjectCalisthenicsHandler">
       </handler>
    </extension>
    <extension

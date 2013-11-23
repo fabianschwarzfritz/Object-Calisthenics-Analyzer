@@ -23,7 +23,7 @@ public class IndentationVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	public IndentationVisitor(IndentationValidationHandler validationHandler) {
+	public IndentationVisitor(ValidationHandler validationHandler) {
 		this.validationHandler = validationHandler;
 		methodDeclarations = new HashSet<ASTNode>();
 	}

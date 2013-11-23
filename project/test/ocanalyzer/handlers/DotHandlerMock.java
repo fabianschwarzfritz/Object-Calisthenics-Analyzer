@@ -2,14 +2,15 @@ package ocanalyzer.handlers;
 
 import java.util.List;
 
-import ocanalyzer.analyzer.factory.ExtractorFactory;
+import ocanalyzer.ObjectCalisthenicsHandler;
+import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.tasks.DotRuleTask;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class DotHandlerMock extends ObjectCalisthenics {
+public class DotHandlerMock extends ObjectCalisthenicsHandler {
 
 	public DotHandlerMock(ExtractorFactory factory,
 			Reporter reporter) {

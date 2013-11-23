@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.factory.ExtractorFactory;
 import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
+import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.WrapPrimitivesHandlerMock;
 import ocanalyzer.reporter.ClassViolation;
 
