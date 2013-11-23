@@ -11,7 +11,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 public class ExtractorImpl implements Extractor {
 
 	private ExtractorFactory factory;
-
+	
 	public ExtractorImpl() {
 		factory = new AnalyzerFactoryImpl();
 	}
