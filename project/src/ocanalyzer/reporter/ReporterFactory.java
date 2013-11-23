@@ -13,4 +13,8 @@ public class ReporterFactory {
 		return result;
 	}
 
+	public static Reporter createConsoleReporter() {
+		return new ConsoleReporter(System.out);
+	}
+
 }

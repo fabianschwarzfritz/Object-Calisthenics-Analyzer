@@ -35,7 +35,7 @@ public class ObjectCalisthenicsHandler extends AbstractHandler {
 	private ObjectCalisthenics objectCalisthenics;
 
 	public ObjectCalisthenicsHandler() {
-		Reporter reporter = ReporterFactory.createStandardReporter();
+		Reporter reporter = ReporterFactory.createConsoleReporter();
 		ObjectCalisthenics.create(reporter);
 	}
 
