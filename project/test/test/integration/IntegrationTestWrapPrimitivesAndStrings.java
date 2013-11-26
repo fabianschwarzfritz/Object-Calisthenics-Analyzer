@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Set;
 
 import junit.framework.TestCase;
-import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
-import ocanalyzer.analyzer.reporter.TestReporter;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.WrapPrimitivesHandlerMock;
+import ocanalyzer.newIntegration.MockAnalyzerFactory;
+import ocanalyzer.newIntegration.TestReporter;
 import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;

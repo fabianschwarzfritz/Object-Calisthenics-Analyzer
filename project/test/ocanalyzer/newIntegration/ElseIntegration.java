@@ -1,7 +1,5 @@
 package ocanalyzer.newIntegration;
 
-import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
-import ocanalyzer.analyzer.reporter.TestReporter;
 import ocanalyzer.extractor.Extractor;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.extractor.impl.ExtractorImpl;
