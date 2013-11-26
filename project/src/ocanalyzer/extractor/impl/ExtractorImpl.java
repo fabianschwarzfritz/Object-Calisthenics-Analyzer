@@ -14,6 +14,10 @@ public class ExtractorImpl implements Extractor {
 		factory = new AnalyzerFactoryImpl();
 	}
 
+	public ExtractorImpl(ExtractorFactory factory) {
+		this.factory = factory;
+	}
+
 	@Override
 	public ICompilationUnits extract() {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();

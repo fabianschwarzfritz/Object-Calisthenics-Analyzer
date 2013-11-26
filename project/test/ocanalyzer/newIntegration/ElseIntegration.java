@@ -1,6 +1,10 @@
 package ocanalyzer.newIntegration;
 
+import ocanalyzer.analyzer.factory.MockAnalyzerFactory;
 import ocanalyzer.analyzer.reporter.TestReporter;
+import ocanalyzer.extractor.Extractor;
+import ocanalyzer.extractor.impl.ExtractorFactory;
+import ocanalyzer.extractor.impl.ExtractorImpl;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;
@@ -16,9 +20,14 @@ public class ElseIntegration {
 	private OCRulesImpl rules;
 
 	@Before
-	public void initCompilationUnits() {
-		// TODO extract units from package
-		units = new ICompilationUnits();
+	public void extractUnits() {
+		ExtractorFactory factory = createMock("elseRule");
+		Extractor extractor = new ExtractorImpl(factory);
+		units = extractor.extract();
+	}
+
+	private ExtractorFactory createMock(String packagename) {
+		return new MockAnalyzerFactory(packagename);
 	}
 
 	@Before
@@ -35,7 +44,6 @@ public class ElseIntegration {
 
 	@Test
 	public void test() {
-		// USE mock framework to guarantee so that it is pobbile to count the validaiton
 		rules.apply(units);
 	}
 
