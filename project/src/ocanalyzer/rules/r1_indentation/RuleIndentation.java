@@ -2,6 +2,7 @@ package ocanalyzer.rules.r1_indentation;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
+import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.ICompilationUnit;

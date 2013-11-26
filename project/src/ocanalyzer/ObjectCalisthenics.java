@@ -1,14 +1,11 @@
 package ocanalyzer;
 
-import java.util.Collection;
-
 import ocanalyzer.extractor.Extractor;
 import ocanalyzer.extractor.impl.ExtractorImpl;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.OCRules;
+import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.impl.OCRulesImpl;
-
-import org.eclipse.jdt.core.ICompilationUnit;
 
 public class ObjectCalisthenics {
 
@@ -27,7 +24,7 @@ public class ObjectCalisthenics {
 	}
 
 	public void validate() {
-		Collection<ICompilationUnit> units = extractor.extract();
+		ICompilationUnits units = extractor.extract();
 		rules.apply(units);
 	}
 
