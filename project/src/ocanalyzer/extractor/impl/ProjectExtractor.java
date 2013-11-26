@@ -1,12 +1,12 @@
 package ocanalyzer.extractor.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+
+import ocanalyzer.rules.general.ICompilationUnits;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
@@ -23,8 +23,8 @@ public class ProjectExtractor implements CompilationUnitsExtractable {
 		this.factory = factory;
 	}
 
-	public Collection<ICompilationUnit> extractCompilationUnits() {
-		List<ICompilationUnit> resultUnits = new ArrayList<ICompilationUnit>();
+	public ICompilationUnits extractCompilationUnits() {
+		ICompilationUnits resultUnits = new ICompilationUnits();
 		try {
 			if (isJavaProject()) {
 				IPackageFragment[] packages = JavaCore.create(project)
@@ -40,12 +40,12 @@ public class ProjectExtractor implements CompilationUnitsExtractable {
 		return resultUnits;
 	}
 
-	private void extract(Collection<ICompilationUnit> resultUnits,
+	private void extract(ICompilationUnits allUnits,
 			List<PackageExtractor> createPackageAnalyzers) {
 		for (PackageExtractor packageAnalyzer : createPackageAnalyzers) {
-			Collection<ICompilationUnit> packageUnits = packageAnalyzer
+			ICompilationUnits packageUnits = packageAnalyzer
 					.extractCompilationUnits();
-			resultUnits.addAll(packageUnits);
+			allUnits.addAll(packageUnits);
 		}
 	}
 

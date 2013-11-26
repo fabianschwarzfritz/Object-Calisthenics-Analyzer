@@ -1,8 +1,8 @@
 package ocanalyzer.extractor.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+
+import ocanalyzer.rules.general.ICompilationUnits;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -20,25 +20,25 @@ public class PackageExtractor implements CompilationUnitsExtractable {
 	}
 
 	@Override
-	public Collection<ICompilationUnit> extractCompilationUnits() {
+	public ICompilationUnits extractCompilationUnits() {
 		try {
 			if (packageFragement.getKind() == IPackageFragmentRoot.K_SOURCE) {
-				List<ICompilationUnit> extractUnits = extractUnits();
+				ICompilationUnits units = extractUnits();
 				// FIXME remove counting of classes
 				// ClassesPerPackage classes = new ClassesPerPackage(
 				// packageFragement, writer);
 				// classes.setCount(extractUnits.size());
-				return extractUnits;
+				return units;
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		return new ArrayList<ICompilationUnit>();
+		return new ICompilationUnits();
 	}
 
-	private List<ICompilationUnit> extractUnits() throws JavaModelException {
-		List<ICompilationUnit> result = new ArrayList<ICompilationUnit>();
+	private ICompilationUnits extractUnits() throws JavaModelException {
+		ICompilationUnits result = new ICompilationUnits();
 		for (ICompilationUnit unit : packageFragement.getCompilationUnits()) {
 			result.add(unit);
 		}

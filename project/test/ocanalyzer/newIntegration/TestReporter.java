@@ -1,4 +1,4 @@
-package ocanalyzer.analyzer.reporter;
+package ocanalyzer.newIntegration;
 
 import java.util.ArrayList;
 import java.util.List;

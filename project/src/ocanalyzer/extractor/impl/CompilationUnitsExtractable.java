@@ -1,13 +1,9 @@
 package ocanalyzer.extractor.impl;
 
-import java.util.Collection;
-import java.util.List;
-
-import org.eclipse.jdt.core.ICompilationUnit;
-import org.eclipse.jdt.core.dom.CompilationUnit;
+import ocanalyzer.rules.general.ICompilationUnits;
 
 interface CompilationUnitsExtractable {
 
-	public abstract Collection<ICompilationUnit> extractCompilationUnits();
+	public abstract ICompilationUnits extractCompilationUnits();
 
 }

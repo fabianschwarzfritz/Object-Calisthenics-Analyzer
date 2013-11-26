@@ -1,16 +1,13 @@
-package ocanalyzer.analyzer.factory;
+package ocanalyzer.newIntegration;
 
 import ocanalyzer.analyzer.extractor.ProjectAnalyzerMock;
-import ocanalyzer.extractor.impl.CompilationUnitExtractor;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.extractor.impl.PackageExtractor;
 import ocanalyzer.extractor.impl.ProjectExtractor;
 import ocanalyzer.extractor.impl.WorkspaceExtractor;
-import ocanalyzer.reporter.impl.NoReporter;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IPackageFragment;
 
 public class MockAnalyzerFactory implements ExtractorFactory {
@@ -22,14 +19,8 @@ public class MockAnalyzerFactory implements ExtractorFactory {
 	}
 
 	@Override
-	public CompilationUnitExtractor createCompilationUnitAnalyzer(
-			ICompilationUnit compilationUni) {
-		return new CompilationUnitExtractor(compilationUni);
-	}
-
-	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageExtractor(fragment, this, new NoReporter());
+		return new PackageExtractor(fragment, this);
 	}
 
 	@Override
