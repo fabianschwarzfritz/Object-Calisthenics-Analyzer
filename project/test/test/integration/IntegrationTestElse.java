@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.ElseHandlerMock;
 import ocanalyzer.newIntegration.MockAnalyzerFactory;
-import ocanalyzer.newIntegration.TestReporter;
+import ocanalyzer.newIntegration.ClassTestReporter;
 import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -22,7 +22,7 @@ import org.eclipse.core.commands.ExecutionException;
 public class IntegrationTestElse extends TestCase {
 
 	public void testElseRule() throws ExecutionException {
-		TestReporter testReporter = new TestReporter();
+		ClassTestReporter testReporter = new ClassTestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory("elseRule");
 		ElseHandlerMock ocMock = new ElseHandlerMock(
 				factory, testReporter);

@@ -1,11 +1,8 @@
 package ocanalyzer.newIntegration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import java.util.Collection;
+import java.util.HashSet;
 
-import java.util.List;
-
-import ocanalyzer.reporter.ClassViolation;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;
 import ocanalyzer.rules.r2_noelse.RuleElse;
@@ -13,35 +10,42 @@ import ocanalyzer.rules.r2_noelse.RuleElse;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ElseIntegration extends OCIntegration {
+public class ElseIntegration {
 
 	private static final String PACKAGE_NAME = "elseRule";
 
-	public ElseIntegration() {
-		super(PACKAGE_NAME);
+	private OCIntegration test;
+	private ViolationAsserter asserter;
+
+	@Before
+	public void prepareViolations() {
+		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
+		ClassViolationDecorator violation = new ClassViolationDecorator(
+				"ElseWrong.java", 8, "The else keyword violates rule 2");
+		violations.add(violation);
+		asserter = new ViolationAsserter(violations);
 	}
 
 	@Before
-	public void initRules() {
-		OCRule ruleToApply = new RuleElse(reporter);
-		rules = OCRulesImpl.create();
+	public void prepare() {
+		OCRulesImpl rules = initRules();
+
+		test = new OCIntegration(PACKAGE_NAME, rules);
+
+		test.prepare();
+	}
+
+	private OCRulesImpl initRules() {
+		OCRule ruleToApply = new RuleElse(asserter);
+		OCRulesImpl rules = OCRulesImpl.create();
 		rules.add(ruleToApply);
+		return rules;
 	}
 
 	@Test
 	public void test() {
-		rules.apply(units);
-
-		List<ClassViolation> violations = reporter.getViolations();
-
-		assertSame(1, violations.size());
-		ClassViolation violation = violations.get(0);
-		assertEquals("Error when validating no-else rule. Wrong resource",
-				"ElseWrong.java", violation.getResource().getName());
-		assertEquals("Error when validating no-else rule. Wring position",
-				new Integer(8), violation.getLine());
-		assertEquals("Error when validating no-else rule. Wring message",
-				"The else keyword violates rule 2", violation.getMessage());
+		test.testRule();
+		asserter.guarantueeCount();
 	}
 
 }

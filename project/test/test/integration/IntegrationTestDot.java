@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.DotHandlerMock;
 import ocanalyzer.newIntegration.MockAnalyzerFactory;
-import ocanalyzer.newIntegration.TestReporter;
+import ocanalyzer.newIntegration.ClassTestReporter;
 import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -14,7 +14,7 @@ import org.eclipse.core.commands.ExecutionException;
 public class IntegrationTestDot extends TestCase {
 
 	public void testDotRule() throws ExecutionException {
-		TestReporter testReporter = new TestReporter();
+		ClassTestReporter testReporter = new ClassTestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory("dotRule");
 		DotHandlerMock ocMock = new DotHandlerMock(factory, testReporter);
 

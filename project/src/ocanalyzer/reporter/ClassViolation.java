@@ -24,6 +24,10 @@ public class ClassViolation implements Violation {
 		this.message = message;
 	}
 
+	protected ClassViolation() {
+
+	}
+
 	public IResource getResource() {
 		return resource;
 	}

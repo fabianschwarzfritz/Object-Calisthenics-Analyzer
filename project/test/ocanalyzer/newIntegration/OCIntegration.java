@@ -6,34 +6,31 @@ import ocanalyzer.extractor.impl.ExtractorImpl;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.impl.OCRulesImpl;
 
-import org.junit.Before;
-
 public class OCIntegration {
 
 	private String packageName;
 
-	protected TestReporter reporter;
-	protected ICompilationUnits units;
-	protected OCRulesImpl rules;
+	private ICompilationUnits units;
+	private OCRulesImpl rules;
 
-	public OCIntegration(String packageName) {
+	public OCIntegration(String packageName, OCRulesImpl rules) {
+		super();
 		this.packageName = packageName;
+		this.rules = rules;
 	}
 
-	@Before
-	public void extractUnits() {
-		ExtractorFactory factory = createMock(packageName);
+	public void prepare() {
+		extractUnits();
+	}
+
+	private void extractUnits() {
+		ExtractorFactory factory = new MockAnalyzerFactory(packageName);
 		Extractor extractor = new ExtractorImpl(factory);
 		units = extractor.extract();
 	}
-
-	private ExtractorFactory createMock(String packagename) {
-		return new MockAnalyzerFactory(packagename);
-	}
-
-	@Before
-	public void initTestReporter() {
-		reporter = new TestReporter();
+	
+	public void testRule() {
+		rules.apply(units);
 	}
 
 }
