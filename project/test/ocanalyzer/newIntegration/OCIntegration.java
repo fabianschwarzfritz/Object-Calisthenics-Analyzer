@@ -4,17 +4,15 @@ import ocanalyzer.extractor.Extractor;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.extractor.impl.ExtractorImpl;
 import ocanalyzer.rules.general.ICompilationUnits;
-import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;
-import ocanalyzer.rules.r2_noelse.RuleElse;
 
 import org.junit.Before;
 
 public class OCIntegration {
 
 	private String packageName;
-	private TestReporter reporter;
 
+	protected TestReporter reporter;
 	protected ICompilationUnits units;
 	protected OCRulesImpl rules;
 
@@ -38,10 +36,4 @@ public class OCIntegration {
 		reporter = new TestReporter();
 	}
 
-	@Before
-	public void initRules() {
-		OCRule ruleToApply = new RuleElse(reporter);
-		rules = OCRulesImpl.create();
-		rules.add(ruleToApply);
-	}
 }
