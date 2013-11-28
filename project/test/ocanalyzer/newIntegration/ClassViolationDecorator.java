@@ -30,6 +30,26 @@ public class ClassViolationDecorator {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		// Generage hash code from violation using the resource name
+		result = prime
+				* result
+				+ ((violation.getLine() == null) ? 0 : violation.getLine()
+						.hashCode());
+		result = prime
+				* result
+				+ ((violation.getMessage() == null) ? 0 : violation
+						.getMessage().hashCode());
+		result = prime
+				* result
+				+ ((violation.getResource().getName() == null) ? 0 : violation
+						.getResource().getName().hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

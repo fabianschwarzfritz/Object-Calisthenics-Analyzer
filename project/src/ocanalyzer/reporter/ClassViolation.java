@@ -39,4 +39,5 @@ public class ClassViolation implements Violation {
 	public String getMessage() {
 		return message;
 	}
+	
 }
