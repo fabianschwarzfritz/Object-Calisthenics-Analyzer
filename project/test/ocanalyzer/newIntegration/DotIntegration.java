@@ -20,10 +20,16 @@ public class DotIntegration {
 	@Before
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
-		ClassViolationDecorator violation = new ClassViolationDecorator(
-				"DotWrong.java", 9,
-				"Using more that one dot per line violates rule 4!");
-		violations.add(violation);
+
+		String className = "DotWrong.java";
+		String ruleViolationName = "Using more that one dot per line violates rule 4!";
+		ClassViolationDecorator violation1 = new ClassViolationDecorator(
+				className, 9, ruleViolationName);
+		ClassViolationDecorator violation2 = new ClassViolationDecorator(
+				className, 10, ruleViolationName);
+
+		violations.add(violation1);
+		violations.add(violation2);
 		asserter = new ViolationAsserter(violations);
 	}
 
