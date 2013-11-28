@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class DotIntegration {
 
-	private static final String PACKAGE_NAME = "elseRule";
+	private static final String PACKAGE_NAME = "dotRule";
 
 	private OCIntegration test;
 	private ViolationAsserter asserter;

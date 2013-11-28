@@ -58,13 +58,14 @@ public class ClassViolationDecorator {
 			return false;
 		}
 
-		if (obj instanceof ClassViolation) {
-			ClassViolation violation = (ClassViolation) obj;
+		if (obj instanceof ClassViolationDecorator) {
+			ClassViolationDecorator otherDecorator = (ClassViolationDecorator) obj;
+			ClassViolation otherViolation = otherDecorator.violation;
 			return this.violation.getResource().getName()
-					.equals(violation.getResource().getName())
-					& this.violation.getLine().equals(violation.getLine())
-					& this.violation.getMessage()
-							.equals(violation.getMessage());
+					.equals(otherViolation.getResource().getName())
+					& this.violation.getLine().equals(otherViolation.getLine())
+					& this.violation.getMessage().equals(
+							otherViolation.getMessage());
 		}
 		return false;
 	}
