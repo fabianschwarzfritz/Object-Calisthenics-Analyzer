@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.handlers.WrapPrimitivesHandlerMock;
 import ocanalyzer.newIntegration.MockAnalyzerFactory;
-import ocanalyzer.newIntegration.TestReporter;
+import ocanalyzer.newIntegration.ClassTestReporter;
 import ocanalyzer.reporter.ClassViolation;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
 	public void testWrapperClassesDatabase() throws ExecutionException {
-		TestReporter testReporter = new TestReporter();
+		ClassTestReporter testReporter = new ClassTestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory(
 				"wrapPrimitives_wrong_db");
 		WrapPrimitivesHandlerMock ocMock = new WrapPrimitivesHandlerMock(
@@ -70,7 +70,7 @@ public class IntegrationTestWrapPrimitivesAndStrings extends TestCase {
 
 	private void testWrappers(Set<String> assertTypes, String packageName)
 			throws ExecutionException {
-		TestReporter testReporter = new TestReporter();
+		ClassTestReporter testReporter = new ClassTestReporter();
 		ExtractorFactory factory = new MockAnalyzerFactory(packageName);
 		WrapPrimitivesHandlerMock ocMock = new WrapPrimitivesHandlerMock(
 				factory, testReporter);
