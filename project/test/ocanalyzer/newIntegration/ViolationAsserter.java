@@ -3,6 +3,7 @@ package ocanalyzer.newIntegration;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import ocanalyzer.newIntegration.mock.ClassViolationDecorator;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.ClassViolation;
 

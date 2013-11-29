@@ -3,9 +3,9 @@ package ocanalyzer.newIntegration.test;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.newIntegration.ClassViolationDecorator;
 import ocanalyzer.newIntegration.OCIntegration;
 import ocanalyzer.newIntegration.ViolationAsserter;
+import ocanalyzer.newIntegration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;
 import ocanalyzer.rules.r1_indentation.RuleIndentation;

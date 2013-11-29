@@ -1,4 +1,4 @@
-package ocanalyzer.newIntegration;
+package ocanalyzer.newIntegration.mock;
 
 import java.net.URI;
 import java.util.Map;

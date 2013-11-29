@@ -1,5 +1,6 @@
 package ocanalyzer.newIntegration;
 
+import ocanalyzer.newIntegration.mock.ClassViolationListener;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.reporter.ClassViolation;
 
