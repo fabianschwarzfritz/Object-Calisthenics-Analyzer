@@ -1,18 +1,21 @@
-package ocanalyzer.newIntegration;
+package ocanalyzer.newIntegration.test;
 
 import java.util.Collection;
 import java.util.HashSet;
 
+import ocanalyzer.newIntegration.ClassViolationDecorator;
+import ocanalyzer.newIntegration.OCIntegration;
+import ocanalyzer.newIntegration.ViolationAsserter;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;
-import ocanalyzer.rules.r4_onedot.RuleOneDotPerLine;
+import ocanalyzer.rules.r2_noelse.RuleElse;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class WrapPrimitivesIntegration {
+public class ElseIntegration {
 
-	private static final String PACKAGE_NAME = "dotRule";
+	private static final String PACKAGE_NAME = "elseRule";
 
 	private OCIntegration test;
 	private ViolationAsserter asserter;
@@ -21,8 +24,7 @@ public class WrapPrimitivesIntegration {
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 		ClassViolationDecorator violation = new ClassViolationDecorator(
-				"DBConfiguration.java", 3,
-				"Error finding a primitive/string wrapper. Wrong position");
+				"ElseWrong.java", 8, "The else keyword violates rule 2");
 		violations.add(violation);
 		asserter = new ViolationAsserter(violations);
 	}
@@ -37,7 +39,7 @@ public class WrapPrimitivesIntegration {
 	}
 
 	private OCRulesImpl initRules() {
-		OCRule ruleToApply = new RuleOneDotPerLine(asserter);
+		OCRule ruleToApply = new RuleElse(asserter);
 		OCRulesImpl rules = OCRulesImpl.create();
 		rules.add(ruleToApply);
 		return rules;
