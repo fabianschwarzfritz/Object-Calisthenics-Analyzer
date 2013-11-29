@@ -3,8 +3,8 @@ package ocanalyzer.newIntegration.test;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.newIntegration.OCIntegration;
-import ocanalyzer.newIntegration.ViolationAsserter;
+import ocanalyzer.newIntegration.helper.OCIntegration;
+import ocanalyzer.newIntegration.helper.ViolationAsserter;
 import ocanalyzer.newIntegration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.impl.OCRulesImpl;

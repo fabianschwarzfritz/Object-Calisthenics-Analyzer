@@ -1,8 +1,9 @@
-package ocanalyzer.newIntegration;
+package ocanalyzer.newIntegration.helper;
 
 import ocanalyzer.extractor.Extractor;
 import ocanalyzer.extractor.impl.ExtractorFactory;
 import ocanalyzer.extractor.impl.ExtractorImpl;
+import ocanalyzer.newIntegration.MockAnalyzerFactory;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.impl.OCRulesImpl;
 

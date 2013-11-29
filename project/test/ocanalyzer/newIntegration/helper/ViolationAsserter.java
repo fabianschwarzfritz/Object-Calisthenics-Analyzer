@@ -1,4 +1,4 @@
-package ocanalyzer.newIntegration;
+package ocanalyzer.newIntegration.helper;
 
 import java.util.ArrayList;
 import java.util.Collection;
