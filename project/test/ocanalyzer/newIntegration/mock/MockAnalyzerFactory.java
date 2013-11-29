@@ -1,4 +1,4 @@
-package ocanalyzer.newIntegration;
+package ocanalyzer.newIntegration.mock;
 
 import ocanalyzer.analyzer.extractor.ProjectAnalyzerMock;
 import ocanalyzer.extractor.impl.ExtractorFactory;
