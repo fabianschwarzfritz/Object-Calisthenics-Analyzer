@@ -5,9 +5,9 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
-public class ShortNamesValidationHandler extends ValidationHandler {
+public class ShortNamesValidationHandler extends ValidationHandlerImpl {
 
 	public ShortNamesValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

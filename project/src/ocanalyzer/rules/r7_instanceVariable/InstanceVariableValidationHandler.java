@@ -1,13 +1,13 @@
 package ocanalyzer.rules.r7_instanceVariable;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class InstanceVariableValidationHandler extends ValidationHandler {
+public class InstanceVariableValidationHandler extends ValidationHandlerImpl {
 
 	public InstanceVariableValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

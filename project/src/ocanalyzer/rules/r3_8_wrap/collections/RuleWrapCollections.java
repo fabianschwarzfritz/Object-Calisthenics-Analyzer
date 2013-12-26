@@ -5,7 +5,7 @@ import java.util.Set;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 import ocanalyzer.rules.r3_8_wrap.determinator.CollectionDeterminator;
 import ocanalyzer.rules.r3_8_wrap.general.ReturnVisitor;
 import ocanalyzer.rules.r3_8_wrap.general.WrapperVisitor;
@@ -31,7 +31,7 @@ public class RuleWrapCollections extends ClassOCRuleImpl {
 
 	private void searchNonWrapperUsage(Set<TypeDeclaration> wrapperTypes,
 			ICompilationUnit iUnit, CompilationUnit unit) {
-		ValidationHandler instanceValidationHandler = new CollectionReturnViolationHandler(
+		ValidationHandlerImpl instanceValidationHandler = new CollectionReturnViolationHandler(
 				iUnit, unit, reporter);
 		ReturnVisitor visitor = new ReturnVisitor(instanceValidationHandler,
 				wrapperTypes, new CollectionDeterminator());
@@ -42,7 +42,7 @@ public class RuleWrapCollections extends ClassOCRuleImpl {
 			CompilationUnit unit) {
 		Set<TypeDeclaration> wrappers = new HashSet<TypeDeclaration>();
 
-		ValidationHandler instanceValidationHandler = new CollectionWrapperClassViolationHandler(
+		ValidationHandlerImpl instanceValidationHandler = new CollectionWrapperClassViolationHandler(
 				iUnit, unit, reporter);
 		WrapperVisitor visitor = new WrapperVisitor(instanceValidationHandler,
 				wrappers, new CollectionDeterminator());

@@ -1,7 +1,7 @@
 package ocanalyzer.rules.r4_onedot;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class DotValidationHandler extends ValidationHandler {
+public class DotValidationHandler extends ValidationHandlerImpl {
 
 	public DotValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

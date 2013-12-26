@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r5_shortnames;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 import ocanalyzer.rules.r5_shortnames.determinator.TypeNameDeterminator;
 import ocanalyzer.rules.r5_shortnames.determinator.VariableNameDeterminator;
 
@@ -13,7 +13,7 @@ public class ShortNamesVisitor extends ASTVisitor {
 	private TypeNameDeterminator typeNameDeterminator;
 	private VariableNameDeterminator variableNameDeterminator;
 
-	public ShortNamesVisitor(ValidationHandler validationHandler) {
+	public ShortNamesVisitor(ValidationHandlerImpl validationHandler) {
 		typeNameDeterminator = new TypeNameDeterminator(validationHandler);
 		variableNameDeterminator = new VariableNameDeterminator(
 				validationHandler);

@@ -1,32 +1,29 @@
-package ocanalyzer.rules.r9_properties.getter;
+package ocanalyzer.rules.r9_properties.general;
 
 import ocanalyzer.rules.general.ValidationHandler;
 import ocanalyzer.rules.r9_properties.VariableBindings;
 
-import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.IBinding;
 import org.eclipse.jdt.core.dom.IVariableBinding;
-import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
 
-public class ReturnStatementVisitor extends ASTVisitor {
+public class ContainsBindingsVisitor extends ASTVisitor {
 
-	private ReturnStatement returnStatement;
+	private Expression expression;
 	private VariableBindings bindings;
 	private ValidationHandler handler;
 
-	public ReturnStatementVisitor(ReturnStatement node,
-			VariableBindings bindings, ValidationHandler handler) {
+	public ContainsBindingsVisitor(Expression node, VariableBindings bindings,
+			ValidationHandler handler) {
 		this.bindings = bindings;
-		this.returnStatement = node;
+		this.expression = node;
 		this.handler = handler;
 	}
 
 	public boolean visit(final SimpleName node) {
-		Expression returnExpression = returnStatement.getExpression();
-		if (returnExpression != null & !node.isDeclaration()) {
+		if (expression != null & !node.isDeclaration()) {
 			final IBinding nodeBinding = node.resolveBinding();
 			bindingCorrect(node, nodeBinding);
 		}

@@ -1,17 +1,17 @@
 package ocanalyzer.rules.r7_instanceVariable;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class InstanceVariableVisitor extends ASTVisitor {
 
-	private ValidationHandler validationHandler;
+	private ValidationHandlerImpl validationHandler;
 
 	private InstanceVariableCounter counter;
 
-	public InstanceVariableVisitor(ValidationHandler validatonHandler) {
+	public InstanceVariableVisitor(ValidationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 	}
 

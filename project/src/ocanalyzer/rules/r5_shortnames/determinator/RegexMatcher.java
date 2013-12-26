@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r5_shortnames.determinator;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -16,7 +16,7 @@ public class RegexMatcher {
 	}
 
 	public void matches(SimpleName name, ASTNode node,
-			ValidationHandler validationHandler) {
+			ValidationHandlerImpl validationHandler) {
 		String shortname = name.getIdentifier();
 		if (!matchesConditions(shortname)) {
 			validationHandler.printInfo(node);

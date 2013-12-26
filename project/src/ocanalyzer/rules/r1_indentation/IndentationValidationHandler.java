@@ -1,13 +1,13 @@
 package ocanalyzer.rules.r1_indentation;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class IndentationValidationHandler extends ValidationHandler {
+public class IndentationValidationHandler extends ValidationHandlerImpl {
 
 	public IndentationValidationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

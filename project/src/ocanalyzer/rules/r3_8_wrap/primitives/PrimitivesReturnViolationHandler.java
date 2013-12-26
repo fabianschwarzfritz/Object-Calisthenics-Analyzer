@@ -1,13 +1,13 @@
 package ocanalyzer.rules.r3_8_wrap.primitives;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class PrimitivesReturnViolationHandler extends ValidationHandler {
+public class PrimitivesReturnViolationHandler extends ValidationHandlerImpl {
 
 	public PrimitivesReturnViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

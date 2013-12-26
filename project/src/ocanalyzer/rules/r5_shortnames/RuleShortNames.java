@@ -2,7 +2,7 @@ package ocanalyzer.rules.r5_shortnames;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,7 +18,7 @@ public class RuleShortNames extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ValidationHandler shortNamesHandler = new ShortNamesValidationHandler(
+		ValidationHandlerImpl shortNamesHandler = new ShortNamesValidationHandler(
 				iUnit, unit, reporter);
 		ShortNamesVisitor visitor = new ShortNamesVisitor(shortNamesHandler);
 		unit.accept(visitor);

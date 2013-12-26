@@ -2,7 +2,7 @@ package ocanalyzer.rules.r4_onedot;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
@@ -18,7 +18,7 @@ public class RuleOneDotPerLine extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ValidationHandler instanceValidationHandler = new DotValidationHandler(
+		ValidationHandlerImpl instanceValidationHandler = new DotValidationHandler(
 				iUnit, unit, reporter);
 		DotVisitor visitor = new DotVisitor(instanceValidationHandler);
 		unit.accept(visitor);

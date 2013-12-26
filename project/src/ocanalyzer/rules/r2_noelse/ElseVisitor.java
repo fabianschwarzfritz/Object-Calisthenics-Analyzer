@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r2_noelse;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -13,9 +13,9 @@ import org.eclipse.jdt.core.dom.Statement;
  */
 public class ElseVisitor extends ASTVisitor {
 
-	private ValidationHandler validationHandler;
+	private ValidationHandlerImpl validationHandler;
 
-	public ElseVisitor(ValidationHandler validatonHandler) {
+	public ElseVisitor(ValidationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 	}
 

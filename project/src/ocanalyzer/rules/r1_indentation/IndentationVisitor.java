@@ -3,7 +3,7 @@ package ocanalyzer.rules.r1_indentation;
 import java.util.HashSet;
 import java.util.Set;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ValidationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -21,9 +21,9 @@ public class IndentationVisitor extends ASTVisitor {
 
 	private Set<ASTNode> methodDeclarations;
 
-	private ValidationHandler validationHandler;
+	private ValidationHandlerImpl validationHandler;
 
-	public IndentationVisitor(ValidationHandler validationHandler) {
+	public IndentationVisitor(ValidationHandlerImpl validationHandler) {
 		this.validationHandler = validationHandler;
 		methodDeclarations = new HashSet<ASTNode>();
 	}
