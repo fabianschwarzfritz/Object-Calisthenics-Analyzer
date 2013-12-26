@@ -11,6 +11,7 @@ public class TypeNameDeterminator {
 	protected RegexMatcher matcher;
 
 	public TypeNameDeterminator(ValidationHandler validationHandler) {
+		this.validationHandler = validationHandler;
 		this.matcher = new RegexMatcher(15, "([A-Z][a-z0-9]+){1,2}");
 	}
 

@@ -11,6 +11,7 @@ public class VariableNameDeterminator {
 	protected RegexMatcher matcher;
 
 	public VariableNameDeterminator(ValidationHandler validationHandler) {
+		this.validationHandler = validationHandler;
 		this.matcher = new RegexMatcher(15, "([a-z0-9]+[A-Z]{0,1}[a-z0-9]+)");
 	}
 

@@ -18,10 +18,9 @@ public class RuleShortNames extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ValidationHandler instanceValidationHandler = new ShortNamesValidationHandler(
+		ValidationHandler shortNamesHandler = new ShortNamesValidationHandler(
 				iUnit, unit, reporter);
-		ShortNamesVisitor visitor = new ShortNamesVisitor(
-				instanceValidationHandler);
+		ShortNamesVisitor visitor = new ShortNamesVisitor(shortNamesHandler);
 		unit.accept(visitor);
 	}
 
