@@ -1,12 +1,21 @@
 package ocanalyzer.rules.r5_shortnames.determinator;
 
+import ocanalyzer.rules.general.ValidationHandler;
+
+import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.TypeDeclaration;
+
 public class TypeNameDeterminator {
 
-	private String pattern = "([A-Z][a-z0-9]+){1,2}";
+	private ValidationHandler validationHandler;
+	protected RegexMatcher matcher;
 
-	public boolean shortName(String shortname) {
-		boolean length = shortname.length() < 15;
-		boolean matches = shortname.matches(pattern);
-		return length & matches;
+	public TypeNameDeterminator(ValidationHandler validationHandler) {
+		this.matcher = new RegexMatcher(15, "([A-Z][a-z0-9]+){1,2}");
+	}
+
+	public void shortName(TypeDeclaration node) {
+		SimpleName name = node.getName();
+		matcher.matches(name, node, validationHandler);
 	}
 }
