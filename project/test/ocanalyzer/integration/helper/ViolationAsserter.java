@@ -34,6 +34,6 @@ public class ViolationAsserter implements ClassReporter {
 
 	public void guarantueeCount() {
 		Assert.assertSame("The number of occured violations is not correct",
-				occuredViolations.size(), violations.size());
+				violations.size(), occuredViolations.size());
 	}
 }

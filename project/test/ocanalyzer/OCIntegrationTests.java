@@ -3,6 +3,7 @@ package ocanalyzer;
 import ocanalyzer.integration.DotIntegration;
 import ocanalyzer.integration.ElseIntegration;
 import ocanalyzer.integration.IndentationIntegration;
+import ocanalyzer.integration.VariableCountIntegration;
 import ocanalyzer.integration.WrapPrimitivesIntegration;
 import ocanalyzer.unit.ShortTypeNameTest;
 
@@ -26,7 +27,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ DotIntegration.class, ElseIntegration.class,
 		IndentationIntegration.class, WrapPrimitivesIntegration.class,
-		ShortTypeNameTest.class })
+		ShortTypeNameTest.class, VariableCountIntegration.class })
 public class OCIntegrationTests {
 
 }
