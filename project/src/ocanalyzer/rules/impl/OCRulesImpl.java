@@ -12,6 +12,7 @@ import ocanalyzer.rules.r2_noelse.RuleElse;
 import ocanalyzer.rules.r3_8_wrap.collections.RuleWrapCollections;
 import ocanalyzer.rules.r3_8_wrap.primitives.RuleWrapPrimitives;
 import ocanalyzer.rules.r4_onedot.RuleOneDotPerLine;
+import ocanalyzer.rules.r5_shortnames.RuleShortNames;
 import ocanalyzer.rules.r6_small.RuleSmallEntities;
 import ocanalyzer.rules.r7_instanceVariable.RuleInstanceVariable;
 
@@ -33,6 +34,7 @@ public class OCRulesImpl implements OCRules {
 		rules.add(new RuleElse(reporter));
 		rules.add(new RuleWrapPrimitives(reporter));
 		rules.add(new RuleOneDotPerLine(reporter));
+		rules.add(new RuleShortNames(reporter));
 		rules.add(new RuleSmallEntities(reporter));
 		rules.add(new RuleInstanceVariable(reporter));
 		rules.add(new RuleWrapCollections(reporter));
