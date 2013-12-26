@@ -15,6 +15,7 @@ import ocanalyzer.rules.r4_onedot.RuleOneDotPerLine;
 import ocanalyzer.rules.r5_shortnames.RuleShortNames;
 import ocanalyzer.rules.r6_small.RuleSmallEntities;
 import ocanalyzer.rules.r7_instanceVariable.RuleInstanceVariable;
+import ocanalyzer.rules.r9_properties.RuleProperties;
 
 public class OCRulesImpl implements OCRules {
 
@@ -38,6 +39,7 @@ public class OCRulesImpl implements OCRules {
 		rules.add(new RuleSmallEntities(reporter));
 		rules.add(new RuleInstanceVariable(reporter));
 		rules.add(new RuleWrapCollections(reporter));
+		rules.add(new RuleProperties(reporter));
 		return rules;
 	}
 
