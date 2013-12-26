@@ -21,7 +21,20 @@ public class ElseVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(IfStatement ifStatement) {
-		Statement elseStatement = ifStatement.getElseStatement();
+		checkIfStatement(ifStatement);
+	}
+
+	private void checkIfStatement(Statement statement) {
+		if (statement instanceof IfStatement) {
+			IfStatement ifStatement = (IfStatement) statement;
+			Statement elseStatement = ifStatement.getElseStatement();
+			// 'else if' is an 'IfStatment' within the getElseStatmenet()
+			checkIfStatement(elseStatement);
+			checkElse(elseStatement);
+		}
+	}
+
+	private void checkElse(Statement elseStatement) {
 		if (elseStatement != null) {
 			validationHandler.printInfo(elseStatement);
 		}
