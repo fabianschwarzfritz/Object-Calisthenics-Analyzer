@@ -1,4 +1,4 @@
-package ocanalyzer.rules.r8_wrapCollections;
+package ocanalyzer.rules.r3_8_wrap.collections;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ValidationHandler;
@@ -16,7 +16,7 @@ public class CollectionReturnViolationHandler extends ValidationHandler {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "Returning a collection type in a wrapper classes violates rule 3";
+		String msg = "Returning a collection type in a wrapper classes violates rule 8";
 		reportError(msg, node);
 	}
 }

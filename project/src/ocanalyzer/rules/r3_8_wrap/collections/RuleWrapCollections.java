@@ -1,4 +1,4 @@
-package ocanalyzer.rules.r8_wrapCollections;
+package ocanalyzer.rules.r3_8_wrap.collections;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -9,11 +9,11 @@ import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.r1_indentation.RuleIndentation;
 import ocanalyzer.rules.r2_noelse.RuleElse;
+import ocanalyzer.rules.r3_8_wrap.collections.RuleWrapCollections;
 import ocanalyzer.rules.r3_8_wrap.primitives.RuleWrapPrimitives;
 import ocanalyzer.rules.r4_onedot.RuleOneDotPerLine;
 import ocanalyzer.rules.r6_small.RuleSmallEntities;
 import ocanalyzer.rules.r7_instanceVariable.RuleInstanceVariable;
-import ocanalyzer.rules.r8_wrapCollections.RuleWrapCollections;
 
 public class OCRulesImpl implements OCRules {
 
