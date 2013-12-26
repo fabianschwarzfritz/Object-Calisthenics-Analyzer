@@ -1,10 +1,11 @@
-package ocanalyzer.rules.r9_properties;
+package ocanalyzer.rules.r9_properties.getter;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
@@ -21,12 +22,12 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class PropertiesVisitor extends ASTVisitor {
+public class GetterVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 	private VariableBindings bindings;
 
-	public PropertiesVisitor(ValidationHandler validatonHandler) {
+	public GetterVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
 		bindings = new VariableBindings();
 	}

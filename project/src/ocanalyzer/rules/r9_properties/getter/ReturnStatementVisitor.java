@@ -1,6 +1,7 @@
-package ocanalyzer.rules.r9_properties;
+package ocanalyzer.rules.r9_properties.getter;
 
 import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
