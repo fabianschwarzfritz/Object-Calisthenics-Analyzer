@@ -41,7 +41,11 @@ public class OCRulesImpl implements OCRules {
 
 	public void apply(ICompilationUnits compilationUnits) {
 		for (OCRule rule : rules) {
+			long start = System.nanoTime();
 			rule.apply(compilationUnits);
+			long time = System.nanoTime() - start;
+			System.err.println("Rule " + rule + " took " + time + "ns.  = "
+					+ (double) time / 1000000000.0 + "s.");
 		}
 	}
 

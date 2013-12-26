@@ -1,8 +1,5 @@
 package ocanalyzer.rules.r2_noelse;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ocanalyzer.rules.general.ValidationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -22,29 +19,18 @@ import org.eclipse.jdt.core.dom.Statement;
  */
 public class ElseVisitor extends ASTVisitor {
 
-	private List<Statement> elseStatements;
 	private ValidationHandler validationHandler;
 
 	public ElseVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
-		elseStatements = new ArrayList<Statement>();
 	}
 
 	@Override
 	public void endVisit(IfStatement ifStatement) {
-		if (isSingleElse(ifStatement)) {
-			Statement elseStatement = ifStatement.getElseStatement();
-			elseStatements.add(elseStatement);
+		Statement elseStatement = ifStatement.getElseStatement();
+		if (elseStatement != null) {
 			validationHandler.printInfo(elseStatement);
 		}
-	}
-
-	private boolean isSingleElse(IfStatement ifStatement) {
-		return ifStatement.getElseStatement() != null;
-	}
-
-	public List<Statement> getElseStatements() {
-		return elseStatements;
 	}
 
 }

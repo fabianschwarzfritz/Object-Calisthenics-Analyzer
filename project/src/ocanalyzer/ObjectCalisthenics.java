@@ -24,8 +24,17 @@ public class ObjectCalisthenics {
 	}
 
 	public void validate() {
+		long extraction = System.nanoTime();
 		ICompilationUnits units = extractor.extract();
+		long extractionTime = System.nanoTime() - extraction;
+		System.err.println("Extraction took  " + extractionTime + "ns.  = "
+				+ (double) extractionTime / 1000000000.0 + "s.");
+
+		long apply = System.nanoTime();
 		rules.apply(units);
+		long applyTime = System.nanoTime() - apply;
+		System.err.println("Applying took  " + extractionTime + "ns.  = "
+				+ (double) applyTime / 1000000000.0 + "s.");
 	}
 
 }

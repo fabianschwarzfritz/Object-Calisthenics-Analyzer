@@ -29,7 +29,6 @@ public class DotVisitor extends ASTVisitor {
 	}
 
 	public boolean visit(TypeDeclaration type) {
-		System.out.println("TypeDeclaration: " + type.getName());
 		return true;
 	}
 
