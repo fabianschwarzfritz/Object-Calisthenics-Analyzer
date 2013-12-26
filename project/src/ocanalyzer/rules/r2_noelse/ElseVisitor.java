@@ -8,12 +8,6 @@ import org.eclipse.jdt.core.dom.Statement;
 
 /**
  * 
- * This class is used to visit all if {@link Statement}.
- * 
- * An if {@link Statement} which does have a corresponding else
- * {@link Statement} is saved and furthermore it is reported to the given
- * {@link ElseValidationHandler}
- * 
  * @author Fabian Schwarz-Fritz
  * 
  */
