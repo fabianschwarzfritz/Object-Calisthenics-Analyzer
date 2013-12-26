@@ -2,6 +2,7 @@ package ocanalyzer.rules.r9_properties;
 
 import ocanalyzer.rules.general.ValidationHandler;
 
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.IBinding;
