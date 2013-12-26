@@ -1,6 +1,7 @@
 package ocanalyzer.rules.r9_properties;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import ocanalyzer.rules.general.ValidationHandler;
@@ -12,7 +13,6 @@ import org.eclipse.jdt.core.dom.IBinding;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
@@ -27,7 +27,6 @@ public class PropertiesVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
 
-	private TypeDeclaration currentType;
 	private Expression returnExpression;
 	private Set<IVariableBinding> bindings;
 
@@ -36,21 +35,16 @@ public class PropertiesVisitor extends ASTVisitor {
 		bindings = new HashSet<>();
 	}
 
-	@Override
-	public boolean visit(TypeDeclaration node) {
-		currentType = node;
-		return true;
-	}
-
 	public void endVisit(TypeDeclaration node) {
 		bindings = new HashSet<>();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(FieldDeclaration node) {
-		Object o = node.fragments().get(0);
-		if (o instanceof VariableDeclarationFragment) {
-			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) o;
+		List list = node.fragments();
+		for (Object object : list) {
+			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) object;
 			IVariableBinding binding = variableDeclaration.resolveBinding();
 			bindings.add(binding);
 		}
