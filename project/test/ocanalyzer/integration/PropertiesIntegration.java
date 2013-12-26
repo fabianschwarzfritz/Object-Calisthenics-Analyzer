@@ -3,22 +3,18 @@ package ocanalyzer.integration;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.integration.helper.OCIntegration;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
-import ocanalyzer.rules.impl.OCRulesImpl;
 import ocanalyzer.rules.r9_properties.RuleProperties;
 
 import org.junit.Before;
-import org.junit.Test;
 
-public class PropertiesIntegration {
+public class PropertiesIntegration extends IntegrationTest {
 
-	private static final String PACKAGE_NAME = "properties_wrong";
-
-	private OCIntegration test;
-	private ViolationAsserter asserter;
+	public PropertiesIntegration() {
+		super("properties_wrong");
+	}
 
 	@Before
 	public void prepareViolations() {
@@ -33,26 +29,9 @@ public class PropertiesIntegration {
 		asserter = new ViolationAsserter(violations);
 	}
 
-	@Before
-	public void prepare() {
-		OCRulesImpl rules = initRules();
-
-		test = new OCIntegration(PACKAGE_NAME, rules);
-
-		test.prepare();
-	}
-
-	private OCRulesImpl initRules() {
-		OCRule ruleToApply = new RuleProperties(asserter);
-		OCRulesImpl rules = OCRulesImpl.create();
-		rules.add(ruleToApply);
-		return rules;
-	}
-
-	@Test
-	public void test() {
-		test.testRule();
-		asserter.guarantueeCount();
+	@Override
+	protected OCRule doInitRule() {
+		return new RuleProperties(asserter);
 	}
 
 }

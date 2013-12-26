@@ -3,22 +3,18 @@ package ocanalyzer.integration;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.integration.helper.OCIntegration;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
-import ocanalyzer.rules.impl.OCRulesImpl;
 import ocanalyzer.rules.r1_indentation.RuleIndentation;
 
 import org.junit.Before;
-import org.junit.Test;
 
-public class IndentationIntegration {
+public class IndentationIntegration extends IntegrationTest {
 
-	private static final String PACKAGE_NAME = "indentationRule";
-
-	private OCIntegration test;
-	private ViolationAsserter asserter;
+	public IndentationIntegration() {
+		super("indentationRule");
+	}
 
 	@Before
 	public void prepareViolations() {
@@ -30,26 +26,8 @@ public class IndentationIntegration {
 		asserter = new ViolationAsserter(violations);
 	}
 
-	@Before
-	public void prepare() {
-		OCRulesImpl rules = initRules();
-
-		test = new OCIntegration(PACKAGE_NAME, rules);
-
-		test.prepare();
+	@Override
+	protected OCRule doInitRule() {
+		return new RuleIndentation(asserter);
 	}
-
-	private OCRulesImpl initRules() {
-		OCRule ruleToApply = new RuleIndentation(asserter);
-		OCRulesImpl rules = OCRulesImpl.create();
-		rules.add(ruleToApply);
-		return rules;
-	}
-
-	@Test
-	public void test() {
-		test.testRule();
-		asserter.guarantueeCount();
-	}
-
 }

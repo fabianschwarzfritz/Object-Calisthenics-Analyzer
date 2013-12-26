@@ -3,24 +3,18 @@ package ocanalyzer.integration;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.integration.helper.OCIntegration;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
-import ocanalyzer.rules.impl.OCRulesImpl;
 import ocanalyzer.rules.r4_onedot.RuleOneDotPerLine;
 
-import org.junit.Before;
-import org.junit.Test;
+public class DotIntegration extends IntegrationTest {
 
-public class DotIntegration {
+	public DotIntegration() {
+		super("dotRule");
+	}
 
-	private static final String PACKAGE_NAME = "dotRule";
-
-	private OCIntegration test;
-	private ViolationAsserter asserter;
-
-	@Before
+	@Override
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 
@@ -36,26 +30,8 @@ public class DotIntegration {
 		asserter = new ViolationAsserter(violations);
 	}
 
-	@Before
-	public void prepare() {
-		OCRulesImpl rules = initRules();
-
-		test = new OCIntegration(PACKAGE_NAME, rules);
-
-		test.prepare();
+	@Override
+	public OCRule doInitRule() {
+		return new RuleOneDotPerLine(asserter);
 	}
-
-	private OCRulesImpl initRules() {
-		OCRule ruleToApply = new RuleOneDotPerLine(asserter);
-		OCRulesImpl rules = OCRulesImpl.create();
-		rules.add(ruleToApply);
-		return rules;
-	}
-
-	@Test
-	public void test() {
-		test.testRule();
-		asserter.guarantueeCount();
-	}
-
 }
