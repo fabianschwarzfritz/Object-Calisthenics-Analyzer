@@ -9,10 +9,8 @@ import ocanalyzer.rules.general.ValidationHandler;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
-import org.eclipse.jdt.core.dom.IBinding;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.ReturnStatement;
-import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
@@ -26,17 +24,15 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 public class PropertiesVisitor extends ASTVisitor {
 
 	private ValidationHandler validationHandler;
-
-	private Expression returnExpression;
-	private Set<IVariableBinding> bindings;
+	private VariableBindings bindings;
 
 	public PropertiesVisitor(ValidationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
-		bindings = new HashSet<>();
+		bindings = new VariableBindings();
 	}
 
 	public void endVisit(TypeDeclaration node) {
-		bindings = new HashSet<>();
+		bindings.clear();
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -53,29 +49,8 @@ public class PropertiesVisitor extends ASTVisitor {
 
 	@Override
 	public boolean visit(ReturnStatement node) {
-		returnExpression = node.getExpression();
+		node.accept(new ReturnStatementVisitor(node, bindings,
+				validationHandler));
 		return true;
 	}
-
-	public void endVisit(ReturnStatement node) {
-		returnExpression = null;
-	}
-
-	public boolean visit(final SimpleName node) {
-		if (returnExpression != null & !node.isDeclaration()) {
-			final IBinding nodeBinding = node.resolveBinding();
-			if (nodeBinding instanceof IVariableBinding) {
-				determineFieldBinding(node, nodeBinding);
-			}
-		}
-		return true;
-	}
-
-	private void determineFieldBinding(SimpleName node, IBinding binding) {
-		boolean contains = bindings.contains(binding);
-		if (contains) {
-			validationHandler.printInfo(node);
-		}
-	}
-
 }
