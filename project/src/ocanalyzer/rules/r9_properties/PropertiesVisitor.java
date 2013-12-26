@@ -57,8 +57,6 @@ public class PropertiesVisitor extends ASTVisitor {
 			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) o;
 			IVariableBinding binding = variableDeclaration.resolveBinding();
 			bindings.add(binding);
-			System.err.println("Binding stored:  " + node + "/"
-					+ binding.getKey() + "/" + binding.getName());
 		}
 		return true;
 	}
@@ -77,21 +75,14 @@ public class PropertiesVisitor extends ASTVisitor {
 		if (returnExpression != null & !node.isDeclaration()) {
 			final IBinding nodeBinding = node.resolveBinding();
 			if (nodeBinding instanceof IVariableBinding) {
-				isFieldBinding(node, nodeBinding);
+				determineFieldBinding(node, nodeBinding);
 			}
 		}
 		return true;
 	}
 
-	private void isFieldBinding(SimpleName node, IBinding binding) {
-		System.err.println("\n\n\n");
-		System.err.println("Binding return:  " + node + "/" + binding.getKey()
-				+ "/" + binding.getName());
-
+	private void determineFieldBinding(SimpleName node, IBinding binding) {
 		boolean contains = bindings.contains(binding);
-		System.err.println("Contains: " + contains);
-		System.err.println("\n\n\n");
-
 		if (contains) {
 			validationHandler.printInfo(node);
 		}
