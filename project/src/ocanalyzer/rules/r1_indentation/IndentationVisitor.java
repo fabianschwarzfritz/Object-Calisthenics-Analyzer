@@ -1,9 +1,5 @@
 package ocanalyzer.rules.r1_indentation;
 
-import java.util.HashSet;
-
-import java.util.Set;
-
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -18,28 +14,29 @@ import org.eclipse.jdt.core.dom.SwitchStatement;
 import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
-// TODO documentation
+/**
+ * This visitor implements the validation of rule 1:
+ * "Use only one level of Indentation per method".
+ * 
+ * To do so, it listens to all 'keyword'-statements (like 'do', 'while', 'for',
+ * and so on) and uses {@link #indentationCheck(ASTNode, int)} to check if at
+ * least the 'grandparent' in the hierarchy of statements is a method
+ * declaration.
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 
 public class IndentationVisitor extends ASTVisitor {
-
-	// FIXME intenation wront at else if
-	private Set<ASTNode> methodDeclarations;
 
 	private ViolationHandlerImpl validationHandler;
 
 	public IndentationVisitor(ViolationHandlerImpl validationHandler) {
 		this.validationHandler = validationHandler;
-		methodDeclarations = new HashSet<ASTNode>();
-	}
-
-	@Override
-	public boolean visit(MethodDeclaration node) {
-		methodDeclarations.add(node);
-		return true;
 	}
 
 	private boolean isMethod(ASTNode node) {
-		return methodDeclarations.contains(node);
+		return node instanceof MethodDeclaration;
 	}
 
 	private boolean indentationCheck(ASTNode node, int level) {
