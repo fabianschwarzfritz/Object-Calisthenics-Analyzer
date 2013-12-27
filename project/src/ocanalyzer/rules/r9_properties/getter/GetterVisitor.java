@@ -23,7 +23,7 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class GetterVisitor extends ASTVisitor implements ViolationHandler {
+public class GetterVisitor extends ASTVisitor {
 
 	public ViolationHandlerImpl validationHandler;
 	public VariableBindings bindings;
@@ -53,11 +53,8 @@ public class GetterVisitor extends ASTVisitor implements ViolationHandler {
 	@Override
 	public void endVisit(ReturnStatement node) {
 		Expression expressionNode = node.getExpression();
-		node.accept(new ContainsBindingsVisitor(expressionNode, bindings, this));
+		node.accept(new ContainsBindingsVisitor(expressionNode, bindings,
+				validationHandler));
 	}
 
-	@Override
-	public void printInfo(ASTNode node) {
-		validationHandler.printInfo(node);
-	}
 }
