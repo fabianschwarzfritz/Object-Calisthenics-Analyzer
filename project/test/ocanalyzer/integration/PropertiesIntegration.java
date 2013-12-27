@@ -8,8 +8,6 @@ import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.r9_properties.RuleProperties;
 
-import org.junit.Before;
-
 public class PropertiesIntegration extends IntegrationTest {
 
 	public PropertiesIntegration() {
