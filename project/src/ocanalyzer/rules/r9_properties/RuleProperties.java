@@ -2,12 +2,14 @@ package ocanalyzer.rules.r9_properties;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r9_properties.getter.GetterVisitor;
 import ocanalyzer.rules.r9_properties.setter.SetterVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+//TODO documentation
+// TODO add property violation
 
 public class RuleProperties extends ClassOCRuleImpl {
 
@@ -20,7 +22,7 @@ public class RuleProperties extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ValidationHandlerImpl instanceValidationHandler = new PropertiesValidationHandler(
+		ViolationHandlerImpl instanceValidationHandler = new PropertiesViolationHandler(
 				iUnit, unit, reporter);
 		GetterVisitor getterVisitor = new GetterVisitor(
 				instanceValidationHandler);

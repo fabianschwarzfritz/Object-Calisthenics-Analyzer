@@ -3,7 +3,7 @@ package ocanalyzer.rules.r9_properties.setter;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.r9_properties.VariableBindings;
 import ocanalyzer.rules.r9_properties.general.ContainsBindingsVisitor;
 
@@ -18,11 +18,11 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class SetterVisitor extends ASTVisitor {
 
-	private ValidationHandler validationHandler;
+	private ViolationHandler validationHandler;
 	private VariableBindings bindings;
 	private VariableBindings parameterBindings;
 
-	public SetterVisitor(ValidationHandler validatonHandler) {
+	public SetterVisitor(ViolationHandler validatonHandler) {
 		this.validationHandler = validatonHandler;
 		bindings = new VariableBindings();
 	}
@@ -61,7 +61,7 @@ public class SetterVisitor extends ASTVisitor {
 	private boolean rightsideIsParameter(Assignment node) {
 		Expression rightHandSide = node.getRightHandSide();
 		final AtomicBoolean right = new AtomicBoolean(false);
-		ValidationHandler rightHandler = new ValidationHandler() {
+		ViolationHandler rightHandler = new ViolationHandler() {
 			@Override
 			public void printInfo(ASTNode node) {
 				right.set(true);
@@ -75,7 +75,7 @@ public class SetterVisitor extends ASTVisitor {
 	private boolean leftsideIsField(Assignment node) {
 		Expression leftHandSide = node.getLeftHandSide();
 		final AtomicBoolean left = new AtomicBoolean(false);
-		ValidationHandler leftHandler = new ValidationHandler() {
+		ViolationHandler leftHandler = new ViolationHandler() {
 			@Override
 			public void printInfo(ASTNode node) {
 				left.set(true);

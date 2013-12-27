@@ -5,7 +5,7 @@ import java.util.Set;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r3_8_wrap.determinator.CollectionDeterminator;
 import ocanalyzer.rules.r3_8_wrap.general.ReturnVisitor;
 import ocanalyzer.rules.r3_8_wrap.general.WrapperVisitor;
@@ -13,7 +13,7 @@ import ocanalyzer.rules.r3_8_wrap.general.WrapperVisitor;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-
+//TODO documentation
 public class RuleWrapPrimitives extends ClassOCRuleImpl {
 
 	private ClassReporter reporter;
@@ -31,7 +31,7 @@ public class RuleWrapPrimitives extends ClassOCRuleImpl {
 
 	private void searchNonWrapperUsage(Set<TypeDeclaration> wrapperTypes,
 			ICompilationUnit iUnit, CompilationUnit unit) {
-		ValidationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
+		ViolationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
 				iUnit, unit, reporter);
 		ReturnVisitor visitor = new ReturnVisitor(instanceValidationHandler,
 				wrapperTypes, new CollectionDeterminator());
@@ -42,7 +42,7 @@ public class RuleWrapPrimitives extends ClassOCRuleImpl {
 			CompilationUnit unit) {
 		Set<TypeDeclaration> wrappers = new HashSet<TypeDeclaration>();
 
-		ValidationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
+		ViolationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
 				iUnit, unit, reporter);
 		WrapperVisitor visitor = new WrapperVisitor(instanceValidationHandler,
 				wrappers, new CollectionDeterminator());

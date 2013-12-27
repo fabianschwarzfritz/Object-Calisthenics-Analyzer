@@ -1,9 +1,10 @@
 package ocanalyzer.rules.r1_indentation;
 
 import java.util.HashSet;
+
 import java.util.Set;
 
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -17,13 +18,16 @@ import org.eclipse.jdt.core.dom.SwitchStatement;
 import org.eclipse.jdt.core.dom.TryStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
+// TODO documentation
+
 public class IndentationVisitor extends ASTVisitor {
 
+	// FIXME intenation wront at else if
 	private Set<ASTNode> methodDeclarations;
 
-	private ValidationHandlerImpl validationHandler;
+	private ViolationHandlerImpl validationHandler;
 
-	public IndentationVisitor(ValidationHandlerImpl validationHandler) {
+	public IndentationVisitor(ViolationHandlerImpl validationHandler) {
 		this.validationHandler = validationHandler;
 		methodDeclarations = new HashSet<ASTNode>();
 	}

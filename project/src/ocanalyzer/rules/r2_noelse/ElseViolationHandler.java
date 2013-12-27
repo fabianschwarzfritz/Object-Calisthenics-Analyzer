@@ -1,7 +1,7 @@
-package ocanalyzer.rules.r9_properties;
+package ocanalyzer.rules.r2_noelse;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -16,16 +16,16 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class PropertiesValidationHandler extends ValidationHandlerImpl {
+public class ElseViolationHandler extends ViolationHandlerImpl {
 
-	public PropertiesValidationHandler(ICompilationUnit unit,
+	public ElseViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "The use of getter/setter/properties violates rule 9";
+		String msg = "The else keyword violates rule 2";
 		reportError(msg, node);
 	}
 }

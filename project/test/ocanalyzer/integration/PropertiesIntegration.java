@@ -14,6 +14,7 @@ public class PropertiesIntegration extends IntegrationTest {
 
 	public PropertiesIntegration() {
 		super("properties_wrong");
+		// FIXME test not working yet - why?
 	}
 
 	@Override

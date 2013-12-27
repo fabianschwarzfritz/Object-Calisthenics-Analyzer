@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r4_onedot;
 
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r4_onedot.counter.CounterReporter;
 import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 
@@ -10,15 +10,15 @@ import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
- * 
+ * // TODO documentation
  * @author Fabian Schwarz-Fritz
  * 
  */
 public class DotVisitor extends ASTVisitor {
 
-	private ValidationHandlerImpl validationHandler;
+	private ViolationHandlerImpl validationHandler;
 
-	public DotVisitor(ValidationHandlerImpl validatonHandler) {
+	public DotVisitor(ViolationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 	}
 

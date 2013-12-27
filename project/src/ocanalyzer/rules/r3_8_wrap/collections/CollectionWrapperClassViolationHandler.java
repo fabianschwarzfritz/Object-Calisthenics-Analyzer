@@ -1,13 +1,13 @@
 package ocanalyzer.rules.r3_8_wrap.collections;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class CollectionWrapperClassViolationHandler extends ValidationHandlerImpl {
+public class CollectionWrapperClassViolationHandler extends ViolationHandlerImpl {
 
 	public CollectionWrapperClassViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

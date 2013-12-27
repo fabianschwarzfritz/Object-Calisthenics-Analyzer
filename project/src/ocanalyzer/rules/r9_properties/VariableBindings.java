@@ -3,8 +3,8 @@ package ocanalyzer.rules.r9_properties;
 import java.util.HashSet;
 import java.util.Set;
 
-import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandler;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -26,7 +26,7 @@ public class VariableBindings {
 	}
 
 	public void print(IVariableBinding foundBinding, SimpleName node,
-			ValidationHandler handler) {
+			ViolationHandler handler) {
 		if (bindings.contains(foundBinding)) {
 			handler.printInfo(node);
 		}

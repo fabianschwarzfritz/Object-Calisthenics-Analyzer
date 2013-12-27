@@ -15,7 +15,7 @@ import org.eclipse.jdt.core.dom.Statement;
  * by a concrete {@link ASTVisitor}
  * 
  * Therefore a concrete handler overrides
- * {@link ValidationHandlerImpl#printInfo(Statement)} and handles the violation
+ * {@link ViolationHandlerImpl#printInfo(Statement)} and handles the violation
  * information accordingly. Most implementations add rule specific information
  * and then use either a {@link #reporter} manually or the provided
  * {@link #reportError(String, Statement)} to report a rule violation.
@@ -23,13 +23,13 @@ import org.eclipse.jdt.core.dom.Statement;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public abstract class ValidationHandlerImpl implements ValidationHandler {
+public abstract class ViolationHandlerImpl implements ViolationHandler {
 
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
 	protected ClassReporter reporter;
 
-	public ValidationHandlerImpl(ICompilationUnit unit,
+	public ViolationHandlerImpl(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super();
 		this.unit = unit;

@@ -1,22 +1,22 @@
-package ocanalyzer.rules.r5_shortnames;
+package ocanalyzer.rules.r1_indentation;
+
+import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+public class IndentationViolationHandler extends ViolationHandlerImpl {
 
-public class ShortNamesValidationHandler extends ValidationHandlerImpl {
-
-	public ShortNamesValidationHandler(ICompilationUnit unit,
+	public IndentationViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "No Abbreviations but short names!";
+		String msg = "The given indentation violates rule 1";
 		reportError(msg, node);
 	}
 

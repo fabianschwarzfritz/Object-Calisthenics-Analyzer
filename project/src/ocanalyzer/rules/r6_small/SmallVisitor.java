@@ -2,7 +2,7 @@ package ocanalyzer.rules.r6_small;
 
 import java.util.HashMap;
 
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
@@ -10,18 +10,18 @@ import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
- * 
+ * // TODO documentation
  * @author Fabian Schwarz-Fritz
  * 
  */
 public class SmallVisitor extends ASTVisitor {
 
-	private ValidationHandlerImpl validationHandler;
+	private ViolationHandlerImpl validationHandler;
 
 	private TypeDeclaration current;
 	private HashMap<TypeDeclaration, Integer> expressionStatements;
 
-	public SmallVisitor(ValidationHandlerImpl validatonHandler) {
+	public SmallVisitor(ViolationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 		expressionStatements = new HashMap<TypeDeclaration, Integer>();
 	}

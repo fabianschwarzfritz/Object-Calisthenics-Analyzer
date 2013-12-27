@@ -1,7 +1,7 @@
-package ocanalyzer.rules.r6_small;
+package ocanalyzer.rules.r9_properties;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -16,16 +16,16 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class SmallValidationHandler extends ValidationHandlerImpl {
+public class PropertiesViolationHandler extends ViolationHandlerImpl {
 
-	public SmallValidationHandler(ICompilationUnit unit,
+	public PropertiesViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 
 	@Override
 	public void printInfo(ASTNode node) {
-		String msg = "Keep all entities small";
+		String msg = "The use of getter/setter/properties violates rule 9";
 		reportError(msg, node);
 	}
 }

@@ -2,7 +2,7 @@ package ocanalyzer.rules.r3_8_wrap.general;
 
 import java.util.Set;
 
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -14,14 +14,14 @@ import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
 public class UseWrapperVisitor extends ASTVisitor {
 
-	private ValidationHandlerImpl validationHandler;
+	private ViolationHandlerImpl validationHandler;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
 	private TypeDeterminator determinator;
 
-	public UseWrapperVisitor(ValidationHandlerImpl validatonHandler,
+	public UseWrapperVisitor(ViolationHandlerImpl validatonHandler,
 			Set<TypeDeclaration> wrapperUnits, TypeDeterminator determinator) {
 		this.validationHandler = validatonHandler;
 		this.wrapperUnits = wrapperUnits;

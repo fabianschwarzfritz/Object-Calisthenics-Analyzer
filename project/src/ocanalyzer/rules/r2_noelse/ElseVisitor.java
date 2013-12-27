@@ -1,26 +1,27 @@
 package ocanalyzer.rules.r2_noelse;
 
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.Statement;
 
 /**
- * 
+ * // TODO documentation
  * @author Fabian Schwarz-Fritz
  * 
  */
 public class ElseVisitor extends ASTVisitor {
 
-	private ValidationHandlerImpl validationHandler;
+	private ViolationHandlerImpl validationHandler;
 
-	public ElseVisitor(ValidationHandlerImpl validatonHandler) {
+	public ElseVisitor(ViolationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 	}
 
 	@Override
 	public void endVisit(IfStatement ifStatement) {
+		// FIXME else if has two violations
 		checkIfStatement(ifStatement);
 	}
 

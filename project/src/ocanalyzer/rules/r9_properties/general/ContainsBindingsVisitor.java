@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r9_properties.general;
 
-import ocanalyzer.rules.general.ValidationHandler;
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -13,10 +13,10 @@ public class ContainsBindingsVisitor extends ASTVisitor {
 
 	private Expression expression;
 	private VariableBindings bindings;
-	private ValidationHandler handler;
+	private ViolationHandler handler;
 
 	public ContainsBindingsVisitor(Expression node, VariableBindings bindings,
-			ValidationHandler handler) {
+			ViolationHandler handler) {
 		this.bindings = bindings;
 		this.expression = node;
 		this.handler = handler;

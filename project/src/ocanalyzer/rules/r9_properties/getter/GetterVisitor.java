@@ -2,8 +2,8 @@ package ocanalyzer.rules.r9_properties.getter;
 
 import java.util.List;
 
-import ocanalyzer.rules.general.ValidationHandler;
-import ocanalyzer.rules.general.ValidationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandler;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r9_properties.VariableBindings;
 import ocanalyzer.rules.r9_properties.general.ContainsBindingsVisitor;
 
@@ -23,12 +23,12 @@ import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class GetterVisitor extends ASTVisitor implements ValidationHandler {
+public class GetterVisitor extends ASTVisitor implements ViolationHandler {
 
-	public ValidationHandlerImpl validationHandler;
+	public ViolationHandlerImpl validationHandler;
 	public VariableBindings bindings;
 
-	public GetterVisitor(ValidationHandlerImpl validatonHandler) {
+	public GetterVisitor(ViolationHandlerImpl validatonHandler) {
 		this.validationHandler = validatonHandler;
 		bindings = new VariableBindings();
 	}
