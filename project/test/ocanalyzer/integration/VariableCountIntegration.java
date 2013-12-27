@@ -16,7 +16,7 @@ public class VariableCountIntegration extends IntegrationTest {
 		super("instanceVariableCount");
 	}
 
-	@Before
+	@Override
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 

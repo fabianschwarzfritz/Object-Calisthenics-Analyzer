@@ -16,7 +16,7 @@ public class IndentationIntegration extends IntegrationTest {
 		super("indentationRule");
 	}
 
-	@Before
+	@Override
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 		ClassViolationDecorator violation = new ClassViolationDecorator(

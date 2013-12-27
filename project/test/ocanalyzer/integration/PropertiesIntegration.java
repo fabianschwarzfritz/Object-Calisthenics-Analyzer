@@ -16,7 +16,7 @@ public class PropertiesIntegration extends IntegrationTest {
 		super("properties_wrong");
 	}
 
-	@Before
+	@Override
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 

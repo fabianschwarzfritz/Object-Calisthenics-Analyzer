@@ -16,7 +16,7 @@ public class ElseIntegration extends IntegrationTest {
 		super("elseRule");
 	}
 
-	@Before
+	@Override
 	public void prepareViolations() {
 		Collection<ClassViolationDecorator> violations = new HashSet<ClassViolationDecorator>();
 		ClassViolationDecorator violation = new ClassViolationDecorator(
