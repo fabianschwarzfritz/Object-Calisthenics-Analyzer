@@ -22,6 +22,7 @@ public class RuleElse extends ClassOCRuleImpl {
 				iUnit, unit, reporter);
 		ElseVisitor visitor = new ElseVisitor(instanceValidationHandler);
 		unit.accept(visitor);
+		
 	}
 
 }
