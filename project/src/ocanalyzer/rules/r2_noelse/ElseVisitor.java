@@ -7,7 +7,12 @@ import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.Statement;
 
 /**
- * // TODO documentation
+ * This visitor implements the validation of rule 2:
+ * "Don’t Use the else Keyword".
+ * 
+ * Do do so, it simply registers for all if-statements and gets the
+ * corresponding else part. When there is an else as part of an
+ * {@link IfStatement}, the rule violation is reported.
  * 
  * @author Fabian Schwarz-Fritz
  * 
@@ -22,7 +27,6 @@ public class ElseVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(IfStatement ifStatement) {
-		// FIXME else if has two violations
 		Statement elseStatement = ifStatement.getElseStatement();
 		if (elseStatement != null) {
 			validationHandler.printInfo(elseStatement);
