@@ -22,7 +22,6 @@ public class ElseIntegration extends IntegrationTest {
 		ClassViolationDecorator violation = new ClassViolationDecorator(
 				"ElseWrong.java", 8, "The else keyword violates rule 2");
 		violations.add(violation);
-		// FIXME this violation occurs two times 
 		ClassViolationDecorator violation2 = new ClassViolationDecorator(
 				"ElseWrong.java", 10, "The else keyword violates rule 2");
 
