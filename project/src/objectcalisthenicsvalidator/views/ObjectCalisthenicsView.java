@@ -19,6 +19,8 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -54,7 +56,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private Action actionValidate;
 	private Action actionSelectValidation;
 
-	private TableColumn typeColumn;
+	private TableColumn lineColumn;
 	private TableColumn nameColumn;
 	private TableColumn locationColumn;
 
@@ -82,7 +84,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 		addFilter(parent);
 		createTableViewer(parent);
-
+		addSorting();
+		
 		actionValidate = new StartRuleValidation(ocHandler, tableProvider,
 				rulesViewer);
 		actionSelectValidation = new OpenViolation(rulesViewer);
@@ -106,14 +109,30 @@ public class ObjectCalisthenicsView extends ViewPart {
 		});
 	}
 
+	private void addSorting() {
+		rulesViewer.setSorter(new ValidationSorter());
+		addSort(lineColumn, 0);
+		addSort(nameColumn, 1);
+		addSort(locationColumn, 2);
+	}
+
+	public void addSort(TableColumn column, final int sort) {
+		column.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent event) {
+				((ValidationSorter) rulesViewer.getSorter()).doSort(sort);
+				rulesViewer.refresh();
+			}
+		});
+	}
+
 	private void createTableViewer(Composite parent) {
 		rulesViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.SINGLE | SWT.FULL_SELECTION);
 		final Table table = rulesViewer.getTable();
 
-		typeColumn = new TableColumn(table, SWT.LEFT);
-		typeColumn.setText("Nr");
-		typeColumn.setWidth(8);
+		lineColumn = new TableColumn(table, SWT.LEFT);
+		lineColumn.setText("Nr");
+		lineColumn.setWidth(8);
 
 		nameColumn = new TableColumn(table, SWT.LEFT);
 		nameColumn.setText("Name");
