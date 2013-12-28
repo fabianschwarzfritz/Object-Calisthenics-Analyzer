@@ -7,6 +7,7 @@ import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.Expression;
 
 class Leftside {
 
@@ -18,12 +19,7 @@ class Leftside {
 	}
 
 	public boolean isParameter(VariableBindings bindings) {
-		final AtomicBoolean left = new AtomicBoolean(false);
-		return Side.contains(node, bindings, left, new ViolationHandler() {
-			@Override
-			public void printInfo(ASTNode node) {
-				left.set(true);
-			}
-		});
+		Expression leftSide = node.getLeftHandSide();
+		return Side.contains(leftSide, bindings);
 	}
 }

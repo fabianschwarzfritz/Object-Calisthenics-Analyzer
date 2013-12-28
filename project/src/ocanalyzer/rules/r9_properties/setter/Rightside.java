@@ -1,12 +1,9 @@
 package ocanalyzer.rules.r9_properties.setter;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.r9_properties.VariableBindings;
 
-import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Assignment;
+import org.eclipse.jdt.core.dom.Expression;
 
 class Rightside {
 
@@ -18,13 +15,8 @@ class Rightside {
 	}
 
 	public boolean isParameter(VariableBindings bindings) {
-		final AtomicBoolean right = new AtomicBoolean(false);
-		return Side.contains(node, bindings, right, new ViolationHandler() {
-			@Override
-			public void printInfo(ASTNode node) {
-				right.set(true);
-			}
-		});
+		Expression rightSide = node.getRightHandSide();
+		return Side.contains(rightSide, bindings);
 	}
 
 }
