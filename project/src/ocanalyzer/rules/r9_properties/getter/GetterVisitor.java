@@ -40,7 +40,6 @@ public class GetterVisitor extends ASTVisitor {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(FieldDeclaration node) {
-		VariableBindings bindings = new VariableBindings();
 		List list = node.fragments();
 		for (Object object : list) {
 			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) object;
