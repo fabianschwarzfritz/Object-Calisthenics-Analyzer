@@ -20,7 +20,7 @@ public class MockAnalyzerFactory implements ExtractorFactory {
 
 	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageExtractor(fragment, this);
+		return new PackageExtractor(fragment);
 	}
 
 	@Override

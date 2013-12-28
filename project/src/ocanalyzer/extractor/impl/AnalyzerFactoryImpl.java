@@ -35,7 +35,7 @@ public class AnalyzerFactoryImpl implements ExtractorFactory {
 
 	@Override
 	public PackageExtractor createPackageAnalyzer(IPackageFragment fragment) {
-		return new PackageExtractor(fragment, delegateFactory);
+		return new PackageExtractor(fragment);
 	}
 
 	@Override

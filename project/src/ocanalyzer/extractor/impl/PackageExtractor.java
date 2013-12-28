@@ -1,7 +1,5 @@
 package ocanalyzer.extractor.impl;
 
-import java.util.List;
-
 import ocanalyzer.rules.general.ICompilationUnits;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -11,12 +9,10 @@ import org.eclipse.jdt.core.JavaModelException;
 
 public class PackageExtractor implements CompilationUnitsExtractable {
 
-	private ExtractorFactory factory;
 	private IPackageFragment packageFragement;
 
-	public PackageExtractor(IPackageFragment mypackage, ExtractorFactory factory) {
+	public PackageExtractor(IPackageFragment mypackage) {
 		this.packageFragement = mypackage;
-		this.factory = factory;
 	}
 
 	@Override
