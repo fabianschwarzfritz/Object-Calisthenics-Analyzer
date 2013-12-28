@@ -6,6 +6,7 @@ import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -70,8 +71,14 @@ public class OpenViolation extends Action {
 		try {
 			page.openEditor(editorInput, editorDescriptor.getId());
 		} catch (PartInitException coreException) {
-			coreException.printStackTrace();
-			showMessage("Error: " + coreException.toString());
+			Activator
+					.getLogger()
+					.log(new Status(
+							Status.ERROR,
+							Activator.PLUGIN_ID,
+							"Error when opening editor containing the violation",
+							coreException));
+			showMessage("Error when opening the editor");
 		}
 	}
 

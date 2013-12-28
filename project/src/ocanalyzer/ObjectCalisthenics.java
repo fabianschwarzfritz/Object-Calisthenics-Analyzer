@@ -7,6 +7,8 @@ import ocanalyzer.rules.OCRules;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.impl.OCRulesImpl;
 
+import org.eclipse.core.runtime.Status;
+
 public class ObjectCalisthenics {
 
 	private Extractor extractor;
@@ -31,7 +33,15 @@ public class ObjectCalisthenics {
 				+ (double) extractionTime / 1000000000.0 + "s.");
 
 		long apply = System.nanoTime();
-		rules.apply(units);
+
+		try {
+			rules.apply(units);
+		} catch (Exception ex) {
+			Activator.getLogger().log(
+					new Status(Status.ERROR, Activator.PLUGIN_ID,
+							"Error when applying rule (" + rules
+									+ ") on units (" + units + ").", ex));
+		}
 		long applyTime = System.nanoTime() - apply;
 		System.err.println("Applying took  " + extractionTime + "ns.  = "
 				+ (double) applyTime / 1000000000.0 + "s.");
