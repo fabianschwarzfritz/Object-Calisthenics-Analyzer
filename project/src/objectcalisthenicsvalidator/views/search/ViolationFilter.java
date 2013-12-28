@@ -42,21 +42,22 @@ public class ViolationFilter extends ViewerFilter {
 	}
 
 	private boolean match(ClassViolation violation) {
-		return violation.getClass().getName().toLowerCase()
-				.matches(searchString)
-				| violation.getMessage().toLowerCase().matches(searchString)
-				| violation.getResource().getName().toLowerCase()
-						.matches(searchString)
-				| violation.getLine().toString().toLowerCase()
-						.matches(searchString);
+		return match(violation.getClass().getName(), violation.getMessage(),
+				violation.getResource().getName(), violation.getLine()
+						.toString());
 	}
 
 	private boolean match(PackageViolation violation) {
-		return violation.getClass().getName().toLowerCase()
-				.matches(searchString)
-				| violation.getMessage().toLowerCase().matches(searchString)
-				| violation.getResource().getName().toLowerCase()
-						.matches(searchString);
+		return match(violation.getClass().getName(), violation.getMessage(),
+				violation.getResource().getName());
+	}
+
+	private boolean match(String... string) {
+		boolean result = false;
+		for (String value : string) {
+			result |= value.trim().toLowerCase().matches(searchString);
+		}
+		return result;
 	}
 
 }
