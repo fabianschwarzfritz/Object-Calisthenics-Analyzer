@@ -21,10 +21,14 @@ public class PropertiesIntegration extends IntegrationTest {
 
 		String className = "Properties.java";
 		String ruleViolationName = "The use of getter/setter/properties violates rule 9";
-		ClassViolationDecorator violation = new ClassViolationDecorator(
-				className, 12, ruleViolationName);
 
-		violations.add(violation);
+		ClassViolationDecorator getterViolation = new ClassViolationDecorator(
+				className, 12, ruleViolationName);
+		ClassViolationDecorator setterViolation1 = new ClassViolationDecorator(
+				className, 16, ruleViolationName);
+
+		violations.add(getterViolation);
+		violations.add(setterViolation1);
 		asserter = new ViolationAsserter(violations);
 	}
 
