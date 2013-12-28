@@ -9,12 +9,7 @@ import org.eclipse.jdt.core.dom.ExpressionStatement;
 import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-/**
- * // TODO documentation
- * @author Fabian Schwarz-Fritz
- * 
- */
-public class SmallVisitor extends ASTVisitor {
+class SmallVisitor extends ASTVisitor {
 
 	private ViolationHandlerImpl validationHandler;
 

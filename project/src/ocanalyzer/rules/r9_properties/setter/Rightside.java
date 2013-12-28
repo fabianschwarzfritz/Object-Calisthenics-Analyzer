@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r9_properties.setter;
 
-import ocanalyzer.rules.r9_properties.VariableBindings;
+import ocanalyzer.rules.r9_properties.general.VariableBindings;
 
 import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.Expression;

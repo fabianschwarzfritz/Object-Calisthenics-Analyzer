@@ -3,8 +3,8 @@ package ocanalyzer.rules.r9_properties.setter;
 import java.util.List;
 
 import ocanalyzer.rules.general.ViolationHandler;
-import ocanalyzer.rules.r9_properties.VariableBindings;
-import ocanalyzer.rules.r9_properties.getter.Extract;
+import ocanalyzer.rules.r9_properties.general.Extract;
+import ocanalyzer.rules.r9_properties.general.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Assignment;

@@ -17,7 +17,7 @@ import org.eclipse.jdt.core.dom.Statement;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class ElseVisitor extends ASTVisitor {
+class ElseVisitor extends ASTVisitor {
 
 	private ViolationHandlerImpl validationHandler;
 

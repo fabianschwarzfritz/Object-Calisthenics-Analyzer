@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class PropertiesViolationHandler extends ViolationHandlerImpl {
+class PropertiesViolationHandler extends ViolationHandlerImpl {
 
 	public PropertiesViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

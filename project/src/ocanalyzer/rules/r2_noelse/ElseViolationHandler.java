@@ -8,7 +8,7 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- * This class handles rule validation.
+ * This class handles rule validation of rule 2: "Do not use the else keyword".
  * 
  * Therefore it creates corresponding messages for the users and reports them to
  * the given {@link #reporter}
@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class ElseViolationHandler extends ViolationHandlerImpl {
+class ElseViolationHandler extends ViolationHandlerImpl {
 
 	public ElseViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

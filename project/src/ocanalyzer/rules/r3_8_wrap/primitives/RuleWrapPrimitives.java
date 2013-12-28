@@ -13,7 +13,13 @@ import ocanalyzer.rules.r3_8_wrap.general.WrapperVisitor;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-//TODO documentation
+
+/**
+ * Rule: "Wrap all Primitives and Strings".
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class RuleWrapPrimitives extends ClassOCRuleImpl {
 
 	private ClassReporter reporter;

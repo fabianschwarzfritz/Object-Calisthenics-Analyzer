@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class UseCollectionViolationHandler extends ViolationHandlerImpl {
+class UseCollectionViolationHandler extends ViolationHandlerImpl {
 
 	public UseCollectionViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

@@ -5,7 +5,7 @@ import ocanalyzer.rules.general.ViolationHandlerImpl;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class InstanceVariableVisitor extends ASTVisitor {
+class InstanceVariableVisitor extends ASTVisitor {
 
 	private ViolationHandlerImpl validationHandler;
 

@@ -1,8 +1,6 @@
-package ocanalyzer.rules.r9_properties.getter;
+package ocanalyzer.rules.r9_properties.general;
 
 import java.util.List;
-
-import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IVariableBinding;

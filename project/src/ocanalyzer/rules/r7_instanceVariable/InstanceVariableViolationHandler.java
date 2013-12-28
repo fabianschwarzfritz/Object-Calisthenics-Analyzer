@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class InstanceVariableViolationHandler extends ViolationHandlerImpl {
+class InstanceVariableViolationHandler extends ViolationHandlerImpl {
 
 	public InstanceVariableViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

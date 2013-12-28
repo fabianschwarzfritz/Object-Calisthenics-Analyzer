@@ -3,8 +3,8 @@ package ocanalyzer.rules.r9_properties.setter;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import ocanalyzer.rules.general.ViolationHandler;
-import ocanalyzer.rules.r9_properties.VariableBindings;
 import ocanalyzer.rules.r9_properties.general.ContainsBindingsVisitor;
+import ocanalyzer.rules.r9_properties.general.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Expression;

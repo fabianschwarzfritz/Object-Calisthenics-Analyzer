@@ -13,7 +13,13 @@ import ocanalyzer.rules.r3_8_wrap.general.WrapperVisitor;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-//TODO documentation
+
+/**
+ * Rule: "Use first-class collections".
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 public class RuleWrapCollections extends ClassOCRuleImpl {
 
 	private ClassReporter reporter;

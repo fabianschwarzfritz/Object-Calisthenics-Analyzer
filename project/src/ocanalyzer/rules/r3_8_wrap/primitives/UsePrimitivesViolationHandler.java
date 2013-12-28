@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-public class UsePrimitivesViolationHandler extends ViolationHandlerImpl {
+class UsePrimitivesViolationHandler extends ViolationHandlerImpl {
 
 	public UsePrimitivesViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

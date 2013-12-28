@@ -1,7 +1,6 @@
 package ocanalyzer.rules.r9_properties.general;
 
 import ocanalyzer.rules.general.ViolationHandler;
-import ocanalyzer.rules.r9_properties.VariableBindings;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;

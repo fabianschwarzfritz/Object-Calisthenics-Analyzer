@@ -7,8 +7,16 @@ import ocanalyzer.rules.r5_shortnames.determinator.VariableNameDeterminator;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
-//TODO documentation
-public class ShortNamesVisitor extends ASTVisitor {
+
+/**
+ * 
+ * Visitor for rule: "Don't abbreviate"
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
+
+class ShortNamesVisitor extends ASTVisitor {
 
 	private TypeNameDeterminator typeNameDeterminator;
 	private VariableNameDeterminator variableNameDeterminator;

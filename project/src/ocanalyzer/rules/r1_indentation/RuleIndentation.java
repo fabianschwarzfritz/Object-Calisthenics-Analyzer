@@ -2,11 +2,19 @@ package ocanalyzer.rules.r1_indentation;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
-import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+
+/**
+ * Rule: "Use only one level of Indentation per method".
+ * 
+ * @see IndentationVisitor for more information
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 
 public class RuleIndentation extends ClassOCRuleImpl {
 

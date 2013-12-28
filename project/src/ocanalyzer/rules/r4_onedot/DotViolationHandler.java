@@ -16,7 +16,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class DotViolationHandler extends ViolationHandlerImpl {
+class DotViolationHandler extends ViolationHandlerImpl {
 
 	public DotViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

@@ -8,8 +8,13 @@ import ocanalyzer.rules.r9_properties.setter.SetterVisitor;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-//TODO documentation
-// TODO add property violation
+
+/**
+ * Visitor for rule: "Do not use any getter/setter/properties"
+ * 
+ * @author Fabian Schwarz-Fritz
+ * 
+ */
 
 public class RuleProperties extends ClassOCRuleImpl {
 

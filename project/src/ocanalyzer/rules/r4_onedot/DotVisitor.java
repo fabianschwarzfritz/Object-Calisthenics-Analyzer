@@ -6,15 +6,17 @@ import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
-import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 /**
- * // TODO documentation
+ * 
+ * * This visitor implements the validation of rule 2:
+ * "Use only one dot per line!".
+ * 
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class DotVisitor extends ASTVisitor {
+class DotVisitor extends ASTVisitor {
 
 	private ViolationHandlerImpl validationHandler;
 

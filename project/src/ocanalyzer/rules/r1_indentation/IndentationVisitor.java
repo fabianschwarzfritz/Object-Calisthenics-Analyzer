@@ -27,7 +27,7 @@ import org.eclipse.jdt.core.dom.WhileStatement;
  * 
  */
 
-public class IndentationVisitor extends ASTVisitor {
+class IndentationVisitor extends ASTVisitor {
 
 	private ViolationHandlerImpl validationHandler;
 
