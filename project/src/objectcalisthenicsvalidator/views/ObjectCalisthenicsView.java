@@ -60,6 +60,10 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private TableColumn nameColumn;
 	private TableColumn locationColumn;
 
+	private Table table;
+
+	private ValidationSorter validationSorter;
+
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViewContentProvider();
 		DelegateReporter reporter = createDelegationReporter();
@@ -85,7 +89,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 		addFilter(parent);
 		createTableViewer(parent);
 		addSorting();
-		
+
 		actionValidate = new StartRuleValidation(ocHandler, tableProvider,
 				rulesViewer);
 		actionSelectValidation = new OpenViolation(rulesViewer);
@@ -110,16 +114,20 @@ public class ObjectCalisthenicsView extends ViewPart {
 	}
 
 	private void addSorting() {
-		rulesViewer.setSorter(new ValidationSorter());
+		validationSorter = new ValidationSorter();
+		rulesViewer.setSorter(validationSorter);
 		addSort(lineColumn, 0);
 		addSort(nameColumn, 1);
 		addSort(locationColumn, 2);
+		validationSorter.setSortArrow(table);
 	}
 
-	public void addSort(TableColumn column, final int sort) {
+	public void addSort(final TableColumn column, final int sort) {
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
+				table.setSortColumn(column);
 				((ValidationSorter) rulesViewer.getSorter()).doSort(sort);
+				validationSorter.setSortArrow(table);
 				rulesViewer.refresh();
 			}
 		});
@@ -128,7 +136,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private void createTableViewer(Composite parent) {
 		rulesViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.SINGLE | SWT.FULL_SELECTION);
-		final Table table = rulesViewer.getTable();
+		table = rulesViewer.getTable();
 
 		lineColumn = new TableColumn(table, SWT.LEFT);
 		lineColumn.setText("Nr");
