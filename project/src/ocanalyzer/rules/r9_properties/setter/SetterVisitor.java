@@ -11,10 +11,12 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.Expression;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 public class SetterVisitor extends ASTVisitor {
 
@@ -31,6 +33,19 @@ public class SetterVisitor extends ASTVisitor {
 		bindings.clear();
 	}
 
+	@SuppressWarnings("rawtypes")
+	@Override
+	public boolean visit(FieldDeclaration node) {
+		List list = node.fragments();
+		for (Object object : list) {
+			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) object;
+			IVariableBinding binding = variableDeclaration.resolveBinding();
+			bindings.add(binding);
+		}
+		return true;
+	}
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(MethodDeclaration node) {
 		parameterBindings = new VariableBindings();
@@ -44,7 +59,6 @@ public class SetterVisitor extends ASTVisitor {
 			return true;
 		}
 		return false;
-
 	}
 
 	public void endVisit(MethodDeclaration node) {
