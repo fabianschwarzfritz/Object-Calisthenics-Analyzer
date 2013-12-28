@@ -28,8 +28,7 @@ public class ViewLabelProvider extends LabelProvider implements
 		if (index == 0) {
 			return new String();
 		} else if (index == 1) {
-			return packageViolation.getResource().getName()
-					.toString();
+			return packageViolation.getResource().getName().toString();
 		} else if (index == 2) {
 			return packageViolation.getMessage().toString();
 		}
@@ -40,9 +39,9 @@ public class ViewLabelProvider extends LabelProvider implements
 		if (index == 0) {
 			return violation.getLine().toString();
 		} else if (index == 1) {
-			return violation.getResource().getName().toString();
+			return violation.getResource().getName();
 		} else if (index == 2) {
-			return violation.getMessage().toString();
+			return violation.getMessage();
 		}
 		return new String();
 	}

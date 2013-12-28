@@ -54,8 +54,7 @@ public class OpenViolation extends Action {
 	}
 
 	private void openPackageViolation(PackageViolation packageViolation) {
-		showMessage("Package: "
-				+ packageViolation.getResource().getName().toString()
+		showMessage("Package: " + packageViolation.getResource().getName()
 				+ packageViolation.getMessage());
 	}
 
