@@ -1,22 +1,18 @@
 package ocanalyzer.rules.r9_properties.setter;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.r9_properties.VariableBindings;
-import ocanalyzer.rules.r9_properties.general.ContainsBindingsVisitor;
+import ocanalyzer.rules.r9_properties.getter.Extract;
 
-import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Assignment;
-import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SingleVariableDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 public class SetterVisitor extends ASTVisitor {
 
@@ -33,15 +29,9 @@ public class SetterVisitor extends ASTVisitor {
 		bindings.clear();
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(FieldDeclaration node) {
-		List list = node.fragments();
-		for (Object object : list) {
-			VariableDeclarationFragment variableDeclaration = (VariableDeclarationFragment) object;
-			IVariableBinding binding = variableDeclaration.resolveBinding();
-			bindings.add(binding);
-		}
+		Extract.the(node).into(bindings);
 		return true;
 	}
 
@@ -73,30 +63,10 @@ public class SetterVisitor extends ASTVisitor {
 	}
 
 	private boolean rightsideIsParameter(Assignment node) {
-		Expression rightHandSide = node.getRightHandSide();
-		final AtomicBoolean right = new AtomicBoolean(false);
-		ViolationHandler rightHandler = new ViolationHandler() {
-			@Override
-			public void printInfo(ASTNode node) {
-				right.set(true);
-			}
-		};
-		rightHandSide.accept(new ContainsBindingsVisitor(rightHandSide,
-				parameterBindings, rightHandler));
-		return right.get();
+		return new Rightside(node).isParameter(parameterBindings);
 	}
 
 	private boolean leftsideIsField(Assignment node) {
-		Expression leftHandSide = node.getLeftHandSide();
-		final AtomicBoolean left = new AtomicBoolean(false);
-		ViolationHandler leftHandler = new ViolationHandler() {
-			@Override
-			public void printInfo(ASTNode node) {
-				left.set(true);
-			}
-		};
-		leftHandSide.accept(new ContainsBindingsVisitor(leftHandSide, bindings,
-				leftHandler));
-		return left.get();
+		return new Leftside(node).isParameter(bindings);
 	}
 }
