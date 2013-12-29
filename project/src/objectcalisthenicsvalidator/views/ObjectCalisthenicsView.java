@@ -50,10 +50,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private Action actionValidate;
 	private Action actionSelectValidation;
 
-	private TableColumn lineColumn;
-	private TableColumn nameColumn;
-	private TableColumn locationColumn;
-
 	private Table table;
 
 	public ObjectCalisthenicsView() {
@@ -84,17 +80,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 				| SWT.SINGLE | SWT.FULL_SELECTION);
 		table = rulesViewer.getTable();
 
-		lineColumn = new TableColumn(table, SWT.LEFT);
-		lineColumn.setText("Nr");
-		lineColumn.setWidth(8);
-
-		nameColumn = new TableColumn(table, SWT.LEFT);
-		nameColumn.setText("Name");
-		nameColumn.setWidth(100);
-
-		locationColumn = new TableColumn(table, SWT.LEFT);
-		locationColumn.setText("Location");
-		locationColumn.setWidth(450);
+		
 
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
