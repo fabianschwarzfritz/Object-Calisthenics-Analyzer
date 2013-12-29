@@ -18,10 +18,6 @@ public class ViolationFilter extends ViewerFilter {
 
 	private String searchString;
 
-	public ViolationFilter() {
-		System.out.println("new one");
-	}
-
 	public void setSearchText(String s) {
 		this.searchString = ".*" + s.toLowerCase(Locale.ENGLISH) + ".*";
 	}
