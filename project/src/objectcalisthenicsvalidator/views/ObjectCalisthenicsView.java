@@ -1,7 +1,5 @@
 package objectcalisthenicsvalidator.views;
 
-import objectcalisthenicsvalidator.views.actions.OpenViolation;
-import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
 import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.TablelabelProvider;
 import objectcalisthenicsvalidator.views.table.ValidationSorter;
@@ -21,8 +19,6 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -50,7 +46,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	 */
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
-	private ObjectCalisthenics ocHandler;
+	private ObjectCalisthenics oc;
 	private ViolationProvider tableProvider;
 
 	private TableViewer rulesViewer;
@@ -69,7 +65,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViolationProvider();
 		DelegateReporter reporter = Create.reporter(tableProvider);
-		ocHandler = ObjectCalisthenics.create(reporter);
+		oc = ObjectCalisthenics.create(reporter);
 		filter = new ViolationFilter();
 	}
 
@@ -80,12 +76,10 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 		addFilter(parent);
 		createTableViewer(parent);
-		addSorting();
+		Create.sorting(rulesViewer, lineColumn, nameColumn, locationColumn);
 
-		actionValidate = new StartRuleValidation(ocHandler, tableProvider,
-				rulesViewer);
-		actionSelectValidation = new OpenViolation(rulesViewer);
-
+		actionValidate = Create.startAction(oc, tableProvider, rulesViewer);
+		actionSelectValidation = Create.openAction(rulesViewer);
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
@@ -100,26 +94,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 		searchText.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent ke) {
 				filter.setSearchText(searchText.getText());
-				rulesViewer.refresh();
-			}
-		});
-	}
-
-	private void addSorting() {
-		validationSorter = new ValidationSorter();
-		rulesViewer.setSorter(validationSorter);
-		addSort(lineColumn, 0);
-		addSort(nameColumn, 1);
-		addSort(locationColumn, 2);
-		validationSorter.setSortArrow(table);
-	}
-
-	public void addSort(final TableColumn column, final int sort) {
-		column.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent event) {
-				table.setSortColumn(column);
-				((ValidationSorter) rulesViewer.getSorter()).doSort(sort);
-				validationSorter.setSortArrow(table);
 				rulesViewer.refresh();
 			}
 		});

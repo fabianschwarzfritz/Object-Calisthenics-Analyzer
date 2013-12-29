@@ -12,8 +12,14 @@ public class ValidationSorter extends ViewerSorter {
 	private static final int ASCENDING = 0;
 	private static final int DESCENDING = 1;
 
+	private Table table;
+
 	private int column;
 	private int direction;
+
+	public ValidationSorter(Table table) {
+		this.table = table;
+	}
 
 	public void doSort(int column) {
 		if (column == this.column) {
@@ -22,8 +28,10 @@ public class ValidationSorter extends ViewerSorter {
 		}
 		this.column = column;
 		direction = ASCENDING;
+		adjustArrow();
 	}
 
+	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
 		int result = 0;
 		Violation violation1 = (Violation) e1;
@@ -48,10 +56,7 @@ public class ValidationSorter extends ViewerSorter {
 				.compareTo(violation2.getResource().getName());
 	}
 
-	/**
-	 * @param tableColumn
-	 */
-	public void setSortArrow(Table table) {
+	public void adjustArrow() {
 		table.setSortDirection(direction == ASCENDING ? SWT.UP : SWT.DOWN);
 	}
 }
