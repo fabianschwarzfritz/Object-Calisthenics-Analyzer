@@ -1,11 +1,11 @@
 package ocanalyzer.rules.r5_shortnames;
 
+import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
+
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-
-import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 class ShortNamesViolationHandler extends ViolationHandlerImpl {
 

@@ -20,8 +20,7 @@ public abstract class ViolationColumn extends TableColumn {
 
 	public abstract int getNumber();
 
-	public abstract int compare(Violation violation1,
-			Violation violation2);
+	public abstract int compare(Violation violation1, Violation violation2);
 
 	@Override
 	protected void checkSubclass() {

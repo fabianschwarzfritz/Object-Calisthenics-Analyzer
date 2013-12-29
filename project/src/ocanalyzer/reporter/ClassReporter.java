@@ -22,5 +22,5 @@ public interface ClassReporter {
 	 *            - The {@link ClassViolation} to report.
 	 */
 	public abstract void reportError(ClassViolation violation);
-	
+
 }

@@ -10,8 +10,7 @@ import ocanalyzer.reporter.Reporter;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-public class ViolationProvider implements IStructuredContentProvider,
-		Reporter {
+public class ViolationProvider implements IStructuredContentProvider, Reporter {
 
 	private List<PackageViolation> packageViolations;
 	private List<ClassViolation> violations;

@@ -4,7 +4,7 @@ import ocanalyzer.rules.r4_onedot.expressions.Expressions;
 
 import org.eclipse.jdt.core.dom.MethodInvocation;
 
-public class MethodInvocationCounter implements ExpressionCounter{
+public class MethodInvocationCounter implements ExpressionCounter {
 
 	private MethodInvocation methodInvocation;
 

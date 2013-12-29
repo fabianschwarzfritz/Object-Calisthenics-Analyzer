@@ -8,8 +8,6 @@ import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.r2_noelse.RuleElse;
 
-import org.junit.Before;
-
 public class ElseIntegration extends IntegrationTest {
 
 	public ElseIntegration() {

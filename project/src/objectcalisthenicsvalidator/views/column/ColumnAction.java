@@ -3,8 +3,6 @@
  */
 package objectcalisthenicsvalidator.views.column;
 
-import org.eclipse.swt.widgets.TableColumn;
-
 /**
  * @author Fabian Schwarz-Fritz
  * 

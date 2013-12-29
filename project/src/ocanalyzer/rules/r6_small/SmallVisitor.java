@@ -6,7 +6,6 @@ import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
-import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 class SmallVisitor extends ASTVisitor {

@@ -8,7 +8,6 @@ import ocanalyzer.reporter.Violation;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 
 /**
  * @author Fabian Schwarz-Fritz

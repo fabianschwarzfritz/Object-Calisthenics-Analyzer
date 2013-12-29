@@ -8,8 +8,6 @@ import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.r7_instanceVariable.RuleInstanceVariable;
 
-import org.junit.Before;
-
 public class VariableCountIntegration extends IntegrationTest {
 
 	public VariableCountIntegration() {

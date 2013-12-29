@@ -8,8 +8,6 @@ import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
 import ocanalyzer.rules.r1_indentation.RuleIndentation;
 
-import org.junit.Before;
-
 public class IndentationIntegration extends IntegrationTest {
 
 	public IndentationIntegration() {
