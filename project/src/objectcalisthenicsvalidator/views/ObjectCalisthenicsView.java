@@ -56,8 +56,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	private Table table;
 
-	private ValidationSorter validationSorter;
-
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViolationProvider();
 		DelegateReporter reporter = Create.reporter(tableProvider);
