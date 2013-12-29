@@ -1,4 +1,4 @@
-package objectcalisthenicsvalidator.views;
+package objectcalisthenicsvalidator.views.table;
 
 import java.util.ArrayList;
 import java.util.List;

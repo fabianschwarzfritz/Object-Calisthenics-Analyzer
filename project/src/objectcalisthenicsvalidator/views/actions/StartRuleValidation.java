@@ -1,6 +1,6 @@
 package objectcalisthenicsvalidator.views.actions;
 
-import objectcalisthenicsvalidator.views.ViolationProvider;
+import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 
 import org.eclipse.jface.action.Action;

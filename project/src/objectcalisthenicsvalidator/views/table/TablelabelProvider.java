@@ -1,4 +1,4 @@
-package objectcalisthenicsvalidator.views;
+package objectcalisthenicsvalidator.views.table;
 
 import ocanalyzer.reporter.ClassViolation;
 import ocanalyzer.reporter.PackageViolation;
