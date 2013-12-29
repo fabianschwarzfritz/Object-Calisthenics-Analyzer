@@ -25,7 +25,6 @@ public class ValidationSorter extends ViewerSorter {
 	}
 
 	public void doSort(ViolationColumn column) {
-		System.out.println(this.hashCode());
 		if (this.column == column) {
 			changeSortDirection();
 			return;
