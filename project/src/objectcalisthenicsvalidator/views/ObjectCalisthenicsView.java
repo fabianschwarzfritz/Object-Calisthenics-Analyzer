@@ -17,16 +17,12 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
@@ -74,8 +70,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 		GridLayout layout = new GridLayout(1, true);
 		parent.setLayout(layout);
 
-		addFilter(parent);
 		createTableViewer(parent);
+		Create.filter(parent, rulesViewer, filter);
 		Create.sorting(rulesViewer, lineColumn, nameColumn, locationColumn);
 
 		actionValidate = Create.startAction(oc, tableProvider, rulesViewer);
@@ -83,20 +79,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
-	}
-
-	private void addFilter(Composite parent) {
-		Label searchLabel = new Label(parent, SWT.NONE);
-		searchLabel.setText("Search: ");
-		final Text searchText = new Text(parent, SWT.BORDER | SWT.SEARCH);
-		searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
-				| GridData.HORIZONTAL_ALIGN_FILL));
-		searchText.addKeyListener(new KeyAdapter() {
-			public void keyReleased(KeyEvent ke) {
-				filter.setSearchText(searchText.getText());
-				rulesViewer.refresh();
-			}
-		});
 	}
 
 	private void createTableViewer(Composite parent) {

@@ -5,6 +5,8 @@ package objectcalisthenicsvalidator.views;
 
 import objectcalisthenicsvalidator.views.actions.OpenViolation;
 import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
+import objectcalisthenicsvalidator.views.search.SearchAdapter;
+import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.ValidationSorter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
@@ -14,10 +16,15 @@ import ocanalyzer.reporter.impl.MarkerReporter;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
 
 /**
  * @author Fabian Schwarz-Fritz
@@ -45,6 +52,27 @@ public class Create {
 			TableColumn tableColumn = columns[i];
 			addSort(viewer, tableColumn, i);
 		}
+	}
+
+	public static void filter(Composite parent, final TableViewer viewer,
+			final ViolationFilter filter) {
+		createText(parent, viewer, filter);
+		createLabel(parent);
+	}
+
+	private static Label createLabel(Composite parent) {
+		Label label = new Label(parent, SWT.NONE);
+		label.setText("Search: ");
+		return label;
+	}
+
+	private static Text createText(Composite parent, final TableViewer viewer,
+			final ViolationFilter filter) {
+		Text text = new Text(parent, SWT.BORDER | SWT.SEARCH);
+		text.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
+				| GridData.HORIZONTAL_ALIGN_FILL));
+		text.addKeyListener(new SearchAdapter(viewer, filter, text));
+		return text;
 	}
 
 	public static Action startAction(ObjectCalisthenics oc,
