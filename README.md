@@ -23,5 +23,5 @@ The prototypical implementation of tool support is done as an Eclipse plugin val
 
 Project Documentation
 =====================
-The project documentation can be found under the follwing link:
+The project documentation can be found under the following link:
 [documentation repository](https://github.com/fabianschwarzfritz/Object-Calisthenics-Analyzer-Documentation/ "documentation repository")
