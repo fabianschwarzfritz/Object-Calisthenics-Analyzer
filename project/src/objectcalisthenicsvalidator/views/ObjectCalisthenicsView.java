@@ -8,7 +8,6 @@ import objectcalisthenicsvalidator.views.table.ValidationSorter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 import ocanalyzer.reporter.impl.DelegateReporter;
-import ocanalyzer.reporter.impl.MarkerReporter;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
@@ -55,7 +54,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private ViolationProvider tableProvider;
 
 	private TableViewer rulesViewer;
-	private final ViolationFilter filter;
+	private ViolationFilter filter;
 	private Action actionValidate;
 	private Action actionSelectValidation;
 
@@ -69,17 +68,9 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViolationProvider();
-		DelegateReporter reporter = createDelegationReporter();
+		DelegateReporter reporter = Create.reporter(tableProvider);
 		ocHandler = ObjectCalisthenics.create(reporter);
 		filter = new ViolationFilter();
-	}
-
-	private DelegateReporter createDelegationReporter() {
-		DelegateReporter reporter = new DelegateReporter();
-		reporter.addClassReporter(new MarkerReporter());
-		reporter.addClassReporter(tableProvider);
-		reporter.addPackageReporter(tableProvider);
-		return reporter;
 	}
 
 	@Override
