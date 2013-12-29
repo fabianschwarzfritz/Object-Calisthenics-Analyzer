@@ -6,11 +6,9 @@ package objectcalisthenicsvalidator.views;
 import objectcalisthenicsvalidator.views.actions.OpenViolation;
 import objectcalisthenicsvalidator.views.actions.StartRuleValidation;
 import objectcalisthenicsvalidator.views.column.TableColumns;
-import objectcalisthenicsvalidator.views.column.ViolationColumn;
 import objectcalisthenicsvalidator.views.search.SearchAdapter;
 import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.AddSortAction;
-import objectcalisthenicsvalidator.views.table.ValidationSorter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 import ocanalyzer.reporter.impl.ConsoleReporter;
@@ -23,7 +21,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.Text;
 
 /**
