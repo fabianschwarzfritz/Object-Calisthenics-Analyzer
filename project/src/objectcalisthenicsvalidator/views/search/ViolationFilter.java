@@ -5,8 +5,7 @@ package objectcalisthenicsvalidator.views.search;
 
 import java.util.Locale;
 
-import ocanalyzer.reporter.ClassViolation;
-import ocanalyzer.reporter.PackageViolation;
+import ocanalyzer.reporter.Violation;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -32,35 +31,8 @@ public class ViolationFilter extends ViewerFilter {
 		if (searchString == null || searchString.length() == 0) {
 			return true;
 		}
-		if (element instanceof ClassViolation) {
-			ClassViolation classViolation = (ClassViolation) element;
-			return match(classViolation);
-		}
-		if (element instanceof PackageViolation) {
-			PackageViolation packageViolation = (PackageViolation) element;
-			return match(packageViolation);
-		}
-		return false;
+		Violation violation = (Violation) element;
+		ViolationMatcher matcher = new ViolationMatcher(searchString);
+		return matcher.match(violation);
 	}
-
-	private boolean match(ClassViolation violation) {
-		return match(violation.getClass().getName(), violation.getMessage(),
-				violation.getResource().getName(), violation.getLine()
-						.toString());
-	}
-
-	private boolean match(PackageViolation violation) {
-		return match(violation.getClass().getName(), violation.getMessage(),
-				violation.getResource().getName());
-	}
-
-	private boolean match(String... string) {
-		boolean result = false;
-		for (String value : string) {
-			result |= value.trim().toLowerCase(Locale.ENGLISH)
-					.matches(searchString);
-		}
-		return result;
-	}
-
 }
