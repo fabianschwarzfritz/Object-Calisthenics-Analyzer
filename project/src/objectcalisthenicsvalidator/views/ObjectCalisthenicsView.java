@@ -74,7 +74,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private DelegateReporter createDelegationReporter() {
 		DelegateReporter reporter = new DelegateReporter();
 		reporter.addClassReporter(new MarkerReporter());
-		// reporter.addClassReporter(new ConsoleReporter(System.out));
 		reporter.addClassReporter(tableProvider);
 		reporter.addPackageReporter(tableProvider);
 		return reporter;
@@ -84,7 +83,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout(1, true);
 		parent.setLayout(layout);
-		// parent.setBackground(new Color(parent.getDisplay(), 40, 24, 200));
 
 		addFilter(parent);
 		createTableViewer(parent);
@@ -159,13 +157,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 		rulesViewer.addFilter(filter);
 
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-
-		// Create the help context id for the viewer's control
-		// PlatformUI
-		// .getWorkbench()
-		// .getHelpSystem()
-		// .setHelp(rulesViewer.getControl(),
-		// "ObjectCalisthenicsValidator.viewer");
 	}
 
 	private void hookContextMenu() {
@@ -209,9 +200,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 		manager.add(actionValidate);
 	}
 
-	/**
-	 * Passing the focus request to the viewer's control.
-	 */
+	@Override
 	public void setFocus() {
 		rulesViewer.getControl().setFocus();
 	}
