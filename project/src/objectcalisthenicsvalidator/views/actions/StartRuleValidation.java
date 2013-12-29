@@ -1,6 +1,6 @@
 package objectcalisthenicsvalidator.views.actions;
 
-import objectcalisthenicsvalidator.views.ViewContentProvider;
+import objectcalisthenicsvalidator.views.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 
 import org.eclipse.jface.action.Action;
@@ -22,11 +22,11 @@ import org.eclipse.ui.PlatformUI;
 public class StartRuleValidation extends Action {
 
 	private ObjectCalisthenics oc;
-	private ViewContentProvider tableProvider;
+	private ViolationProvider tableProvider;
 	private TableViewer rulesViewer;
 
 	public StartRuleValidation(ObjectCalisthenics oc,
-			ViewContentProvider tableProvider, TableViewer rulesViewer) {
+			ViolationProvider tableProvider, TableViewer rulesViewer) {
 		this.oc = oc;
 		this.tableProvider = tableProvider;
 		this.rulesViewer = rulesViewer;

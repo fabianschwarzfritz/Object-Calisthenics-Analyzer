@@ -49,7 +49,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
 	private ObjectCalisthenics ocHandler;
-	private ViewContentProvider tableProvider;
+	private ViolationProvider tableProvider;
 
 	private TableViewer rulesViewer;
 	private final ViolationFilter filter;
@@ -65,7 +65,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private ValidationSorter validationSorter;
 
 	public ObjectCalisthenicsView() {
-		tableProvider = new ViewContentProvider();
+		tableProvider = new ViolationProvider();
 		DelegateReporter reporter = createDelegationReporter();
 		ocHandler = ObjectCalisthenics.create(reporter);
 		filter = new ViolationFilter();
