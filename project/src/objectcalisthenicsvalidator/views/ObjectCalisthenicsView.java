@@ -1,8 +1,8 @@
 package objectcalisthenicsvalidator.views;
 
+import objectcalisthenicsvalidator.views.column.TableColumns;
 import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.TablelabelProvider;
-import objectcalisthenicsvalidator.views.table.ValidationSorter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 import ocanalyzer.reporter.impl.DelegateReporter;
@@ -22,7 +22,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
@@ -52,6 +51,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	private Table table;
 
+	private TableColumns columns;
+
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViolationProvider();
 		DelegateReporter reporter = Create.reporter(tableProvider);
@@ -65,8 +66,9 @@ public class ObjectCalisthenicsView extends ViewPart {
 		parent.setLayout(layout);
 
 		createTableViewer(parent);
+		columns = new TableColumns(rulesViewer);
 		Create.filter(parent, rulesViewer, filter);
-		Create.sorting(rulesViewer, lineColumn, nameColumn, locationColumn);
+		Create.sorting(rulesViewer, columns);
 
 		actionValidate = Create.startAction(oc, tableProvider, rulesViewer);
 		actionSelectValidation = Create.openAction(rulesViewer);
@@ -79,8 +81,6 @@ public class ObjectCalisthenicsView extends ViewPart {
 		rulesViewer = new TableViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.SINGLE | SWT.FULL_SELECTION);
 		table = rulesViewer.getTable();
-
-		
 
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);

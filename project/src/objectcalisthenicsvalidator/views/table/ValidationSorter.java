@@ -1,5 +1,6 @@
 package objectcalisthenicsvalidator.views.table;
 
+import objectcalisthenicsvalidator.views.column.ViolationColumn;
 import ocanalyzer.reporter.Violation;
 
 import org.eclipse.jface.viewers.Viewer;
@@ -14,49 +15,46 @@ public class ValidationSorter extends ViewerSorter {
 
 	private Table table;
 
-	private int column;
+	private ViolationColumn column;
 	private int direction;
 
-	public ValidationSorter(Table table) {
+	public ValidationSorter(Table table, ViolationColumn firstSortColumn) {
 		this.table = table;
+		this.column = firstSortColumn;
+		doSort(firstSortColumn);
 	}
 
-	public void doSort(int column) {
-		if (column == this.column) {
-			direction = 1 - direction;
+	public void doSort(ViolationColumn column) {
+		System.out.println(this.hashCode());
+		if (this.column == column) {
+			changeSortDirection();
 			return;
 		}
 		this.column = column;
 		direction = ASCENDING;
 		adjustArrow();
+
+		table.setSortColumn(column);
+	}
+
+	private void changeSortDirection() {
+		direction = 1 - direction;
+		adjustArrow();
 	}
 
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
-		int result = 0;
 		Violation violation1 = (Violation) e1;
 		Violation violation2 = (Violation) e2;
-		// TODO add logic for first column
-		if (column == 1) {
-			result = compareResource(violation1, violation2);
-		} else if (column == 2) {
-			result = compareMessage(violation1, violation2);
-		}
-		if (direction == DESCENDING)
+
+		int result = column.compare(violation1, violation2);
+		if (direction == DESCENDING) {
 			result = -result;
+		}
 		return result;
 	}
 
-	private int compareMessage(Violation violation1, Violation violation2) {
-		return violation1.getMessage().compareTo(violation2.getMessage());
-	}
-
-	private int compareResource(Violation violation1, Violation violation2) {
-		return violation1.getResource().getName()
-				.compareTo(violation2.getResource().getName());
-	}
-
 	public void adjustArrow() {
-		table.setSortDirection(direction == ASCENDING ? SWT.UP : SWT.DOWN);
+		table.setSortDirection(direction == ASCENDING ? SWT.DOWN : SWT.UP);
 	}
 }
