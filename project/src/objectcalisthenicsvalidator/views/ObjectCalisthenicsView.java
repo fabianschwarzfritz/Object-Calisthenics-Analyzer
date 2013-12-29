@@ -152,7 +152,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 		table.setLinesVisible(true);
 
 		rulesViewer.setContentProvider(tableProvider);
-		rulesViewer.setLabelProvider(new ViewLabelProvider());
+		rulesViewer.setLabelProvider(new TablelabelProvider());
 		rulesViewer.setInput(getViewSite());
 		rulesViewer.addFilter(filter);
 
