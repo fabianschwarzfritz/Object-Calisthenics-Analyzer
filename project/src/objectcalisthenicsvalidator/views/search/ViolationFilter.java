@@ -3,6 +3,8 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
+import java.util.Locale;
+
 import ocanalyzer.reporter.ClassViolation;
 import ocanalyzer.reporter.PackageViolation;
 
@@ -22,7 +24,7 @@ public class ViolationFilter extends ViewerFilter {
 	}
 
 	public void setSearchText(String s) {
-		this.searchString = ".*" + s.toLowerCase() + ".*";
+		this.searchString = ".*" + s.toLowerCase(Locale.ENGLISH) + ".*";
 	}
 
 	@Override
@@ -55,7 +57,8 @@ public class ViolationFilter extends ViewerFilter {
 	private boolean match(String... string) {
 		boolean result = false;
 		for (String value : string) {
-			result |= value.trim().toLowerCase().matches(searchString);
+			result |= value.trim().toLowerCase(Locale.ENGLISH)
+					.matches(searchString);
 		}
 		return result;
 	}
