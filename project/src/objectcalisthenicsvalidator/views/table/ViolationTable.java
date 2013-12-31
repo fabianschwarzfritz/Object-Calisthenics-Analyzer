@@ -25,7 +25,6 @@ import org.eclipse.ui.IViewSite;
 public class ViolationTable extends TableViewer implements IDoubleClickListener {
 
 	private ViolationFilter filter;
-	private Table table;
 	private TableColumns columns;
 	private Action openAction;
 
@@ -53,8 +52,9 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 	}
 
 	private void setupTable(ViolationProvider tableProvider, IViewSite viewSite) {
-		getTable().setHeaderVisible(true);
-		getTable().setLinesVisible(true);
+		Table table = getTable();
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
 		setContentProvider(tableProvider);
 		setLabelProvider(new TablelabelProvider());
 		setInput(viewSite);
