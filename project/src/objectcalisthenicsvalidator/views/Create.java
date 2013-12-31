@@ -41,25 +41,4 @@ public class Create {
 		columns.each(new AddSortAction(viewer));
 	}
 
-	public static void filter(Composite parent, final TableViewer viewer,
-			final ViolationFilter filter) {
-		createSearchText(parent, viewer, filter);
-		createLabel(parent);
-	}
-
-	private static Label createLabel(Composite parent) {
-		Label label = new Label(parent, SWT.NONE);
-		label.setText("Search: ");
-		return label;
-	}
-
-	private static Text createSearchText(Composite parent,
-			final TableViewer viewer, final ViolationFilter filter) {
-		Text text = new Text(parent, SWT.BORDER | SWT.SEARCH);
-		text.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
-				| GridData.HORIZONTAL_ALIGN_FILL));
-		text.addKeyListener(new SearchAdapter(viewer, filter, text));
-		return text;
-	}
-
 }
