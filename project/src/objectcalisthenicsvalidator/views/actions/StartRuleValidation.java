@@ -4,7 +4,7 @@ import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.ObjectCalisthenics;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
@@ -23,10 +23,10 @@ public class StartRuleValidation extends Action {
 
 	private ObjectCalisthenics oc;
 	private ViolationProvider tableProvider;
-	private TableViewer rulesViewer;
+	private Viewer rulesViewer;
 
 	public StartRuleValidation(ObjectCalisthenics oc,
-			ViolationProvider tableProvider, TableViewer rulesViewer) {
+			ViolationProvider tableProvider, Viewer rulesViewer) {
 		this.oc = oc;
 		this.tableProvider = tableProvider;
 		this.rulesViewer = rulesViewer;

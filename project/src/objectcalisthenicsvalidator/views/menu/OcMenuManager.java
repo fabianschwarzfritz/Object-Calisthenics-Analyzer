@@ -3,6 +3,8 @@
  */
 package objectcalisthenicsvalidator.views.menu;
 
+import objectcalisthenicsvalidator.views.actions.Actions;
+
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;

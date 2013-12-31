@@ -3,6 +3,8 @@
  */
 package objectcalisthenicsvalidator.views.menu;
 
+import objectcalisthenicsvalidator.views.actions.Actions;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;

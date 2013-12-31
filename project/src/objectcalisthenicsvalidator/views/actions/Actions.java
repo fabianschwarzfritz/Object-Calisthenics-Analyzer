@@ -1,7 +1,7 @@
 /**
  * 
  */
-package objectcalisthenicsvalidator.views.menu;
+package objectcalisthenicsvalidator.views.actions;
 
 import java.util.ArrayList;
 import java.util.List;
