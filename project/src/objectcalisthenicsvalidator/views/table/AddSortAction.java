@@ -26,7 +26,7 @@ public class AddSortAction implements ColumnAction {
 	public void execute(final ViolationColumn column) {
 		column.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
-				ValidationSorter sorter = (ValidationSorter) viewer.getSorter();
+				ViolationSorter sorter = (ViolationSorter) viewer.getSorter();
 				sorter.doSort(column);
 				viewer.refresh();
 			}

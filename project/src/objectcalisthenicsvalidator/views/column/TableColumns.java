@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.column;
 
-import objectcalisthenicsvalidator.views.table.ValidationSorter;
+import objectcalisthenicsvalidator.views.table.ViolationSorter;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.widgets.Table;
@@ -25,7 +25,7 @@ public class TableColumns {
 		locationColumn = new LocationColumn(table);
 
 		ViolationColumn firstSortColumn = lineColumn;
-		ValidationSorter validationSorter = new ValidationSorter(table,
+		ViolationSorter validationSorter = new ViolationSorter(table,
 				firstSortColumn);
 		viewer.setSorter(validationSorter);
 	}
