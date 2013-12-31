@@ -1,6 +1,9 @@
 package objectcalisthenicsvalidator.views;
 
 import objectcalisthenicsvalidator.views.column.TableColumns;
+import objectcalisthenicsvalidator.views.menu.Actions;
+import objectcalisthenicsvalidator.views.menu.OcMenu;
+import objectcalisthenicsvalidator.views.menu.OcToolbar;
 import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.TablelabelProvider;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
@@ -8,11 +11,6 @@ import ocanalyzer.ObjectCalisthenics;
 import ocanalyzer.reporter.impl.DelegateReporter;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.IMenuListener;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TableViewer;
@@ -20,10 +18,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -51,6 +46,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	private Table table;
 
+	private Actions menuActions;
+
 	private TableColumns columns;
 
 	public ObjectCalisthenicsView() {
@@ -58,6 +55,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 		DelegateReporter reporter = Create.reporter(tableProvider);
 		oc = ObjectCalisthenics.create(reporter);
 		filter = new ViolationFilter();
+		menuActions = new Actions();
 	}
 
 	@Override
@@ -71,7 +69,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 		Create.sorting(rulesViewer, columns);
 
 		actionValidate = Create.startAction(oc, tableProvider, rulesViewer);
-		actionSelectValidation = Create.openAction(rulesViewer);
+		menuActions.add(actionValidate);
+
 		hookContextMenu();
 		hookDoubleClickAction();
 		contributeToActionBars();
@@ -94,44 +93,20 @@ public class ObjectCalisthenicsView extends ViewPart {
 	}
 
 	private void hookContextMenu() {
-		MenuManager menuManager = new MenuManager("#PopupMenu");
-		menuManager.setRemoveAllWhenShown(true);
-		menuManager.addMenuListener(new IMenuListener() {
-			public void menuAboutToShow(IMenuManager manager) {
-				ObjectCalisthenicsView.this.fillContextMenu(manager);
-			}
-		});
-		Menu menu = menuManager.createContextMenu(rulesViewer.getControl());
-		rulesViewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(menuManager, rulesViewer);
 	}
 
 	private void hookDoubleClickAction() {
 		rulesViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
+				actionSelectValidation = Create.openAction(rulesViewer);
 				actionSelectValidation.run();
 			}
 		});
 	}
 
 	private void contributeToActionBars() {
-		IActionBars bars = getViewSite().getActionBars();
-		fillLocalPullDown(bars.getMenuManager());
-		fillLocalToolBar(bars.getToolBarManager());
-	}
-
-	private void fillLocalPullDown(IMenuManager manager) {
-		manager.add(actionValidate);
-		manager.add(new Separator());
-	}
-
-	private void fillContextMenu(IMenuManager manager) {
-		manager.add(actionValidate);
-		manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-	}
-
-	private void fillLocalToolBar(IToolBarManager manager) {
-		manager.add(actionValidate);
+		OcMenu theMenu = new OcMenu(rulesViewer, getSite(), menuActions);
+		OcToolbar toolbar = new OcToolbar(getViewSite(), menuActions);
 	}
 
 	@Override
