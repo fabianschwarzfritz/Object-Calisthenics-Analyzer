@@ -4,6 +4,7 @@ import objectcalisthenicsvalidator.views.actions.Actions;
 import objectcalisthenicsvalidator.views.actions.AnalyzeActions;
 import objectcalisthenicsvalidator.views.menu.OcMenu;
 import objectcalisthenicsvalidator.views.menu.OcToolbar;
+import objectcalisthenicsvalidator.views.search.SearchComposite;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import objectcalisthenicsvalidator.views.table.ViolationTable;
 import ocanalyzer.ObjectCalisthenics;
@@ -28,6 +29,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	private ObjectCalisthenics oc;
 	private ViolationProvider tableProvider;
 
+	private SearchComposite search;
 	private ViolationTable table;
 	private OcMenu menu;
 	private OcToolbar toolbar;
@@ -45,10 +47,21 @@ public class ObjectCalisthenicsView extends ViewPart {
 		GridLayout layout = new GridLayout(1, true);
 		parent.setLayout(layout);
 
+		setupUi(parent);
+
+		determineOrder(parent);
+	}
+
+	private void setupUi(Composite parent) {
 		table = new ViolationTable(parent, tableProvider, getViewSite());
+		search = new SearchComposite(parent, table);
 		analyzeActions = new AnalyzeActions(oc, tableProvider, table);
 		menu = new OcMenu(table, getSite(), analyzeActions);
 		toolbar = new OcToolbar(getViewSite(), analyzeActions);
+	}
+
+	private void determineOrder(Composite parent) {
+		table.moveBelow(parent, search);
 	}
 
 	@Override

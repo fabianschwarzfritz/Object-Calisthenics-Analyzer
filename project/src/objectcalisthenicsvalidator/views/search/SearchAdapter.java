@@ -3,6 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
+import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -15,10 +16,10 @@ import org.eclipse.swt.widgets.Text;
 public class SearchAdapter extends KeyAdapter {
 
 	private Text textElement;
-	private TableViewer viewer;
+	private StructuredViewer viewer;
 	private ViolationFilter filter;
 
-	public SearchAdapter(TableViewer viewer, ViolationFilter filter, Text text) {
+	public SearchAdapter(StructuredViewer viewer, ViolationFilter filter, Text text) {
 		super();
 		this.textElement = text;
 		this.viewer = viewer;
