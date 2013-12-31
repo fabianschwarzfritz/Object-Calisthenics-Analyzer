@@ -39,6 +39,7 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 		setupTable(tableProvider, viewSite);
 		setupFilter(parent);
 		setupColumns();
+		addDoubleClickListener(this);
 	}
 
 	private void setupColumns() {
