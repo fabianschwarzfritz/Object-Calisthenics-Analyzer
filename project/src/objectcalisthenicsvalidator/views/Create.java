@@ -47,7 +47,7 @@ public class Create {
 
 	public static void filter(Composite parent, final TableViewer viewer,
 			final ViolationFilter filter) {
-		createText(parent, viewer, filter);
+		createSearchText(parent, viewer, filter);
 		createLabel(parent);
 	}
 
@@ -57,7 +57,7 @@ public class Create {
 		return label;
 	}
 
-	private static Text createText(Composite parent, final TableViewer viewer,
+	private static Text createSearchText(Composite parent, final TableViewer viewer,
 			final ViolationFilter filter) {
 		Text text = new Text(parent, SWT.BORDER | SWT.SEARCH);
 		text.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
