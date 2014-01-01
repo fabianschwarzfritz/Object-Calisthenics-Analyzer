@@ -11,9 +11,9 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.IViewSite;
 
@@ -28,8 +28,8 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 
 	public ViolationTable(Composite parent, ViolationProvider tableProvider,
 			IViewSite viewSite) {
-		super(parent, SWT.H_SCROLL | SWT.V_SCROLL | SWT.SINGLE
-				| SWT.FULL_SELECTION);
+		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL
+				| SWT.FULL_SELECTION | SWT.BORDER);
 
 		openAction = new OpenViolation(this);
 
@@ -45,7 +45,12 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 		setContentProvider(tableProvider);
 		setLabelProvider(new TablelabelProvider());
 		setInput(viewSite);
-		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
+		getControl().setLayoutData(
+				new GridData(GridData.FILL, GridData.FILL, true, true));
+
+		getControl()
+				.setBackground(new Color(table.getDisplay(), 140, 160, 190));
+		getTable().setBackground(new Color(table.getDisplay(), 150, 60, 10));
 	}
 
 	private void setupColumns() {
@@ -56,11 +61,6 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 	@Override
 	public void doubleClick(DoubleClickEvent event) {
 		openAction.run();
-	}
-
-	public void moveBelow(Composite commonParent, Control control) {
-		getControl().moveBelow(control);
-		commonParent.layout();
 	}
 
 }

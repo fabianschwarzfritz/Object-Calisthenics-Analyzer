@@ -5,6 +5,7 @@ import objectcalisthenicsvalidator.views.actions.AnalyzeActions;
 import objectcalisthenicsvalidator.views.menu.OcMenu;
 import objectcalisthenicsvalidator.views.menu.OcToolbar;
 import objectcalisthenicsvalidator.views.search.SearchComposite;
+import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import objectcalisthenicsvalidator.views.table.ViolationTable;
 import ocanalyzer.ObjectCalisthenics;
@@ -44,24 +45,20 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
-		GridLayout layout = new GridLayout(1, true);
-		parent.setLayout(layout);
+		ViolationFilter filter = new ViolationFilter();
 
-		setupUi(parent);
+		parent.setLayout(new GridLayout());
 
-		determineOrder(parent);
-	}
+		search = new SearchComposite(parent);
 
-	private void setupUi(Composite parent) {
 		table = new ViolationTable(parent, tableProvider, getViewSite());
-		search = new SearchComposite(parent, table);
+		table.addFilter(filter);
+
+		search.setResultComposite(table, filter);
+
 		analyzeActions = new AnalyzeActions(oc, tableProvider, table);
 		menu = new OcMenu(table, getSite(), analyzeActions);
 		toolbar = new OcToolbar(getViewSite(), analyzeActions);
-	}
-
-	private void determineOrder(Composite parent) {
-		table.moveBelow(parent, search);
 	}
 
 	@Override
