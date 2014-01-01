@@ -3,7 +3,6 @@
  */
 package objectcalisthenicsvalidator.views.table;
 
-import objectcalisthenicsvalidator.views.Create;
 import objectcalisthenicsvalidator.views.actions.OpenViolation;
 import objectcalisthenicsvalidator.views.column.TableColumns;
 
@@ -51,7 +50,7 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 
 	private void setupColumns() {
 		columns = new TableColumns(this);
-		Create.sorting(this, columns);
+		columns.each(new AddSortAction(this));
 	}
 
 	@Override

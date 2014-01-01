@@ -37,8 +37,4 @@ public class Create {
 		return reporter;
 	}
 
-	public static void sorting(TableViewer viewer, TableColumns columns) {
-		columns.each(new AddSortAction(viewer));
-	}
-
 }
