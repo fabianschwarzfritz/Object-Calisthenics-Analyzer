@@ -9,7 +9,7 @@ import objectcalisthenicsvalidator.views.column.ViolationColumn;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
+ 
 /**
  * @author Fabian Schwarz-Fritz
  * 

@@ -48,9 +48,9 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 		getControl().setLayoutData(
 				new GridData(GridData.FILL, GridData.FILL, true, true));
 
-		getControl()
-				.setBackground(new Color(table.getDisplay(), 140, 160, 190));
-		getTable().setBackground(new Color(table.getDisplay(), 150, 60, 10));
+//		getControl()
+//				.setBackground(new Color(table.getDisplay(), 140, 160, 190));
+//		getTable().setBackground(new Color(table.getDisplay(), 150, 60, 10));
 	}
 
 	private void setupColumns() {

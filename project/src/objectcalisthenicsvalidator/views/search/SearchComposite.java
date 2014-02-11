@@ -28,17 +28,17 @@ public class SearchComposite extends Composite {
 		label.setText("Search: ");
 		label.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false,
 				false));
-		label.setBackground(new Color(getDisplay(), 40, 160, 0));
+		//label.setBackground(new Color(getDisplay(), 40, 160, 0));
 
 		text = new Text(this, SWT.BORDER | SWT.SEARCH);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false));
-		text.setBackground(new Color(getDisplay(), 0, 160, 0));
+		//text.setBackground(new Color(getDisplay(), 0, 160, 0));
 
 		setLayout(new GridLayout(2, false));
 		setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, false,
 				false));
 
-		setBackground(new Color(getDisplay(), 50, 60, 145));
+		//setBackground(new Color(getDisplay(), 50, 60, 145));
 	}
 
 	public void setResultComposite(StructuredViewer resultViewer,
