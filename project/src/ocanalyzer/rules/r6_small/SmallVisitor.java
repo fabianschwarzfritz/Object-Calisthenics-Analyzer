@@ -36,8 +36,10 @@ class SmallVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(ExpressionStatement node) {
-		Integer value = expressionStatements.get(current);
-		expressionStatements.put(current, ++value);
+		if (current != null) {
+			int value = expressionStatements.get(current);
+			expressionStatements.put(current, ++value);
+		}
 	}
 
 }

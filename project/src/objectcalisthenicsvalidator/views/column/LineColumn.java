@@ -23,11 +23,6 @@ public class LineColumn extends ViolationColumn {
 	}
 
 	@Override
-	public int getNumber() {
-		return 0;
-	}
-
-	@Override
 	public int compare(Violation violation1, Violation violation2) {
 		return 0;
 	}

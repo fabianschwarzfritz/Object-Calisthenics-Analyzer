@@ -24,14 +24,8 @@ public class LocationColumn extends ViolationColumn {
 	}
 
 	@Override
-	public int getNumber() {
-		return 1;
-	}
-
-	@Override
 	public int compare(Violation violation1, Violation violation2) {
-		return violation1.getResource().getName()
-				.compareTo(violation2.getResource().getName());
+		return violation1.getMessage().compareTo(violation2.getMessage());
 	}
 
 }

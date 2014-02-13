@@ -54,6 +54,6 @@ public class ViolationSorter extends ViewerSorter {
 	}
 
 	public void adjustArrow() {
-		table.setSortDirection(direction == ASCENDING ? SWT.DOWN : SWT.UP);
+		table.setSortDirection(direction == ASCENDING ? SWT.UP : SWT.DOWN);
 	}
 }

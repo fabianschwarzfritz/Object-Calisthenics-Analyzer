@@ -22,13 +22,9 @@ public class MessageColumn extends ViolationColumn {
 		setWidth(100);
 	}
 
-	@Override
-	public int getNumber() {
-		return 2;
-	}
-
 	public int compare(Violation violation1, Violation violation2) {
-		return violation1.getMessage().compareTo(violation2.getMessage());
+		return violation1.getResource().getName()
+				.compareTo(violation2.getResource().getName());
 	}
 
 }

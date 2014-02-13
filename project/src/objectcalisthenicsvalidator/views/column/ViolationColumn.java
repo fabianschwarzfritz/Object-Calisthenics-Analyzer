@@ -18,8 +18,6 @@ public abstract class ViolationColumn extends TableColumn {
 		super(parent, style);
 	}
 
-	public abstract int getNumber();
-
 	public abstract int compare(Violation violation1, Violation violation2);
 
 	@Override

@@ -8,11 +8,11 @@ public abstract class TypeDeterminator {
 
 	public abstract boolean determineType(ITypeBinding resolveTypeBinding);
 
-	public boolean isType(ITypeBinding resolveTypeBinding, String typeName) {
+	protected boolean isType(ITypeBinding resolveTypeBinding, String typeName) {
 		return resolveTypeBinding.getBinaryName().equals(typeName);
 	}
 
-	public boolean isPermittedType(ITypeBinding resolveTypeBinding,
+	protected boolean isPermittedType(ITypeBinding resolveTypeBinding,
 			Set<String> wrapperNames) {
 		for (String typeName : wrapperNames) {
 			if (isType(resolveTypeBinding, typeName)) {
