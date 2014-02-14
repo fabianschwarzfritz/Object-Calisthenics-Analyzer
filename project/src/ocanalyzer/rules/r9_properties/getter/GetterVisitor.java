@@ -20,11 +20,11 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  */
 public class GetterVisitor extends ASTVisitor {
 
-	private ViolationHandler validationHandler;
+	private ViolationHandler violationHandler;
 	private VariableBindings bindings;
 
-	public GetterVisitor(ViolationHandler validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public GetterVisitor(ViolationHandler violationHandler) {
+		this.violationHandler = violationHandler;
 		bindings = new VariableBindings();
 	}
 
@@ -42,7 +42,7 @@ public class GetterVisitor extends ASTVisitor {
 	public void endVisit(ReturnStatement node) {
 		Expression expressionNode = node.getExpression();
 		node.accept(new ContainsBindingsVisitor(expressionNode, bindings,
-				validationHandler));
+				violationHandler));
 	}
 
 }

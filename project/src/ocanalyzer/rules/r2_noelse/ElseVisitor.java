@@ -8,7 +8,7 @@ import org.eclipse.jdt.core.dom.Statement;
 
 /**
  * This visitor implements the validation of rule 2:
- * "Don’t Use the else Keyword".
+ * "Donï¿½t Use the else Keyword".
  * 
  * Do do so, it simply registers for all if-statements and gets the
  * corresponding else part. When there is an else as part of an
@@ -19,17 +19,17 @@ import org.eclipse.jdt.core.dom.Statement;
  */
 class ElseVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 
-	public ElseVisitor(ViolationHandlerImpl validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public ElseVisitor(ViolationHandlerImpl violationHandler) {
+		this.violationHandler = violationHandler;
 	}
 
 	@Override
 	public void endVisit(IfStatement ifStatement) {
 		Statement elseStatement = ifStatement.getElseStatement();
 		if (elseStatement != null) {
-			validationHandler.printInfo(elseStatement);
+			violationHandler.printInfo(elseStatement);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package ocanalyzer.rules.r7_instanceVariable;
 
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -7,12 +8,12 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 class InstanceVariableVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandler violationHandler;
 
 	private InstanceVariableCounter counter;
 
-	public InstanceVariableVisitor(ViolationHandlerImpl validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public InstanceVariableVisitor(ViolationHandler violationHandler) {
+		this.violationHandler = violationHandler;
 	}
 
 	@Override
@@ -20,7 +21,7 @@ class InstanceVariableVisitor extends ASTVisitor {
 		counter = new InstanceVariableCounter(type);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 2) {
-			validationHandler.printInfo(type);
+			violationHandler.printInfo(type);
 		}
 		return true;
 	}

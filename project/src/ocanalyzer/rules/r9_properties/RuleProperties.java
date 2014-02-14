@@ -27,12 +27,12 @@ public class RuleProperties extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new PropertiesViolationHandler(
+		ViolationHandlerImpl instanceviolationHandler = new PropertiesViolationHandler(
 				iUnit, unit, reporter);
 		GetterVisitor getterVisitor = new GetterVisitor(
-				instanceValidationHandler);
+				instanceviolationHandler);
 		SetterVisitor setterVisitor = new SetterVisitor(
-				instanceValidationHandler);
+				instanceviolationHandler);
 		unit.accept(getterVisitor);
 		unit.accept(setterVisitor);
 	}

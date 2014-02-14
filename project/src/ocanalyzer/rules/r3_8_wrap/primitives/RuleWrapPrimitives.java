@@ -37,9 +37,9 @@ public class RuleWrapPrimitives extends ClassOCRuleImpl {
 
 	private void searchNonWrapperUsage(Set<TypeDeclaration> wrapperTypes,
 			ICompilationUnit iUnit, CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new PrimitivesReturnViolationHandler(
 				iUnit, unit, reporter);
-		ReturnVisitor visitor = new ReturnVisitor(instanceValidationHandler,
+		ReturnVisitor visitor = new ReturnVisitor(instanceViolationHandler,
 				wrapperTypes, new CollectionDeterminator());
 		unit.accept(visitor);
 	}
@@ -48,9 +48,9 @@ public class RuleWrapPrimitives extends ClassOCRuleImpl {
 			CompilationUnit unit) {
 		Set<TypeDeclaration> wrappers = new HashSet<TypeDeclaration>();
 
-		ViolationHandlerImpl instanceValidationHandler = new PrimitivesReturnViolationHandler(
+		ViolationHandlerImpl instanceViolaitonHandler = new PrimitivesReturnViolationHandler(
 				iUnit, unit, reporter);
-		WrapperVisitor visitor = new WrapperVisitor(instanceValidationHandler,
+		WrapperVisitor visitor = new WrapperVisitor(instanceViolaitonHandler,
 				wrappers, new CollectionDeterminator());
 		// FIXME does this really already trigger all visits, and are there
 		// already all wrapper types in there after calling this?

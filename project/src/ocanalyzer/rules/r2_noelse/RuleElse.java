@@ -8,7 +8,7 @@ import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 /**
- * Rule: "Don’t Use the else Keyword".
+ * Rule: "Donï¿½t Use the else Keyword".
  * 
  * @see ElseVisitor for more information
  * 
@@ -27,9 +27,9 @@ public class RuleElse extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new ElseViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new ElseViolationHandler(
 				iUnit, unit, reporter);
-		ElseVisitor visitor = new ElseVisitor(instanceValidationHandler);
+		ElseVisitor visitor = new ElseVisitor(instanceViolationHandler);
 		unit.accept(visitor);
 
 	}

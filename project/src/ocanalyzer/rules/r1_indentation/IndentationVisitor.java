@@ -29,10 +29,10 @@ import org.eclipse.jdt.core.dom.WhileStatement;
 
 class IndentationVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 
-	public IndentationVisitor(ViolationHandlerImpl validationHandler) {
-		this.validationHandler = validationHandler;
+	public IndentationVisitor(ViolationHandlerImpl violationHandler) {
+		this.violationHandler = violationHandler;
 	}
 
 	private boolean isMethod(ASTNode node) {
@@ -50,7 +50,7 @@ class IndentationVisitor extends ASTVisitor {
 	private boolean validateParent(Statement statement) {
 		boolean correctIndentation = indentationCheck(statement, 2);
 		if (!correctIndentation) {
-			validationHandler.printInfo(statement);
+			violationHandler.printInfo(statement);
 			return false;
 		}
 		return true;

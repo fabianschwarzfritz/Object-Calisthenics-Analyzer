@@ -16,10 +16,10 @@ public class RegexMatcher {
 	}
 
 	public void matches(SimpleName name, ASTNode node,
-			ViolationHandlerImpl validationHandler) {
+			ViolationHandlerImpl violationHandler) {
 		String shortname = name.getIdentifier();
 		if (!matchesConditions(shortname)) {
-			validationHandler.printInfo(node);
+			violationHandler.printInfo(node);
 		}
 	}
 

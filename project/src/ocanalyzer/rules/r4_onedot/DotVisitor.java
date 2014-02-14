@@ -18,10 +18,10 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
  */
 class DotVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 
-	public DotVisitor(ViolationHandlerImpl validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public DotVisitor(ViolationHandlerImpl violationHandler) {
+		this.violationHandler = violationHandler;
 	}
 
 	public boolean visit(TypeDeclaration type) {
@@ -35,7 +35,7 @@ class DotVisitor extends ASTVisitor {
 					@Override
 					public void count(int count) {
 						if (count > 1) {
-							validationHandler.printInfo(node);
+							violationHandler.printInfo(node);
 						}
 					}
 				});

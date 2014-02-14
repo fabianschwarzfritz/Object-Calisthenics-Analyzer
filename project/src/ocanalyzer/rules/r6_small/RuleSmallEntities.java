@@ -25,9 +25,9 @@ public class RuleSmallEntities extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new SmallViolationHandler(
+		ViolationHandlerImpl instanceviolationHandler = new SmallViolationHandler(
 				iUnit, unit, reporter);
-		SmallVisitor visitor = new SmallVisitor(instanceValidationHandler);
+		SmallVisitor visitor = new SmallVisitor(instanceviolationHandler);
 		unit.accept(visitor);
 	}
 

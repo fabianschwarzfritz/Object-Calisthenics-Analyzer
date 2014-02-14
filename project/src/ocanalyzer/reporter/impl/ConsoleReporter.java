@@ -25,7 +25,7 @@ public class ConsoleReporter implements Reporter {
 	@Override
 	public void reportError(ClassViolation violation) {
 		String resourceName = violation.getResource().getName();
-		stream.println("Reporting validation in resource: " + resourceName
+		stream.println("Reporting rule violation in resource: " + resourceName
 				+ " in line " + violation.getLine() + " with message: '"
 				+ violation.getMessage() + "'.");
 	}
@@ -33,7 +33,7 @@ public class ConsoleReporter implements Reporter {
 	@Override
 	public void reportError(PackageViolation violation) {
 		String resourceName = violation.getResource().toString();
-		stream.println("Reporting validation in resource: " + resourceName
+		stream.println("Reporting rule violation in resource: " + resourceName
 				+ " with message: '" + violation.getMessage() + "'.");
 	}
 }

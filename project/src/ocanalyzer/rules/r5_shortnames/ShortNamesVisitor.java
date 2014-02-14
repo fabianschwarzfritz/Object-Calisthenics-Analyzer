@@ -21,10 +21,10 @@ class ShortNamesVisitor extends ASTVisitor {
 	private TypeNameDeterminator typeNameDeterminator;
 	private VariableNameDeterminator variableNameDeterminator;
 
-	public ShortNamesVisitor(ViolationHandlerImpl validationHandler) {
-		typeNameDeterminator = new TypeNameDeterminator(validationHandler);
+	public ShortNamesVisitor(ViolationHandlerImpl violationHandler) {
+		typeNameDeterminator = new TypeNameDeterminator(violationHandler);
 		variableNameDeterminator = new VariableNameDeterminator(
-				validationHandler);
+				violationHandler);
 	}
 
 	@Override

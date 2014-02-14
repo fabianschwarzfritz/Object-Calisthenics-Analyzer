@@ -27,10 +27,10 @@ public class RuleIndentation extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new IndentationViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new IndentationViolationHandler(
 				iUnit, unit, reporter);
 		IndentationVisitor visitor = new IndentationVisitor(
-				instanceValidationHandler);
+				instanceViolationHandler);
 		unit.accept(visitor);
 	}
 

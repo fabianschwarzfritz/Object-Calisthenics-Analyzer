@@ -16,16 +16,16 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class WrapperVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
 	private TypeDeterminator determinator;
 
-	public WrapperVisitor(ViolationHandlerImpl validatonHandler,
+	public WrapperVisitor(ViolationHandlerImpl violationHandler,
 			Set<TypeDeclaration> wrapperUnits, TypeDeterminator determinator) {
-		this.validationHandler = validatonHandler;
+		this.violationHandler = violationHandler;
 		this.wrapperUnits = wrapperUnits;
 		this.determinator = determinator;
 	}
@@ -90,7 +90,7 @@ public class WrapperVisitor extends ASTVisitor {
 				visitingType);
 		int instanceVariableCount = counter.instanceVariableCount();
 		if (instanceVariableCount > 1) {
-			validationHandler.printInfo(type);
+			violationHandler.printInfo(type);
 		}
 	}
 

@@ -2,7 +2,7 @@ package ocanalyzer.rules.r6_small;
 
 import java.util.HashMap;
 
-import ocanalyzer.rules.general.ViolationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
@@ -10,13 +10,13 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 class SmallVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandler violationHandler;
 
 	private TypeDeclaration current;
 	private HashMap<TypeDeclaration, Integer> expressionStatements;
 
-	public SmallVisitor(ViolationHandlerImpl validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public SmallVisitor(ViolationHandler violationHandler) {
+		this.violationHandler = violationHandler;
 		expressionStatements = new HashMap<TypeDeclaration, Integer>();
 	}
 
@@ -30,7 +30,7 @@ class SmallVisitor extends ASTVisitor {
 	@Override
 	public void endVisit(TypeDeclaration node) {
 		if (expressionStatements.get(node) > 50) {
-			validationHandler.printInfo(node);
+			violationHandler.printInfo(node);
 		}
 	}
 

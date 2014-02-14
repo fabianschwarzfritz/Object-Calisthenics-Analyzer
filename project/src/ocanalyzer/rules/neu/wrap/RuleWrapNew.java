@@ -28,10 +28,10 @@ public class RuleWrapNew extends ClassOCRuleImpl {
 		WrapperVisitor wrapperVisitor = new WrapperVisitor(wrappers, new PrimitiveDeterminator());
 		unit.accept(wrapperVisitor);
 		
-		ViolationHandlerImpl instanceValidationHandler = new WrapNewViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new WrapNewViolationHandler(
 				iUnit, unit, reporter);
 		WrapNewVisitor usageVisitor = new WrapNewVisitor(
-				instanceValidationHandler, wrappers);
+				instanceViolationHandler, wrappers);
 		unit.accept(usageVisitor);
 	}
 }

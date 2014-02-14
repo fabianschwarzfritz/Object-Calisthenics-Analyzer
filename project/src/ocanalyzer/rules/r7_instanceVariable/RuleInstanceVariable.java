@@ -26,10 +26,10 @@ public class RuleInstanceVariable extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		ViolationHandlerImpl instanceValidationHandler = new InstanceVariableViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new InstanceVariableViolationHandler(
 				iUnit, unit, reporter);
 		InstanceVariableVisitor visitor = new InstanceVariableVisitor(
-				instanceValidationHandler);
+				instanceViolationHandler);
 		unit.accept(visitor);
 	}
 

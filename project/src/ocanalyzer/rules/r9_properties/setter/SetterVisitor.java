@@ -16,12 +16,12 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class SetterVisitor extends ASTVisitor {
 
-	private ViolationHandler validationHandler;
+	private ViolationHandler violationHandler;
 	private VariableBindings bindings;
 	private VariableBindings parameterBindings;
 
-	public SetterVisitor(ViolationHandler validatonHandler) {
-		this.validationHandler = validatonHandler;
+	public SetterVisitor(ViolationHandler violationHandler) {
+		this.violationHandler = violationHandler;
 		bindings = new VariableBindings();
 	}
 
@@ -58,7 +58,7 @@ public class SetterVisitor extends ASTVisitor {
 	@Override
 	public void endVisit(Assignment node) {
 		if (leftsideIsField(node) & rightsideIsParameter(node)) {
-			validationHandler.printInfo(node);
+			violationHandler.printInfo(node);
 		}
 	}
 

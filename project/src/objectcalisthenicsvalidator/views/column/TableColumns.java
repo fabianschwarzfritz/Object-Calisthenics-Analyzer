@@ -25,9 +25,9 @@ public class TableColumns {
 		locationColumn = new LocationColumn(table);
 
 		ViolationColumn firstSortColumn = lineColumn;
-		ViolationSorter validationSorter = new ViolationSorter(table,
+		ViolationSorter violationSorter = new ViolationSorter(table,
 				firstSortColumn);
-		viewer.setSorter(validationSorter);
+		viewer.setSorter(violationSorter);
 	}
 
 	public void each(ColumnAction action) {

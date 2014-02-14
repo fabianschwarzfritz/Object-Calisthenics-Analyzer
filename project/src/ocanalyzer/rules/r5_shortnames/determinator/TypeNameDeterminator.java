@@ -7,16 +7,16 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class TypeNameDeterminator {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 	protected RegexMatcher matcher;
 
-	public TypeNameDeterminator(ViolationHandlerImpl validationHandler) {
-		this.validationHandler = validationHandler;
+	public TypeNameDeterminator(ViolationHandlerImpl violationHandler) {
+		this.violationHandler = violationHandler;
 		this.matcher = new RegexMatcher(15, "([A-Z][a-z0-9]+){1,2}");
 	}
 
 	public void shortName(TypeDeclaration node) {
 		SimpleName name = node.getName();
-		matcher.matches(name, node, validationHandler);
+		matcher.matches(name, node, violationHandler);
 	}
 }

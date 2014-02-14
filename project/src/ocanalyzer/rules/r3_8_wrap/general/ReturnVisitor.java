@@ -13,16 +13,16 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 public class ReturnVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl validationHandler;
+	private ViolationHandlerImpl violationHandler;
 
 	private TypeDeterminator determinator;
 
 	private TypeDeclaration visitingType;
 	private Set<TypeDeclaration> wrapperUnits;
 
-	public ReturnVisitor(ViolationHandlerImpl validatonHandler,
+	public ReturnVisitor(ViolationHandlerImpl violationHandler,
 			Set<TypeDeclaration> wrapperUnits, TypeDeterminator determinator) {
-		this.validationHandler = validatonHandler;
+		this.violationHandler = violationHandler;
 		this.wrapperUnits = wrapperUnits;
 		this.determinator = determinator;
 	}
@@ -59,7 +59,7 @@ public class ReturnVisitor extends ASTVisitor {
 
 	private void addIfSerachedType(Type type, ITypeBinding resolveTypeBinding) {
 		if (determinator.determineType(resolveTypeBinding)) {
-			validationHandler.printInfo(type);
+			violationHandler.printInfo(type);
 		}
 	}
 
