@@ -13,17 +13,21 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class WrapperVisitor extends ASTVisitor {
 
 	private Map<TypeDeclaration, Type> wrapperUnits;
-	private TypeDeterminator determinator;
-	private TypeDeclaration current;
+	private Map<TypeDeclaration, Type> nonWrapperUnits;
+	private TypeDeterminator typeDeterminator;
+	private TypeDeclaration currentDeclaration;
+	private WrapNewViolationHandler violationHandler;
 
 	public WrapperVisitor(Map<TypeDeclaration, Type> wrapperUnits,
-			TypeDeterminator determinator) {
+			TypeDeterminator determinator,
+			WrapNewViolationHandler violationHandler) {
 		this.wrapperUnits = wrapperUnits;
-		this.determinator = determinator;
+		this.typeDeterminator = determinator;
+		this.violationHandler = violationHandler;
 	}
 
 	public boolean visit(TypeDeclaration node) {
-		current = node;
+		currentDeclaration = node;
 		return true;
 	}
 
@@ -31,15 +35,34 @@ public class WrapperVisitor extends ASTVisitor {
 	public void endVisit(FieldDeclaration node) {
 		Type type = node.getType();
 		ITypeBinding binding = type.resolveBinding();
-		boolean isPrimitive = determinator.determineType(binding);
-		if (isPrimitive) {
-			String typeName = binding.getName();
-			System.out.println("Will add: " + typeName);
-			// TODO prevent overwriting if clas { private int a; private String
-			// string --> the first value counts!
-			if (!wrapperUnits.containsKey(current)) {
-				wrapperUnits.put(current, type);
-			}
+		boolean isPrimitive = typeDeterminator.determineType(binding);
+		if (!isPrimitive) {
+			addNonWrapper(type);
+			return;
+		}
+		String typeName = binding.getName();
+		System.out.println("Will add: " + typeName);
+		// TODO prevent overwriting if class { private int a; private String
+		// string --> the first value counts!
+		addWrapper(type);
+	}
+
+	private void addNonWrapper(Type type) {
+		nonWrapperUnits.put(currentDeclaration, type);
+	}
+
+	private void addWrapper(Type type) {
+		if (nonWrapperUnits.containsKey(currentDeclaration)) {
+			violationHandler.printInfo(type,
+					"This is not a wrapper type. Extract this variable!");
+		}
+		if (wrapperUnits.containsKey(currentDeclaration)
+				&& wrapperUnits.get(currentDeclaration).equals(type)) {
+			violationHandler.printInfo(type,
+					"This is already a wrapper for another class!");
+		}
+		if (!wrapperUnits.containsKey(currentDeclaration)) {
+			wrapperUnits.put(currentDeclaration, type);
 		}
 	}
 }
