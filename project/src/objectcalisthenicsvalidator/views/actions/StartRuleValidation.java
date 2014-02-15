@@ -32,7 +32,7 @@ public class StartRuleValidation extends Action {
 		this.rulesViewer = rulesViewer;
 
 		setText("Validate");
-		setToolTipText("??");
+		setToolTipText("Validate");
 		setImageDescriptor(PlatformUI.getWorkbench().getSharedImages()
 				.getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
 	}
