@@ -1,6 +1,5 @@
 package ocanalyzer.rules.neu.wrap;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import ocanalyzer.reporter.ClassReporter;
@@ -26,10 +25,11 @@ public class RuleWrapNew extends ClassOCRuleImpl {
 		WrapNewViolationHandler instanceViolationHandler = new WrapNewViolationHandler(
 				iUnit, unit, reporter);
 
-		Map<TypeDeclaration, Type> wrappers = new HashMap<TypeDeclaration, Type>();
-		WrapperVisitor wrapperVisitor = new WrapperVisitor(wrappers,
+		WrapperVisitor wrapperVisitor = new WrapperVisitor(
 				new PrimitiveDeterminator(), instanceViolationHandler);
 		unit.accept(wrapperVisitor);
+
+		Map<TypeDeclaration, Type> wrappers = wrapperVisitor.wrapperUnits();
 
 		WrapNewVisitor usageVisitor = new WrapNewVisitor(
 				instanceViolationHandler, wrappers);

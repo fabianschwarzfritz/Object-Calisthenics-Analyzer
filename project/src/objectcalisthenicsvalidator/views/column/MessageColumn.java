@@ -18,7 +18,7 @@ public class MessageColumn extends ViolationColumn {
 
 	public MessageColumn(Table parent) {
 		super(parent, SWT.LEFT);
-		setText("Name");
+		setText("Violation");
 		setWidth(100);
 	}
 

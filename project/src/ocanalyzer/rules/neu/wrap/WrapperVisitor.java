@@ -1,5 +1,6 @@
 package ocanalyzer.rules.neu.wrap;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
@@ -18,12 +19,12 @@ public class WrapperVisitor extends ASTVisitor {
 	private TypeDeclaration currentDeclaration;
 	private WrapNewViolationHandler violationHandler;
 
-	public WrapperVisitor(Map<TypeDeclaration, Type> wrapperUnits,
-			TypeDeterminator determinator,
+	public WrapperVisitor(TypeDeterminator determinator,
 			WrapNewViolationHandler violationHandler) {
-		this.wrapperUnits = wrapperUnits;
 		this.typeDeterminator = determinator;
 		this.violationHandler = violationHandler;
+		wrapperUnits = new HashMap<>();
+		nonWrapperUnits = new HashMap<TypeDeclaration, Type>();
 	}
 
 	public boolean visit(TypeDeclaration node) {
@@ -64,5 +65,9 @@ public class WrapperVisitor extends ASTVisitor {
 		if (!wrapperUnits.containsKey(currentDeclaration)) {
 			wrapperUnits.put(currentDeclaration, type);
 		}
+	}
+
+	public Map<TypeDeclaration, Type> wrapperUnits() {
+		return new HashMap<>(wrapperUnits);
 	}
 }

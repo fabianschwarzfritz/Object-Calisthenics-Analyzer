@@ -32,16 +32,16 @@ public class OCRulesImpl implements OCRules {
 
 	public static OCRulesImpl createStandardRules(ClassReporter reporter) {
 		OCRulesImpl rules = new OCRulesImpl();
-		rules.add(new RuleIndentation(reporter));
+//		rules.add(new RuleIndentation(reporter));
 		rules.add(new RuleElse(reporter));
 		rules.add(new RuleWrapNew(reporter));
 		//rules.add(new RuleWrapPrimitives(reporter));
-		rules.add(new RuleOneDotPerLine(reporter));
-		rules.add(new RuleShortNames(reporter));
-		rules.add(new RuleSmallEntities(reporter));
-		rules.add(new RuleInstanceVariable(reporter));
+//		rules.add(new RuleOneDotPerLine(reporter));
+//		rules.add(new RuleShortNames(reporter));
+//		rules.add(new RuleSmallEntities(reporter));
+//		rules.add(new RuleInstanceVariable(reporter));
 		//rules.add(new RuleWrapCollections(reporter));
-		rules.add(new RuleProperties(reporter));
+//		rules.add(new RuleProperties(reporter));
 		return rules;
 	}
 

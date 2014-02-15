@@ -19,7 +19,7 @@ public class LocationColumn extends ViolationColumn {
 
 	public LocationColumn(Table parent) {
 		super(parent, SWT.LEFT);
-		setText("Location");
+		setText("Resource");
 		setWidth(450);
 	}
 
