@@ -66,7 +66,7 @@ public class WrapNewVisitor extends ASTVisitor {
 		if (determineType) {
 			Type type = wrappers.get(current);
 			if (type != null && node != type) {
-				handler.printInfo(node);
+//				handler.printInfo(node);
 			}
 		}
 	}
