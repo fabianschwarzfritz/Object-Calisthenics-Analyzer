@@ -1,7 +1,7 @@
 package objectcalisthenicsvalidator.views;
 
 import objectcalisthenicsvalidator.views.actions.Actions;
-import objectcalisthenicsvalidator.views.actions.AnalyzeActions;
+import objectcalisthenicsvalidator.views.actions.Analyze;
 import objectcalisthenicsvalidator.views.menu.OcMenu;
 import objectcalisthenicsvalidator.views.menu.OcToolbar;
 import objectcalisthenicsvalidator.views.search.SearchComposite;
@@ -56,7 +56,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 		search.setResultComposite(table, filter);
 
-		analyzeActions = new AnalyzeActions(oc, tableProvider, table);
+		analyzeActions = new Analyze(oc, tableProvider, table);
 		menu = new OcMenu(table, getSite(), analyzeActions);
 		toolbar = new OcToolbar(getViewSite(), analyzeActions);
 	}

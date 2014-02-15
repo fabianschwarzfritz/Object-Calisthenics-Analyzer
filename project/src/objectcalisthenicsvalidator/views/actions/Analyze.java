@@ -12,9 +12,9 @@ import org.eclipse.jface.viewers.TableViewer;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class AnalyzeActions extends Actions {
+public class Analyze extends Actions {
 
-	public AnalyzeActions(ObjectCalisthenics oc,
+	public Analyze(ObjectCalisthenics oc,
 			ViolationProvider tableProvider, TableViewer table) {
 		super();
 		StartRuleValidation startRuleValidation = new StartRuleValidation(oc,
