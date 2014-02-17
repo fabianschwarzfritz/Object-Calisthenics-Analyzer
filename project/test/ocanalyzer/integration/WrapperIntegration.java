@@ -6,10 +6,11 @@ import java.util.HashSet;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
+import ocanalyzer.rules.neu.wrap.RuleWrapNew;
 
 public class WrapperIntegration extends IntegrationTest {
 
-	public WrapperIntegration(String packageName) {
+	public WrapperIntegration() {
 		super("primitiveWrapper");
 	}
 
@@ -34,8 +35,7 @@ public class WrapperIntegration extends IntegrationTest {
 
 	@Override
 	protected OCRule doInitRule() {
-		// TODO Auto-generated method stub
-		return null;
+		return new RuleWrapNew(asserter);
 	}
 
 }
