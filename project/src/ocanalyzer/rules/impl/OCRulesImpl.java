@@ -33,7 +33,7 @@ public class OCRulesImpl implements OCRules {
 	public static OCRulesImpl createStandardRules(ClassReporter reporter) {
 		OCRulesImpl rules = new OCRulesImpl();
 //		rules.add(new RuleIndentation(reporter));
-		rules.add(new RuleElse(reporter));
+//		rules.add(new RuleElse(reporter));
 		rules.add(new RuleWrapNew(reporter));
 		//rules.add(new RuleWrapPrimitives(reporter));
 //		rules.add(new RuleOneDotPerLine(reporter));
