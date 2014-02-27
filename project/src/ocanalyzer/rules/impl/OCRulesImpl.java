@@ -36,7 +36,7 @@ public class OCRulesImpl implements OCRules {
 //		rules.add(new RuleElse(reporter));
 		rules.add(new RuleWrapNew(reporter));
 		//rules.add(new RuleWrapPrimitives(reporter));
-//		rules.add(new RuleOneDotPerLine(reporter));
+		rules.add(new RuleOneDotPerLine(reporter));
 //		rules.add(new RuleShortNames(reporter));
 //		rules.add(new RuleSmallEntities(reporter));
 //		rules.add(new RuleInstanceVariable(reporter));

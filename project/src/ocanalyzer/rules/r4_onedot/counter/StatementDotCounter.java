@@ -7,24 +7,29 @@ import ocanalyzer.rules.r4_onedot.expressions.ExpressionExtractor;
 import ocanalyzer.rules.r4_onedot.statementCounter.ExpressionCounter;
 
 import org.eclipse.jdt.core.dom.Expression;
-import org.eclipse.jdt.core.dom.ExpressionStatement;
 
-public class StatementDotCounter implements ExpressionExtractable {
+public class StatementDotCounter implements ExpressionExtractable,
+		CounterReporter {
+
+	private int resultCount;
 
 	private Expression rootExpression;
 	private ExpressionExtractor extractor;
-	private CounterReporter reporter;
 
-	public StatementDotCounter(ExpressionStatement statement,
-			CounterReporter reporter) {
-		this.reporter = reporter;
+	public StatementDotCounter(Expression root) {
 		extractor = new ExpressionExtractor(this);
-		rootExpression = statement.getExpression();
 	}
 
-	public void count() {
+	@Override
+	public void count(int count) {
+		resultCount++;
+	}
+
+	public int count() {
+		resultCount = 0;
 		extractor.add(rootExpression);
-		extractor.count(reporter);
+		extractor.count(this);
+		return resultCount;
 	}
 
 	@Override

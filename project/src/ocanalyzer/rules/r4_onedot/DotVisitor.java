@@ -1,12 +1,27 @@
 package ocanalyzer.rules.r4_onedot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ocanalyzer.rules.general.ViolationHandlerImpl;
-import ocanalyzer.rules.r4_onedot.counter.CounterReporter;
 import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.AssertStatement;
+import org.eclipse.jdt.core.dom.ConstructorInvocation;
+import org.eclipse.jdt.core.dom.DoStatement;
+import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
-import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.ForStatement;
+import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.SuperConstructorInvocation;
+import org.eclipse.jdt.core.dom.SwitchCase;
+import org.eclipse.jdt.core.dom.SwitchStatement;
+import org.eclipse.jdt.core.dom.SynchronizedStatement;
+import org.eclipse.jdt.core.dom.ThrowStatement;
+import org.eclipse.jdt.core.dom.WhileStatement;
 
 /**
  * 
@@ -24,22 +39,96 @@ class DotVisitor extends ASTVisitor {
 		this.violationHandler = violationHandler;
 	}
 
-	public boolean visit(TypeDeclaration type) {
-		return true;
+	@Override
+	public void endVisit(final ExpressionStatement node) {
+		count(node.getExpression(), node);
 	}
 
 	@Override
-	public boolean visit(final ExpressionStatement node) {
-		StatementDotCounter statementDotCounter = new StatementDotCounter(node,
-				new CounterReporter() {
-					@Override
-					public void count(int count) {
-						if (count > 1) {
-							violationHandler.printInfo(node);
-						}
-					}
-				});
-		statementDotCounter.count();
-		return true;
+	public void endVisit(WhileStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(AssertStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(ConstructorInvocation node) {
+		count(node.arguments(), node);
+	}
+
+	@Override
+	public void endVisit(DoStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(ForStatement node) {
+		List expressions = new ArrayList();
+		expressions.add(node.initializers());
+		expressions.add(node.updaters());
+		expressions.add(node.getExpression());
+		count(expressions, node);
+	}
+
+	@Override
+	public void endVisit(IfStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(ReturnStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(SuperConstructorInvocation node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(SwitchCase node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(SwitchStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(SynchronizedStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@Override
+	public void endVisit(ThrowStatement node) {
+		count(node.getExpression(), node);
+	}
+
+	@SuppressWarnings("rawtypes")
+	public void count(final List expressionList, final ASTNode node) {
+		int resultCount = 0;
+		for (Object oExpression : expressionList) {
+			Expression expression = (Expression) oExpression;
+			StatementDotCounter statementDotCounter = new StatementDotCounter(
+					expression);
+			resultCount += statementDotCounter.count();
+		}
+		handleCount(resultCount, node);
+	}
+
+	public void count(final Expression expression, final ASTNode node) {
+		StatementDotCounter statementDotCounter = new StatementDotCounter(
+				expression);
+		handleCount(statementDotCounter.count(), node);
+	}
+
+	private void handleCount(int resultCount, ASTNode node) {
+		if (resultCount > 1) {
+			violationHandler.printInfo(node);
+		}
 	}
 }

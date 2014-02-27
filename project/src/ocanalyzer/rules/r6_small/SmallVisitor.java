@@ -5,8 +5,20 @@ import java.util.HashMap;
 import ocanalyzer.rules.general.ViolationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.AssertStatement;
+import org.eclipse.jdt.core.dom.ConstructorInvocation;
+import org.eclipse.jdt.core.dom.DoStatement;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.ForStatement;
+import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.ReturnStatement;
+import org.eclipse.jdt.core.dom.SuperConstructorInvocation;
+import org.eclipse.jdt.core.dom.SwitchCase;
+import org.eclipse.jdt.core.dom.SwitchStatement;
+import org.eclipse.jdt.core.dom.SynchronizedStatement;
+import org.eclipse.jdt.core.dom.ThrowStatement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
+import org.eclipse.jdt.core.dom.WhileStatement;
 
 class SmallVisitor extends ASTVisitor {
 
@@ -35,7 +47,71 @@ class SmallVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public void endVisit(ExpressionStatement node) {
+	public void endVisit(final ExpressionStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(WhileStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(AssertStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(ConstructorInvocation node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(DoStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(ForStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(IfStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(ReturnStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(SuperConstructorInvocation node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(SwitchCase node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(SwitchStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(SynchronizedStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(ThrowStatement node) {
+		add();
+	}
+
+	private void add() {
 		if (current != null) {
 			int value = expressionStatements.get(current);
 			expressionStatements.put(current, ++value);

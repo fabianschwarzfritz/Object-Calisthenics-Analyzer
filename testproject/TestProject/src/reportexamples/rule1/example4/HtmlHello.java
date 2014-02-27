@@ -6,8 +6,13 @@ public class HtmlHello {
 
 	public String name;
 
+	public HtmlHello(Object o) {
+
+	}
+
 	public HtmlHello(String name) {
-		this.name = name;
+		assert System.out.hashCode() < 0;
+		// this.name = name;
 	}
 
 	public void sayHello(PrintStream print) {
