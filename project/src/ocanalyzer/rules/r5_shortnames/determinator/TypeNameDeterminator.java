@@ -12,7 +12,7 @@ public class TypeNameDeterminator {
 
 	public TypeNameDeterminator(ViolationHandlerImpl violationHandler) {
 		this.violationHandler = violationHandler;
-		this.matcher = new RegexMatcher(15, "([A-Z][a-z0-9]+){1,2}");
+		this.matcher = new RegexMatcher(15, "([A-Z][a-z]+){1,2}");
 	}
 
 	public void shortName(TypeDeclaration node) {

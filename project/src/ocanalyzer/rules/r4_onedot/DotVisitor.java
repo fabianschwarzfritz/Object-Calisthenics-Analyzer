@@ -51,7 +51,10 @@ class DotVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(AssertStatement node) {
-		count(node.getExpression(), node);
+		List expressions = new ArrayList();
+		expressions.add(node.getExpression());
+		expressions.add(node.getMessage());
+		count(expressions, node);
 	}
 
 	@Override
@@ -85,7 +88,10 @@ class DotVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(SuperConstructorInvocation node) {
-		count(node.getExpression(), node);
+		List expressions = new ArrayList();
+		expressions.add(node.arguments());
+		expressions.add(node.getExpression());
+		count(expressions, node);
 	}
 
 	@Override

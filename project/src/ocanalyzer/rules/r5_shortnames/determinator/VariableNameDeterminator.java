@@ -12,7 +12,7 @@ public class VariableNameDeterminator {
 
 	public VariableNameDeterminator(ViolationHandlerImpl violationHandler) {
 		this.violationHandler = violationHandler;
-		this.matcher = new RegexMatcher(15, "([a-z0-9]+[A-Z]{0,1}[a-z0-9]+)");
+		this.matcher = new RegexMatcher(15, "([a-z]+[A-Z]{0,1}[a-z]+)");
 	}
 
 	public void shortName(VariableDeclaration node) {

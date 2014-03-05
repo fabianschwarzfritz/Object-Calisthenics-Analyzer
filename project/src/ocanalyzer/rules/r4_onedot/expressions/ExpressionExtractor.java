@@ -12,6 +12,7 @@ import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.QualifiedName;
 import org.eclipse.jdt.core.dom.SuperFieldAccess;
+import org.eclipse.jdt.core.dom.SuperMethodInvocation;
 import org.eclipse.jdt.core.dom.TypeLiteral;
 
 public class ExpressionExtractor implements Expressions {
@@ -26,6 +27,7 @@ public class ExpressionExtractor implements Expressions {
 
 	public void add(Expression expression) {
 		if (expression instanceof MethodInvocation
+				| expression instanceof SuperMethodInvocation
 				| expression instanceof FieldAccess
 				| expression instanceof SuperFieldAccess
 				/* | expression instanceof ThisExpression */

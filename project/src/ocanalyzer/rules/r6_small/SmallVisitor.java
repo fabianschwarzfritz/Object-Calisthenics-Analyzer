@@ -9,8 +9,11 @@ import org.eclipse.jdt.core.dom.AssertStatement;
 import org.eclipse.jdt.core.dom.ConstructorInvocation;
 import org.eclipse.jdt.core.dom.DoStatement;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
+import org.eclipse.jdt.core.dom.ImportDeclaration;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.SuperConstructorInvocation;
 import org.eclipse.jdt.core.dom.SwitchCase;
@@ -108,6 +111,21 @@ class SmallVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(ThrowStatement node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(FieldDeclaration node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(MethodDeclaration node) {
+		add();
+	}
+
+	@Override
+	public void endVisit(ImportDeclaration node) {
 		add();
 	}
 

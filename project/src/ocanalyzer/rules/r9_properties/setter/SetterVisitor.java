@@ -38,6 +38,9 @@ public class SetterVisitor extends ASTVisitor {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(MethodDeclaration node) {
+		if(node.isConstructor()) {
+			return false;
+		}
 		parameterBindings = new VariableBindings();
 		List parameters = node.parameters();
 		if (parameters.size() == 1) {

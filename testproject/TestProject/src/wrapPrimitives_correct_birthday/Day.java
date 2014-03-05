@@ -9,7 +9,7 @@ public class Day {
 	public Day(int day) {
 		this.day = day;
 	}
-
+	
 	public void print(PrintStream print) {
 		print.print(day);
 	}

@@ -8,6 +8,8 @@ import ocanalyzer.rules.r9_properties.general.VariableBindings;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
@@ -36,6 +38,14 @@ public class GetterVisitor extends ASTVisitor {
 	public boolean visit(FieldDeclaration node) {
 		Extract.the(node).into(bindings);
 		return true;
+	}
+
+	@Override
+	public boolean visit(MethodDeclaration node) {
+		int modifiers = node.getModifiers();
+		boolean static1 = Modifier.isStatic(modifiers);
+		boolean private1 = Modifier.isPrivate(modifiers);
+		return !static1 & !private1;
 	}
 
 	@Override
