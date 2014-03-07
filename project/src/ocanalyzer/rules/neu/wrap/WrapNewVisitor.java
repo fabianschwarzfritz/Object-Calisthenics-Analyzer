@@ -6,7 +6,6 @@ import java.util.Map;
 
 import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
-import ocanalyzer.rules.r3_8_wrap.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.FieldDeclaration;

@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.Type;
 
 public class WrapNewViolationHandler extends ViolationHandlerImpl {
 
-	private static final String baseMessage = "Wrap all primitives!";
+	private static final String baseMessage = "Wrap all this!";
 
 	public WrapNewViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, ClassReporter reporter) {

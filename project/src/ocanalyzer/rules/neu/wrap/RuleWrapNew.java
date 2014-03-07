@@ -5,19 +5,20 @@ import java.util.Map;
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
-import ocanalyzer.rules.r3_8_wrap.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Type;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class RuleWrapNew extends ClassOCRuleImpl {
+class RuleWrapNew extends ClassOCRuleImpl {
 
 	private ClassReporter reporter;
+	private TypeDeterminator determinator;
 
-	public RuleWrapNew(ClassReporter reporter) {
+	public RuleWrapNew(ClassReporter reporter, TypeDeterminator determinator) {
 		this.reporter = reporter;
+		this.determinator = determinator;
 	}
 
 	@Override
@@ -26,8 +27,8 @@ public class RuleWrapNew extends ClassOCRuleImpl {
 		ViolationHandlerImpl instanceViolationHandler = new WrapNewViolationHandler(
 				iUnit, unit, reporter);
 
-		WrapperVisitor wrapperVisitor = new WrapperVisitor(
-				new PrimitiveDeterminator(), instanceViolationHandler);
+		WrapperVisitor wrapperVisitor = new WrapperVisitor(determinator,
+				instanceViolationHandler);
 		unit.accept(wrapperVisitor);
 
 		Map<TypeDeclaration, Type> wrappers = wrapperVisitor.wrapperUnits();

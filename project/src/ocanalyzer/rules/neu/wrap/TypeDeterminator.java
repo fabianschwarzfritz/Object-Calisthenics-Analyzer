@@ -1,4 +1,4 @@
-package ocanalyzer.rules.r3_8_wrap.determinator;
+package ocanalyzer.rules.neu.wrap;
 
 import java.util.Set;
 
