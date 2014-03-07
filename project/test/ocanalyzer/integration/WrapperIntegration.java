@@ -6,7 +6,7 @@ import java.util.HashSet;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
-import ocanalyzer.rules.r38_wrap.RuleWrapNew;
+import ocanalyzer.rules.r38_wrap.RuleWrapPrimitives;
 
 public class WrapperIntegration extends IntegrationTest {
 
@@ -35,7 +35,6 @@ public class WrapperIntegration extends IntegrationTest {
 
 	@Override
 	protected OCRule doInitRule() {
-		return new RuleWrapNew(asserter);
+		return new RuleWrapPrimitives(asserter);
 	}
-
 }
