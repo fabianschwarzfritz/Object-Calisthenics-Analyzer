@@ -6,6 +6,7 @@ import ocanalyzer.rules.general.ViolationHandlerImpl;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.Type;
 
 public class WrapNewViolationHandler extends ViolationHandlerImpl {
 

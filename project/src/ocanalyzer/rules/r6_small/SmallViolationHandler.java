@@ -28,4 +28,10 @@ class SmallViolationHandler extends ViolationHandlerImpl {
 		String msg = "Keep all entities small";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+
+	}
 }

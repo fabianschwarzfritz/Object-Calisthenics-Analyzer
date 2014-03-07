@@ -28,4 +28,9 @@ class DotViolationHandler extends ViolationHandlerImpl {
 		String msg = "Using more that one dot per line violates rule 4!";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

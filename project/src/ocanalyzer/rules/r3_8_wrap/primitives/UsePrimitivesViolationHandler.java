@@ -19,4 +19,9 @@ class UsePrimitivesViolationHandler extends ViolationHandlerImpl {
 		String msg = "The use of primitives in non-wrapper classes violates rule 3";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

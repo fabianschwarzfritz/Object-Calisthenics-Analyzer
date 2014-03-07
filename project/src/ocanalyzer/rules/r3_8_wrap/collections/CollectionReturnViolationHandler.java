@@ -19,4 +19,9 @@ class CollectionReturnViolationHandler extends ViolationHandlerImpl {
 		String msg = "Returning a collection type in a wrapper classes violates rule 8";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

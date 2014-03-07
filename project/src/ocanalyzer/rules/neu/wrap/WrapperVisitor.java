@@ -3,6 +3,8 @@ package ocanalyzer.rules.neu.wrap;
 import java.util.HashMap;
 import java.util.Map;
 
+import ocanalyzer.rules.general.ViolationHandler;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r3_8_wrap.determinator.TypeDeterminator;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
@@ -19,10 +21,10 @@ public class WrapperVisitor extends ASTVisitor {
 
 	private TypeDeterminator typeDeterminator;
 
-	private WrapNewViolationHandler violationHandler;
+	private ViolationHandler violationHandler;
 
 	public WrapperVisitor(TypeDeterminator determinator,
-			WrapNewViolationHandler violationHandler) {
+			ViolationHandlerImpl violationHandler) {
 		this.typeDeterminator = determinator;
 		this.violationHandler = violationHandler;
 		wrapperUnits = new HashMap<>();

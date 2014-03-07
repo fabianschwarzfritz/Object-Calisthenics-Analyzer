@@ -28,4 +28,9 @@ class PropertiesViolationHandler extends ViolationHandlerImpl {
 		String msg = "The use of getter/setter/properties violates rule 9";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

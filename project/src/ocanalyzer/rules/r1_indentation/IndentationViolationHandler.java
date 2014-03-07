@@ -20,4 +20,9 @@ class IndentationViolationHandler extends ViolationHandlerImpl {
 		reportError(msg, node);
 	}
 
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
+
 }

@@ -28,4 +28,9 @@ class ElseViolationHandler extends ViolationHandlerImpl {
 		String msg = "The else keyword violates rule 2";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

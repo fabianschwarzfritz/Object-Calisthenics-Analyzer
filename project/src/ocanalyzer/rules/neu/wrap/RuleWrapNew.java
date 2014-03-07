@@ -4,6 +4,7 @@ import java.util.Map;
 
 import ocanalyzer.reporter.ClassReporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
+import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r3_8_wrap.determinator.PrimitiveDeterminator;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -22,7 +23,7 @@ public class RuleWrapNew extends ClassOCRuleImpl {
 	@Override
 	public void applyIntentiationRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
-		WrapNewViolationHandler instanceViolationHandler = new WrapNewViolationHandler(
+		ViolationHandlerImpl instanceViolationHandler = new WrapNewViolationHandler(
 				iUnit, unit, reporter);
 
 		WrapperVisitor wrapperVisitor = new WrapperVisitor(

@@ -19,4 +19,9 @@ class CollectionWrapperClassViolationHandler extends ViolationHandlerImpl {
 		String msg = "The use of more than one instance variable in collection wrapper classes violates rule 8";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

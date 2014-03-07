@@ -19,4 +19,9 @@ class UseCollectionViolationHandler extends ViolationHandlerImpl {
 		String msg = "The use of collections in non-wrapper classes violates rule 8";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

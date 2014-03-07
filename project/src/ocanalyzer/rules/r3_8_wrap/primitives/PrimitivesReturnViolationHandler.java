@@ -19,4 +19,9 @@ class PrimitivesReturnViolationHandler extends ViolationHandlerImpl {
 		String msg = "Returning a primitive or string type in a wrapper classes violates rule 3";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

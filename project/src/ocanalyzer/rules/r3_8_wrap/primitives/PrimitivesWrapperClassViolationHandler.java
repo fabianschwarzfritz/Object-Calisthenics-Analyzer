@@ -19,4 +19,9 @@ class PrimitivesWrapperClassViolationHandler extends ViolationHandlerImpl {
 		String msg = "The use of more than one instance variable in primitives wrapper classes violates rule 3";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }

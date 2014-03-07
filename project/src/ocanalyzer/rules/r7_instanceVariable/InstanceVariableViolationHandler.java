@@ -19,4 +19,9 @@ class InstanceVariableViolationHandler extends ViolationHandlerImpl {
 		String msg = "More than two instance variables. That violates rule 7!";
 		reportError(msg, node);
 	}
+
+	@Override
+	public void printInfo(ASTNode type, String customMessage) {
+		reportError(customMessage, type);
+	}
 }
