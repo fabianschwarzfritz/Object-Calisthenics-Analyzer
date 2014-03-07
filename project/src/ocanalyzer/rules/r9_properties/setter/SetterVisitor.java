@@ -17,28 +17,27 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 public class SetterVisitor extends ASTVisitor {
 
 	private ViolationHandler violationHandler;
-	private VariableBindings bindings;
 	private VariableBindings parameterBindings;
 
 	public SetterVisitor(ViolationHandler violationHandler) {
 		this.violationHandler = violationHandler;
-		bindings = new VariableBindings();
+		parameterBindings = new VariableBindings();
 	}
 
 	public void endVisit(TypeDeclaration node) {
-		bindings.clear();
+		parameterBindings.clear();
 	}
 
 	@Override
 	public boolean visit(FieldDeclaration node) {
-		Extract.the(node).into(bindings);
+		Extract.the(node).into(parameterBindings);
 		return true;
 	}
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean visit(MethodDeclaration node) {
-		if(node.isConstructor()) {
+		if (node.isConstructor()) {
 			return false;
 		}
 		parameterBindings = new VariableBindings();
@@ -70,6 +69,6 @@ public class SetterVisitor extends ASTVisitor {
 	}
 
 	private boolean leftsideIsField(Assignment node) {
-		return new Leftside(node).isParameter(bindings);
+		return new Leftside(node).isParameter(parameterBindings);
 	}
 }
