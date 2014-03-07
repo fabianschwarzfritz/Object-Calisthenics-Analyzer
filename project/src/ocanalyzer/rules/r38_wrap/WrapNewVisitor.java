@@ -1,4 +1,4 @@
-package ocanalyzer.rules.neu.wrap;
+package ocanalyzer.rules.r38_wrap;
 
 import java.lang.reflect.Modifier;
 import java.util.List;

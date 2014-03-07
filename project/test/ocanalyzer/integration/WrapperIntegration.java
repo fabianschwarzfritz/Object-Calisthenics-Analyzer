@@ -6,7 +6,7 @@ import java.util.HashSet;
 import ocanalyzer.integration.helper.ViolationAsserter;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.rules.general.OCRule;
-import ocanalyzer.rules.neu.wrap.RuleWrapNew;
+import ocanalyzer.rules.r38_wrap.RuleWrapNew;
 
 public class WrapperIntegration extends IntegrationTest {
 
