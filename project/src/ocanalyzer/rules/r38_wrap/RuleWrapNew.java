@@ -2,7 +2,7 @@ package ocanalyzer.rules.r38_wrap;
 
 import java.util.Map;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
@@ -13,10 +13,10 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 class RuleWrapNew extends ClassOCRuleImpl {
 
-	private ClassReporter reporter;
+	private Reporter reporter;
 	private TypeDeterminator determinator;
 
-	public RuleWrapNew(ClassReporter reporter, TypeDeterminator determinator) {
+	public RuleWrapNew(Reporter reporter, TypeDeterminator determinator) {
 		this.reporter = reporter;
 		this.determinator = determinator;
 	}

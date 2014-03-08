@@ -1,7 +1,7 @@
 package ocanalyzer.rules.general;
 
 import ocanalyzer.domain.ViolationFactory;
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -27,10 +27,10 @@ public abstract class ViolationHandlerImpl implements ViolationHandler {
 
 	protected ICompilationUnit unit;
 	protected CompilationUnit compilationUnit;
-	protected ClassReporter reporter;
+	protected Reporter reporter;
 
 	public ViolationHandlerImpl(ICompilationUnit unit,
-			CompilationUnit compilationUnit, ClassReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super();
 		this.unit = unit;
 		this.compilationUnit = compilationUnit;

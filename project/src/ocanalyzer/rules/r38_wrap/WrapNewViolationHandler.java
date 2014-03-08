@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r38_wrap;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -13,7 +13,7 @@ public class WrapNewViolationHandler extends ViolationHandlerImpl {
 	private static final String baseMessage = "Wrap all this!";
 
 	public WrapNewViolationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, ClassReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r6_small;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 class SmallViolationHandler extends ViolationHandlerImpl {
 
 	public SmallViolationHandler(ICompilationUnit unit,
-			CompilationUnit compilationUnit, ClassReporter reporter) {
+			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
 	}
 

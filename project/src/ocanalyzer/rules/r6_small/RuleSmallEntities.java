@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r6_small;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
@@ -16,9 +16,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class RuleSmallEntities extends ClassOCRuleImpl {
 
-	private ClassReporter reporter;
+	private Reporter reporter;
 
-	public RuleSmallEntities(ClassReporter reporter) {
+	public RuleSmallEntities(Reporter reporter) {
 		this.reporter = reporter;
 	}
 

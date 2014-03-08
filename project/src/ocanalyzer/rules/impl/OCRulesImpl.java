@@ -3,7 +3,7 @@ package ocanalyzer.rules.impl;
 import java.util.Collection;
 import java.util.HashSet;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.OCRules;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.general.OCRule;
@@ -29,7 +29,7 @@ public class OCRulesImpl implements OCRules {
 		return new OCRulesImpl();
 	}
 
-	public static OCRulesImpl createStandardRules(ClassReporter reporter) {
+	public static OCRulesImpl createStandardRules(Reporter reporter) {
 		OCRulesImpl rules = new OCRulesImpl();
 		rules.add(new RuleIndentation(reporter));
 		rules.add(new RuleElse(reporter));

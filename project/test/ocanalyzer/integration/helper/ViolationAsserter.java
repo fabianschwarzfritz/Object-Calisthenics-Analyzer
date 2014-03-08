@@ -5,11 +5,11 @@ import java.util.Collection;
 
 import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 
 import org.junit.Assert;
 
-public class ViolationAsserter implements ClassReporter {
+public class ViolationAsserter implements Reporter {
 
 	private Collection<ClassViolationDecorator> occuredViolations;
 	private Collection<ClassViolationDecorator> violations;

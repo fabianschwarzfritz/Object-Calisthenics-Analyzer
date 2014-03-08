@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r9_properties;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r9_properties.getter.GetterVisitor;
@@ -18,9 +18,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class RuleProperties extends ClassOCRuleImpl {
 
-	private ClassReporter reporter;
+	private Reporter reporter;
 
-	public RuleProperties(ClassReporter reporter) {
+	public RuleProperties(Reporter reporter) {
 		this.reporter = reporter;
 	}
 

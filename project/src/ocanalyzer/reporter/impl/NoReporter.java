@@ -1,17 +1,12 @@
 package ocanalyzer.reporter.impl;
 
 import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.PackageViolation;
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ReporterImpl;
 
-public class NoReporter implements Reporter {
+public class NoReporter implements ReporterImpl {
 
 	@Override
 	public void reportError(ViolationImpl violation) {
-	}
-
-	@Override
-	public void reportError(PackageViolation violation) {
 	}
 
 }

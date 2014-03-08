@@ -1,16 +1,16 @@
 package ocanalyzer.extractor.impl;
 
 import ocanalyzer.domain.ViolationFactory;
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.jdt.core.IPackageFragment;
 
 public class ClassesPerPackage {
 
 	private IPackageFragment fragment;
-	private ClassReporter writer;
+	private Reporter writer;
 
-	public ClassesPerPackage(IPackageFragment fragment, ClassReporter writer) {
+	public ClassesPerPackage(IPackageFragment fragment, Reporter writer) {
 		this.fragment = fragment;
 		this.writer = writer;
 	}

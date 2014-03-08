@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r4_onedot;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
@@ -16,9 +16,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class RuleOneDotPerLine extends ClassOCRuleImpl {
 
-	private ClassReporter reporter;
+	private Reporter reporter;
 
-	public RuleOneDotPerLine(ClassReporter reporter) {
+	public RuleOneDotPerLine(Reporter reporter) {
 		this.reporter = reporter;
 	}
 

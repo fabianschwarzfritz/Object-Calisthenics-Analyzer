@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r2_noelse;
 
-import ocanalyzer.reporter.ClassReporter;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.rules.general.ClassOCRuleImpl;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
@@ -18,9 +18,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public class RuleElse extends ClassOCRuleImpl {
 
-	private ClassReporter reporter;
+	private Reporter reporter;
 
-	public RuleElse(ClassReporter reporter) {
+	public RuleElse(Reporter reporter) {
 		this.reporter = reporter;
 	}
 

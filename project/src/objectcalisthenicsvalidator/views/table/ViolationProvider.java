@@ -5,12 +5,13 @@ import java.util.List;
 
 import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ReporterImpl;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-public class ViolationProvider implements IStructuredContentProvider, Reporter {
+public class ViolationProvider implements IStructuredContentProvider,
+		ReporterImpl {
 
 	private List<PackageViolation> packageViolations;
 	private List<ViolationImpl> violations;
@@ -23,11 +24,6 @@ public class ViolationProvider implements IStructuredContentProvider, Reporter {
 	@Override
 	public void reportError(ViolationImpl violation) {
 		violations.add(violation);
-	}
-
-	@Override
-	public void reportError(PackageViolation violation) {
-		packageViolations.add(violation);
 	}
 
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {

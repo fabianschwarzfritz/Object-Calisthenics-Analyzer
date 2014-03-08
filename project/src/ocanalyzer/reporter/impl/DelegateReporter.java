@@ -4,48 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.PackageReporter;
-import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
+import ocanalyzer.reporter.ReporterImpl;
 
 /**
  * This class is used to delegate a rule violation event to all given
- * {@link ClassReporter}s in {@link reporters}.
+ * {@link Reporter}s in {@link reporters}.
  * 
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class DelegateReporter implements Reporter {
+public class DelegateReporter implements ReporterImpl {
 
-	private List<PackageReporter> packageReporters;
-	private List<ClassReporter> reporters;
+	private List<Reporter> reporters;
 
 	public DelegateReporter() {
-		reporters = new ArrayList<ClassReporter>();
-		packageReporters = new ArrayList<PackageReporter>();
+		reporters = new ArrayList<Reporter>();
 	}
 
-	public void addClassReporter(ClassReporter reporter) {
+	public void addClassReporter(Reporter reporter) {
 		reporters.add(reporter);
-	}
-
-	public void addPackageReporter(PackageReporter packageReporter) {
-		packageReporters.add(packageReporter);
 	}
 
 	@Override
 	public void reportError(ViolationImpl violation) {
-		for (ClassReporter reporter : reporters) {
+		for (Reporter reporter : reporters) {
 			reporter.reportError(violation);
 		}
 	}
-
-	@Override
-	public void reportError(PackageViolation violation) {
-		for (PackageReporter reporter : packageReporters) {
-			reporter.reportError(violation);
-		}
-	}
-
 }
