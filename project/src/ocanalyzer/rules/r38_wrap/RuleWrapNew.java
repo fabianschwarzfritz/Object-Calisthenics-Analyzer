@@ -24,6 +24,7 @@ class RuleWrapNew extends ClassOCRuleImpl {
 	@Override
 	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
+		// FIXME this is only for one compilation unie!
 		ViolationHandlerImpl instanceViolationHandler = new WrapNewViolationHandler(
 				iUnit, unit, reporter);
 
