@@ -21,7 +21,7 @@ public class DelegateReporter implements Reporter {
 		reporters = new ArrayList<Reporter>();
 	}
 
-	public void addClassReporter(Reporter reporter) {
+	public void addReporter(Reporter reporter) {
 		reporters.add(reporter);
 	}
 

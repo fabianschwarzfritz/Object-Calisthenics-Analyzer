@@ -16,10 +16,10 @@ public class Create {
 
 	public static DelegateReporter reporter(ViolationProvider... providers) {
 		DelegateReporter reporter = new DelegateReporter();
-		reporter.addClassReporter(new MarkerReporter());
-		reporter.addClassReporter(new ConsoleReporter(System.out));
+		reporter.addReporter(new MarkerReporter());
+		reporter.addReporter(new ConsoleReporter(System.out));
 		for (ViolationProvider violationProvider : providers) {
-			reporter.addClassReporter(violationProvider);
+			reporter.addReporter(violationProvider);
 		}
 		return reporter;
 	}

@@ -8,8 +8,8 @@ public class ReporterFactory {
 
 	public static Reporter createStandardReporter() {
 		DelegateReporter result = new DelegateReporter();
-		result.addClassReporter(new ConsoleReporter(System.out));
-		result.addClassReporter(new MarkerReporter());
+		result.addReporter(new ConsoleReporter(System.out));
+		result.addReporter(new MarkerReporter());
 		return result;
 	}
 

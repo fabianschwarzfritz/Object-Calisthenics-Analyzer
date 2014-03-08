@@ -27,7 +27,8 @@ public class RunImpl implements Run {
 		init();
 	}
 
-	RunImpl(RunImpl previous) {
+	RunImpl(RunImpl previous, Project project) {
+		this.project = project;
 		this.previous = previous;
 		init();
 	}
@@ -38,7 +39,7 @@ public class RunImpl implements Run {
 	}
 
 	public RunImpl update() {
-		RunImpl newRun = new RunImpl(this);
+		RunImpl newRun = new RunImpl(this, project);
 		trainingReporter = new TrainingReporter(newRun);
 		this.next = newRun;
 		newRun.previous = this;
@@ -55,8 +56,8 @@ public class RunImpl implements Run {
 
 	public void validate(Reporter reporter) {
 		DelegateReporter delegate = new DelegateReporter();
-		delegate.addClassReporter(reporter);
-		delegate.addClassReporter(trainingReporter);
+		delegate.addReporter(reporter);
+		delegate.addReporter(trainingReporter);
 
 		OCRulesImpl rules = OCRulesImpl.createStandardRules(delegate);
 		ICompilationUnits units = project.changedUnits();
