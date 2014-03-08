@@ -8,7 +8,7 @@ import objectcalisthenicsvalidator.views.search.SearchComposite;
 import objectcalisthenicsvalidator.views.search.ViolationFilter;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import objectcalisthenicsvalidator.views.table.ViolationTable;
-import ocanalyzer.ObjectCalisthenics;
+import ocanalyzer.domain.Training;
 import ocanalyzer.reporter.impl.DelegateReporter;
 
 import org.eclipse.swt.layout.GridLayout;
@@ -27,7 +27,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 	public static final String ID = "objectcalisthenicsvalidator.views.ObjectCalisthenicsView";
 
-	private ObjectCalisthenics oc;
+	private Training training;
 	private ViolationProvider tableProvider;
 
 	private SearchComposite search;
@@ -40,7 +40,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 	public ObjectCalisthenicsView() {
 		tableProvider = new ViolationProvider();
 		DelegateReporter reporter = Create.reporter(tableProvider);
-		oc = ObjectCalisthenics.create(reporter);
+		training = new Training();
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class ObjectCalisthenicsView extends ViewPart {
 
 		search.setResultComposite(table, filter);
 
-		analyzeActions = new Analyze(oc, tableProvider, table);
+		analyzeActions = new Analyze(training, tableProvider, table);
 		menu = new OcMenu(table, getSite(), analyzeActions);
 		toolbar = new OcToolbar(getViewSite(), analyzeActions);
 	}

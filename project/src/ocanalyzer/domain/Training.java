@@ -1,17 +1,20 @@
 package ocanalyzer.domain;
 
+import ocanalyzer.extractor.impl.ExtractorImpl;
+
 public class Training {
 
 	private Project project;
-	private Run lastRun;
+	private RunImpl lastRun;
 
-	public Training(Project project) {
-		this.project = project;
-		lastRun = new RunImpl();
+	public Training() {
+		// FIXME later the project has to be injected by the ui here
+		project = new Project(new ExtractorImpl());
+		lastRun = new RunImpl(project);
 	}
 
 	public Run create() {
-		Run update = lastRun.update();
+		RunImpl update = lastRun.update();
 		lastRun = update;
 		return update;
 	}

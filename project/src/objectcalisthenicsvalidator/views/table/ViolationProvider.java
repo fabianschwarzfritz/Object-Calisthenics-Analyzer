@@ -4,21 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.PackageViolation;
-import ocanalyzer.reporter.ReporterImpl;
+import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-public class ViolationProvider implements IStructuredContentProvider,
-		ReporterImpl {
+public class ViolationProvider implements IStructuredContentProvider, Reporter {
 
-	private List<PackageViolation> packageViolations;
 	private List<ViolationImpl> violations;
 
 	public ViolationProvider() {
 		violations = new ArrayList<ViolationImpl>();
-		packageViolations = new ArrayList<PackageViolation>();
 	}
 
 	@Override
@@ -35,13 +31,11 @@ public class ViolationProvider implements IStructuredContentProvider,
 	public Object[] getElements(Object parent) {
 		List<Object> result = new ArrayList<Object>();
 		result.addAll(violations);
-		result.addAll(packageViolations);
 		return result.toArray();
 	}
 
 	public void clear() {
 		violations = new ArrayList<ViolationImpl>();
-		packageViolations = new ArrayList<PackageViolation>();
 	}
 
 }

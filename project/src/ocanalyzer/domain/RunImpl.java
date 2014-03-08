@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import ocanalyzer.extractor.Extractor;
-import ocanalyzer.extractor.impl.ExtractorImpl;
+import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.TrainingReporter;
+import ocanalyzer.reporter.impl.DelegateReporter;
 import ocanalyzer.rules.general.ICompilationUnits;
 import ocanalyzer.rules.impl.OCRulesImpl;
 
@@ -18,11 +18,12 @@ public class RunImpl implements Run {
 	private Date time;
 	private List<Violation> violations;
 
-	private Extractor extractor;
+	private Project project;
 	private TrainingReporter trainingReporter;
 
-	RunImpl() {
+	RunImpl(Project project) {
 		previous = this;
+		this.project = project;
 		init();
 	}
 
@@ -34,10 +35,9 @@ public class RunImpl implements Run {
 	private void init() {
 		violations = new ArrayList<Violation>();
 		time = new Date();
-		extractor = new ExtractorImpl();
 	}
 
-	public Run update() {
+	public RunImpl update() {
 		RunImpl newRun = new RunImpl(this);
 		trainingReporter = new TrainingReporter(newRun);
 		this.next = newRun;
@@ -53,9 +53,13 @@ public class RunImpl implements Run {
 		violations.add(violation);
 	}
 
-	public void validate() {
-		OCRulesImpl rules = OCRulesImpl.createStandardRules(trainingReporter);
-		ICompilationUnits units = extractor.extract();
+	public void validate(Reporter reporter) {
+		DelegateReporter delegate = new DelegateReporter();
+		delegate.addClassReporter(reporter);
+		delegate.addClassReporter(trainingReporter);
+
+		OCRulesImpl rules = OCRulesImpl.createStandardRules(delegate);
+		ICompilationUnits units = project.changedUnits();
 		rules.apply(units);
 	}
 }
