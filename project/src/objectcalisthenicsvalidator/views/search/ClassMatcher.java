@@ -16,9 +16,10 @@ class ClassMatcher extends Matcher {
 	}
 
 	public boolean match(ViolationImpl violation) {
-		return match(violation.getClass().getName(), violation.getMessage(),
-				violation.getResource().getName(), violation.getLine()
-						.toString());
+		String line = "" + violation.getLine();
+		String name = violation.getClass().getName();
+		String message = violation.getMessage();
+		String resourceName = violation.getResource().getName();
+		return match(name, message, resourceName, line);
 	}
-
 }
