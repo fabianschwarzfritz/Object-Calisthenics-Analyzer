@@ -1,10 +1,13 @@
 package ocanalyzer.domain;
 
+
 public class Training {
 
+	private Project project;
 	private Run lastRun;
 
-	public Training() {
+	public Training(Project project) {
+		this.project = project;
 		lastRun = new RunImpl();
 	}
 
