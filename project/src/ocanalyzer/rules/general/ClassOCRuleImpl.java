@@ -7,7 +7,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 public abstract class ClassOCRuleImpl implements OCRule {
 
-	public abstract void applyIntentiationRule(ICompilationUnit iUnit,
+	public abstract void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit);
 
 	public void apply(ICompilationUnits units) {
@@ -15,7 +15,7 @@ public abstract class ClassOCRuleImpl implements OCRule {
 			@Override
 			public void push(ICompilationUnit iUnit) {
 				CompilationUnit unit = createUnit(iUnit);
-				applyIntentiationRule(iUnit, unit);
+				applyRule(iUnit, unit);
 			}
 		});
 	}

@@ -25,7 +25,7 @@ public class RuleIndentation extends ClassOCRuleImpl {
 	}
 
 	@Override
-	public void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ViolationHandlerImpl instanceViolationHandler = new IndentationViolationHandler(
 				iUnit, unit, reporter);

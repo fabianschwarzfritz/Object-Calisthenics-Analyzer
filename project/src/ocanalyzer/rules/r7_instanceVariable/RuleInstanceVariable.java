@@ -24,7 +24,7 @@ public class RuleInstanceVariable extends ClassOCRuleImpl {
 	}
 
 	@Override
-	public void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ViolationHandlerImpl instanceViolationHandler = new InstanceVariableViolationHandler(
 				iUnit, unit, reporter);

@@ -16,7 +16,7 @@ public class RuleShortNames extends ClassOCRuleImpl {
 	}
 
 	@Override
-	public void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ViolationHandlerImpl shortNamesHandler = new ShortNamesViolationHandler(
 				iUnit, unit, reporter);

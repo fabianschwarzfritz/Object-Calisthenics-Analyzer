@@ -23,7 +23,7 @@ public class RuleOneDotPerLine extends ClassOCRuleImpl {
 	}
 
 	@Override
-	public void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ViolationHandlerImpl instanceViolationHandler = new DotViolationHandler(
 				iUnit, unit, reporter);

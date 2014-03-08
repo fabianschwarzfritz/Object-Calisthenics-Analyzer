@@ -25,7 +25,7 @@ public class RuleProperties extends ClassOCRuleImpl {
 	}
 
 	@Override
-	public void applyIntentiationRule(ICompilationUnit iUnit,
+	public void applyRule(ICompilationUnit iUnit,
 			CompilationUnit unit) {
 		ViolationHandlerImpl instanceviolationHandler = new PropertiesViolationHandler(
 				iUnit, unit, reporter);
