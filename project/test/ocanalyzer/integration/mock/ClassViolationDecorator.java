@@ -34,10 +34,8 @@ public class ClassViolationDecorator {
 		final int prime = 31;
 		int result = 1;
 		// Generage hash code from violation using the resource name
-		result = prime
-				* result
-				+ ((violation.getLine() == null) ? 0 : violation.getLine()
-						.hashCode());
+		// TODO doucle check hashing of line
+		result = prime * result + violation.getLine();
 		result = prime
 				* result
 				+ ((violation.getMessage() == null) ? 0 : violation
@@ -63,7 +61,7 @@ public class ClassViolationDecorator {
 			ViolationImpl otherViolation = otherDecorator.violation;
 			return this.violation.getResource().getName()
 					.equals(otherViolation.getResource().getName())
-					& this.violation.getLine().equals(otherViolation.getLine())
+					& this.violation.getLine() == otherViolation.getLine()
 					& this.violation.getMessage().equals(
 							otherViolation.getMessage());
 		}

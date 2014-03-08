@@ -37,7 +37,7 @@ public class TablelabelProvider extends LabelProvider implements
 
 	private String informationForIndex(int index, ViolationImpl violation) {
 		if (index == 0) {
-			return violation.getLine().toString();
+			return violation.getLine() + "";
 		} else if (index == 1) {
 			return violation.getResource().getName();
 		} else if (index == 2) {
