@@ -5,7 +5,7 @@ public class Training {
 	private Run lastRun;
 
 	public Training() {
-		lastRun = new Run();
+		lastRun = new RunImpl();
 	}
 
 	public Run create() {
