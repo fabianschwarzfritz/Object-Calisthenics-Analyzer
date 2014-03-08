@@ -1,7 +1,7 @@
 package ocanalyzer.rules.general;
 
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ViolationImpl;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jdt.core.ICompilationUnit;

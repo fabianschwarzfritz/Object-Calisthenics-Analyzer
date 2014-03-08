@@ -1,6 +1,6 @@
 package objectcalisthenicsvalidator.views.table;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;

@@ -1,6 +1,6 @@
 package ocanalyzer.reporter.impl;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
 

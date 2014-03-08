@@ -1,9 +1,9 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import ocanalyzer.Activator;
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.Violation;
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
-import ocanalyzer.reporter.Violation;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Status;

@@ -1,5 +1,7 @@
 package ocanalyzer.reporter;
 
+import ocanalyzer.domain.ViolationImpl;
+
 import org.eclipse.core.resources.IResource;
 
 /**

@@ -1,6 +1,6 @@
 package ocanalyzer.integration.mock;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 
 import org.eclipse.core.resources.IResource;
 

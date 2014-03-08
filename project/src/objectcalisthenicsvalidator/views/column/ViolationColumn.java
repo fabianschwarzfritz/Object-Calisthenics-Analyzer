@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.column;
 
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.domain.Violation;
 
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;

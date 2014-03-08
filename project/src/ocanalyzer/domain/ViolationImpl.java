@@ -1,4 +1,4 @@
-package ocanalyzer.reporter;
+package ocanalyzer.domain;
 
 import org.eclipse.core.resources.IResource;
 

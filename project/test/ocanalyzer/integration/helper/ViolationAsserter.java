@@ -3,9 +3,9 @@ package ocanalyzer.integration.helper;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ViolationImpl;
 
 import org.junit.Assert;
 

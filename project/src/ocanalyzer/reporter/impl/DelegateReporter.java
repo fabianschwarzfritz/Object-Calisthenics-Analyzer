@@ -3,8 +3,8 @@ package ocanalyzer.reporter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ViolationImpl;
 import ocanalyzer.reporter.PackageReporter;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;

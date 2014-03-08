@@ -1,7 +1,7 @@
 package objectcalisthenicsvalidator.views.table;
 
 import objectcalisthenicsvalidator.views.column.ViolationColumn;
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.domain.Violation;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;

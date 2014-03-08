@@ -1,7 +1,7 @@
 package ocanalyzer.reporter.impl;
 
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ViolationImpl;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;

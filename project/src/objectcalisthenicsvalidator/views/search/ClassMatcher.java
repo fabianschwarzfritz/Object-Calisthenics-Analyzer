@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 
 /**
  * @author Fabian Schwarz-Fritz

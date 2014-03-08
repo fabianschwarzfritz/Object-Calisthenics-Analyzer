@@ -3,7 +3,7 @@ package objectcalisthenicsvalidator.views.table;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
 

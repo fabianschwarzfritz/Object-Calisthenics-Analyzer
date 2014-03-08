@@ -5,7 +5,7 @@ package objectcalisthenicsvalidator.views.search;
 
 import java.util.Locale;
 
-import ocanalyzer.reporter.Violation;
+import ocanalyzer.domain.Violation;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;

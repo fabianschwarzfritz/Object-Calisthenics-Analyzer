@@ -1,8 +1,8 @@
 package ocanalyzer.integration.helper;
 
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.integration.mock.ClassViolationListener;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ViolationImpl;
 
 public class ClassTestReporter implements ClassReporter {
 

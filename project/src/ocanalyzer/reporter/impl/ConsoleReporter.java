@@ -2,7 +2,7 @@ package ocanalyzer.reporter.impl;
 
 import java.io.PrintStream;
 
-import ocanalyzer.reporter.ViolationImpl;
+import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
 
