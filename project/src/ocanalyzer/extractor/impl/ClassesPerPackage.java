@@ -1,24 +1,24 @@
 package ocanalyzer.extractor.impl;
 
-import ocanalyzer.reporter.PackageReporter;
-import ocanalyzer.reporter.PackageViolation;
+import ocanalyzer.domain.ViolationFactory;
+import ocanalyzer.reporter.ClassReporter;
 
 import org.eclipse.jdt.core.IPackageFragment;
 
 public class ClassesPerPackage {
 
 	private IPackageFragment fragment;
-	private PackageReporter writer;
+	private ClassReporter writer;
 
-	public ClassesPerPackage(IPackageFragment fragment, PackageReporter writer) {
+	public ClassesPerPackage(IPackageFragment fragment, ClassReporter writer) {
 		this.fragment = fragment;
 		this.writer = writer;
 	}
 
 	public void setCount(int count) {
 		if (count > 10) {
-			writer.reportError(new PackageViolation(fragment,
-					"Maximum 10 classes per package!"));
+			writer.reportError(ViolationFactory.createPackageViolation(
+					fragment, "Maximum 10 classes per package!"));
 		}
 	}
 

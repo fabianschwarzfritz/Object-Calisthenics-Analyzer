@@ -1,6 +1,6 @@
 package ocanalyzer.rules.general;
 
-import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.domain.ViolationFactory;
 import ocanalyzer.reporter.ClassReporter;
 
 import org.eclipse.core.resources.IResource;
@@ -42,6 +42,7 @@ public abstract class ViolationHandlerImpl implements ViolationHandler {
 		int startPosition = node.getStartPosition();
 		int line = compilationUnit.getLineNumber(startPosition);
 
-		reporter.reportError(new ViolationImpl(resource, line, message));
+		reporter.reportError(ViolationFactory.createClassViolation(resource,
+				line, message));
 	}
 }

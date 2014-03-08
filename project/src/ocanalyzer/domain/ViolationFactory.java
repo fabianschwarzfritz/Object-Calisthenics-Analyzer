@@ -5,7 +5,7 @@ import org.eclipse.jdt.core.IPackageFragment;
 
 public class ViolationFactory {
 
-	public static Violation createClassViolation(IResource resource,
+	public static ViolationImpl createClassViolation(IResource resource,
 			Integer line, String message) {
 		Name name = new Name(message);
 		Message messageO = new Message(message);
@@ -13,8 +13,8 @@ public class ViolationFactory {
 		return new ViolationImpl(name, messageO, Degree.MIDDLE, position);
 	}
 
-	public static Violation createPackageViolation(IPackageFragment fragment,
-			String message) {
+	public static ViolationImpl createPackageViolation(
+			IPackageFragment fragment, String message) {
 		Name name = new Name(message);
 		Message messageO = new Message(message);
 		Position position = new PositionInPackage(fragment);
