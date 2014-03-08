@@ -2,22 +2,9 @@ package ocanalyzer.domain;
 
 import org.eclipse.core.resources.IResource;
 
-public class Position {
+public interface Position {
 
-	private IResource resource;
-	private Integer line;
+	public abstract int getPosition();
 
-	public Position(IResource resource, Integer line) {
-		this.resource = resource;
-		this.line = line;
-	}
-
-	public int getPosition() {
-		return line;
-	}
-
-	public IResource getResource() {
-		return resource;
-	}
-
+	public abstract IResource getResource();
 }
