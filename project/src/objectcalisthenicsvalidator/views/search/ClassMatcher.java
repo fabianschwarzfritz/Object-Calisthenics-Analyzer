@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 /**
  * @author Fabian Schwarz-Fritz
@@ -15,7 +15,7 @@ class ClassMatcher extends Matcher {
 		super(searchString);
 	}
 
-	public boolean match(ClassViolation violation) {
+	public boolean match(ViolationImpl violation) {
 		return match(violation.getClass().getName(), violation.getMessage(),
 				violation.getResource().getName(), violation.getLine()
 						.toString());

@@ -1,7 +1,7 @@
 package ocanalyzer.reporter.impl;
 
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.CoreException;
 public class MarkerReporter implements ClassReporter {
 
 	@Override
-	public void reportError(ClassViolation violation) {
+	public void reportError(ViolationImpl violation) {
 		IMarker m;
 		IResource violatedResource = violation.getResource();
 		try {

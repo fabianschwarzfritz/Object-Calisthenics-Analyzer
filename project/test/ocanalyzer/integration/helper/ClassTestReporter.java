@@ -2,7 +2,7 @@ package ocanalyzer.integration.helper;
 
 import ocanalyzer.integration.mock.ClassViolationListener;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 public class ClassTestReporter implements ClassReporter {
 
@@ -13,7 +13,7 @@ public class ClassTestReporter implements ClassReporter {
 	}
 
 	@Override
-	public void reportError(ClassViolation violation) {
+	public void reportError(ViolationImpl violation) {
 		listener.push(violation);
 	}
 

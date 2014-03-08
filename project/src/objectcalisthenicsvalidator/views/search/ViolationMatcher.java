@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Violation;
 
@@ -21,9 +21,9 @@ class ViolationMatcher {
 	}
 
 	public boolean match(Violation violation) {
-		if (violation instanceof ClassViolation) {
+		if (violation instanceof ViolationImpl) {
 			return new ClassMatcher(searchString)
-					.match((ClassViolation) violation);
+					.match((ViolationImpl) violation);
 		}
 		if (violation instanceof PackageViolation) {
 			return new PackageMatcher(searchString)

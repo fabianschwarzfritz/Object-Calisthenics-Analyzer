@@ -1,18 +1,18 @@
 package ocanalyzer.integration.mock;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 import org.eclipse.core.resources.IResource;
 
 public class ClassViolationDecorator {
 
-	private ClassViolation violation;
+	private ViolationImpl violation;
 
 	public ClassViolationDecorator(String resource, Integer line, String message) {
 		violation = new ClassViolationFake(resource, line, message);
 	}
 
-	public ClassViolationDecorator(ClassViolation violation) {
+	public ClassViolationDecorator(ViolationImpl violation) {
 		super();
 		this.violation = violation;
 	}
@@ -60,7 +60,7 @@ public class ClassViolationDecorator {
 
 		if (obj instanceof ClassViolationDecorator) {
 			ClassViolationDecorator otherDecorator = (ClassViolationDecorator) obj;
-			ClassViolation otherViolation = otherDecorator.violation;
+			ViolationImpl otherViolation = otherDecorator.violation;
 			return this.violation.getResource().getName()
 					.equals(otherViolation.getResource().getName())
 					& this.violation.getLine().equals(otherViolation.getLine())

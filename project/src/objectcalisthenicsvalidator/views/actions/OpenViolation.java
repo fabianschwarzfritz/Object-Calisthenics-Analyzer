@@ -1,7 +1,7 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import ocanalyzer.Activator;
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Violation;
 
@@ -43,8 +43,8 @@ public class OpenViolation extends Action {
 	private void openViolation() {
 		Violation violation = selectedViolation();
 
-		if (violation instanceof ClassViolation) {
-			ClassViolation classViolation = (ClassViolation) violation;
+		if (violation instanceof ViolationImpl) {
+			ViolationImpl classViolation = (ViolationImpl) violation;
 			IFile file = (IFile) classViolation.getResource();
 			openClassViolation(classViolation, file);
 		} else if (violation instanceof PackageViolation) {
@@ -58,7 +58,7 @@ public class OpenViolation extends Action {
 				+ packageViolation.getMessage());
 	}
 
-	private void openClassViolation(ClassViolation violation, IFile file) {
+	private void openClassViolation(ViolationImpl violation, IFile file) {
 		IEditorInput editorInput = new FileEditorInput(file);
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();

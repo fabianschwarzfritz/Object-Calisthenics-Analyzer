@@ -2,7 +2,7 @@ package ocanalyzer.reporter.impl;
 
 import java.io.PrintStream;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
 
@@ -23,7 +23,7 @@ public class ConsoleReporter implements Reporter {
 	}
 
 	@Override
-	public void reportError(ClassViolation violation) {
+	public void reportError(ViolationImpl violation) {
 		String resourceName = violation.getResource().getName();
 		stream.println("Reporting rule violation in resource: " + resourceName
 				+ " in line " + violation.getLine() + " with message: '"

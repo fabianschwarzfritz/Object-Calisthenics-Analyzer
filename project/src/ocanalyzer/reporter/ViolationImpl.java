@@ -11,13 +11,13 @@ import org.eclipse.core.resources.IResource;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class ClassViolation implements Violation {
+public class ViolationImpl implements Violation {
 
 	private IResource resource;
 	private Integer line;
 	private String message;
 
-	public ClassViolation(IResource resource, Integer line, String message) {
+	public ViolationImpl(IResource resource, Integer line, String message) {
 		super();
 		this.resource = resource;
 		this.line = line;

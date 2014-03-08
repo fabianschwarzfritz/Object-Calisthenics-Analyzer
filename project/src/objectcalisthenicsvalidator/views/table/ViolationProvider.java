@@ -3,7 +3,7 @@ package objectcalisthenicsvalidator.views.table;
 import java.util.ArrayList;
 import java.util.List;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 import ocanalyzer.reporter.PackageViolation;
 import ocanalyzer.reporter.Reporter;
 
@@ -13,15 +13,15 @@ import org.eclipse.jface.viewers.Viewer;
 public class ViolationProvider implements IStructuredContentProvider, Reporter {
 
 	private List<PackageViolation> packageViolations;
-	private List<ClassViolation> violations;
+	private List<ViolationImpl> violations;
 
 	public ViolationProvider() {
-		violations = new ArrayList<ClassViolation>();
+		violations = new ArrayList<ViolationImpl>();
 		packageViolations = new ArrayList<PackageViolation>();
 	}
 
 	@Override
-	public void reportError(ClassViolation violation) {
+	public void reportError(ViolationImpl violation) {
 		violations.add(violation);
 	}
 
@@ -44,7 +44,7 @@ public class ViolationProvider implements IStructuredContentProvider, Reporter {
 	}
 
 	public void clear() {
-		violations = new ArrayList<ClassViolation>();
+		violations = new ArrayList<ViolationImpl>();
 		packageViolations = new ArrayList<PackageViolation>();
 	}
 

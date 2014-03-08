@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import ocanalyzer.integration.mock.ClassViolationDecorator;
 import ocanalyzer.reporter.ClassReporter;
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 import org.junit.Assert;
 
@@ -20,7 +20,7 @@ public class ViolationAsserter implements ClassReporter {
 	}
 
 	@Override
-	public void reportError(ClassViolation violation) {
+	public void reportError(ViolationImpl violation) {
 		ClassViolationDecorator decorator = new ClassViolationDecorator(
 				violation);
 		Assert.assertTrue("The occurred class violation " + violation

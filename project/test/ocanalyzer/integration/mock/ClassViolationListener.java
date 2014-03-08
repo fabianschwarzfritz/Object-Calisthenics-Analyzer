@@ -1,9 +1,9 @@
 package ocanalyzer.integration.mock;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 public interface ClassViolationListener {
 
-	void push(ClassViolation violation);
+	void push(ViolationImpl violation);
 
 }

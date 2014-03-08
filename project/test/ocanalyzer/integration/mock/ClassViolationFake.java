@@ -1,10 +1,10 @@
 package ocanalyzer.integration.mock;
 
-import ocanalyzer.reporter.ClassViolation;
+import ocanalyzer.reporter.ViolationImpl;
 
 import org.eclipse.core.resources.IResource;
 
-public class ClassViolationFake extends ClassViolation {
+public class ClassViolationFake extends ViolationImpl {
 
 	private String resourceName;
 
