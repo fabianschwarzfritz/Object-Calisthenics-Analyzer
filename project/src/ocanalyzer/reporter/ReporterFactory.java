@@ -6,14 +6,14 @@ import ocanalyzer.reporter.impl.MarkerReporter;
 
 public class ReporterFactory {
 
-	public static ReporterImpl createStandardReporter() {
+	public static Reporter createStandardReporter() {
 		DelegateReporter result = new DelegateReporter();
 		result.addClassReporter(new ConsoleReporter(System.out));
 		result.addClassReporter(new MarkerReporter());
 		return result;
 	}
 
-	public static ReporterImpl createConsoleReporter() {
+	public static Reporter createConsoleReporter() {
 		return new ConsoleReporter(System.out);
 	}
 

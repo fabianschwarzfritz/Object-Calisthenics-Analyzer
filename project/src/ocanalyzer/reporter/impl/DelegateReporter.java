@@ -5,7 +5,6 @@ import java.util.List;
 
 import ocanalyzer.domain.ViolationImpl;
 import ocanalyzer.reporter.Reporter;
-import ocanalyzer.reporter.ReporterImpl;
 
 /**
  * This class is used to delegate a rule violation event to all given
@@ -14,7 +13,7 @@ import ocanalyzer.reporter.ReporterImpl;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class DelegateReporter implements ReporterImpl {
+public class DelegateReporter implements Reporter {
 
 	private List<Reporter> reporters;
 
