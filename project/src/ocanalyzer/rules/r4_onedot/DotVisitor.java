@@ -72,7 +72,10 @@ class DotVisitor extends ASTVisitor {
 		List expressions = new ArrayList();
 		expressions.add(node.initializers());
 		expressions.add(node.updaters());
-		expressions.add(node.getExpression());
+		Expression expression = node.getExpression();
+		if (expression != null) {
+			expressions.add(expression);
+		}
 		count(expressions, node);
 	}
 
@@ -118,10 +121,13 @@ class DotVisitor extends ASTVisitor {
 	public void count(final List expressionList, final ASTNode node) {
 		int resultCount = 0;
 		for (Object oExpression : expressionList) {
-			Expression expression = (Expression) oExpression;
-			StatementDotCounter statementDotCounter = new StatementDotCounter(
-					expression);
-			resultCount += statementDotCounter.count();
+			// FIXME somethimes this expression is not an expressin / why?
+			if (oExpression instanceof Expression) {
+				Expression expression = (Expression) oExpression;
+				StatementDotCounter statementDotCounter = new StatementDotCounter(
+						expression);
+				resultCount += statementDotCounter.count();
+			}
 		}
 		handleCount(resultCount, node);
 	}

@@ -27,10 +27,9 @@ public class RunImpl implements Run {
 		init();
 	}
 
-	RunImpl(RunImpl previous, Project project, TrainingReporter reporter) {
+	RunImpl(RunImpl previous, Project project) {
 		this.project = project;
 		this.previous = previous;
-		this.trainingReporter = reporter;
 		init();
 	}
 
@@ -46,9 +45,8 @@ public class RunImpl implements Run {
 	}
 
 	private RunImpl createNewRun() {
-		RunImpl newRun = null;
-		TrainingReporter newReporter = new TrainingReporter(newRun);
-		newRun = new RunImpl(this, project, newReporter);
+		RunImpl newRun = new RunImpl(this, project);
+		newRun.trainingReporter = new TrainingReporter(newRun);
 		return newRun;
 	}
 
