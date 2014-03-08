@@ -13,27 +13,29 @@ import org.eclipse.core.resources.IResource;
  */
 public class ViolationImpl implements Violation {
 
-	private IResource resource;
-	private Integer line;
-	private String message;
+	private Name name;
+	private Message message;
+	private Degree degree;
+	private Position position;
 
 	public ViolationImpl(IResource resource, Integer line, String message) {
 		super();
-		this.resource = resource;
-		this.line = line;
-		this.message = message;
+		this.name = new Name(message);
+		this.message = new Message(message);
+		this.degree = Degree.MIDDLE;
+		this.position = new Position(resource, line);
 	}
 
 	public IResource getResource() {
-		return resource;
+		return position.getResource();
 	}
 
-	public Integer getLine() {
-		return line;
+	public int getLine() {
+		return position.getPosition();
 	}
 
 	public String getMessage() {
-		return message;
+		return message.getShortDescription();
 	}
 
 }
