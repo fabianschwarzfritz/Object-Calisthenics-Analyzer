@@ -27,9 +27,10 @@ public class RunImpl implements Run {
 		init();
 	}
 
-	RunImpl(RunImpl previous, Project project) {
+	RunImpl(RunImpl previous, Project project, TrainingReporter reporter) {
 		this.project = project;
 		this.previous = previous;
+		this.trainingReporter = reporter;
 		init();
 	}
 
@@ -39,11 +40,21 @@ public class RunImpl implements Run {
 	}
 
 	public RunImpl update() {
-		RunImpl newRun = new RunImpl(this, project);
-		trainingReporter = new TrainingReporter(newRun);
+		RunImpl newRun = createNewRun();
+		updateReferences(newRun);
+		return newRun;
+	}
+
+	private RunImpl createNewRun() {
+		RunImpl newRun = null;
+		TrainingReporter newReporter = new TrainingReporter(newRun);
+		newRun = new RunImpl(this, project, newReporter);
+		return newRun;
+	}
+
+	private void updateReferences(RunImpl newRun) {
 		this.next = newRun;
 		newRun.previous = this;
-		return newRun;
 	}
 
 	public int countViolations() {

@@ -22,6 +22,9 @@ public class DelegateReporter implements Reporter {
 	}
 
 	public void addReporter(Reporter reporter) {
+		if (reporter == null) {
+			throw new IllegalArgumentException("Reporter shall not be null");
+		}
 		reporters.add(reporter);
 	}
 

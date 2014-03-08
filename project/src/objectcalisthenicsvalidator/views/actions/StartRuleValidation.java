@@ -3,6 +3,7 @@ package objectcalisthenicsvalidator.views.actions;
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
 import ocanalyzer.domain.Run;
 import ocanalyzer.domain.Training;
+import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.Viewer;
@@ -23,14 +24,16 @@ import org.eclipse.ui.PlatformUI;
 public class StartRuleValidation extends Action {
 
 	private Training training;
+	private Reporter reporter;
 	private ViolationProvider tableProvider;
 	private Viewer rulesViewer;
 
-	public StartRuleValidation(Training training,
+	public StartRuleValidation(Training training, Reporter reporter,
 			ViolationProvider tableProvider, Viewer rulesViewer) {
 		this.training = training;
 		this.tableProvider = tableProvider;
 		this.rulesViewer = rulesViewer;
+		this.reporter = reporter;
 
 		setText("Validate");
 		setToolTipText("Validate");
@@ -41,7 +44,7 @@ public class StartRuleValidation extends Action {
 	public void run() {
 		tableProvider.clear();
 		Run run = training.create();
-		run.validate(tableProvider);
+		run.validate(reporter);
 		rulesViewer.refresh();
 	}
 }
