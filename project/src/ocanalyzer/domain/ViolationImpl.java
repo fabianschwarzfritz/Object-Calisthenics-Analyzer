@@ -16,14 +16,15 @@ public class ViolationImpl implements Violation {
 	private Name name;
 	private Message message;
 	private Degree degree;
-	private PositionInClass position;
+	private Position position;
 
-	public ViolationImpl(IResource resource, Integer line, String message) {
+	public ViolationImpl(Name name, Message message, Degree degree,
+			Position position) {
 		super();
-		this.name = new Name(message);
-		this.message = new Message(message);
-		this.degree = Degree.MIDDLE;
-		this.position = new PositionInClass(resource, line);
+		this.name = name;
+		this.message = message;
+		this.degree = degree;
+		this.position = position;
 	}
 
 	public IResource getResource() {
