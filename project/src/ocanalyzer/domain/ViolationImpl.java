@@ -1,5 +1,7 @@
 package ocanalyzer.domain;
 
+import ocanalyzer.dto.ViolationDTO;
+
 import org.eclipse.core.resources.IResource;
 
 /**
@@ -37,6 +39,12 @@ public class ViolationImpl implements Violation {
 
 	public String getMessage() {
 		return message.getShortDescription();
+	}
+
+	@Override
+	public ViolationDTO createDTO() {
+		return new ViolationDTO(name.createDTO(), message.createDTO(),
+				degree.createDTO(), position.createDTO());
 	}
 
 }

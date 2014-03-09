@@ -8,4 +8,8 @@ public class Name {
 		this.name = message;
 	}
 
+	public String createDTO() {
+		return new String(name);
+	}
+
 }

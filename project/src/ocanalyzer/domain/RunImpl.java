@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ocanalyzer.dto.RunDTO;
+import ocanalyzer.dto.ViolationDTO;
 import ocanalyzer.reporter.Reporter;
 import ocanalyzer.reporter.TrainingReporter;
 import ocanalyzer.reporter.impl.DelegateReporter;
@@ -71,5 +73,14 @@ public class RunImpl implements Run {
 		OCRulesImpl rules = OCRulesImpl.createStandardRules(delegate);
 		ICompilationUnits units = project.changedUnits();
 		rules.apply(units);
+	}
+
+	public RunDTO createDTO() {
+		List<ViolationDTO> violationDtos = new ArrayList<>();
+		for (Violation violation : violations) {
+			violationDtos.add(violation.createDTO());
+
+		}
+		return new RunDTO(time, violationDtos);
 	}
 }

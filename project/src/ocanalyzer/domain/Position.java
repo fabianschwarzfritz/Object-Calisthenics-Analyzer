@@ -7,4 +7,6 @@ public interface Position {
 	public abstract int getPosition();
 
 	public abstract IResource getResource();
+
+	public abstract String createDTO();
 }

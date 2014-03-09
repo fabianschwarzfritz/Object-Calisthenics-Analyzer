@@ -21,4 +21,9 @@ public class PositionInPackage implements Position {
 		return 0;
 	}
 
+	@Override
+	public String createDTO() {
+		return "In " + fragment.getResource();
+	}
+
 }

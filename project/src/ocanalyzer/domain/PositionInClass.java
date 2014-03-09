@@ -20,4 +20,9 @@ public class PositionInClass implements Position {
 		return resource;
 	}
 
+	@Override
+	public String createDTO() {
+		return "line " + line + " in " + resource;
+	}
+
 }

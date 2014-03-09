@@ -11,4 +11,8 @@ public class Message {
 	public String getShortDescription() {
 		return shortDescription;
 	}
+
+	public String createDTO() {
+		return new String(shortDescription);
+	}
 }
