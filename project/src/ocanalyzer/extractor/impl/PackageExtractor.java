@@ -19,12 +19,7 @@ public class PackageExtractor implements CompilationUnitsExtractable {
 	public ICompilationUnits extractCompilationUnits() {
 		try {
 			if (packageFragement.getKind() == IPackageFragmentRoot.K_SOURCE) {
-				ICompilationUnits units = extractUnits();
-				// FIXME remove counting of classes
-				// ClassesPerPackage classes = new ClassesPerPackage(
-				// packageFragement, writer);
-				// classes.setCount(extractUnits.size());
-				return units;
+				return extractUnits();
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
