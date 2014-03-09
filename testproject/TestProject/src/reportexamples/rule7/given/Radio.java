@@ -13,7 +13,6 @@ public class Radio {
 	 * 
 	 */
 	public void recoverStatus() {
-		// TODO Auto-generated method stub
 		
 	}
 }

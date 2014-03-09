@@ -14,7 +14,6 @@ public class SpeakerMock implements Noisy {
 
 	@Override
 	public void print(PrintStream out) {
-		// TODO Auto-generated method stub
 
 	}
 

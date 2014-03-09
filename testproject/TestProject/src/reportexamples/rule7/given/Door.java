@@ -13,7 +13,6 @@ public class Door {
 	 * 
 	 */
 	public void activateFeature() {
-		// TODO Auto-generated method stub
 		
 	}
 

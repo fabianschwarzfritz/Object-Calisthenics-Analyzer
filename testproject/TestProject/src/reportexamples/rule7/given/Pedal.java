@@ -13,8 +13,6 @@ public class Pedal {
 	 * 
 	 */
 	public void activateFeature() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
