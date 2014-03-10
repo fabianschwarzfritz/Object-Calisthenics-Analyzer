@@ -3,7 +3,6 @@ package objectcalisthenicsvalidator.views.actions;
 import ocanalyzer.Activator;
 import ocanalyzer.domain.Violation;
 import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.PackageViolation;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Status;
@@ -47,15 +46,7 @@ public class OpenViolation extends Action {
 			ViolationImpl classViolation = (ViolationImpl) violation;
 			IFile file = (IFile) classViolation.getResource();
 			openClassViolation(classViolation, file);
-		} else if (violation instanceof PackageViolation) {
-			PackageViolation packageViolation = (PackageViolation) violation;
-			openPackageViolation(packageViolation);
 		}
-	}
-
-	private void openPackageViolation(PackageViolation packageViolation) {
-		showMessage("Package: " + packageViolation.getResource().getName()
-				+ packageViolation.getMessage());
 	}
 
 	private void openClassViolation(ViolationImpl violation, IFile file) {

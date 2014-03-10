@@ -65,12 +65,8 @@ public class RunImpl implements Run {
 		violations.add(violation);
 	}
 
-	public void validate(Reporter reporter) {
-		DelegateReporter delegate = new DelegateReporter();
-		delegate.addReporter(reporter);
-		delegate.addReporter(trainingReporter);
-
-		OCRulesImpl rules = OCRulesImpl.createStandardRules(delegate);
+	public void validate() {
+		OCRulesImpl rules = OCRulesImpl.createStandardRules(trainingReporter);
 		ICompilationUnits units = project.changedUnits();
 		rules.apply(units);
 	}

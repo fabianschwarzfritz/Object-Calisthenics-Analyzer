@@ -1,7 +1,6 @@
 package objectcalisthenicsvalidator.views.table;
 
 import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.PackageViolation;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -16,21 +15,6 @@ public class TablelabelProvider extends LabelProvider implements
 		if (element instanceof ViolationImpl) {
 			ViolationImpl violation = (ViolationImpl) element;
 			return informationForIndex(index, violation);
-		} else if (element instanceof PackageViolation) {
-			PackageViolation packageViolation = (PackageViolation) element;
-			return informationForIndex(index, packageViolation);
-		}
-		return new String();
-	}
-
-	private String informationForIndex(int index,
-			PackageViolation packageViolation) {
-		if (index == 0) {
-			return new String();
-		} else if (index == 1) {
-			return packageViolation.getResource().getName();
-		} else if (index == 2) {
-			return packageViolation.getMessage();
 		}
 		return new String();
 	}

@@ -1,12 +1,12 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import objectcalisthenicsvalidator.views.table.ViolationProvider;
+import ocanalyzer.domain.DTOFactory;
 import ocanalyzer.domain.Run;
 import ocanalyzer.domain.Training;
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.dto.RunDTO;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
@@ -24,16 +24,12 @@ import org.eclipse.ui.PlatformUI;
 public class StartRuleValidation extends Action {
 
 	private Training training;
-	private Reporter reporter;
-	private ViolationProvider tableProvider;
-	private Viewer rulesViewer;
+	private ViolationProvider modelProvider;
 
-	public StartRuleValidation(Training training, Reporter reporter,
-			ViolationProvider tableProvider, Viewer rulesViewer) {
+	public StartRuleValidation(Training training,
+			ViolationProvider modelProvider) {
 		this.training = training;
-		this.tableProvider = tableProvider;
-		this.rulesViewer = rulesViewer;
-		this.reporter = reporter;
+		this.modelProvider = modelProvider;
 
 		setText("Validate");
 		setToolTipText("Validate");
@@ -42,9 +38,9 @@ public class StartRuleValidation extends Action {
 	}
 
 	public void run() {
-		tableProvider.clear();
 		Run run = training.create();
-		run.validate(reporter);
-		rulesViewer.refresh();
+		run.validate();
+		RunDTO runDTO = DTOFactory.runDTO(run);
+		modelProvider.setRun(runDTO);
 	}
 }

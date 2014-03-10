@@ -11,7 +11,6 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
@@ -52,7 +51,7 @@ public class ViolationTable extends TableViewer implements IDoubleClickListener 
 //				.setBackground(new Color(table.getDisplay(), 140, 160, 190));
 //		getTable().setBackground(new Color(table.getDisplay(), 150, 60, 10));
 	}
-
+	
 	private void setupColumns() {
 		columns = new TableColumns(this);
 		columns.each(new AddSortAction(this));

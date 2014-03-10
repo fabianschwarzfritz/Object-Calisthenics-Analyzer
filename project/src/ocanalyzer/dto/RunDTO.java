@@ -1,5 +1,6 @@
 package ocanalyzer.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +8,11 @@ public class RunDTO {
 
 	private Date time;
 	private List<ViolationDTO> violations;
+
+	public RunDTO() {
+		this.time = new Date();
+		violations = new ArrayList<>();
+	}
 
 	public RunDTO(Date time, List<ViolationDTO> violations) {
 		super();

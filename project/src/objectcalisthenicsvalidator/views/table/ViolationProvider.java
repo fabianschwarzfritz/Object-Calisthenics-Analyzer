@@ -1,41 +1,35 @@
 package objectcalisthenicsvalidator.views.table;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ocanalyzer.domain.ViolationImpl;
-import ocanalyzer.reporter.Reporter;
+import ocanalyzer.dto.RunDTO;
 
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-public class ViolationProvider implements IStructuredContentProvider, Reporter {
+public class ViolationProvider implements IStructuredContentProvider {
 
-	private List<ViolationImpl> violations;
+	private RunDTO run;
 
 	public ViolationProvider() {
-		violations = new ArrayList<ViolationImpl>();
+		this.run = new RunDTO();
 	}
 
-	@Override
-	public void reportError(ViolationImpl violation) {
-		violations.add(violation);
+	public ViolationProvider(RunDTO run) {
+		this.run = run;
 	}
 
-	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
+	public void setRun(RunDTO run) {
+		this.run = run;
 	}
 
 	public void dispose() {
 	}
 
-	public Object[] getElements(Object parent) {
-		List<Object> result = new ArrayList<Object>();
-		result.addAll(violations);
-		return result.toArray();
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 	}
 
-	public void clear() {
-		violations = new ArrayList<ViolationImpl>();
+	public Object[] getElements(Object parent) {
+		return run.getViolations().toArray();
 	}
 
 }

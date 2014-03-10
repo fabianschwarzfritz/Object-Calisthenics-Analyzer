@@ -10,5 +10,5 @@ public interface Run {
 
 	public void addViolation(Violation violation);
 
-	public void validate(Reporter reporter);
+	public void validate();
 }
