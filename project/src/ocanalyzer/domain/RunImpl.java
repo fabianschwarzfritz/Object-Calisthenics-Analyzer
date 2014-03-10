@@ -75,7 +75,7 @@ public class RunImpl implements Run {
 		rules.apply(units);
 	}
 
-	public RunDTO createDTO() {
+	RunDTO createDTO() {
 		List<ViolationDTO> violationDtos = new ArrayList<>();
 		for (Violation violation : violations) {
 			violationDtos.add(violation.createDTO());
