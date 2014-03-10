@@ -42,5 +42,6 @@ public class StartRuleValidation extends Action {
 		run.validate();
 		RunDTO runDTO = DTOFactory.runDTO(run);
 		modelProvider.setRun(runDTO);
+		modelProvider.refreshUi();
 	}
 }

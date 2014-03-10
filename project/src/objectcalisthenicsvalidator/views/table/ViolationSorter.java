@@ -2,6 +2,7 @@ package objectcalisthenicsvalidator.views.table;
 
 import objectcalisthenicsvalidator.views.column.ViolationColumn;
 import ocanalyzer.domain.Violation;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
@@ -43,8 +44,8 @@ public class ViolationSorter extends ViewerSorter {
 
 	@Override
 	public int compare(Viewer viewer, Object e1, Object e2) {
-		Violation violation1 = (Violation) e1;
-		Violation violation2 = (Violation) e2;
+		ViolationDTO violation1 = (ViolationDTO) e1;
+		ViolationDTO violation2 = (ViolationDTO) e2;
 
 		int result = column.compare(violation1, violation2);
 		if (direction == DESCENDING) {

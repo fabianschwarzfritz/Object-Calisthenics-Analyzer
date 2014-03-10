@@ -4,6 +4,7 @@
 package objectcalisthenicsvalidator.views.column;
 
 import ocanalyzer.domain.Violation;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -18,7 +19,7 @@ public abstract class ViolationColumn extends TableColumn {
 		super(parent, style);
 	}
 
-	public abstract int compare(Violation violation1, Violation violation2);
+	public abstract int compare(ViolationDTO violation1, ViolationDTO violation2);
 
 	@Override
 	protected void checkSubclass() {

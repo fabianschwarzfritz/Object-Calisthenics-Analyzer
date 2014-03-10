@@ -44,7 +44,8 @@ public class ViolationImpl implements Violation {
 	@Override
 	public ViolationDTO createDTO() {
 		return new ViolationDTO(name.createDTO(), message.createDTO(),
-				degree.createDTO(), position.createDTO());
+				degree.createDTO(), position.createDTO(),
+				position.getResource());
 	}
 
 }

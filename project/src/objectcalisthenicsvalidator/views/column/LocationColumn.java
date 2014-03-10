@@ -4,6 +4,7 @@
 package objectcalisthenicsvalidator.views.column;
 
 import ocanalyzer.domain.Violation;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.swt.SWT;
@@ -24,7 +25,7 @@ public class LocationColumn extends ViolationColumn {
 	}
 
 	@Override
-	public int compare(Violation violation1, Violation violation2) {
+	public int compare(ViolationDTO violation1, ViolationDTO violation2) {
 		return violation1.getMessage().compareTo(violation2.getMessage());
 	}
 

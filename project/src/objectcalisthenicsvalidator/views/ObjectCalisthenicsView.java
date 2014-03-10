@@ -52,6 +52,8 @@ public class ObjectCalisthenicsView extends ViewPart {
 		table = new ViolationTable(parent, tableModel, getViewSite());
 		table.addFilter(filter);
 
+		tableModel.setTable(table);
+
 		search.setResultComposite(table, filter);
 
 		analyzeActions = new Analyze(training, tableModel);

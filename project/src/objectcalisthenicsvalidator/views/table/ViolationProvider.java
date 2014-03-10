@@ -8,6 +8,7 @@ import org.eclipse.jface.viewers.Viewer;
 public class ViolationProvider implements IStructuredContentProvider {
 
 	private RunDTO run;
+	private ViolationTable table;
 
 	public ViolationProvider() {
 		this.run = new RunDTO();
@@ -19,6 +20,14 @@ public class ViolationProvider implements IStructuredContentProvider {
 
 	public void setRun(RunDTO run) {
 		this.run = run;
+	}
+
+	public void refreshUi() {
+		table.refresh();
+	}
+	
+	public void setTable(ViolationTable table) {
+		this.table = table;
 	}
 
 	public void dispose() {

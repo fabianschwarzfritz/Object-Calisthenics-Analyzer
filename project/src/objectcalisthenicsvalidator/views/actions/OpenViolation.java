@@ -1,8 +1,7 @@
 package objectcalisthenicsvalidator.views.actions;
 
 import ocanalyzer.Activator;
-import ocanalyzer.domain.Violation;
-import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Status;
@@ -40,16 +39,16 @@ public class OpenViolation extends Action {
 	}
 
 	private void openViolation() {
-		Violation violation = selectedViolation();
+		ViolationDTO violation = selectedViolation();
 
-		if (violation instanceof ViolationImpl) {
-			ViolationImpl classViolation = (ViolationImpl) violation;
+		if (violation instanceof ViolationDTO) {
+			ViolationDTO classViolation = (ViolationDTO) violation;
 			IFile file = (IFile) classViolation.getResource();
 			openClassViolation(classViolation, file);
 		}
 	}
 
-	private void openClassViolation(ViolationImpl violation, IFile file) {
+	private void openClassViolation(ViolationDTO violation, IFile file) {
 		IEditorInput editorInput = new FileEditorInput(file);
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
@@ -72,10 +71,10 @@ public class OpenViolation extends Action {
 		}
 	}
 
-	private Violation selectedViolation() {
+	private ViolationDTO selectedViolation() {
 		ISelection selection = rulesViewer.getSelection();
 		Object element = ((IStructuredSelection) selection).getFirstElement();
-		Violation violation = (Violation) element;
+		ViolationDTO violation = (ViolationDTO) element;
 		return violation;
 	}
 

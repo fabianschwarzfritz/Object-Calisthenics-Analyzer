@@ -3,7 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.column;
 
-import ocanalyzer.domain.Violation;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Table;
@@ -23,7 +23,7 @@ public class LineColumn extends ViolationColumn {
 	}
 
 	@Override
-	public int compare(Violation violation1, Violation violation2) {
+	public int compare(ViolationDTO violation1, ViolationDTO violation2) {
 		return 0;
 	}
 
