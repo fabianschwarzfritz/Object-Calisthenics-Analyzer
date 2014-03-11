@@ -1,6 +1,6 @@
 package objectcalisthenicsvalidator.views.table;
 
-import objectcalisthenicsvalidator.views.column.ViolationColumn;
+import objectcalisthenicsvalidator.views.column.types.ViolationColumn;
 import ocanalyzer.domain.Violation;
 import ocanalyzer.dto.ViolationDTO;
 

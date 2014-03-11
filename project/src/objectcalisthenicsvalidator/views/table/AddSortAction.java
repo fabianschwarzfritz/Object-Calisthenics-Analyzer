@@ -4,7 +4,7 @@
 package objectcalisthenicsvalidator.views.table;
 
 import objectcalisthenicsvalidator.views.column.ColumnAction;
-import objectcalisthenicsvalidator.views.column.ViolationColumn;
+import objectcalisthenicsvalidator.views.column.types.ViolationColumn;
 
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.events.SelectionAdapter;

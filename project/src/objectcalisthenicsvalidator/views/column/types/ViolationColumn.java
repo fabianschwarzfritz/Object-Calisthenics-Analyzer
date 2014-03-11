@@ -1,8 +1,9 @@
 /**
  * 
  */
-package objectcalisthenicsvalidator.views.column;
+package objectcalisthenicsvalidator.views.column.types;
 
+import objectcalisthenicsvalidator.views.column.ColumnAction;
 import ocanalyzer.domain.Violation;
 import ocanalyzer.dto.ViolationDTO;
 

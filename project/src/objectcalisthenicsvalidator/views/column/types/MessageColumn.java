@@ -1,7 +1,7 @@
 /**
  * 
  */
-package objectcalisthenicsvalidator.views.column;
+package objectcalisthenicsvalidator.views.column.types;
 
 import ocanalyzer.dto.ViolationDTO;
 
@@ -12,19 +12,16 @@ import org.eclipse.swt.widgets.Table;
  * @author Fabian Schwarz-Fritz
  * 
  */
-public class LineColumn extends ViolationColumn {
+public class MessageColumn extends ViolationColumn {
 
-	private int line;
-
-	public LineColumn(Table parent) {
+	public MessageColumn(Table parent) {
 		super(parent, SWT.LEFT);
-		setText("Line");
-		setWidth(8);
+		setText("Message");
+		setWidth(100);
 	}
 
-	@Override
 	public int compare(ViolationDTO violation1, ViolationDTO violation2) {
-		return 0;
+		return violation1.getMessage().compareTo(violation2.getMessage());
 	}
 
 }

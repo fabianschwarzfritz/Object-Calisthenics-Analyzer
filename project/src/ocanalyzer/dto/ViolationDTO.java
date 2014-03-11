@@ -40,4 +40,8 @@ public class ViolationDTO {
 		return resource;
 	}
 
+	public String getResourceName() {
+		return resource.getName();
+	}
+
 }

@@ -21,11 +21,15 @@ public class TablelabelProvider extends LabelProvider implements
 
 	private String informationForIndex(int index, ViolationDTO violation) {
 		if (index == 0) {
-			return violation.getPosition() + "";
+			return violation.getName();
 		} else if (index == 1) {
-			return violation.getResource().getName();
-		} else if (index == 2) {
 			return violation.getMessage();
+		} else if (index == 2) {
+			return violation.getDegree();
+		} else if (index == 3) {
+			return violation.getPosition();
+		} else if (index == 4) {
+			return violation.getResourceName();
 		}
 		return new String();
 	}
