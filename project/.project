@@ -37,4 +37,11 @@
 		<nature>com.stateofflow.eclipse.metrics.MetricsNature</nature>
 		<nature>net.sourceforge.metrics.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib</name>
+			<type>2</type>
+			<location>C:/Users/d056995/git/Object-Calisthenics-Analyzer/project/lib</location>
+		</link>
+	</linkedResources>
 </projectDescription>

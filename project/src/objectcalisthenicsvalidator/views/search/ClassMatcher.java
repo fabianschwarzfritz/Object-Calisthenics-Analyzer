@@ -21,5 +21,6 @@ class ClassMatcher extends Matcher {
 		String message = violation.getMessage();
 		String resourceName = violation.getResource().getName();
 		return match(name, message, resourceName, line);
+		return true;
 	}
 }
