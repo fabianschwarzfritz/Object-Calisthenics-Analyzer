@@ -22,7 +22,7 @@ public class PositionInClass implements Position {
 
 	@Override
 	public String createDTO() {
-		return "line " + line + " in " + resource.getName();
+		return line.toString();
 	}
 
 }

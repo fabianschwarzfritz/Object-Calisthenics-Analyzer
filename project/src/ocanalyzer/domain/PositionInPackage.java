@@ -23,7 +23,7 @@ public class PositionInPackage implements Position {
 
 	@Override
 	public String createDTO() {
-		return "In " + fragment.getResource();
+		return fragment.getResource().getName();
 	}
 
 }
