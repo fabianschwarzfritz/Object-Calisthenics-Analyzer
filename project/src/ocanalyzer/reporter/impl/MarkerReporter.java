@@ -1,6 +1,7 @@
 package ocanalyzer.reporter.impl;
 
 import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.dto.ViolationDTO;
 import ocanalyzer.reporter.Reporter;
 
 import org.eclipse.core.resources.IMarker;
@@ -18,12 +19,15 @@ public class MarkerReporter implements Reporter {
 
 	@Override
 	public void reportError(ViolationImpl violation) {
+		ViolationDTO dto = violation.createDTO();
+
 		IMarker m;
-		IResource violatedResource = violation.getResource();
+		IResource violatedResource = dto.getResource();
 		try {
 			m = violatedResource.createMarker(IMarker.PROBLEM);
-			m.setAttribute(IMarker.LINE_NUMBER, violation.getLine());
-			m.setAttribute(IMarker.MESSAGE, violation.getMessage());
+			// FIXME: problematic because this is a String!
+			m.setAttribute(IMarker.LINE_NUMBER, dto.getPosition());
+			m.setAttribute(IMarker.MESSAGE, dto.getName());
 			m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
 		} catch (CoreException e) {
 			throw new RuntimeException(e);

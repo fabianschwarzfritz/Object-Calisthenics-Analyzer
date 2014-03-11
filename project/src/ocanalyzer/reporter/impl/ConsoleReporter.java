@@ -3,6 +3,7 @@ package ocanalyzer.reporter.impl;
 import java.io.PrintStream;
 
 import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.dto.ViolationDTO;
 import ocanalyzer.reporter.Reporter;
 
 /**
@@ -23,9 +24,9 @@ public class ConsoleReporter implements Reporter {
 
 	@Override
 	public void reportError(ViolationImpl violation) {
-		String resourceName = violation.getResource().getName();
-		stream.println("Reporting rule violation in resource: " + resourceName
-				+ " in line " + violation.getLine() + " with message: '"
-				+ violation.getMessage() + "'.");
+		ViolationDTO dto = violation.createDTO();
+		stream.println("Reporting rule violation in resource: "
+				+ dto.getResourceName() + " in line " + dto.getPosition()
+				+ " with message: '" + dto.getMessage() + "'.");
 	}
 }
