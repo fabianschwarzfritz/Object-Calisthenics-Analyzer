@@ -1,6 +1,6 @@
 package objectcalisthenicsvalidator.views.table;
 
-import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -12,16 +12,16 @@ public class TablelabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
 	public String getColumnText(Object element, int index) {
-		if (element instanceof ViolationImpl) {
-			ViolationImpl violation = (ViolationImpl) element;
+		if (element instanceof ViolationDTO) {
+			ViolationDTO violation = (ViolationDTO) element;
 			return informationForIndex(index, violation);
 		}
 		return new String();
 	}
 
-	private String informationForIndex(int index, ViolationImpl violation) {
+	private String informationForIndex(int index, ViolationDTO violation) {
 		if (index == 0) {
-			return violation.getLine() + "";
+			return violation.getPosition() + "";
 		} else if (index == 1) {
 			return violation.getResource().getName();
 		} else if (index == 2) {
