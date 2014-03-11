@@ -18,6 +18,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  */
 class DotViolationHandler extends ViolationHandlerImpl {
 
+	private static final String RULENAME = "Rule 4";
+
 	public DotViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
@@ -26,11 +28,11 @@ class DotViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "Using more that one dot per line violates rule 4!";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 	}
 }

@@ -8,6 +8,8 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 class IndentationViolationHandler extends ViolationHandlerImpl {
+	
+	private static final String RULENAME = "Rule 1"; 
 
 	public IndentationViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
@@ -17,12 +19,12 @@ class IndentationViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "The given indentation violates rule 1";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 	}
 
 }

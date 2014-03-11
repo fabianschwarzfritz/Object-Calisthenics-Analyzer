@@ -10,6 +10,7 @@ import org.eclipse.jdt.core.dom.Type;
 
 public class WrapNewViolationHandler extends ViolationHandlerImpl {
 
+	private static final String RULENAME = "Rule 3 or 8";
 	private static final String baseMessage = "Wrap all this!";
 
 	public WrapNewViolationHandler(ICompilationUnit unit,
@@ -19,11 +20,11 @@ public class WrapNewViolationHandler extends ViolationHandlerImpl {
 
 	@Override
 	public void printInfo(ASTNode node) {
-		reportError(baseMessage, node);
+		reportError(RULENAME, baseMessage, node);
 	}
 
 	public void printInfo(ASTNode node, String individualMessage) {
-		reportError(baseMessage + " " + individualMessage, node);
+		reportError(RULENAME, baseMessage + " " + individualMessage, node);
 	}
 
 }

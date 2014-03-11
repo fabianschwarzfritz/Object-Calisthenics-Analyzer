@@ -37,12 +37,12 @@ public abstract class ViolationHandlerImpl implements ViolationHandler {
 		this.reporter = reporter;
 	}
 
-	protected void reportError(String message, ASTNode node) {
+	protected void reportError(String rulename, String message, ASTNode node) {
 		IResource resource = unit.getResource();
 		int startPosition = node.getStartPosition();
 		int line = compilationUnit.getLineNumber(startPosition);
 
-		reporter.reportError(ViolationFactory.createClassViolation(resource,
+		reporter.reportError(ViolationFactory.createClassViolation(rulename, resource,
 				line, message));
 	}
 }

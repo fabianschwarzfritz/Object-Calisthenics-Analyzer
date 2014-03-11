@@ -9,6 +9,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 class ShortNamesViolationHandler extends ViolationHandlerImpl {
 
+	private static final String RULENAME = "Rule 5";
+
 	public ShortNamesViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
@@ -17,12 +19,12 @@ class ShortNamesViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "No Abbreviations but short names!";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 	}
 
 }

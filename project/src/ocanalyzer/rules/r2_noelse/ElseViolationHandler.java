@@ -17,6 +17,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * 
  */
 class ElseViolationHandler extends ViolationHandlerImpl {
+	
+	private static final String RULENAME = "Rule 2";
 
 	public ElseViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
@@ -26,11 +28,11 @@ class ElseViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "The else keyword violates rule 2";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 	}
 }

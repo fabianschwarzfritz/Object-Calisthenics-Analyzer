@@ -17,6 +17,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  * 
  */
 class SmallViolationHandler extends ViolationHandlerImpl {
+	
+	private static final String RULENAME = "Rule 6";
 
 	public SmallViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
@@ -26,12 +28,12 @@ class SmallViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "Keep all entities small";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 
 	}
 }

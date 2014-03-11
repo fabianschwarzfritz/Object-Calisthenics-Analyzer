@@ -18,6 +18,8 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
  */
 class PropertiesViolationHandler extends ViolationHandlerImpl {
 
+	private static final String RULENAME = "Rule 9";
+
 	public PropertiesViolationHandler(ICompilationUnit unit,
 			CompilationUnit compilationUnit, Reporter reporter) {
 		super(unit, compilationUnit, reporter);
@@ -26,11 +28,11 @@ class PropertiesViolationHandler extends ViolationHandlerImpl {
 	@Override
 	public void printInfo(ASTNode node) {
 		String msg = "The use of getter/setter/properties violates rule 9";
-		reportError(msg, node);
+		reportError(RULENAME, msg, node);
 	}
 
 	@Override
 	public void printInfo(ASTNode type, String customMessage) {
-		reportError(customMessage, type);
+		reportError(RULENAME, customMessage, type);
 	}
 }
