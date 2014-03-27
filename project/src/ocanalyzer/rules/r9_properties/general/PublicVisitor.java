@@ -17,7 +17,7 @@ public class PublicVisitor extends ASTVisitor {
 	@Override
 	public boolean visit(FieldDeclaration node) {
 		int modifiers = node.getModifiers();
-		if (Modifier.isPublic(modifiers)) {
+		if (Modifier.isPublic(modifiers) & !Modifier.isStatic(modifiers)) {
 			violationHandler.printInfo(node);
 		}
 		return true;
