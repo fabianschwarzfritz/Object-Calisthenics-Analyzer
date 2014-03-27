@@ -1,11 +1,8 @@
 package ocanalyzer;
 
-import ocanalyzer.integration.DotIntegration;
-import ocanalyzer.integration.ElseIntegration;
-import ocanalyzer.integration.IndentationIntegration;
-import ocanalyzer.integration.PropertiesIntegration;
-import ocanalyzer.integration.VariableCountIntegration;
-import ocanalyzer.unit.ShortTypeNameTest;
+import ocanalyzer.rules.r1_indentation.IndentationTest;
+import ocanalyzer.rules.r2_noelse.ElseTest;
+import ocanalyzer.rules.r4_onedot.DotTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -25,9 +22,7 @@ import org.junit.runners.Suite;
  */
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ DotIntegration.class, ElseIntegration.class,
-		IndentationIntegration.class, ShortTypeNameTest.class,
-		VariableCountIntegration.class, PropertiesIntegration.class })
+@Suite.SuiteClasses({ ElseTest.class, IndentationTest.class , DotTest.class})
 public class OCIntegrationTests {
 
 }
