@@ -3,6 +3,7 @@ package ocanalyzer.rules.r4_onedot;
 import java.util.ArrayList;
 import java.util.List;
 
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 
@@ -33,9 +34,9 @@ import org.eclipse.jdt.core.dom.WhileStatement;
  */
 class DotVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl violationHandler;
+	private ViolationHandler violationHandler;
 
-	public DotVisitor(ViolationHandlerImpl violationHandler) {
+	public DotVisitor(ViolationHandler violationHandler) {
 		this.violationHandler = violationHandler;
 	}
 

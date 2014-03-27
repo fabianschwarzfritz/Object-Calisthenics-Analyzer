@@ -23,7 +23,7 @@ public class WrapperVisitor extends ASTVisitor {
 	private ViolationHandler violationHandler;
 
 	public WrapperVisitor(TypeDeterminator determinator,
-			ViolationHandlerImpl violationHandler) {
+			ViolationHandler violationHandler) {
 		this.typeDeterminator = determinator;
 		this.violationHandler = violationHandler;
 		wrapperUnits = new HashMap<>();

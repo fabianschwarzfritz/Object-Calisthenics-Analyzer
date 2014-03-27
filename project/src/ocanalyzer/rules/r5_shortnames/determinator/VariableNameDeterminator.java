@@ -1,16 +1,16 @@
 package ocanalyzer.rules.r5_shortnames.determinator;
 
-import ocanalyzer.rules.general.ViolationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandler;
 
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclaration;
 
 public class VariableNameDeterminator {
 
-	private ViolationHandlerImpl violationHandler;
+	private ViolationHandler violationHandler;
 	protected RegexMatcher matcher;
 
-	public VariableNameDeterminator(ViolationHandlerImpl violationHandler) {
+	public VariableNameDeterminator(ViolationHandler violationHandler) {
 		this.violationHandler = violationHandler;
 		this.matcher = new RegexMatcher(15, "([a-z]+[A-Z]{0,1}[a-z]+)");
 	}

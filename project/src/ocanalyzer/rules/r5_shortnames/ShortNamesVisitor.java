@@ -1,5 +1,6 @@
 package ocanalyzer.rules.r5_shortnames;
 
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r5_shortnames.determinator.TypeNameDeterminator;
 import ocanalyzer.rules.r5_shortnames.determinator.VariableNameDeterminator;
@@ -21,7 +22,7 @@ class ShortNamesVisitor extends ASTVisitor {
 	private TypeNameDeterminator typeNameDeterminator;
 	private VariableNameDeterminator variableNameDeterminator;
 
-	public ShortNamesVisitor(ViolationHandlerImpl violationHandler) {
+	public ShortNamesVisitor(ViolationHandler violationHandler) {
 		typeNameDeterminator = new TypeNameDeterminator(violationHandler);
 		variableNameDeterminator = new VariableNameDeterminator(
 				violationHandler);

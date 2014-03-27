@@ -21,7 +21,7 @@ public class WrapNewVisitor extends ASTVisitor {
 	private Map<TypeDeclaration, Type> wrappers;
 	private TypeDeclaration current;
 
-	public WrapNewVisitor(ViolationHandlerImpl handler,
+	public WrapNewVisitor(ViolationHandler handler,
 			Map<TypeDeclaration, Type> wrappers) {
 		this.handler = handler;
 		this.wrappers = wrappers;

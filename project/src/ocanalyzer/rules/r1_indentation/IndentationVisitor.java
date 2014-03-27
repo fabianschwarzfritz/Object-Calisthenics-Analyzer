@@ -1,5 +1,6 @@
 package ocanalyzer.rules.r1_indentation;
 
+import ocanalyzer.rules.general.ViolationHandler;
 import ocanalyzer.rules.general.ViolationHandlerImpl;
 
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -29,9 +30,9 @@ import org.eclipse.jdt.core.dom.WhileStatement;
 
 class IndentationVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl violationHandler;
+	private ViolationHandler violationHandler;
 
-	public IndentationVisitor(ViolationHandlerImpl violationHandler) {
+	public IndentationVisitor(ViolationHandler violationHandler) {
 		this.violationHandler = violationHandler;
 	}
 
