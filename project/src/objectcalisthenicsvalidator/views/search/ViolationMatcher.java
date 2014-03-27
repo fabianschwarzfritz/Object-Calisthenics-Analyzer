@@ -3,8 +3,7 @@
  */
 package objectcalisthenicsvalidator.views.search;
 
-import ocanalyzer.domain.Violation;
-import ocanalyzer.domain.ViolationImpl;
+import ocanalyzer.dto.ViolationDTO;
 
 /**
  * @author Fabian Schwarz-Fritz
@@ -19,11 +18,8 @@ class ViolationMatcher {
 		this.searchString = searchString;
 	}
 
-	public boolean match(Violation violation) {
-		if (violation instanceof ViolationImpl) {
-			return new ClassMatcher(searchString)
-					.match((ViolationImpl) violation);
-		}
-		return false;
+	public boolean match(ViolationDTO violation) {
+		return new ClassMatcher(searchString)
+					.match(violation);
 	}
 }

@@ -5,7 +5,7 @@ package objectcalisthenicsvalidator.views.search;
 
 import java.util.Locale;
 
-import ocanalyzer.domain.Violation;
+import ocanalyzer.dto.ViolationDTO;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
@@ -27,7 +27,7 @@ public class ViolationFilter extends ViewerFilter {
 		if (searchString == null || searchString.length() == 0) {
 			return true;
 		}
-		Violation violation = (Violation) element;
+		ViolationDTO violation = (ViolationDTO) element;
 		ViolationMatcher matcher = new ViolationMatcher(searchString);
 		return matcher.match(violation);
 	}

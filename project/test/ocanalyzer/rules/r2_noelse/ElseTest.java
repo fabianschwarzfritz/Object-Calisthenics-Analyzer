@@ -4,6 +4,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import junit.framework.TestCase;
+import ocanalyzer.rules.fake.FakeUnit;
 import ocanalyzer.rules.general.ViolationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
