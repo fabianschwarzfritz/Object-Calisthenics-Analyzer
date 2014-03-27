@@ -16,16 +16,16 @@ public class ElseTest extends TestCase {
 
 	@Test
 	public void testElse() {
-		// Prepare the environment
+		// Prepare
 		String code = "if(true) {} else {} ";
 		CompilationUnit unit = new FakeUnit(code).createWithinClass();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
-		// This stuff is to be tested
+		// Test
 		ASTVisitor visitor = new ElseVisitor(handlerMock);
 		unit.accept(visitor);
 
-		// Verify the structure
+		// Verify
 		verify(handlerMock).printInfo(any(Statement.class));
 	}
 }
