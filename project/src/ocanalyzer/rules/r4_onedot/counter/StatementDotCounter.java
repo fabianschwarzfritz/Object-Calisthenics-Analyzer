@@ -17,12 +17,13 @@ public class StatementDotCounter implements ExpressionExtractable,
 	private ExpressionExtractor extractor;
 
 	public StatementDotCounter(Expression root) {
+		this.rootExpression = root;
 		extractor = new ExpressionExtractor(this);
 	}
 
 	@Override
 	public void count(int count) {
-		resultCount++;
+		resultCount += count;
 	}
 
 	public int count() {

@@ -18,6 +18,10 @@ public class FakeUnit {
 		this.code = code;
 	}
 
+	public CompilationUnit create() {
+		return create(code);
+	}
+
 	public CompilationUnit createWithinClass() {
 		StringBuffer buffer = new StringBuffer();
 		this.helperWithinMethod(buffer, code);

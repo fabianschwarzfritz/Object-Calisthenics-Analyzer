@@ -30,7 +30,7 @@ public class ElseTest {
 	@Test
 	public void testElseTwoElse() {
 		String code = new CodeReader().readFromFile("elseRule/ElseWrong.java");
-		CompilationUnit unit = new FakeUnit(code).createWithinClass();
+		CompilationUnit unit = new FakeUnit(code).create();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
 		ASTVisitor visitor = new ElseVisitor(handlerMock);

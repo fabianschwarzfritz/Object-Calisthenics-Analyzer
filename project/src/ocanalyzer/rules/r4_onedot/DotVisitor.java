@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ocanalyzer.rules.general.ViolationHandler;
-import ocanalyzer.rules.general.ViolationHandlerImpl;
 import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -52,7 +51,7 @@ class DotVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(AssertStatement node) {
-		List expressions = new ArrayList();
+		List<Object> expressions = new ArrayList<Object>();
 		expressions.add(node.getExpression());
 		expressions.add(node.getMessage());
 		count(expressions, node);
