@@ -9,10 +9,12 @@ import ocanalyzer.rules.r4_onedot.counter.StatementDotCounter;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AssertStatement;
+import org.eclipse.jdt.core.dom.Assignment;
 import org.eclipse.jdt.core.dom.ConstructorInvocation;
 import org.eclipse.jdt.core.dom.DoStatement;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.ExpressionStatement;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.ReturnStatement;
@@ -21,6 +23,8 @@ import org.eclipse.jdt.core.dom.SwitchCase;
 import org.eclipse.jdt.core.dom.SwitchStatement;
 import org.eclipse.jdt.core.dom.SynchronizedStatement;
 import org.eclipse.jdt.core.dom.ThrowStatement;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
 /**
@@ -40,8 +44,39 @@ class DotVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public void endVisit(final ExpressionStatement node) {
+	public void endVisit(ExpressionStatement node) {
 		count(node.getExpression(), node);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void endVisit(FieldDeclaration node) {
+		List<Expression> expressions = new ArrayList<>();
+		List<VariableDeclarationFragment> fragments = node.fragments();
+		for (VariableDeclarationFragment fragment : fragments) {
+			expressions.add(fragment.getInitializer());
+		}
+		count(expressions, node);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void endVisit(VariableDeclarationStatement node) {
+		List<Expression> expressions = new ArrayList<>();
+		List<VariableDeclarationFragment> fragments = node.fragments();
+		for (VariableDeclarationFragment fragment : fragments) {
+			expressions.add(fragment.getInitializer());
+		}
+		count(expressions, node);
+	}
+
+	@Override
+	public void endVisit(Assignment node) {
+		System.out.println("Assignment");
+		List<Expression> expressions = new ArrayList<Expression>();
+		expressions.add(node.getLeftHandSide());
+		expressions.add(node.getRightHandSide());
+		count(expressions, node);
 	}
 
 	@Override
@@ -51,12 +86,13 @@ class DotVisitor extends ASTVisitor {
 
 	@Override
 	public void endVisit(AssertStatement node) {
-		List<Object> expressions = new ArrayList<Object>();
+		List<Expression> expressions = new ArrayList<Expression>();
 		expressions.add(node.getExpression());
 		expressions.add(node.getMessage());
 		count(expressions, node);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void endVisit(ConstructorInvocation node) {
 		count(node.arguments(), node);
@@ -67,11 +103,12 @@ class DotVisitor extends ASTVisitor {
 		count(node.getExpression(), node);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void endVisit(ForStatement node) {
-		List expressions = new ArrayList();
-		expressions.add(node.initializers());
-		expressions.add(node.updaters());
+		List<Expression> expressions = new ArrayList<Expression>();
+		expressions.addAll(node.initializers());
+		expressions.addAll(node.updaters());
 		Expression expression = node.getExpression();
 		if (expression != null) {
 			expressions.add(expression);
@@ -89,10 +126,11 @@ class DotVisitor extends ASTVisitor {
 		count(node.getExpression(), node);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void endVisit(SuperConstructorInvocation node) {
-		List expressions = new ArrayList();
-		expressions.add(node.arguments());
+		List<Expression> expressions = new ArrayList<Expression>();
+		expressions.addAll(node.arguments());
 		expressions.add(node.getExpression());
 		count(expressions, node);
 	}
@@ -118,16 +156,12 @@ class DotVisitor extends ASTVisitor {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void count(final List expressionList, final ASTNode node) {
+	public void count(final List<Expression> expressionList, final ASTNode node) {
 		int resultCount = 0;
-		for (Object oExpression : expressionList) {
-			// FIXME somethimes this expression is not an expressin / why?
-			if (oExpression instanceof Expression) {
-				Expression expression = (Expression) oExpression;
-				StatementDotCounter statementDotCounter = new StatementDotCounter(
-						expression);
-				resultCount += statementDotCounter.count();
-			}
+		for (Expression expression : expressionList) {
+			StatementDotCounter statementDotCounter = new StatementDotCounter(
+					expression);
+			resultCount += statementDotCounter.count();
 		}
 		handleCount(resultCount, node);
 	}
