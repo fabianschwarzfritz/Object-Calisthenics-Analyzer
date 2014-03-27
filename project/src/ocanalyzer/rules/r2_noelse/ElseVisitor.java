@@ -1,6 +1,6 @@
 package ocanalyzer.rules.r2_noelse;
 
-import ocanalyzer.rules.general.ViolationHandlerImpl;
+import ocanalyzer.rules.general.ViolationHandler;
 
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -19,9 +19,9 @@ import org.eclipse.jdt.core.dom.Statement;
  */
 class ElseVisitor extends ASTVisitor {
 
-	private ViolationHandlerImpl violationHandler;
+	private ViolationHandler violationHandler;
 
-	public ElseVisitor(ViolationHandlerImpl violationHandler) {
+	public ElseVisitor(ViolationHandler violationHandler) {
 		this.violationHandler = violationHandler;
 	}
 
