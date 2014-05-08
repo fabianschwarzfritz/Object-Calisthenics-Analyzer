@@ -10,9 +10,10 @@ import org.eclipse.jdt.core.dom.Statement;
  * This visitor implements the validation of rule 2:
  * "Don�t Use the else Keyword".
  * 
- * Do do so, it simply registers for all if-statements and gets the
- * corresponding else part. When there is an else as part of an
- * {@link IfStatement}, the rule violation is reported.
+ * The visitor get notified about all if-statements and with the object
+ * representation of the {@link IfStatement}, the can get the object
+ * representation of the corresponding else part. When there is an else as part
+ * of an {@link IfStatement}, a violation is reported.
  * 
  * @author Fabian Schwarz-Fritz
  * 
@@ -32,5 +33,6 @@ class ElseVisitor extends ASTVisitor {
 			violationHandler.printInfo(elseStatement);
 		}
 	}
-
+// TODO loggin einbauen und in file schreiben
+	// TODOfeedback form mit emial einbauen
 }

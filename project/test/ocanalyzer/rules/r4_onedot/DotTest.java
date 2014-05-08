@@ -18,7 +18,7 @@ public class DotTest {
 	@Test
 	public void testDot() {
 		String code = new CodeReader().readFromFile("dotRule/DotWrong.java");
-		CompilationUnit unit = new FakeUnit(code).create();
+		CompilationUnit unit = new FakeUnit(code).createPlain();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
 		ASTVisitor visitor = new DotVisitor(handlerMock);

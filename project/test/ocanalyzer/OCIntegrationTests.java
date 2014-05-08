@@ -4,6 +4,7 @@ import ocanalyzer.rules.r1_indentation.IndentationTest;
 import ocanalyzer.rules.r2_noelse.ElseTest;
 import ocanalyzer.rules.r4_onedot.DotTest;
 import ocanalyzer.rules.r7_instanceVariable.InstanceTest;
+import ocanalyzer.rules.r9_properties.GetterTest;
 import ocanalyzer.rules.r9_properties.PropertiesTest;
 
 import org.junit.runner.RunWith;
@@ -25,7 +26,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ ElseTest.class, IndentationTest.class, DotTest.class,
-		InstanceTest.class, PropertiesTest.class })
+		InstanceTest.class, PropertiesTest.class, GetterTest.class })
 public class OCIntegrationTests {
 
 }

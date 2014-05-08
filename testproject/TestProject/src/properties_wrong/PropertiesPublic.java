@@ -1,6 +1,6 @@
 package properties_wrong;
 
-public class Properties {
+public class PropertiesPublic {
 
 	public static String thisIsAllowed;
 	public String property; //x

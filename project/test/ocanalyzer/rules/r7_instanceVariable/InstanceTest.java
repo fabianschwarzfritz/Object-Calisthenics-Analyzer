@@ -18,7 +18,7 @@ public class InstanceTest {
 	public void testInstanceVariableCount() {
 		String code = new CodeReader()
 				.readFromFile("instanceVariableCount/InstanceVariableCountWrong.java");
-		CompilationUnit unit = new FakeUnit(code).create();
+		CompilationUnit unit = new FakeUnit(code).createPlain();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
 		ASTVisitor visitor = new InstanceVariableVisitor(handlerMock);

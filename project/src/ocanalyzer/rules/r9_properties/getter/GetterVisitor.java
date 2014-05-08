@@ -49,10 +49,11 @@ public class GetterVisitor extends ASTVisitor {
 	}
 
 	@Override
-	public void endVisit(ReturnStatement node) {
-		Expression expressionNode = node.getExpression();
-		node.accept(new ContainsBindingsVisitor(expressionNode, bindings,
-				violationHandler));
+	public boolean visit(ReturnStatement node) {
+		Expression expression = node.getExpression();
+		ContainsBindingsVisitor containsBindingsVisitor = new ContainsBindingsVisitor(
+				expression, bindings, violationHandler);
+		node.accept(containsBindingsVisitor);
+		return true;
 	}
-
 }

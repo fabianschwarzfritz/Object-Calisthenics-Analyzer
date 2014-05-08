@@ -18,7 +18,7 @@ public class IndentationTest {
 	public void testIndentation() {
 		String code = new CodeReader()
 				.readFromFile("indentationRule/IndentationWrong.java");
-		CompilationUnit unit = new FakeUnit(code).create();
+		CompilationUnit unit = new FakeUnit(code).createPlain();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
 		ASTVisitor visitor = new IndentationVisitor(handlerMock);

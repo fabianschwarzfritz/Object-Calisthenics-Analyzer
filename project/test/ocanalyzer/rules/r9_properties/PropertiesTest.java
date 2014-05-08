@@ -20,7 +20,7 @@ public class PropertiesTest {
 	public void testProperties() {
 		String code = new CodeReader()
 				.readFromFile("properties_wrong/PropertiesPublic.java");
-		CompilationUnit unit = new FakeUnit(code).create();
+		CompilationUnit unit = new FakeUnit(code).createPlain();
 		ViolationHandler handlerMock = mock(ViolationHandler.class);
 
 		ASTVisitor visitor = new PublicVisitor(handlerMock);

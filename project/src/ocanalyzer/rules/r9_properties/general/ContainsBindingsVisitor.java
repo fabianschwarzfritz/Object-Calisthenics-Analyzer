@@ -10,21 +10,21 @@ import org.eclipse.jdt.core.dom.SimpleName;
 
 public class ContainsBindingsVisitor extends ASTVisitor {
 
-	private Expression expression;
+	private Expression returnStatement;
 	private VariableBindings bindings;
 	private ViolationHandler handler;
 
-	public ContainsBindingsVisitor(Expression node, VariableBindings bindings,
-			ViolationHandler handler) {
+	public ContainsBindingsVisitor(Expression expression,
+			VariableBindings bindings, ViolationHandler handler) {
+		this.returnStatement = expression;
 		this.bindings = bindings;
-		this.expression = node;
 		this.handler = handler;
 	}
 
 	public boolean visit(final SimpleName node) {
-		if (expression != null & !node.isDeclaration()) {
-			final IBinding nodeBinding = node.resolveBinding();
-			bindingCorrect(node, nodeBinding);
+		if (node != null) {
+			IBinding binding = node.resolveBinding();
+			bindingCorrect(node, binding);
 		}
 		return true;
 	}
