@@ -40,12 +40,8 @@ public class OpenViolation extends Action {
 
 	private void openViolation() {
 		ViolationDTO violation = selectedViolation();
-
-		if (violation instanceof ViolationDTO) {
-			ViolationDTO classViolation = (ViolationDTO) violation;
-			IFile file = (IFile) classViolation.getResource();
-			openClassViolation(classViolation, file);
-		}
+		IFile file = (IFile) violation.getResource();
+		openClassViolation(violation, file);
 	}
 
 	private void openClassViolation(ViolationDTO violation, IFile file) {
